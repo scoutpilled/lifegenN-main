@@ -200,16 +200,16 @@
 		]
 	},
 	"accessory_generation": {
-		"base_acc_chance": 96,
+		"base_acc_chance": 81,
 		"med_modifier": -80,
 		"baby_modifier": -20,
-		"elder_modifier": 20,
+		"elder_modifier": 10,
 		"happy_trait_modifier": -30,
 		"grumpy_trait_modifier": 30,
 		"ceremony_modifier": -20
 	},
 	"fading": {
-		"age_to_fade": 202,
+		"age_to_fade": 140,
 		"opacity_at_fade": 20,
 		"visual_fading_speed": 5
 	},
@@ -230,16 +230,16 @@
 		}
 	},
 	"lost_cat": {
-		"rejoin_chance": 20
+		"rejoin_chance": 10
 	},
 	"cat_ages": {
 		"newborn": [0, 0],
 		"kitten": [1, 5],
 		"adolescent": [6, 11],
-		"young adult": [12, 47],
-        "adult": [48, 95],
-        "senior adult": [96, 119],
-        "senior": [120, 300],
+		"young adult": [12, 49],
+        "adult": [50, 89],
+        "senior adult": [90, 129],
+        "senior": [130, 400],
 		"comment": [
 			"These HAVE to be in the correct order: where one ends, the next one begins on the next number.",
 			"If you DON'T DO THIS, your game WILL break."
@@ -297,7 +297,7 @@
 		"war_injury_modifier": 100
 	},
 	"clan_creation": {
-		"rerolls": 3,
+		"rerolls": -1,
 		"comment": "Set this to -1 for it to be infinite"
 	},
 	"graduation": {
@@ -309,7 +309,7 @@
 			"mediator apprentice": 25,
 			"queen's apprentice": 25
 		},
-		"min_graduating_age": 10
+		"min_graduating_age": 9
 	},
 	"outside_ex":{
 		"base_adolescent_timeskip_ex":[[2, 10],[4, 5]],
@@ -324,8 +324,8 @@
             "comment": "Defines how much a working warrior(leader/deputy) or apprentice gathers additionally."
         },
         "herb gathering" : {
-            "med": 3,
-            "med_apprentice" : 2,
+            "med": 16,
+            "med_apprentice" : 6,
             "comment": "Defines how much a working warrior(leader/deputy) or (apprentice) medicine cat gathers additionally."
         },
         "outsiders" : {
@@ -457,7 +457,7 @@
 			"senior": 8	
 			},
 		"max_shunned_moons": 10,
-		"return_home_chance": 0,
+		"return_home_chance": 40,
 		"max_forgiven_moons": 10,
 		"comment": [
 		"Newborns have an exile_chance in case one of you sick freaks (/lhj) decides to save edit them to be shunned.",
