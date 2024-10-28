@@ -647,21 +647,6 @@
             "[t_c takes off across camp. You aren't quite sure how to tell {PRONOUN/t_c/object} there wasn't even a o_cClan visit scheduled for today.]"
         ]
     ],
-    "assertive_dislike": [
-        [
-            "Any",
-            "assertive",
-            "cool",
-            "silly",
-            "hate",
-            "they_blind",
-            "you_blind"
-        ],
-        [
-            "Hey y_c. Why don't you jump off a cliff? It's a new thing every cat in the Clan is trying.",
-            "[t_c is staring at you resentfully.]"
-        ]
-    ],
     "assertive_dislike1": [
         [
             "Any",
@@ -1470,6 +1455,21 @@
             "One of them is a little less conventional but I think it would work better. But they'd probably accept the more conventional one more easily.",
             "[After thinking for a moment, you offer t_c your best advice.]",
             "Oh... thank you, y_c! I'll try that, then."
+        ]
+    ],
+    "mediator_to_newborn_H1": [
+        [
+            "they_mediator",
+            "they_mediator_apprentice",
+            "newborn",
+            "you_unlawful",
+            "you_assertive",
+            "any"
+        ],
+        [
+            "Well, hello, y_c! Welcome to the world.",
+            "[As t_c shifts closer, you hiss and spit at {PRONOUN/t_c/object}. The mediator startles back.]",
+            "I'm going to have my paws full with you, huh?"
         ]
     ]
 }
