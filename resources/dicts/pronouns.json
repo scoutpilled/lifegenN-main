@@ -6,9 +6,7 @@
       "poss": "their",
       "inposs": "theirs",
       "self": "themself",
-      "conju": 1,
-      "parent": "parent",
-      "sibling": "sibling"
+      "conju": 1
     },
     {
       "subject": "she",
@@ -16,9 +14,7 @@
       "poss": "her",
       "inposs": "hers",
       "self": "herself",
-      "conju": 2,
-      "parent": "mother",
-      "sibling": "sister"
+      "conju": 2
     },
     {
       "subject": "he",
@@ -26,9 +22,7 @@
       "poss": "his",
       "inposs": "his",
       "self": "himself",
-      "conju": 2,
-      "parent": "father",
-      "sibling": "brother"
+      "conju": 2
     }
   ]
 }

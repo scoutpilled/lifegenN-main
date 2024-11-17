@@ -91,7 +91,7 @@
 			"confession (confess_acceptance) - if these conditions are fulfilled by the opposite cat, they accept, otherwise, they reject.",
 			"conditions for mates - both relationships have to fulfill this condition",
 			"poly (current_mate) - which conditions all current mate relationships has to have towards the main cat + vise versa",
-			"poly (each_other) - which conditions all current mate relationships haves to have towards the new possible mate + vise versa"
+            "poly (each_other) - which conditions all current mate relationships has to have towards the new possible mate + vise versa"
 		]
 	},
 	"new_cat": {
@@ -168,7 +168,7 @@
         "three_kit_possibility": {"young adult": 17, "adult": 15, "senior adult": 5, "senior": 1},
         "four_kit_possibility": {"young adult": 12, "adult": 8, "senior adult": 2, "senior": 0},
         "five_kit_possibility": {"young adult": 6, "adult": 2, "senior adult": 0, "senior": 0},
-        "max_kit_possibility": {"young adult": 2, "adult": 0, "senior adult": 0, "senior": 0},
+		"max_kit_possibility": {"young adult": 2, "adult": 0, "senior adult": 0, "senior": 0},
 		"min_kits": 1,
 		"max_kits": 6,
 		"comment": [
@@ -217,14 +217,6 @@
 		"mediator_app_chance": 50,
 		"base_medicine_app_chance": 41,
 		"become_mediator_chances": {
-			"warrior": 5000,
-			"elder": 400
-		},
-		"become_med_chances": {
-			"warrior": 5000,
-			"elder": 400
-		},
-		"become_queen_chances": {
 			"warrior": 5000,
 			"elder": 400
 		}
@@ -276,7 +268,7 @@
 		"cruel season_death_chance": 300,
 		"war_death_modifier_leader": 95,
 		"war_death_modifier": 250,
-		"base_random_murder_chance":25,
+		"base_random_murder_chance": 25,
 		"base_murder_kill_chance": 80,
 		"old_age_death_start": 150,
 		"old_age_death_curve": 4.5,
@@ -306,8 +298,7 @@
 		"max_apprentice_age": {
 			"medicine cat apprentice": 30,
 			"apprentice": 25,
-			"mediator apprentice": 25,
-			"queen's apprentice": 25
+			"mediator apprentice": 25
 		},
 		"min_graduating_age": 10
 	},
@@ -434,36 +425,21 @@
 	},
 	"theme": {
 		"dark_mode_background": [57, 50, 36],
-		"light_mode_background": [206, 194, 168]
+		"light_mode_background": [206, 194, 168],
+		"fullscreen_background": {
+			"light": {
+				"vignette_alpha": 10,
+				"fade_color": [150, 150, 148],
+				"dropshadow_alpha": 30
+			},
+			"dark": {
+				"vignette_alpha": 50,
+				"fade_color": [100, 100, 100],
+				"dropshadow_alpha": 100,
+				"mainmenu_tint": [239, 229, 206]
+			}
+		}
 	},
 	"lock_season": false, 
-	"comment": "Forces the season to be locked at the Clan's starting_season",
-	"affair_success_chance": 1,
-	"affair_success_pregnancy_chance": 20,
-	"affair_relationship_change_lb": 10,
-	"affair_relationship_change_ub": 30,
-	"murder_chance":-1,
-	"accomplice_chance":-1,
-	"debug_ensure_dialogue": "",
-	"debug_meow_error_locating": false,
-
-	"shunned_cat": {
-		"exile_chance": {
-			"newborn": 500,
-			"kitten": 45,
-			"adolescent": 20,
-			"young adult": 10,
-			"adult": 9,
-			"senior adult": 8,
-			"senior": 8	
-			},
-		"max_shunned_moons": 10,
-		"return_home_chance": 0,
-		"max_forgiven_moons": 10,
-		"comment": [
-		"Newborns have an exile_chance in case one of you sick freaks (/lhj) decides to save edit them to be shunned.",
-		"Leaving return_home_chance at zero will keep the game's default chances.",
-		"max_forgiven_moons is how many moons after being forgiven the cat get 'forgiven'-tagged dialogue and events."
-	]
-	}
+	"comment": "Forces the season to be locked at the Clan's starting_season"
 }

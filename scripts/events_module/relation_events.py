@@ -271,9 +271,7 @@ class Relation_Events:
                 Cat.all_cats.values(),
             )
         )
-        if main_cat in cat_list:
-            cat_list.remove(main_cat)
-        
+        cat_list.remove(main_cat)
         filtered_cat_list = []
 
         for inter_cat in cat_list:
@@ -397,8 +395,8 @@ class Relation_Events:
     @staticmethod
     def can_trigger_events(cat):
         """Returns if the given cat can still trigger events."""
-        special_status = ["leader", "deputy", "medicine cat", "mediator", "queen"]
-        
+        special_status = ["leader", "deputy", "medicine cat", "mediator"]
+
         # set the threshold correctly
         threshold = game.config["relationship"]["max_interaction"]
         if cat.status in special_status:
