@@ -3,6 +3,7 @@ from copy import deepcopy
 from random import choice
 
 import ujson
+from scripts.game_structure.windows import MateScreen
 
 from scripts.cat.cats import Cat
 from scripts.cat.history import History
@@ -70,7 +71,7 @@ class Romantic_Events:
     # resort the first generated overview dictionary to only "positive" and "negative" interactions
     MATE_INTERACTIONS = {"positive": [], "negative": []}
     for val_type, dictionary in MATE_RELEVANT_INTERACTIONS.items():
-        if val_type in ["jealousy", "dislike"]:
+        if val_type in ["jealousy", "dislike", "toxicity"]:
             MATE_INTERACTIONS["positive"].extend(dictionary["decrease"])
             MATE_INTERACTIONS["negative"].extend(dictionary["increase"])
         else:
@@ -116,7 +117,7 @@ class Romantic_Events:
     # resort the first generated overview dictionary to only "positive" and "negative" interactions
     ROMANTIC_INTERACTIONS = {"positive": [], "negative": []}
     for val_type, dictionary in ROMANTIC_RELEVANT_INTERACTIONS.items():
-        if val_type in ["jealousy", "dislike"]:
+        if val_type in ["jealousy", "dislike", "toxicity"]:
             ROMANTIC_INTERACTIONS["positive"].extend(dictionary["decrease"])
             ROMANTIC_INTERACTIONS["negative"].extend(dictionary["increase"])
         else:
@@ -262,7 +263,8 @@ class Romantic_Events:
         if in_de_crease != "neutral" and not positive:
             effect = f" ({intensity} negative effect)"
 
-        interaction_str = interaction_str + effect
+        # commented out. player gets to Figure Out what effect it has
+        # interaction_str = interaction_str + effect
 
         # send string to current moon relationship events before adding age of cats
         relevant_event_tabs = ["relation", "interaction"]
@@ -353,18 +355,25 @@ class Romantic_Events:
                 return
 
             # Move on from dead mates
-            if (
-                cat_mate
-                and "grief stricken" not in cat.illnesses
-                and ((cat_mate.dead and cat_mate.dead_for >= 4) or cat_mate.outside)
-            ):
+            if cat_mate and "grief stricken" not in cat.illnesses and ((cat_mate.dead and cat_mate.dead_for >= 4) or cat_mate.outside):
+                if (cat.joined_df and cat_mate.df):
+                    if (
+                        (cat.moons - cat_mate.moons > 40 or
+                        cat_mate.moons - cat.moons > 40)
+                        ):
+                        text = f"{cat.name} has decided to move on from their Dark Forest romance with {cat_mate.name}."
+                        game.cur_events_list.append(
+                            Single_Event(text, "relation", [cat.ID, cat_mate.ID])
+                        )
+                        cat.unset_mate(cat_mate)
+                else:
                 # randint is a slow function, don't call it unless we have to.
-                if not cat_mate.no_mates and random.random() > 0.5:
-                    text = f"{cat.name} will always love {cat_mate.name} but has decided to move on."
-                    game.cur_events_list.append(
-                        Single_Event(text, "relation", [cat.ID, cat_mate.ID])
-                    )
-                    cat.unset_mate(cat_mate)
+                    if not cat_mate.no_mates and random.random() > 0.5:
+                        text = f"{cat.name} will always love {cat_mate.name} but has decided to move on."
+                        game.cur_events_list.append(
+                            Single_Event(text, "relation", [cat.ID, cat_mate.ID])
+                        )
+                        cat.unset_mate(cat_mate)
 
     @staticmethod
     def handle_new_mates(cat_from, cat_to) -> bool:
@@ -373,14 +382,24 @@ class Romantic_Events:
         become_mates, mate_string = Romantic_Events.check_if_new_mate(cat_from, cat_to)
 
         if become_mates and mate_string:
-            cat_from.set_mate(cat_to)
-            game.cur_events_list.append(
-                Single_Event(
-                    mate_string, ["relation", "misc"], [cat_from.ID, cat_to.ID]
-                )
-            )
-            return True
-
+            if cat_from.ID == game.clan.your_cat.ID or cat_to.ID == game.clan.your_cat.ID:
+                if not game.switches['window_open']:
+                    if cat_from.ID == game.clan.your_cat.ID:
+                        game.switches['new_mate'] = cat_to
+                    else:
+                        game.switches['new_mate'] = cat_from
+                    MateScreen("events screen")
+                else:
+                    if 'mate' not in game.switches['windows_dict']:
+                        if cat_from.ID == game.clan.your_cat.ID:
+                            game.switches['new_mate'] = cat_to
+                        else:
+                            game.switches['new_mate'] = cat_from
+                        game.switches['windows_dict'].append('mate')
+            else:
+                cat_from.set_mate(cat_to)
+                game.cur_events_list.append(Single_Event(mate_string, ["relation", "misc"], [cat_from.ID, cat_to.ID]))
+                return True
         return False
 
     @staticmethod
@@ -514,15 +533,25 @@ class Romantic_Events:
             cat_from.relationships[cat_to.ID].romantic_love -= 10
             cat_to.relationships[cat_from.ID].comfortable -= 10
 
-        mate_string = Romantic_Events.prepare_relationship_string(
-            mate_string, cat_from, cat_to
-        )
-        game.cur_events_list.append(
-            Single_Event(mate_string, ["relation", "misc"], [cat_from.ID, cat_to.ID])
-        )
-
         if become_mate:
-            cat_from.set_mate(cat_to)
+            if cat_from.ID == game.clan.your_cat.ID or cat_to.ID == game.clan.your_cat.ID:
+                if not game.switches['window_open']:
+                    if cat_from.ID == game.clan.your_cat.ID:
+                        game.switches['new_mate'] = cat_to
+                    else:
+                        game.switches['new_mate'] = cat_from
+                    MateScreen("events screen")
+                else:
+                    if 'mate' not in game.switches['windows_dict']:
+                        if cat_from.ID == game.clan.your_cat.ID:
+                            game.switches['new_mate'] = cat_to
+                        else:
+                            game.switches['new_mate'] = cat_from
+                        game.switches['windows_dict'].append('mate')
+            else:
+                cat_from.set_mate(cat_to)
+                mate_string = Romantic_Events.prepare_relationship_string(mate_string, cat_from, cat_to)
+                game.cur_events_list.append(Single_Event(mate_string, ["relation", "misc"], [cat_from.ID, cat_to.ID]))
 
         return True
 
@@ -556,7 +585,7 @@ class Romantic_Events:
         """
         if cat_from.ID not in cat_to.mate:
             return False
-
+        
         # Moving on, not breakups, occur when one mate is dead or outside.
         if cat_from.dead or cat_from.outside or cat_to.dead or cat_to.outside:
             return False
@@ -570,6 +599,9 @@ class Romantic_Events:
     @staticmethod
     def check_if_new_mate(cat_from, cat_to):
         """Checks if the two cats can become mates, or not. Returns: boolean and event_string"""
+        if not cat_from or not cat_to:
+            return False, None
+
         become_mates = False
         young_age = ["newborn", "kitten", "adolescent"]
         if not cat_from.is_potential_mate(cat_to):
@@ -647,10 +679,12 @@ class Romantic_Events:
         if not become_mates:
             return False, None
 
-        if poly:
-            print("----- POLY-POLY-POLY", cat_from.name, cat_to.name)
-            print(cat_from.mate)
-            print(cat_to.mate)
+        # if poly:
+        #     print("----- POLY-POLY-POLY", cat_from.name, cat_to.name)
+        #     print(cat_from.mate)
+        #     print(cat_to.mate)
+        # else:
+        #     print("BECOME MATES")
 
         mate_string = Romantic_Events.prepare_relationship_string(
             mate_string, cat_from, cat_to
@@ -670,7 +704,8 @@ class Romantic_Events:
             "admiration": 0,
             "comfortable": 20,
             "jealousy": 0,
-            "trust": 0
+            "trust": 0,
+            "toxicity": 0
             }
 
         VALUES:
@@ -742,6 +777,13 @@ class Romantic_Events:
             if condition["trust"] > 0 and relationship.trust < condition["trust"]:
                 return False
             if condition["trust"] < 0 and relationship.trust > abs(condition["trust"]):
+                return False
+            
+            
+        if "toxicity" in condition and condition["toxicity"] != 0:
+            if condition["toxicity"] > 0 and relationship.toxicity < condition["toxicity"]:
+                return False
+            if condition["toxicity"] < 0 and relationship.toxicity > abs(condition["toxicity"]):
                 return False
         return True
 
@@ -948,12 +990,17 @@ class Romantic_Events:
         chance_number = 30
         chance_number += int(relationship_from.romantic_love / 20)
         chance_number += int(relationship_from.romantic_love / 20)
-        chance_number += int(relationship_from.platonic_like / 20)
-        chance_number += int(relationship_to.platonic_like / 20)
-        chance_number -= int(relationship_from.dislike / 15)
+        chance_number += int(relationship_from.platonic_like / 10)
+        chance_number += int(relationship_to.platonic_like / 10)
+
+        chance_number -= int(relationship_from.dislike / 5)
         chance_number -= int(relationship_from.jealousy / 15)
-        chance_number -= int(relationship_to.dislike / 15)
+        chance_number -= int(relationship_to.dislike / 5)
         chance_number -= int(relationship_to.jealousy / 15)
+
+        # makes toxic relationships LESS likely to break up
+        chance_number += int(relationship_from.toxicity / 15)
+        chance_number += int(relationship_to.toxicity / 15)
 
         # change the change based on the personality
         get_along = get_personality_compatibility(cat_from, cat_to)

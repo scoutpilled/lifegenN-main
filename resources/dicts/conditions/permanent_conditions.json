@@ -199,6 +199,52 @@
         ],
         "herbs": []
     },
+    "born without an eye": {
+        "severity": "major",
+        "congenital": "always",
+        "moons_until": 0,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+            {
+                "name": "failing eyesight",
+                "chance": 80
+            },
+            {  
+                "name": "headache",
+                "chance": 20
+            }
+        ],
+        "herbs": []
+    },
+    "born without eyes": {
+        "severity": "major",
+        "congenital": "always",
+        "moons_until": 0,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+        ],
+        "herbs": []
+    },
     "paralyzed": {
         "severity": "severe",
         "congenital": "sometimes",
@@ -349,9 +395,14 @@
         },
         "illness_infectiousness": [
         ],
-        "risks": [{
+        "risks": [
+            {
                 "name": "failing eyesight",
                 "chance": 80
+            },
+            {  
+                "name": "headache",
+                "chance": 20
             }
         ],
         "herbs": []
@@ -375,6 +426,10 @@
             {
                 "name": "blind",
                 "chance": 50
+            },
+            {  
+                "name": "headache",
+                "chance": 15
             }
         ],
         "herbs": []
@@ -403,6 +458,26 @@
         "herbs": []
     },
     "deaf": {
+        "severity": "major",
+        "congenital": "sometimes",
+        "moons_until": 1,
+        "mortality": {
+            "newborn": 0,
+            "kitten": 0,
+            "adolescent": 0,
+            "young adult": 0,
+            "adult": 0,
+            "senior adult": 0,
+            "senior": 0
+        },
+        "illness_infectiousness": [
+        ],
+        "risks": [
+        ],
+        "herbs": []
+
+    },
+    "mute": {
         "severity": "major",
         "congenital": "sometimes",
         "moons_until": 1,

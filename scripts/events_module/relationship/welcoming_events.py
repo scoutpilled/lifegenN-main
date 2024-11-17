@@ -89,19 +89,20 @@ class Welcoming_Events:
         )
 
         # the effect is set through the settings, therefore a rough assumption has to be made
-        effect = " (neutral effect)"
-        if (
-            clan_cat_to_new["romantic"] > 0
-            or clan_cat_to_new["platonic"] > 0
-            or clan_cat_to_new["admiration"] > 0
-            or new_to_clan_cat["comfortable"] > 0
-            or clan_cat_to_new["trust"] > 0
-        ):
-            effect = " (positive effect)"
-        elif clan_cat_to_new["dislike"] > 0 or clan_cat_to_new["jealousy"] > 0:
-            effect = " (negative effect)"
+        #effect = " (neutral effect)"
+        #if (
+            #clan_cat_to_new["romantic"] > 0
+            #or clan_cat_to_new["platonic"] > 0
+            #or clan_cat_to_new["admiration"] > 0
+            #or new_to_clan_cat["comfortable"] > 0
+            #or clan_cat_to_new["trust"] > 0
+        #):
+            #effect = " (positive effect)"
+        #elif clan_cat_to_new["dislike"] > 0 or clan_cat_to_new["jealousy"] > 0 or clan_cat_to_new["toxicity"] > 0:
+            #effect = " (negative effect)"
 
-        interaction_str += effect
+        # commented out. player gets to Figure Out what effect it has
+        # interaction_str += effect
 
         # add to relationship logs
         if new_cat.ID in clan_cat.relationships:

@@ -59,6 +59,17 @@
             "Show moons and seasons widget",
             "Displays Clan age and current Clan season on several pages.",
             false
+        ],
+        "freshkill": [
+            "Enable auto freshkill",
+            "With this setting on, no cat will ever go hungry and hunting patrols will not be needed",
+            true
+        ],
+        
+        "all accessories": [
+            "Enable all accessories",
+            "All cats will have all accessories available in their inventory",
+            false
         ]
     },
     "role": {
@@ -75,11 +86,21 @@
         "retirement": [
             "Cats will never retire due to a permanent condition",
             "When this setting is off, cats with permanent conditions will choose whether or not they want to retire.",
-            false
+            true
         ],
         "become_mediator": [
             "Allow warriors and elders to choose to become mediators",
             "Warriors and elders will have a chance to become mediators upon timeskip.",
+            false
+        ],
+        "become_med": [
+            "Allow warriors and elders to choose to become medicine cats",
+            "Warriors and elders will have a chance to become medicine cats upon timeskip.",
+            false
+        ],
+        "become_queen": [
+            "Allow warriors and elders to choose to become queens",
+            "Warriors and elders will have a chance to become queens upon timeskip.",
             false
         ]
     },
@@ -111,6 +132,11 @@
         "romantic with former mentor": [
             "Allow romantic interactions with former mentors",
             "Allows mentors and the cats they trained to be romantic after they become warriors.",
+            false
+        ],
+        "toxic relationships": [
+            "Allow cats to have toxic relationships",
+            "Allows cats to be abusive in a variety of ways. Not to be taken lightly. (IN DEVELOPMENT)",
             false
         ]
     },

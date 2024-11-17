@@ -14,7 +14,7 @@
             "Wonders if the apprentices of the Clan are now warriors"
         ],
         "random_status_constraint": [
-            "apprentice"
+            "apprentices"
         ],
         "random_living_status": [
             "living"

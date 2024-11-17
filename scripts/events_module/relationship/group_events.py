@@ -140,7 +140,9 @@ class GroupEvents:
         )
         # TODO: add the interaction to the relationship log?
 
-        interaction_str = interaction_str + f" ({inter_type} effect)"
+        interaction_str = interaction_str
+        # commented out. player gets to Figure Out what effect it has
+        # interaction_str = interaction_str + f" ({inter_type} effect)"
         ids = list(abbreviations_cat_id.values())
         relevant_event_tabs = ["relation", "interaction"]
         if chosen_interaction.get_injuries:
@@ -565,6 +567,7 @@ class GroupEvents:
         comfortable = 0
         jealousy = 0
         trust = 0
+        toxicity = 0
         if "romantic" in dictionary and dictionary["romantic"] != "neutral":
             romantic = amount if dictionary["romantic"] == "increase" else amount * -1
         if "platonic" in dictionary and dictionary["platonic"] != "neutral":
@@ -581,6 +584,9 @@ class GroupEvents:
             platonic = amount if dictionary["jealousy"] == "increase" else amount * -1
         if "trust" in dictionary and dictionary["trust"] != "neutral":
             platonic = amount if dictionary["trust"] == "increase" else amount * -1
+            
+        if "toxicity" in dictionary and dictionary["toxicity"] != "neutral":
+            platonic = amount if dictionary["toxicity"] == "increase" else amount * -1
         abbreviations_cat = []
 
         for cat in abbreviations_cat_id:
@@ -596,6 +602,7 @@ class GroupEvents:
                 comfortable=comfortable,
                 jealousy=jealousy,
                 trust=trust,
+                toxicity=toxicity,
             )
 
     @staticmethod
@@ -625,6 +632,7 @@ class GroupEvents:
             comfortable = 0
             jealousy = 0
             trust = 0
+            toxicity = 0
             if "romantic" in dictionary and dictionary["romantic"] != "neutral":
                 romantic = (
                     amount if dictionary["romantic"] == "increase" else amount * -1
@@ -649,6 +657,8 @@ class GroupEvents:
                 )
             if "trust" in dictionary and dictionary["trust"] != "neutral":
                 trust = amount if dictionary["trust"] == "increase" else amount * -1
+            if "toxicity" in dictionary and dictionary["toxicity"] != "neutral":
+                toxicity = amount if dictionary["toxicity"] == "increase" else amount * -1
 
             change_relationship_values(
                 cats_from=[cat_from],
@@ -660,6 +670,7 @@ class GroupEvents:
                 comfortable=comfortable,
                 jealousy=jealousy,
                 trust=trust,
+                toxicity=toxicity,
             )
 
     @staticmethod

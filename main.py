@@ -15,9 +15,6 @@ It then loads the settings, and then loads the start screen.
 
 
 """  # pylint: enable=line-too-long
-# DO NOT ADD YOUR IMPORTS HERE.
-# Scroll down to the "Load game" comment and add them there.
-# Side effects of imports WILL BREAK crucial setup logic for logging and init
 import os
 import shutil
 import sys
@@ -65,12 +62,11 @@ from scripts.housekeeping.stream_duplexer import UnbufferedStreamDuplexer
 from scripts.housekeeping.datadir import get_log_dir, setup_data_dir
 from scripts.housekeeping.version import get_version_info, VERSION_NAME
 
-try:
-    directory = os.path.dirname(__file__)
-except NameError:
-    directory = os.getcwd()
+
+directory = os.path.dirname(__file__)
 if directory:
     os.chdir(directory)
+
 
 if os.path.exists("auto-updated"):
     print("Clangen starting, deleting auto-updated file")
@@ -78,6 +74,7 @@ if os.path.exists("auto-updated"):
     shutil.rmtree("Downloads", ignore_errors=True)
     print("Update Complete!")
     print("New version: " + get_version_info().version_number)
+
 
 setup_data_dir()
 timestr = time.strftime("%Y%m%d_%H%M%S")
@@ -95,6 +92,7 @@ formatter = logging.Formatter(
     "%(name)s - %(levelname)s - %(filename)s / %(funcName)s / %(lineno)d - %(message)s"
 )
 
+
 # Logging for file
 timestr = time.strftime("%Y%m%d_%H%M%S")
 log_file_name = get_log_dir() + f"/clangen_{timestr}.log"
@@ -107,6 +105,7 @@ stream_handler = logging.StreamHandler()
 stream_handler.setFormatter(formatter)
 logging.root.addHandler(file_handler)
 logging.root.addHandler(stream_handler)
+
 
 prune_logs(logs_to_keep=10, retain_empty_logs=False)
 
@@ -138,6 +137,7 @@ if os.environ.get("CODESPACES"):
     print("(use clangen in fullscreen mode for best results)")
     print("")
 
+
 if get_version_info().is_source_build:
     print("Running on source code")
     if get_version_info().version_number == VERSION_NAME:
@@ -155,24 +155,26 @@ print("Version Name: ", VERSION_NAME)
 print("Running on commit " + get_version_info().version_number)
 
 # Load game
-from scripts.game_structure.audio import sound_manager, music_manager
 from scripts.game_structure.load_cat import load_cats, version_convert
 from scripts.game_structure.windows import SaveCheck
-from scripts.game_structure.game_essentials import game
-from scripts.game_structure.screen_settings import screen_scale, MANAGER, screen
+from scripts.game_structure.game_essentials import game, MANAGER, screen
 from scripts.game_structure.discord_rpc import _DiscordRPC
 from scripts.cat.sprites import sprites
 from scripts.clan import clan_class
 from scripts.utility import (
+    get_text_box_theme,
     quit,
+    scale,
 )  # pylint: disable=redefined-builtin
 from scripts.debug_menu import debugmode
+import pygame_gui
 import pygame
 
 
 # import all screens for initialization (Note - must be done after pygame_gui manager is created)
-from scripts.screens.all_screens import AllScreens
-import scripts.game_structure.screen_settings
+from scripts.screens.all_screens import (
+    start_screen,
+)  # pylint: disable=ungrouped-imports
 
 # P Y G A M E
 clock = pygame.time.Clock()
@@ -200,7 +202,6 @@ def load_data():
             version_info = clan_class.load_clan()
             version_convert(version_info)
             game.load_events()
-            scripts.screens.screens_core.screens_core.rebuild_core()
         except Exception as e:
             logging.exception("File failed to load")
             if not game.switches["error_message"]:
@@ -212,11 +213,11 @@ def load_data():
     finished_loading = True
 
 
-def loading_animation(scale: float = 1):
+def loading_animation():
     global finished_loading
 
     # Load images, adjust color
-    color = pygame.Surface((200 * scale, 210 * scale))
+    color = pygame.Surface((200, 210))
     if game.settings["dark mode"]:
         color.fill(game.config["theme"]["light_mode_background"])
     else:
@@ -224,10 +225,7 @@ def loading_animation(scale: float = 1):
 
     images = []
     for i in range(1, 11):
-        im = pygame.transform.scale_by(
-            pygame.image.load(f"resources/images/loading_animate/startup/{i}.png"),
-            screen_scale,
-        )
+        im = pygame.image.load(f"resources/images/loading_animate/startup/{i}.png")
         im.blit(color, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
         images.append(im)
 
@@ -266,7 +264,7 @@ def loading_animation(scale: float = 1):
 loading_thread = threading.Thread(target=load_data)
 loading_thread.start()
 
-loading_animation(screen_scale)
+loading_animation()
 
 # The loading thread should be done by now. This line
 # is just for safety. Plus some cleanup.
@@ -276,34 +274,97 @@ del finished_loading
 del loading_animation
 del load_data
 
-pygame.mixer.pre_init(buffer=44100)
-pygame.mixer.init()
-AllScreens.start_screen.screen_switches()
+start_screen.screen_switches()
 
-# dev screen info now lives in scripts/screens/screens_core
+if game.settings["fullscreen"]:
+    version_number = pygame_gui.elements.UILabel(
+        pygame.Rect((1500, 1350), (-1, -1)),
+        get_version_info().version_number[0:8],
+        object_id=get_text_box_theme(),
+    )
+    # Adjust position
+    version_number.set_position(
+        (
+            1600 - version_number.get_relative_rect()[2] - 8,
+            1400 - version_number.get_relative_rect()[3],
+        )
+    )
+else:
+    version_number = pygame_gui.elements.UILabel(
+        pygame.Rect((700, 650), (-1, -1)),
+        get_version_info().version_number[0:8],
+        object_id=get_text_box_theme(),
+    )
+    # Adjust position
+    version_number.set_position(
+        (
+            800 - version_number.get_relative_rect()[2] - 8,
+            700 - version_number.get_relative_rect()[3],
+        )
+    )
+
+if get_version_info().is_source_build or get_version_info().is_dev():
+    dev_watermark = pygame_gui.elements.UILabel(
+        scale(pygame.Rect((1050, 1321), (600, 100))),
+        "Lifegen: ",
+        object_id="#dev_watermark"
+    )
+
 
 cursor_img = pygame.image.load("resources/images/cursor.png").convert_alpha()
 cursor = pygame.cursors.Cursor((9, 0), cursor_img)
 disabled_cursor = pygame.cursors.Cursor(pygame.SYSTEM_CURSOR_ARROW)
 
-while 1:
-    time_delta = clock.tick(game.switches["fps"]) / 1000.0
+while True:
+    time_delta = clock.tick(game.switches['fps']) / 1000.0
+    if game.switches['cur_screen'] not in ['start screen']:
+        if game.settings['dark mode']:
+            b = 50
+            if game.settings['red_bg']:
+                if game.clan:
+                    if game.clan.your_cat:
+                        if not game.clan.your_cat.history:
+                            game.clan.your_cat.load_history()
+                        if game.clan.your_cat.history:
+                            if game.clan.your_cat.history.murder:
+                                if "is_murderer" in game.clan.your_cat.history.murder:
+                                    if len(game.clan.your_cat.history.murder["is_murderer"]) > 0:
+                                        for i in range(len(game.clan.your_cat.history.murder["is_murderer"])):
+                                            b -= 3
+            screen.fill((57, max(36,b), 36))
+        else:
+            b = 194
+            if game.settings['red_bg']:
+                if game.clan:
+                    if game.clan.your_cat:
+                        if not game.clan.your_cat.history:
+                            game.clan.your_cat.load_history()
+                        if game.clan.your_cat.history:
+                            if game.clan.your_cat.history.murder:
+                                if "is_murderer" in game.clan.your_cat.history.murder:
+                                    if len(game.clan.your_cat.history.murder["is_murderer"]) > 0:
+                                        for i in range(len(game.clan.your_cat.history.murder["is_murderer"])):
+                                            b -= 1
+            screen.fill((206, max(b, 167), 168))
 
     if game.settings["custom cursor"]:
         if pygame.mouse.get_cursor() == disabled_cursor:
-            pygame.mouse.set_cursor(cursor)
+            try:
+                pygame.mouse.set_cursor(cursor)
+            except:
+                pass
     elif pygame.mouse.get_cursor() == cursor:
         pygame.mouse.set_cursor(disabled_cursor)
     # Draw screens
     # This occurs before events are handled to stop pygame_gui buttons from blinking.
     game.all_screens[game.current_screen].on_use()
+
     # EVENTS
     for event in pygame.event.get():
         game.all_screens[game.current_screen].handle_event(event)
-        sound_manager.handle_sound_events(event)
 
         if event.type == pygame.QUIT:
-            # Don't display if on the start screen or there is no clan.
+            # Dont display if on the start screen or there is no clan.
             if (
                 game.switches["cur_screen"]
                 in [
@@ -328,22 +389,15 @@ while 1:
                 if game.settings["fullscreen"]:
                     print(f"(x: {_[0]}, y: {_[1]})")
                 else:
-                    print(f"(x: {_[0]*screen_scale}, y: {_[1]*screen_scale})")
+                    print(f"(x: {_[0]*2}, y: {_[1]*2})")
                 del _
 
         # F2 turns toggles visual debug mode for pygame_gui, allowed for easier bug fixes.
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_F2:
-                MANAGER.print_layer_debug()
-            elif event.key == pygame.K_F3:
+            if event.key == pygame.K_F3:
                 debugmode.toggle_console()
-            elif event.key == pygame.K_F4:
-                scripts.game_structure.screen_settings.toggle_fullscreen(
-                    source_screen=getattr(
-                        AllScreens, game.switches["cur_screen"].replace(" ", "_")
-                    ),
-                    show_confirm_dialog=False,
-                )
+            elif event.key == pygame.K_F2:
+                MANAGER.print_layer_debug()
 
         MANAGER.process_events(event)
 
@@ -352,17 +406,14 @@ while 1:
     # update
     game.update_game()
     if game.switch_screens:
-        game.all_screens[game.last_screen_forupdate].exit_screen()
+        if game.last_screen_forupdate:
+            game.all_screens[game.last_screen_forupdate].exit_screen()
         game.all_screens[game.current_screen].screen_switches()
         game.switch_screens = False
-    if not pygame.mixer.music.get_busy() and not game.settings["audio_mute"]:
-        music_manager.play_queued()
 
     debugmode.update1(clock)
     # END FRAME
-
     MANAGER.draw_ui(screen)
-
     debugmode.update2(screen)
 
     pygame.display.update()

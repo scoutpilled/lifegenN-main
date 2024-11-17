@@ -271,7 +271,9 @@ class Relation_Events:
                 Cat.all_cats.values(),
             )
         )
-        cat_list.remove(main_cat)
+        if main_cat in cat_list:
+            cat_list.remove(main_cat)
+        
         filtered_cat_list = []
 
         for inter_cat in cat_list:
@@ -311,6 +313,7 @@ class Relation_Events:
                 "comfortable",
                 "jealousy",
                 "trust",
+                "toxicity",
             ]
             fulfilled = True
             for v_type in value_types:
@@ -374,6 +377,11 @@ class Relation_Events:
                         threshold_fulfilled = True
                     elif lower_than and relationship.trust <= threshold:
                         threshold_fulfilled = True
+                if v_type == "toxicity":
+                    if not lower_than and relationship.toxicity >= threshold:
+                        threshold_fulfilled = True
+                    elif lower_than and relationship.toxicity <= threshold:
+                        threshold_fulfilled = True
 
                 if not threshold_fulfilled:
                     fulfilled = False
@@ -395,8 +403,8 @@ class Relation_Events:
     @staticmethod
     def can_trigger_events(cat):
         """Returns if the given cat can still trigger events."""
-        special_status = ["leader", "deputy", "medicine cat", "mediator"]
-
+        special_status = ["leader", "deputy", "medicine cat", "mediator", "queen"]
+        
         # set the threshold correctly
         threshold = game.config["relationship"]["max_interaction"]
         if cat.status in special_status:

@@ -159,6 +159,7 @@ def rel_fulfill_rel_constraints(relationship, constraint, interaction_id) -> boo
         "comfortable",
         "jealousy",
         "trust",
+        "toxicity",
     ]
     for v_type in value_types:
         tags = [i for i in constraint if v_type in i]
@@ -222,6 +223,11 @@ def rel_fulfill_rel_constraints(relationship, constraint, interaction_id) -> boo
             if not lower_than and relationship.trust >= threshold:
                 threshold_fulfilled = True
             elif lower_than and relationship.trust <= threshold:
+                threshold_fulfilled = True
+        if v_type == "toxicity":
+            if not lower_than and relationship.toxicity >= threshold:
+                threshold_fulfilled = True
+            elif lower_than and relationship.toxicity <= threshold:
                 threshold_fulfilled = True
 
         if not threshold_fulfilled:
@@ -414,6 +420,7 @@ INTERACTION_MASTER_DICT = {
     "comfortable": {},
     "jealousy": {},
     "trust": {},
+    "toxicity": {},
 }
 rel_types = [
     "romantic",
@@ -423,6 +430,7 @@ rel_types = [
     "comfortable",
     "jealousy",
     "trust",
+    "toxicity",
 ]
 base_path = os.path.join(
     "resources", "dicts", "relationship_events", "normal_interactions"

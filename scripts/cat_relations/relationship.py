@@ -35,6 +35,7 @@ class Relationship:
         comfortable=0,
         jealousy=0,
         trust=0,
+        toxicity=0,
         log=None,
     ) -> None:
         self.chosen_interaction = None
@@ -61,6 +62,7 @@ class Relationship:
         self.comfortable = comfortable
         self.jealousy = jealousy
         self.trust = trust
+        self.toxicity = toxicity
 
     def link_relationship(self):
         """Add the other relationship object to this easily access and change the other side."""
@@ -95,7 +97,7 @@ class Relationship:
         # check if an increase interaction or a decrease interaction
         in_de_crease = "increase" if positive else "decrease"
         # if the type is jealousy or dislike, then increase and decrease has to be turned around
-        if rel_type in ["jealousy", "dislike"]:
+        if rel_type in ["jealousy", "dislike", "toxicity"]:
             in_de_crease = "decrease" if positive else "increase"
 
         chance = game.config["relationship"]["chance_for_neutral"]
@@ -124,15 +126,22 @@ class Relationship:
                 all_interactions, intensity, biome, season, game_mode
             )
 
-        # return if there are no possible interactions.
         if len(possible_interactions) <= 0:
             print(
-                "WARNING: No interaction with this conditions.",
+                "ERROR: No interaction with this conditions. ",
                 rel_type,
                 in_de_crease,
                 intensity,
             )
-            return
+            possible_interactions = [
+                SingleInteraction(
+                    "fall_back",
+                    "Any",
+                    "Any",
+                    "medium",
+                    ["Default string, this should never appear."],
+                )
+            ]
 
         # check if the current interaction id is already used and us another if so
         chosen_interaction = choice(possible_interactions)
@@ -211,7 +220,8 @@ class Relationship:
         if in_de_crease != "neutral" and not positive:
             effect = f" ({intensity} negative effect)"
 
-        interaction_str = interaction_str + effect
+        # player can figure it out themself
+        # interaction_str = interaction_str + effect
         if self.cat_from.moons == 1:
             self.log.append(
                 interaction_str
@@ -315,6 +325,8 @@ class Relationship:
             self.complex_jealousy(amount, passive_buff)
         elif rel_type == "trust":
             self.complex_trust(amount, passive_buff)
+        elif rel_type == "toxicity":
+            self.complex_toxicity(amount, passive_buff)
 
         # influence the opposite relationship
         if self.opposite_relationship is None:
@@ -358,6 +370,8 @@ class Relationship:
                 self.jealousy += amount
             elif key == "trust":
                 self.trust += amount
+            elif key == "toxicity":
+                self.toxicity += amount
 
     def positive_interaction(self) -> bool:
         """Returns if the interaction should be a positive interaction or not.
@@ -407,6 +421,7 @@ class Relationship:
             "dislike": 1,
             "platonic": 1,
             "romantic": 1,
+            "toxicity": 1
         }
 
         # change the weights according if the interaction should be positive or negative
@@ -425,7 +440,7 @@ class Relationship:
         for rel_type, weight in value_weights.items():
             types += [rel_type] * weight
 
-        # if a romantic relationship is not possible, remove this type, mut only if there are no mates
+        # if a romantic relationship is not possible, remove this type, but only if there are no mates
         # if there already mates (set up by the user for example), don't remove this type
         mate_from_to = self.cat_from.is_potential_mate(
             self.cat_to, for_love_interest=True
@@ -545,9 +560,8 @@ class Relationship:
         """Add the value to the romantic type and influence other value types as well."""
         self.romantic_love += value
         if value > 0:
-            self.platonic_like += buff
+            self.trust += buff
             self.comfortable += buff
-            self.dislike -= buff
         if value < 0:
             self.comfortable -= buff
 
@@ -592,12 +606,14 @@ class Relationship:
             self.trust -= buff
             self.platonic_like -= buff
             self.dislike += buff
+            self.toxicity += buff
 
     def complex_jealousy(self, value, buff):
         """Add the value to the jealousy type and influence other value types as well."""
         self.jealousy += value
         if value > 0:
             self.dislike += buff
+            self.toxicity += buff
         if value < 0:
             self.comfortable += buff
 
@@ -607,6 +623,21 @@ class Relationship:
         if value > 0:
             self.comfortable += buff
             self.dislike -= buff
+        if value < 0:
+            self.toxicity += buff
+    
+    
+    def complex_toxicity(self, value, buff):
+        """Add the value to the toxicity type and influence other value types as well."""
+        self.toxicity += value
+        if value > 0:
+            self.platonic_like -= buff
+            self.comfortable -= buff
+            self.trust -= buff
+        if value < 0:
+            self.platonic_like += buff
+            self.comfortable += buff
+            self.trust += buff
 
     # ---------------------------------------------------------------------------- #
     #                                   property                                   #
@@ -695,3 +726,15 @@ class Relationship:
         if value < 0:
             value = 0
         self._trust = value
+
+    @property
+    def toxicity(self):
+        return self._toxicity
+
+    @toxicity.setter
+    def toxicity(self, value):
+        if value > 100:
+            value = 100
+        if value < 0:
+            value = 0
+        self._toxicity = value

@@ -1,13 +1,12 @@
 import os
-import traceback
 from ast import literal_eval
 from shutil import move as shutil_move
 
 import pygame
+import pygame_gui
 import ujson
 
 from scripts.event_class import Single_Event
-from scripts.game_structure.screen_settings import toggle_fullscreen
 from scripts.housekeeping.datadir import get_save_dir, get_temp_dir
 
 pygame.init()
@@ -27,6 +26,9 @@ class Game:
     just_died = []  # keeps track of which cats died this moon via die()
 
     cur_events_list = []
+    next_events_list = []
+    other_events_list = []
+    your_events_list = []
     ceremony_events_list = []
     birth_death_events_list = []
     relation_events_list = []
@@ -76,70 +78,71 @@ class Game:
 
     # store changing parts of the game that the user can toggle with buttons
     switches = {
-        "cat": None,
-        "clan_name": "",
-        "leader": None,
-        "deputy": None,
-        "medicine_cat": None,
-        "members": [],
-        "re_roll": False,
-        "roll_count": 0,
-        "event": None,
-        "cur_screen": "start screen",
-        "naming_text": "",
-        "timeskip": False,
-        "mate": None,
-        "choosing_mate": False,
-        "mentor": None,
-        "setting": None,
-        "save_settings": False,
-        "list_page": 1,
-        "last_screen": "start screen",
-        "events_left": 0,
-        "save_clan": False,
-        "saved_clan": False,
-        "new_leader": False,
-        "apprentice_switch": False,
-        "deputy_switch": False,
-        "clan_list": "",
-        "switch_clan": False,
-        "read_clans": False,
-        "kill_cat": False,
-        "current_patrol": [],
-        "patrol_remove": False,
-        "cat_remove": False,
-        "fill_patrol": False,
-        "patrol_done": False,
-        "error_message": "",
-        "traceback": "",
-        "apprentice": None,
-        "change_name": "",
-        "change_suffix": "",
-        "name_cat": None,
-        "biome": None,
-        "camp_bg": None,
-        "language": "english",
-        "options_tab": None,
-        "profile_tab_group": None,
-        "sub_tab_group": None,
-        "gender_align": None,
-        "show_details": False,
-        "chosen_cat": None,
-        "game_mode": "",
-        "set_game_mode": False,
-        "broke_up": False,
-        "show_info": False,
-        "patrol_chosen": "general",
-        "favorite_sub_tab": None,
-        "root_cat": None,
-        "skip_conditions": [],
-        "show_history_moons": False,
-        "fps": 30,
+        'cat': None,
+        'clan_name': '',
+        'leader': None,
+        'deputy': None,
+        'medicine_cat': None,
+        'members': [],
+        're_roll': False,
+        'roll_count': 0,
+        'event': None,
+        'cur_screen': 'start screen',
+        'naming_text': '',
+        'timeskip': False,
+        'mate': None,
+        'choosing_mate': False,
+        'mentor': None,
+        'setting': None,
+        'save_settings': False,
+        'list_page': 1,
+        'last_screen': 'start screen',
+        'events_left': 0,
+        'save_clan': False,
+        'saved_clan': False,
+        'new_leader': False,
+        'apprentice_switch': False,
+        'deputy_switch': False,
+        'clan_list': '',
+        'switch_clan': False,
+        'read_clans': False,
+        'kill_cat': False,
+        'current_patrol': [],
+        'patrol_remove': False,
+        'cat_remove': False,
+        'fill_patrol': False,
+        'patrol_done': False,
+        'error_message': '',
+        'traceback': '',
+        'apprentice': None,
+        'change_name': '',
+        'change_suffix': '',
+        'name_cat': None,
+        'biome': None,
+        'camp_bg': None,
+        'language': 'english',
+        'options_tab': None,
+        'profile_tab_group': None,
+        'sub_tab_group': None,
+        'gender_align': None,
+        'show_details': False,
+        'chosen_cat': None,
+        'game_mode': '',
+        'set_game_mode': False,
+        'broke_up': False,
+        'show_info': False,
+        'patrol_chosen': 'general',
+        'favorite_sub_tab': None,
+        'root_cat': None,
+        'window_open': False,
+        'skip_conditions': [],
+        'show_history_moons': False,
+        'fps': 30,
+        'windows_dict': [],
+        'continue_after_death': False,
         "war_rel_change_type": "neutral",
         "disallowed_symbol_tags": [],
-        "audio_mute": False,
         "saved_scroll_positions": {},
-        "moon&season_open": False,
     }
     all_screens = {}
     cur_events = {}
@@ -147,7 +150,7 @@ class Game:
 
     # SETTINGS
     settings = {}
-    settings["moon&season_open"] = False
+    settings["mns open"] = False
     setting_lists = {}
 
     debug_settings = {
@@ -210,7 +213,6 @@ class Game:
             self.switch_screens = True
         self.clicked = False
         self.keyspressed = []
-
 
     @staticmethod
     def safe_save(path: str, write_data, check_integrity=False, max_attempts: int = 15):
@@ -345,20 +347,13 @@ class Game:
             if os.path.exists(get_save_dir() + "/currentclan.txt"):
                 os.remove(get_save_dir() + "/currentclan.txt")
 
-    def save_settings(self, currentscreen=None):
+    def save_settings(self):
         """Save user settings for later use"""
         if os.path.exists(get_save_dir() + "/settings.txt"):
             os.remove(get_save_dir() + "/settings.txt")
 
         self.settings_changed = False
-        try:
-            game.safe_save(get_save_dir() + "/settings.json", self.settings)
-        except RuntimeError:
-            from scripts.game_structure.windows import SaveError
-
-            SaveError(traceback.format_exc())
-            if currentscreen is not None:
-                currentscreen.change_screen("start screen")
+        game.safe_save(get_save_dir() + "/settings.json", self.settings)
 
     def load_settings(self):
         """Load settings that user has saved from previous use"""
@@ -450,6 +445,9 @@ class Game:
 
         copy_of_info = ""
         for cat in game.cat_to_fade:
+            if cat not in self.cat_class.all_cats:
+                continue
+
             inter_cat = self.cat_class.all_cats[cat]
 
             # Add ID to list of faded cats.
@@ -494,6 +492,7 @@ class Game:
             with open(
                 get_save_dir() + "/" + clanname + "/faded_cats_info_copy.txt", "a"
             ) as write_file:
+
                 if not os.path.exists(
                     get_save_dir() + "/" + clanname + "/faded_cats_info_copy.txt"
                 ):
@@ -517,7 +516,7 @@ class Game:
         Save current events list to events.json
         """
         events_list = []
-        for event in game.cur_events_list:
+        for event in game.cur_events_list + game.other_events_list:
             events_list.append(event.to_dict())
         game.safe_save(f"{get_save_dir()}/{game.clan.name}/events.json", events_list)
 
@@ -629,8 +628,71 @@ game.load_settings()
 
 pygame.display.set_caption("Clan Generator")
 
-toggle_fullscreen(
-    fullscreen=game.settings["fullscreen"],
-    show_confirm_dialog=False,
-    ingame_switch=False,
-)
+if game.settings["fullscreen"]:
+    screen_x, screen_y = 1600, 1400
+    screen = pygame.display.set_mode(
+        (screen_x, screen_y), pygame.FULLSCREEN | pygame.SCALED
+    )
+else:
+    screen_x, screen_y = 800, 700
+    screen = pygame.display.set_mode((screen_x, screen_y))
+
+
+def load_manager(res: tuple):
+    # initialize pygame_gui manager, and load themes
+    manager = pygame_gui.ui_manager.UIManager(
+        res, "resources/theme/defaults.json", enable_live_theme_updates=False
+    )
+    manager.add_font_paths(
+        font_name="notosans",
+        regular_path="resources/fonts/NotoSans-Medium.ttf",
+        bold_path="resources/fonts/NotoSans-ExtraBold.ttf",
+        italic_path="resources/fonts/NotoSans-MediumItalic.ttf",
+        bold_italic_path="resources/fonts/NotoSans-ExtraBoldItalic.ttf",
+    )
+
+    if res[0] > 800:
+        manager.get_theme().load_theme("resources/theme/defaults.json")
+        manager.get_theme().load_theme("resources/theme/buttons.json")
+        manager.get_theme().load_theme("resources/theme/text_boxes.json")
+        manager.get_theme().load_theme("resources/theme/text_boxes_dark.json")
+        manager.get_theme().load_theme("resources/theme/vertical_scroll_bar.json")
+        manager.get_theme().load_theme("resources/theme/window_base.json")
+        manager.get_theme().load_theme("resources/theme/tool_tips.json")
+
+        manager.preload_fonts(
+            [
+                {"name": "notosans", "point_size": 30, "style": "italic"},
+                {"name": "notosans", "point_size": 26, "style": "italic"},
+                {"name": "notosans", "point_size": 30, "style": "bold"},
+                {"name": "notosans", "point_size": 26, "style": "bold"},
+                {"name": "notosans", "point_size": 22, "style": "bold"},
+            ]
+        )
+
+    else:
+        manager.get_theme().load_theme("resources/theme/defaults_small.json")
+        manager.get_theme().load_theme("resources/theme/buttons_small.json")
+        manager.get_theme().load_theme("resources/theme/text_boxes_small.json")
+        manager.get_theme().load_theme("resources/theme/text_boxes_dark_small.json")
+        manager.get_theme().load_theme("resources/theme/vertical_scroll_bar.json")
+        manager.get_theme().load_theme("resources/theme/window_base_small.json")
+        manager.get_theme().load_theme("resources/theme/tool_tips_small.json")
+
+        manager.preload_fonts(
+            [
+                {"name": "notosans", "point_size": 11, "style": "bold"},
+                {"name": "notosans", "point_size": 13, "style": "bold"},
+                {"name": "notosans", "point_size": 15, "style": "bold"},
+                {"name": "notosans", "point_size": 13, "style": "italic"},
+                {"name": "notosans", "point_size": 15, "style": "italic"},
+            ]
+        )
+
+    manager.get_theme().load_theme("resources/theme/windows.json")
+    manager.get_theme().load_theme("resources/theme/image_buttons.json")
+
+    return manager
+
+
+MANAGER = load_manager((screen_x, screen_y))

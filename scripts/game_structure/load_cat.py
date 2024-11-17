@@ -1,12 +1,11 @@
 import logging
 import os
 from math import floor
-from random import choice
+from random import choice, randint
 
 import ujson
 
-from scripts.cat.cats import Cat, BACKSTORIES
-from ..cat.personality import Personality
+from scripts.cat.cats import Cat, Personality, BACKSTORIES
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
@@ -53,6 +52,26 @@ def json_load():
     # create new cat objects
     for i, cat in enumerate(cat_data):
         try:
+            
+            if "shunned" not in cat:
+                cat["shunned"] = False
+            if "revealed" in cat:
+                cat["forgiven"] = cat["revealed"]
+
+            if cat["favourite"] is False:
+                cat["favourite"] = 0
+            elif cat["favourite"] is True:
+                cat["favourite"] = 1
+
+            # moving clangen accs over to accessories + inventory
+            if "accessories" not in cat:
+                cat["accessories"] = []
+            if "inventory" not in cat:
+                cat["inventory"] = []
+            if cat["accessory"] is not None:
+                cat["accessories"].append(cat["accessory"])
+                cat["inventory"].append(cat["accessory"])
+                cat["accessory"] = None
 
             new_cat = Cat(
                 ID=cat["ID"],
@@ -69,7 +88,7 @@ def json_load():
                 eye_colour=cat["eye_colour"],
                 loading_cat=True,
             )
-
+            
             if cat["eye_colour"] == "BLUE2":
                 cat["eye_colour"] = "COBALT"
             if cat["eye_colour"] in ["BLUEYELLOW", "BLUEGREEN"]:
@@ -130,6 +149,8 @@ def json_load():
                 scars=cat["scars"] if "scars" in cat else [],
                 accessory=cat["accessory"],
                 opacity=cat["opacity"] if "opacity" in cat else 100,
+                accessories=cat["accessories"] if "accessories" in cat else [],
+                inventory = cat["inventory"] if "inventory" in cat else []
             )
 
             # Runs a bunch of apperence-related convertion of old stuff.
@@ -183,10 +204,13 @@ def json_load():
             new_cat.patrol_with_mentor = (
                 cat["patrol_with_mentor"] if "patrol_with_mentor" in cat else 0
             )
-            new_cat.no_kits = cat["no_kits"]
+            new_cat.no_kits = cat["no_kits"] if "no_kits" in cat else False
             new_cat.no_mates = cat["no_mates"] if "no_mates" in cat else False
             new_cat.no_retire = cat["no_retire"] if "no_retire" in cat else False
+            new_cat.no_faith = cat["no_faith"] if "no_faith" in cat else False
+            new_cat.lock_faith = cat["lock_faith"] if "lock_faith" in cat else "flexible"
             new_cat.exiled = cat["exiled"]
+            new_cat.shunned = cat["shunned"]
             new_cat.driven_out = cat["driven_out"] if "driven_out" in cat else False
 
             if "skill_dict" in cat:
@@ -217,7 +241,7 @@ def json_load():
             new_cat.apprentice = cat["current_apprentice"]
             new_cat.former_apprentices = cat["former_apprentices"]
             new_cat.df = cat["df"] if "df" in cat else False
-
+            new_cat.shunned = cat["shunned"] if "shunned" in cat else False
             new_cat.outside = cat["outside"] if "outside" in cat else False
             new_cat.faded_offspring = (
                 cat["faded_offspring"] if "faded_offspring" in cat else []
@@ -226,12 +250,46 @@ def json_load():
                 cat["prevent_fading"] if "prevent_fading" in cat else False
             )
             new_cat.favourite = cat["favourite"] if "favourite" in cat else False
-
+            new_cat.w_done = cat["w_done"] if "w_done" in cat else False
+            new_cat.talked_to = cat["talked_to"] if "talked_to" in cat else False
+            new_cat.insulted = cat["insulted"] if "insulted" in cat else False
+            new_cat.flirted = cat['flirted'] if "flirted" in cat else False
+            new_cat.backstory_str = cat["backstory_str"] if "backstory_str" in cat else ""
+            new_cat.joined_df = cat["joined_df"] if "joined_df" in cat else False
+            new_cat.forgiven = cat["forgiven"] if "forgiven" in cat else 0
+            new_cat.revives = cat["revives"] if "revives" in cat else 0
+            new_cat.courage = cat["courage"] if "courage" in cat else 0
+            new_cat.intelligence = cat["intelligence"] if "intelligence" in cat else 0
+            new_cat.empathy = cat["empathy"] if "empathy" in cat else 0
+            new_cat.compassion = cat["compassion"] if "compassion" in cat else 0
+            new_cat.did_activity = cat["did_activity"] if "did_activity" in cat else False
+            new_cat.df_mentor = cat["df_mentor"] if "df_mentor" in cat else None
+            new_cat.df_apprentices = cat["df_apprentices"] if "df_apprentices" in cat else []
+            new_cat.faith = cat["faith"] if "faith" in cat else randint(-3,3)
+            new_cat.connected_dialogue = cat["connected_dialogue"] if "connected_dialogue" in cat else {}
             if "died_by" in cat or "scar_event" in cat or "mentor_influence" in cat:
                 new_cat.convert_history(
                     cat["died_by"] if "died_by" in cat else [],
                     cat["scar_event"] if "scar_event" in cat else [],
                 )
+            if "pronouns" in cat:
+                for i in cat["pronouns"]:
+                    if "sibling" not in i:
+                        if new_cat.genderalign in ["male", "trans male"]:
+                            i["sibling"] = "brother"
+                        elif new_cat.genderalign in ["female", "trans female"]:
+                            i["sibling"] = "sister"
+                        else:
+                            i["sibling"] = "sibling"
+
+        
+                    if "parent" not in i:
+                        if new_cat.genderalign in ["male", "trans male"]:
+                            i["parent"] = "father"
+                        elif new_cat.genderalign in ["female", "trans female"]:
+                            i["parent"] = "mother"
+                        else:
+                            i["parent"] = "parent"
 
             all_cats.append(new_cat)
 
@@ -461,9 +519,9 @@ def csv_load(all_cats):
                 if len(attr) > 37:
                     the_cat.pelt.paralyzed = bool(attr[37])
                 if len(attr) > 38:
-                    the_cat.no_kits = bool(attr[38])
+                    the_cat.pelt.paralyzed = bool(attr[38])
                 if len(attr) > 39:
-                    the_cat.exiled = bool(attr[39])
+                    the_cat.no_kits = bool(attr[39])
                 if len(attr) > 40:
                     the_cat.genderalign = attr[40]
                 if len(attr) > 41 and attr[41] is not None:  # KEEP THIS AT THE END
