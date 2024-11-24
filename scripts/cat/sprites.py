@@ -137,7 +137,7 @@ class Sprites:
             # Pink's new shading
             'pinkshading', 'pinkshadingnolineart', 'pinklight',
             # Added accessories
-            'pinkautismeyes',
+            'pinkautismeyes', 'neon pridescarves',
 
             'neonlineart', 'neonshading',
             
@@ -280,9 +280,14 @@ class Sprites:
         Loads scar sprites and puts them into groups.
         """
 
+        # ============================================================================= START NEONPINK ACCESSORIES
         # accessories are loaded here. im not even gonna pretend to know why
         for a, i in enumerate(["PINKAUTISMEYES"]):
             self.make_group('pinkautismeyes', (a, 0), f'np_autism{i}')
+        for a, i in enumerate(["NEONPINKTRANSSCARF", "NEONPINKDISABLEDSCARF"]):
+            self.make_group('neon pridescarves', (a, 0), f'np_autism{i}')
+
+        # ============================================================================= END NEONPINK ACCESSORIES
 
             # ohdan's accessories
         for a, i in enumerate([
@@ -574,7 +579,8 @@ class Sprites:
                 self.symbol_dict = ujson.loads(read_file.read())
 
         # U and X omitted from letter list due to having no prefixes
-        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
+        # they have prefixes now, but id like to break the symbols into groups before i do that so i can break them up properly
+        letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", 
                    "V", "W", "Y", "Z"]
 
         # sprite names will format as "symbol{PREFIX}{INDEX}", ex. "symbolSPRING0"

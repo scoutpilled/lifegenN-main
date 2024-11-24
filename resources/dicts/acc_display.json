@@ -4,9 +4,19 @@
     "plural and singular will be used on events"
   ],
   "PINKAUTISMEYES": {
-    "default": "sutism",
+    "default": "autism",
     "plural": "autisms",
     "singular": "autism"
+  },
+  "NEONPINKTRANSSCARF": {
+    "default": "trans scarf",
+    "plural": "trans scarves",
+    "singular": "trans scarf"
+  },
+  "NEONPINKDISABLEDSCARF": {
+    "default": "disabled scarf",
+    "plural": "disabled scarves",
+    "singular": "disabled scarf"
   },
   
   "MAPLE LEAF": {

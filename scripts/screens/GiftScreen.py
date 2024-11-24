@@ -734,6 +734,8 @@ class GiftScreen(Screens):
                 self.selected_acc_details["selected_image"] = pygame_gui.elements.UIImage(scale(pygame.Rect((x_pos, y_pos), (dimensions))), pygame.transform.scale(sprites.sprites['acc_crafted' + accessory + self.cat_sprite], (dimensions)), manager=MANAGER)
             elif accessory in cat.pelt.tail2_accessories:
                 self.selected_acc_details["selected_image"] = pygame_gui.elements.UIImage(scale(pygame.Rect((x_pos, y_pos), (dimensions))), pygame.transform.scale(sprites.sprites['acc_tail2' + accessory + self.cat_sprite], (dimensions)), manager=MANAGER)
+            elif accessory in cat.pelt.np_autism:
+                self.selected_acc_details["selected_image"] = pygame_gui.elements.UIImage(scale(pygame.Rect((x_pos, y_pos), (dimensions))), pygame.transform.scale(sprites.sprites['np_autism' + accessory + self.cat_sprite], (dimensions)), manager=MANAGER)
 
             info = ""
             if self.selected_accessory.tool_tip_text in game.clan.your_cat.pelt.accessories:
@@ -897,6 +899,8 @@ class GiftScreen(Screens):
                             self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 500 + pos_y), (100, 100))), sprites.sprites['acc_crafted' + accessory + self.cat_sprite], manager=MANAGER)
                         elif accessory in cat.pelt.tail2_accessories:
                             self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 500 + pos_y), (100, 100))), sprites.sprites['acc_tail2' + accessory + self.cat_sprite], manager=MANAGER)
+                        elif accessory in cat.pelt.np_autism:
+                            self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 500 + pos_y), (100, 100))), sprites.sprites['np_autism' + accessory + self.cat_sprite], manager=MANAGER)
                         self.accessories_list.append(accessory)
                         pos_x += 120
                         if pos_x >= 1200:

@@ -1354,7 +1354,7 @@ class MakeClanScreen(Screens):
         permanent_conditions = ['born without a leg', 'weak leg', 'twisted leg', 'born without a tail', 'paralyzed', 'raspy lungs',
                                 'wasting disease', 'blind', 'one bad eye', 'failing eyesight', 'partial hearing loss', 'deaf',
                                 'constant joint pain', 'seizure prone', 'allergies', 'persistent headaches', 'born without an eye',
-                                'born without eyes']
+                                'born without eyes', 'mute']
         
         white_patches = ["FULLWHITE"] + Pelt.little_white + Pelt.mid_white + Pelt.high_white + Pelt.mostly_white
         self.pname= random.choice(pelts) if random.randint(1,3) == 1 else "Tortie"
@@ -1377,7 +1377,7 @@ class MakeClanScreen(Screens):
         self.skill = random.choice(self.skills)
         self.sex = random.choice(["male", "female"])
         self.personality = choice(['troublesome', 'lonesome', 'impulsive', 'bullying', 'attention-seeker', 'charming', 'daring', 'noisy', 'nervous', 'quiet', 'insecure', 'daydreamer', 'sweet', 'polite', 'know-it-all', 'bossy', 'disciplined', 'patient', 'manipulative', 'secretive', 'rebellious', 'grumpy', 'passionate', 'honest', 'leader-like', 'smug'])
-        self.accessory = choice(Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories) if random.randint(1,5) == 1 else None
+        self.accessory = choice(Pelt.plant_accessories + Pelt.np_autism + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories) if random.randint(1,3) == 1 else None
         self.permanent_condition = choice(permanent_conditions) if random.randint(1,20) == 1 else None
         self.faith = random.choice(["flexible", "starclan", "dark forest", "neutral"])
 
@@ -1462,7 +1462,7 @@ class MakeClanScreen(Screens):
         permanent_conditions = [
             'born without a leg', 'weak leg', 'twisted leg', 'born without a tail', 'paralyzed', 'raspy lungs', 'wasting disease',
             'blind', 'one bad eye', 'failing eyesight', 'partial hearing loss', 'deaf', 'constant joint pain', 'seizure prone',
-            'allergies', 'persistent headaches', 'born without an eye', 'born without eyes']
+            'allergies', 'persistent headaches', 'born without an eye', 'born without eyes', 'mute']
         
     # background images
     # values are ((x position, y position), (x width, y height))
@@ -1773,9 +1773,9 @@ class MakeClanScreen(Screens):
                 self.elements['scars'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.scars1 + Pelt.scars2 + Pelt.scars3, "None", scale(pygame.Rect((column3_x, y_pos[4]), (250, 70))), manager=MANAGER)
 
             if self.accessory:
-                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories, str(self.accessory), scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
+                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.np_autism + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories, str(self.accessory), scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
             else:
-                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories, "None", scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
+                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.np_autism + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories, "None", scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
 
             if self.permanent_condition:
                 self.elements['permanent conditions'] = pygame_gui.elements.UIDropDownMenu(
@@ -1991,10 +1991,6 @@ class MakeClanScreen(Screens):
                                 self.scars.remove("NOTAIL")
                             elif "NOPAW" in self.scars:
                                 self.scars.remove("NOPAW")
-                            if self.custom_cat.pelt.eye_colour == None:
-                                    self.custom_cat.pelt.eye_colour = "BLUE"
-                            if self.custom_cat.pelt.eye_colour == None:
-                                    self.custom_cat.pelt.eye_colour2 = "BLUE"
                         self.update_sprite()
 
                 elif event.ui_element == self.elements['sex']:

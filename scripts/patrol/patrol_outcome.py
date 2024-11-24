@@ -1261,6 +1261,8 @@ class PatrolOutcome:
             acc_list = Pelt.wild_accessories
         elif "COLLAR" in acc_list:
             acc_list = Pelt.collars
+        elif "NEONPINK" in acc_list:
+            acc_list = Pelt.np_autism
         elif "TAIL" in acc_list:
             acc_list = Pelt.tail_accessories + Pelt.tail2_accessories
         elif "SNAKE" in acc_list:
@@ -1293,12 +1295,13 @@ class PatrolOutcome:
         elif "FLOWER" in acc_list:
             acc_list = Pelt.flower_accessories + ['REDCROWN', 'YELLOWCROWN', 'LILY', 'CLOVERFLOWER']
         elif "FLOWERCROWN" in acc_list:
-            acc_list = ['REDCROWN', 'YELLOWCROWN', "PINKFLOWERCROWN", "YELLOWFLOWERCROWN", "BLUEFLOWERCROWN", "PURPLEFLOWERCROWN", "FLOWERCROWN"]
+            acc_list = ['REDCROWN', 'YELLOWCROWN', "PINKFLOWERCROWN", "YELLOWFLOWERCROWN", "BLUEFLOWERCROWN", "PURPLEFLOWERCROWN",
+                        "FLOWERCROWN"]
         else:
             acc_list = [x for x in acc_list if x in Pelt.plant_accessories + Pelt.plant2_accessories + Pelt.wild_accessories +\
         Pelt.tail_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + \
         Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + \
-        Pelt.tail2_accessories
+        Pelt.tail2_accessories + Pelt.np_autism
                             and x not in cat.pelt.inventory]
 
         if not acc_list:

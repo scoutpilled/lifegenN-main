@@ -2507,14 +2507,6 @@ class Cat:
             cat.pelt.scars.append("NOPAW")
         elif new_condition == "born without a tail":
             cat.pelt.scars.append("NOTAIL")
-        elif new_condition == "born without an eye":
-            if random.randint(1, 2) == 1:
-                cat.pelt.eye_colour = None
-            else:
-                cat.pelt.eye_colour2 = None
-        elif new_condition == "born without eyes":
-                    cat.pelt.eye_colour = None
-                    cat.pelt.eye_colour2 = None
 
         self.get_permanent_condition(new_condition, born_with=True)
 
@@ -2536,16 +2528,6 @@ class Cat:
             return
         if "born without eyes" in self.permanent_condition and name == "failing eyesight":
             return
-
-        # missing eyes code. double checks if missing eyes are applied and fixes if not
-        if "born without eyes" in self.permanent_condition and not (self.pelt.eye_colour(None) and self.pelt.eye_colour2(None)):
-            self.pelt.eye_colour(None)
-            self.pelt.eye_colour2(None)
-        if "born without an eye" in self.permanent_condition and not (self.pelt.eye_colour(None) or self.pelt.eye_colour2(None)):
-            if random.randint(1, 2) == 1:
-                self.pelt.eye_colour(None)
-            else:
-                self.pelt.eye_colour2(None)
 
         # remove accessories if need be
         # if 'NOTAIL' in self.pelt.scars and self.pelt.accessory in ['RED FEATHERS', 'BLUE FEATHERS', 'JAY FEATHERS', "SEAWEED", "DAISY CORSAGE", "GULL FEATHERS",
@@ -4493,14 +4475,6 @@ def create_example_cats():
                     game.choose_cats[a].pelt.scars.append('NOPAW')
                 elif chosen_condition in ['lost their tail', 'born without a tail']:
                     game.choose_cats[a].pelt.scars.append("NOTAIL")
-                elif chosen_condition in ['born without an eye']:
-                    if random.randint(1, 2) == 1:
-                        game.choose_cats[a].pelt.eye_colour(None)
-                    else:
-                        game.choose_cats[a].pelt.eye_colour2(None)
-                elif chosen_condition in ['born without eyes']:
-                    game.choose_cats[a].pelt.eye_colour(None)
-                    game.choose_cats[a].pelt.eye_colour2(None)
         #update_sprite(game.choose_cats[a])
     
 

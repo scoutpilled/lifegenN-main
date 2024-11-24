@@ -2876,7 +2876,8 @@ def generate_sprite(
                             'INDIGONYLON']
 
         for i in cat.pelt.accessories:
-            if i not in clangen_accessories and game.settings['new accessories'] is False:
+            if i not in clangen_accessories and game.settings['new accessories'] is False \
+             and game.settings['neonpink accessories'] is False:
                 continue
             if not acc_hidden:
                 try:
@@ -2904,6 +2905,12 @@ def generate_sprite(
                         new_sprite.blit(sprites.sprites['acc_crafted' + i + cat_sprite], (0, 0))
                     elif i in cat.pelt.tail2_accessories:
                         new_sprite.blit(sprites.sprites['acc_tail2' + i + cat_sprite], (0, 0))
+                except:
+                    continue
+            if game.settings['neonpink accessories'] is True:
+                try:
+                    if i in cat.pelt.np_autism:
+                        new_sprite.blit(sprites.sprites['np_autism' + i + cat_sprite], (0, 0))
                 except:
                     continue
 

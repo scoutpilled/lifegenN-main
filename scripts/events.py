@@ -536,7 +536,8 @@ class Events:
     def gain_acc(self):
         if game.clan.clan_settings["all accessories"]:
             return
-        possible_accs = ["WILD", "PLANT", "COLLAR", "FLOWER", "PLANT2", "SNAKE", "SMALLANIMAL", "DEADINSECT", "ALIVEINSECT", "FRUIT", "CRAFTED", "TAIL2"]
+        possible_accs = ["WILD", "PLANT", "COLLAR", "FLOWER", "PLANT2", "SNAKE", "SMALLANIMAL", "DEADINSECT", "ALIVEINSECT",
+                         "FRUIT", "CRAFTED", "TAIL2", "NEONPINK"]
         acc_list = []
         if "WILD" in possible_accs:
             acc_list.extend(Pelt.wild_accessories)
@@ -562,6 +563,8 @@ class Events:
             acc_list.extend(Pelt.crafted_accessories)
         if "TAIL2" in possible_accs:
             acc_list.extend(Pelt.tail2_accessories)
+        if "NEONPINK" in possible_accs:
+            acc_list.extend(Pelt.np_autism)
         if "NOTAIL" in game.clan.your_cat.pelt.scars or "HALFTAIL" in game.clan.your_cat.pelt.scars:
             for acc in Pelt.tail_accessories + Pelt.tail2_accessories:
                 if acc in acc_list:

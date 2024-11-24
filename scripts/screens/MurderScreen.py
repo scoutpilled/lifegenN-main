@@ -1980,9 +1980,9 @@ class MurderScreen(Screens):
             cat_to_murder.get_injured(owie)
 
             if self.method == "poison":
-                text = text + f" Your attempt on their life has left {c_m} ill."
+                text = text + f" Your murder attempt has left {c_m} ill."
             else:
-                text = text + f" Your attempt on their life has left {c_m} injured."
+                text = text + f" Your murder attempt life has left {c_m} injured."
 
         game.cur_events_list.insert(0, Single_Event(text))
         
@@ -2090,9 +2090,9 @@ class MurderScreen(Screens):
             if accomplice.personality.trait == "bloodthirsty":
                 chance += 10
             if accomplice.status == "warrior" and accomplice_healthy:
-                chance += 5
-            if accomplice.status in ["leader", "deputy"] and accomplice_healthy:
                 chance += 15
+            if accomplice.status in ["leader", "deputy"] and accomplice_healthy:
+                chance += 25
         
 
         if you.history:

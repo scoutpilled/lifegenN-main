@@ -1,4 +1,157 @@
 {
+  "Corvid": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Lunar": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Hiss": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Lost": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Imposter": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Idiot": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Stupid": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Honor": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Thief": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Love": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Tackle": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Remembrance": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Gate": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Death": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Life": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Fight": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Wail": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Mourn": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Tower": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Trash": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Off": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Strange": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Scar": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Score": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Slash": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Flesh": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Pepper": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Salt": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Glass": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Lock": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Forgotten": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Memory": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Clever": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Tough": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Error": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Sanctuary": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Hell": {
+    "variants": 0, 
+    "tags0": []
+  },
+  "Heaven": {
+    "variants": 0, 
+    "tags0": []
+  },
+
   "Adder": {
     "variants": 1,
     "tags0": ["animal", "other animals"]
@@ -1372,9 +1525,8 @@
     "tags0": ["plant", "flower"]
   },
   "One": {
-    "variants": 2,
-    "tags0": ["animal", "cat"],
-    "tags1": ["animal", "cat"]
+    "variants": 1,
+    "tags0": ["animal", "cat"]
   },
   "Orchid": {
     "variants": 0,
@@ -1796,6 +1948,10 @@
     "variants": 0,
     "tags0": []
   }, 
+  "Single": {
+    "variants": 1,
+    "tags0": ["animal", "cat"]
+  },
   "Skip": {
     "variants": 0,
     "tags0": []
@@ -2147,6 +2303,10 @@
   "Twilight": {
     "variants": 1,
     "tags0": ["miscellaneous"]
+  },
+  "Utopia": {
+    "variants": 0, 
+    "tags0": []
   },
   "Valley": {
     "variants": 0,

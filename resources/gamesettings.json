@@ -22,8 +22,13 @@
             false
         ],
         "new accessories": [
-            "New Accessories",
-            "Enable new accessories",
+            "Lifegen Accessories",
+            "Enable Lifegen accessories",
+            true
+        ],
+        "neonpink accessories": [
+            "NeonPink Accessories",
+            "Enable NeonPink accessories",
             true
         ],
         "red_bg": [
