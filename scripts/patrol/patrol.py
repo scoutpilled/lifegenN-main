@@ -5,13 +5,12 @@ from copy import deepcopy
 from itertools import repeat
 from os.path import exists as path_exists
 from random import choice, randint, choices
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 import pygame
 import ujson
 
 from scripts.cat.cats import Cat
-from scripts.cat.history import History
 from scripts.clan import Clan
 from scripts.game_structure.game_essentials import game
 from scripts.patrol.patrol_event import PatrolEvent
@@ -32,7 +31,6 @@ from itertools import combinations
 from scripts.patrol.patrol_event import PatrolEvent
 from scripts.patrol.patrol_outcome import PatrolOutcome
 from scripts.cat.cats import Cat
-from scripts.special_dates import get_special_date, contains_special_date_tag
 from scripts.utility import change_clan_relations, change_clan_reputation, get_cluster, ceremony_text_adjust, \
     get_current_season, adjust_list_text, ongoing_event_text_adjust, event_text_adjust, create_new_cat
 
@@ -48,7 +46,6 @@ class Patrol:
     used_patrols = []
 
     def __init__(self):
-
         self.patrol_event: PatrolEvent = None
 
         self.patrol_leader = None
@@ -133,7 +130,7 @@ class Patrol:
         
         return self.process_text(self.patrol_event.intro_text, None)
 
-    def proceed_patrol(self, path: str = "proceed") -> Tuple[str]:
+    def proceed_patrol(self, path: str = "proceed") -> Tuple[str, str, Optional[str]]:
         """Proceed the patrol to the next step.
         path can be: "proceed", "antag", or "decline" """
 
@@ -188,7 +185,7 @@ class Patrol:
                 else:
                     self.patrol_statuses["all apprentices"] = 1
 
-            if cat.status in ("warrior", "deputy", "leader"):
+            if cat.status in ("warrior", "deputy", "leader") and cat.age != "adolescent":
                 if "normal adult" in self.patrol_statuses:
                     self.patrol_statuses["normal adult"] += 1
                 else:
@@ -375,30 +372,52 @@ class Patrol:
             possible_patrols.extend(self.generate_patrol_events(self.TRAINING_GEN))
             possible_patrols.extend(self.generate_patrol_events(self.MEDCAT_GEN))
         elif game.switches["patrol_category"] == 'lifegen':
-            if game.clan.your_cat.status == 'kitten':
-                possible_patrols.extend(self.generate_patrol_events(self.kit_lifegen))
-            elif game.clan.your_cat.status == 'apprentice':
-                possible_patrols.extend(self.generate_patrol_events(self.app_lifegen))
-            elif game.clan.your_cat.status == 'medicine cat apprentice':
-                possible_patrols.extend(self.generate_patrol_events(self.medapp_lifegen))
-            elif game.clan.your_cat.status == 'mediator apprentice':
-                possible_patrols.extend(self.generate_patrol_events(self.mediatorapp_lifegen))
-            elif game.clan.your_cat.status == "queen's apprentice":
-                possible_patrols.extend(self.generate_patrol_events(self.queenapp_lifegen))
-            elif game.clan.your_cat.status == "queen":
-                possible_patrols.extend(self.generate_patrol_events(self.queen_lifegen))
-            elif game.clan.your_cat.status == 'medicine cat':
-                possible_patrols.extend(self.generate_patrol_events(self.med_lifegen))
-            elif game.clan.your_cat.status == 'mediator':
-                possible_patrols.extend(self.generate_patrol_events(self.mediator_lifegen))
-            elif game.clan.your_cat.status == 'deputy':
-                possible_patrols.extend(self.generate_patrol_events(self.deputy_lifegen))
-            elif game.clan.your_cat.status == 'leader':
-                possible_patrols.extend(self.generate_patrol_events(self.leader_lifegen))
-            elif game.clan.your_cat.status == 'elder':
-                possible_patrols.extend(self.generate_patrol_events(self.elder_lifegen))
+
+            if game.clan.your_cat.shunned != 0:
+                murder_history = History.get_murders(game.clan.your_cat)
+                history = None
+                status = game.clan.your_cat.status
+                if "is_murderer" in murder_history:
+                    history = murder_history["is_murderer"]
+                else:
+                    status = game.clan.your_cat.status
+                if history:
+                    if "demoted_from" in history[-1] and history[-1]["demoted_from"]:
+                        status = history[-1]["demoted_from"]
+                    else:
+                        status = game.clan.your_cat.status
+                else:
+                    status = game.clan.your_cat.status
             else:
-                possible_patrols.extend(self.generate_patrol_events(self.warrior_lifegen))
+                status = game.clan.your_cat.status
+
+            if status == 'kitten':
+                possible_patrols.extend(self.generate_patrol_events(self.kit_lifegen))
+            else:
+                possible_patrols.extend(self.generate_patrol_events(self.general_lifegen))
+
+                if status == 'apprentice':
+                    possible_patrols.extend(self.generate_patrol_events(self.app_lifegen))
+                elif status == 'medicine cat apprentice':
+                    possible_patrols.extend(self.generate_patrol_events(self.medapp_lifegen))
+                elif status == 'mediator apprentice':
+                    possible_patrols.extend(self.generate_patrol_events(self.mediatorapp_lifegen))
+                elif status == "queen's apprentice":
+                    possible_patrols.extend(self.generate_patrol_events(self.queenapp_lifegen))
+                elif status == "queen":
+                    possible_patrols.extend(self.generate_patrol_events(self.queen_lifegen))
+                elif status == 'medicine cat':
+                    possible_patrols.extend(self.generate_patrol_events(self.med_lifegen))
+                elif status == 'mediator':
+                    possible_patrols.extend(self.generate_patrol_events(self.mediator_lifegen))
+                elif status == 'deputy':
+                    possible_patrols.extend(self.generate_patrol_events(self.deputy_lifegen))
+                elif status == 'leader':
+                    possible_patrols.extend(self.generate_patrol_events(self.leader_lifegen))
+                elif status == 'elder':
+                    possible_patrols.extend(self.generate_patrol_events(self.elder_lifegen))
+                else:
+                    possible_patrols.extend(self.generate_patrol_events(self.warrior_lifegen))
         elif game.switches["patrol_category"] == 'date':
             possible_patrols.extend(self.generate_patrol_events(self.date_lifegen))
         else:
@@ -449,7 +468,7 @@ class Patrol:
         # This is a debug option. If the patrol_id set isn "debug_ensure_patrol" is possible,
         # make it the *only* possible patrol
         if isinstance(game.config["patrol_generation"]["debug_ensure_patrol_id"], str):
-            for _pat in possible_patrols:
+            for _pat in final_patrols:
                 if (
                     _pat.patrol_id
                     == game.config["patrol_generation"]["debug_ensure_patrol_id"]
@@ -473,10 +492,12 @@ class Patrol:
             
 
     def _check_constraints(self, patrol: PatrolEvent) -> bool:
-        if not filter_relationship_type(group=self.patrol_cats,
-                                        filter_types=patrol.relationship_constraints,
-                                        event_id=patrol.patrol_id,
-                                        patrol_leader=self.patrol_leader):
+        if not filter_relationship_type(
+            group=self.patrol_cats,
+            filter_types=patrol.relationship_constraints,
+            event_id=patrol.patrol_id,
+            patrol_leader=self.patrol_leader,
+        ):
             return False
 
         if (
@@ -722,7 +743,6 @@ class Patrol:
     def get_filtered_patrols(
         self, possible_patrols, biome, camp, current_season, patrol_type
     ):
-
         filtered_patrols, romantic_patrols = self._filter_patrols(
             possible_patrols, biome, camp, current_season, patrol_type
         )
@@ -779,10 +799,9 @@ class Patrol:
 
         return all_patrol_events
 
-    def determine_outcome(self, antagonize=False):
-
+    def determine_outcome(self, antagonize=False) -> Tuple[str, str, Optional[str]]:
         if self.patrol_event is None:
-            return
+            raise Exception("No patrol event supplied")
 
         # First Step - Filter outcomes and pick a fail and success outcome
         success_outcomes = (
@@ -837,7 +856,7 @@ class Patrol:
     def calculate_success( 
         self, success_outcome: PatrolOutcome, fail_outcome: PatrolOutcome
     ) -> Tuple[PatrolOutcome, bool]:
-        """Returns both the chosen event, and a boolian that's True if success, and False is fail."""
+        """Returns both the chosen event, and a boolean that's True if success, and False is fail."""
 
         patrol_size = len(self.patrol_cats)
         total_exp = sum([x.experience for x in self.patrol_cats])
@@ -1009,6 +1028,10 @@ class Patrol:
             with open(f"{resource_dir}general/medcat.json", 'r', encoding='ascii') as read_file:
                 self.MEDCAT_GEN = ujson.loads(read_file.read())
         elif game.switches["patrol_category"] == 'lifegen':
+            self.general_lifegen = None
+            with open(f"{resource_dir}/lifegen/general.json", 'r', encoding='ascii') as read_file:
+                self.general_lifegen = ujson.loads(read_file.read())
+
             self.kit_lifegen = None
             with open(f"{resource_dir}/lifegen/kit.json", 'r', encoding='ascii') as read_file:
                 self.kit_lifegen = ujson.loads(read_file.read())
@@ -1164,7 +1187,7 @@ class Patrol:
 
         return pygame.image.load(f"{root_dir}{file_name}.png")
 
-    def process_text(self, text, stat_cat: Cat) -> str:
+    def process_text(self, text, stat_cat: Optional[Cat]) -> str:
         """Processes text"""
 
         vowels = ["A", "E", "I", "O", "U"]
@@ -1317,61 +1340,15 @@ class Patrol:
 
         text = text.replace("c_n", str(game.clan.name) + "Clan")
 
-        text, senses, list_type = find_special_list_types(text)
+        text, senses, list_type, _ = find_special_list_types(text)
         if list_type:
             sign_list = get_special_snippet_list(
                 list_type, amount=randint(1, 3), sense_groups=senses
             )
             text = text.replace(list_type, str(sign_list))
 
-        #TODO: check if this can be handled in event_text_adjust
+        # TODO: check if this can be handled in event_text_adjust
         return text
-
-    # ---------------------------------------------------------------------------- #
-    #                                   Handlers                                   #
-    # ---------------------------------------------------------------------------- #
-
-    def handle_history(self, cat, condition=None, possible=False, scar=False, death=False):
-        """
-        this handles the scar and death history of the cat
-        :param cat: the cat gaining the history
-        :param condition: if the history is related to a condition, include its name here
-        :param possible: if you want the history added to the possible scar/death then set this to True, defaults to False
-        :param scar: if you want the scar history added set this to True, default is False
-        :param death: if you want the death history added set this to True, default is False
-        """
-        if not self.patrol_event.history_text:
-            print(
-                f"WARNING: No history found for {self.patrol_event.patrol_id}, it may not need one but double check please!")
-        if scar and "scar" in self.patrol_event.history_text:
-            adjust_text = self.patrol_event.history_text['scar']
-            adjust_text = adjust_text.replace("o_c_n", f"{str(self.other_clan.name)}Clan")
-            adjust_text = adjust_text.replace("o_c_n", str(self.other_clan.name))
-            adjust_text = process_text(adjust_text, {"r_c": (str(cat.name), choice(cat.pronouns))})
-            if possible:
-                History.add_possible_history(cat, condition=condition, scar_text=adjust_text)
-            else:
-                History.add_scar(cat, adjust_text)
-        if death:
-            if cat.status == 'leader':
-                if "lead_death" in self.patrol_event.history_text:
-                    adjust_text = self.patrol_event.history_text['lead_death']
-                    adjust_text = adjust_text.replace("o_c_n", str(self.other_clan.name))
-                    adjust_text = process_text(adjust_text, {"r_c": (str(cat.name), choice(cat.pronouns))})
-                    if possible:
-                        History.add_possible_history(cat, condition=condition, death_text=adjust_text)
-                    else:
-                        History.add_death(cat, adjust_text)
-            else:
-                if "reg_death" in self.patrol_event.history_text:
-                    adjust_text = self.patrol_event.history_text['reg_death']
-                    adjust_text = adjust_text.replace("o_c_n", str(self.other_clan.name))
-                    adjust_text = process_text(adjust_text, {"r_c": (str(cat.name), choice(cat.pronouns))})
-                    if possible:
-                        History.add_possible_history(cat, condition=condition, death_text=adjust_text)
-                    else:
-                        History.add_death(cat, adjust_text)
-
 
 
 # ---------------------------------------------------------------------------- #
