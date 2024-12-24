@@ -447,6 +447,20 @@ class ProfileScreen(Screens):
                                 self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites['acc_crafted' + accessory + cat_sprite], manager=MANAGER)
                             elif accessory in cat.pelt.tail2_accessories:
                                 self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites['acc_tail2' + accessory + cat_sprite], manager=MANAGER)
+                            elif accessory in cat.pelt.bandana_collars:
+                                    self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['bandanas' + accessory + cat_sprite], manager=MANAGER)
+                            elif accessory in cat.pelt.harness_accessories:
+                                self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['harnesses' + accessory + cat_sprite], manager=MANAGER)
+                            elif accessory in cat.pelt.bows_accessories:
+                                self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['bows' + accessory + cat_sprite], manager=MANAGER)
+                            elif accessory in cat.pelt.dogteeth_collars:
+                                self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['teethcollars' + accessory + cat_sprite], manager=MANAGER)
+                            elif accessory in cat.pelt.bone_accessories:
+                                self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_bones' + accessory + cat_sprite], manager=MANAGER)
+                            elif accessory in cat.pelt.butterflies_accessories:
+                                self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_butterflymoth' + accessory + cat_sprite], manager=MANAGER)
+                            elif accessory in cat.pelt.stuff_accessories:
+                                self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_twolegstuff' + accessory + cat_sprite], manager=MANAGER)
                             pos_x += 120
                             if pos_x >= 1100:
                                 pos_x = 0
@@ -890,6 +904,20 @@ class ProfileScreen(Screens):
                                     self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites['acc_crafted' + accessory + cat_sprite], manager=MANAGER)
                                 elif accessory in cat.pelt.tail2_accessories:
                                     self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites['acc_tail2' + accessory + cat_sprite], manager=MANAGER)
+                                elif accessory in cat.pelt.bandana_collars:
+                                    self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['bandanas' + accessory + cat_sprite], manager=MANAGER)
+                                elif accessory in cat.pelt.harness_accessories:
+                                    self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['harnesses' + accessory + cat_sprite], manager=MANAGER)
+                                elif accessory in cat.pelt.bows_accessories:
+                                    self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['bows' + accessory + cat_sprite], manager=MANAGER)
+                                elif accessory in cat.pelt.dogteeth_collars:
+                                    self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['teethcollars' + accessory + cat_sprite], manager=MANAGER)
+                                elif accessory in cat.pelt.bone_accessories:
+                                    self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_bones' + accessory + cat_sprite], manager=MANAGER)
+                                elif accessory in cat.pelt.butterflies_accessories:
+                                    self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_butterflymoth' + accessory + cat_sprite], manager=MANAGER)
+                                elif accessory in cat.pelt.stuff_accessories:
+                                    self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_twolegstuff' + accessory + cat_sprite], manager=MANAGER)
                                 pos_x += 120
                                 if pos_x >= 1100:
                                     pos_x = 0
@@ -1487,23 +1515,6 @@ class ProfileScreen(Screens):
     def generate_column1(self, the_cat):
         """Generate the left column information"""
         output = ""
-        # SEX/GENDER
-        if the_cat.genderalign is None or the_cat.genderalign == the_cat.gender:
-            output += str(the_cat.gender)
-        else:
-            output += str(the_cat.genderalign)
-        # NEWLINE ----------
-        output += "\n"
-
-        # AGE
-        if the_cat.age == "kitten":
-            output += "young"
-        elif the_cat.age == "senior":
-            output += "senior"
-        else:
-            output += the_cat.age
-        # NEWLINE ----------
-        output += "\n"
 
         # EYE COLOR
         output += "eyes: " + str(the_cat.describe_eyes())
@@ -1514,9 +1525,21 @@ class ProfileScreen(Screens):
         output += "pelt: " + the_cat.pelt.name.lower()
         # NEWLINE ----------
         output += "\n"
-
+        #PELT LENGTH
+        output += "pelt color: " + the_cat.pelt.colour.lower()
         # PELT LENGTH
+        # NEWLINE
+        output += "\n"
+        #FURT LENGTH
         output += "fur length: " + the_cat.pelt.length
+        # NEWLINE ----------
+        output += "\n"
+        output += "fur texture: " + the_cat.pelt.fur_texture
+
+        output += "\n"
+        output += "height: " + the_cat.pelt.height
+        output += "\n"
+        output += "build: " + the_cat.pelt.build
         # NEWLINE ----------
 
         # ACCESSORY
@@ -1536,89 +1559,87 @@ class ProfileScreen(Screens):
             output += "accessory: " + str(
                 ACC_DISPLAY[the_cat.pelt.accessory]["default"]
             )
-            # NEWLINE ----------
+            # NEWLINE ---------
 
-        # PARENTS
-        all_parents = [Cat.fetch_cat(i) for i in the_cat.get_parents()]
-        if all_parents: 
+        # TRAITS
+        trait_descriptions = {
+            'TEETHOVERBITE': 'overbite',
+            'TEETHUNDERBITE': 'underbite',
+            'EARSMALL': 'small ears',
+            'EARBIG': 'big ears',
+            'FOLDBOTH': 'folded ears',
+            'FOLDONE': 'a folded ear',
+            'EARKOALA': 'koala-like ears',
+            'EARWING': 'wing-shaped ears',
+            'EARDROOPY': 'droopy ears',
+            'EARLOP': 'lop bunny ears',
+            'EARCURL': 'curled ears',
+            'HEADSIDEPART': 'side-part',
+            'HEADCOWLICK': 'cowlick',
+            'HEADAHOGE': 'ahoge',
+            'HEADMOHAWK': 'mohawk',
+            'HEADAFRO': 'afro',
+            'HEADBANGS': 'bangs',
+            'HEADGLACEONHAIR': 'glaceon hair',
+            'HEADWOOLOO': 'wooloo braids',
+            'HEADALOLEANVULPIX': 'alolean vulpix hair',
+            'CHEEKLONG': 'long cheek tufts',
+            'CHEEKFLUFF': 'fluffy cheek tufts',
+            'CHEEKCURL': 'curly cheek tufts',
+            'CHEEKSIDEBURNS': 'curly sideburns',
+            'CHEEKSPIKY': 'spiky cheeks',
+            'MANEAARDWOLF': 'aardwolf mane',
+            'MANELION': 'lion mane',
+            'MANESUN': 'sun mane',
+            'MANETRICERATOPS': 'triceratops mane',
+            'MANEHEART': 'heart mane',
+            'MANEDUBWOOL': 'dubwool mane',
+            'MANEFLOWER': 'flower mane',
+            'MANECLOUD': 'cloud mane',
+            'MANEPINECONE': 'pinecone mane',
+            'MANECOBRA': 'cobra mane',
+            'MUZZLESHORT': 'short muzzle',
+            'MUZZLEBROAD': 'broad muzzle',
+            'MUZZLELONG': 'long muzzle',
+            'TAILCROOKED': 'crooked tail',
+            'TAILCLOUD': 'cloud tail',
+            'TAILLONG': 'long tail',
+            'TAILFEATHER': 'feather tail',
+            'TAILCURL': 'curled tail',
+            'TAILTUFT': 'tufted tail',
+            'TAILSQUIRREL': 'bushy tail',
+            'TAILBUNNY': 'bunny tail',
+            'TAILSKUNK': 'skunk tail',
+            'TAILFLAME': 'flame tail',
+            'TAILLEAF': 'leaf tail',
+            'EARTUFTS': 'tufted ears',
+            'POLYDACTYL': 'polydactyl',
+            'SHOUDLERWINGS': 'wing-shaped shoulder fluff',
+            'LEGWINGS': 'wing-shaped leg fluff',
+            'ARMPITFLOOF': 'fluffy armpits',
+            'LEGWARMERS': 'leg warmers',
+            'FURRYMITTENS': 'furry mittens'
+        }
+
+        trait_list = []
+        if the_cat.pelt.physical_trait_1:
+            trait_list.append(the_cat.pelt.physical_trait_1)
+            if the_cat.pelt.physical_trait_2:
+                trait_list.append(the_cat.pelt.physical_trait_2)
+                if the_cat.pelt.physical_trait_3:
+                    trait_list.append(the_cat.pelt.physical_trait_3)
+                    if the_cat.pelt.physical_trait_4:
+                        trait_list.append(the_cat.pelt.physical_trait_4)
+
+        if trait_list:
             output += "\n"
-            if len(all_parents) == 1:
-                output += "parent: " + str(all_parents[0].name)
-            elif len(all_parents) > 2:
-                output += (
-                    "parents: "
-                    + ", ".join([str(i.name) for i in all_parents[:2]])
-                    + f", and {len(all_parents) - 2} "
-                )
-                if len(all_parents) - 2 == 1:
-                    output += "other"
+            output += "traits: "
+            for trait in trait_list:
+                if trait in trait_descriptions:
+                    output += trait_descriptions[trait] + ", "
                 else:
-                    output += "others"
-            else:
-                output += "parents: " + ", ".join([str(i.name) for i in all_parents if i])
-
-
-        
-        # MOONS
-        output += "\n"
-        if the_cat.dead:
-            output += str(the_cat.moons)
-            if the_cat.moons == 1:
-                output += " moon (in life)\n"
-            elif the_cat.moons != 1:
-                output += " moons (in life)\n"
-
-            output += str(the_cat.dead_for)
-            if the_cat.dead_for == 1:
-                output += " moon (in death)"
-            elif the_cat.dead_for != 1:
-                output += " moons (in death)"
-        else:
-            if the_cat.moons == -1:
-                output += 'Unborn'
-            else:
-                output += str(the_cat.moons)
-                if the_cat.moons == 1:
-                    output += ' moon'
-                elif the_cat.moons != 1:
-                    output += ' moons'
-
-        # MATE
-        if len(the_cat.mate) > 0:
-            output += "\n"
-            
-            
-            mate_names = []
-            # Grab the names of only the first two, since that's all we will display
-            for _m in the_cat.mate[:2]:
-                mate_ob = Cat.fetch_cat(_m)
-                if not isinstance(mate_ob, Cat):
-                    continue
-                if mate_ob.dead != self.the_cat.dead:
-                    if the_cat.dead:
-                        former_indicate = "(living)"
-                    else:
-                        former_indicate = "(dead)"
-                    
-                    mate_names.append(f"{str(mate_ob.name)} {former_indicate}")
-                elif mate_ob.outside != self.the_cat.outside:
-                    mate_names.append(f"{str(mate_ob.name)} (away)")
-                else:
-                    mate_names.append(f"{str(mate_ob.name)}")
-                    
-            if len(the_cat.mate) == 1:
-                output += "mate: " 
-            else:
-                output += "mates: "
-            
-            output += ", ".join(mate_names)
-            
-            if len(the_cat.mate) > 2:
-                output += f", and {len(the_cat.mate) - 2}"
-                if len(the_cat.mate) - 2 > 1:
-                    output += " others"
-                else:
-                    output += " other"
+                    output += trait + ", "  # In case the trait is not found in the dictionary
+            output = output.rstrip(", ")  # Remove the trailing comma and space
 
         if not the_cat.dead:
             # NEWLINE ----------
@@ -1661,6 +1682,103 @@ class ProfileScreen(Screens):
                 output += "<font color ='#450E7B'>" "ghost " + the_cat.status + "</font>"
         else:
             output += the_cat.status
+
+        output += "\n"
+
+        # SEX/GENDER
+        if the_cat.genderalign is None or the_cat.genderalign == the_cat.gender:
+            output += str(the_cat.gender)
+        else:
+            output += str(the_cat.genderalign)
+
+        # MOONS
+        output += "\n"
+        if the_cat.dead:
+            output += str(the_cat.moons)
+            if the_cat.moons == 1:
+                output += " moon (in life)\n"
+            elif the_cat.moons != 1:
+                output += " moons (in life)\n"
+
+            output += str(the_cat.dead_for)
+            if the_cat.dead_for == 1:
+                output += " moon (in death)"
+            elif the_cat.dead_for != 1:
+                output += " moons (in death)"
+        else:
+            if the_cat.moons == -1:
+                output += 'Unborn'
+            else:
+                output += str(the_cat.moons)
+                if the_cat.moons == 1:
+                    output += ' moon'
+                elif the_cat.moons != 1:
+                    output += ' moons'
+
+        output += "\n"
+
+        # AGE
+        if the_cat.age == "kitten":
+            output += "young"
+        elif the_cat.age == "senior":
+            output += "senior"
+        else:
+            output += the_cat.age
+
+        # PARENTS
+        all_parents = [Cat.fetch_cat(i) for i in the_cat.get_parents()]
+        if all_parents: 
+            output += "\n"
+            if len(all_parents) == 1:
+                output += "parent: " + str(all_parents[0].name)
+            elif len(all_parents) > 2:
+                output += (
+                    "parents: "
+                    + ", ".join([str(i.name) for i in all_parents[:2]])
+                    + f", and {len(all_parents) - 2} "
+                )
+                if len(all_parents) - 2 == 1:
+                    output += "other"
+                else:
+                    output += "others"
+            else:
+                output += "parents: " + ", ".join([str(i.name) for i in all_parents if i])
+
+        # MATE
+        if len(the_cat.mate) > 0:
+            output += "\n"
+            
+            mate_names = []
+            # Grab the names of only the first two, since that's all we will display
+            for _m in the_cat.mate[:2]:
+                mate_ob = Cat.fetch_cat(_m)
+                if not isinstance(mate_ob, Cat):
+                    continue
+                if mate_ob.dead != self.the_cat.dead:
+                    if the_cat.dead:
+                        former_indicate = "(living)"
+                    else:
+                        former_indicate = "(dead)"
+                    
+                    mate_names.append(f"{str(mate_ob.name)} {former_indicate}")
+                elif mate_ob.outside != self.the_cat.outside:
+                    mate_names.append(f"{str(mate_ob.name)} (away)")
+                else:
+                    mate_names.append(f"{str(mate_ob.name)}")
+                    
+            if len(the_cat.mate) == 1:
+                output += "mate: " 
+            else:
+                output += "mates: "
+            
+            output += ", ".join(mate_names)
+            
+            if len(the_cat.mate) > 2:
+                output += f", and {len(the_cat.mate) - 2}"
+                if len(the_cat.mate) - 2 > 1:
+                    output += " others"
+                else:
+                    output += " other"
 
         # NEWLINE ----------
         output += "\n"
@@ -2958,6 +3076,20 @@ class ProfileScreen(Screens):
                             self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites['acc_crafted' + accessory + cat_sprite], manager=MANAGER)
                         elif accessory in cat.pelt.tail2_accessories:
                             self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites['acc_tail2' + accessory + cat_sprite], manager=MANAGER)
+                        elif accessory in cat.pelt.bandana_collars:
+                            self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['bandanas' + accessory + cat_sprite], manager=MANAGER)
+                        elif accessory in cat.pelt.harness_accessories:
+                            self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['harnesses' + accessory + cat_sprite], manager=MANAGER)
+                        elif accessory in cat.pelt.bows_accessories:
+                            self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['bows' + accessory + cat_sprite], manager=MANAGER)
+                        elif accessory in cat.pelt.dogteeth_collars:
+                            self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['teethcollars' + accessory + cat_sprite], manager=MANAGER)
+                        elif accessory in cat.pelt.bone_accessories:
+                            self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_bones' + accessory + cat_sprite], manager=MANAGER)
+                        elif accessory in cat.pelt.butterflies_accessories:
+                            self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_butterflymoth' + accessory + cat_sprite], manager=MANAGER)
+                        elif accessory in cat.pelt.stuff_accessories:
+                            self.cat_list_buttons["cat" + str(i)] = pygame_gui.elements.UIImage(scale(pygame.Rect((200 + pos_x, 730 + pos_y), (100, 100))), sprites.sprites ['acc_twolegstuff' + accessory + cat_sprite], manager=MANAGER)
 
 
                         self.accessories_list.append(accessory)

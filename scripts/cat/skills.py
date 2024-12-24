@@ -224,6 +224,193 @@ class SkillPath(Enum):
         "dormouse", 
         "leader of SnoozeClan"
     ) 
+
+    GARDENER = (
+        "loves to pick flowers",
+        "grows herbs",
+        "herb organizer",
+        "caretaker of the greens"
+    ) 
+    WAKEFUL = (
+        "never settles down",
+        "light sleeper",
+        "alert",
+        "vigilant"
+    ) 
+    DELIVERER = (
+        "queen helper",
+        "helpful stork",
+        "kit deliverer",
+        "pregnancy expert"
+    ) 
+    DECORATOR = (
+        "makes things pretty",
+        "crafty paws",
+        "creative",
+        "decor master"
+    ) 
+    LEADERSHIP = (
+        "deputy helper",
+        "leads patrols",
+        "leader's accomplice",
+        "assiduous"
+    ) 
+    AGILE = (
+        "parkours around camp",
+        "light-footed",
+        "lithe",
+        "quick agilist"
+    ) 
+    STEALTHY = (
+        "startles others",
+        "underpawed",
+        "furtive kitty",
+        "clandestine"
+    ) 
+    MEMORY = (
+        "remembers little details",
+        "memorious",
+        "retentive memory",
+        "mnemonist"
+    ) 
+    MESSENGER = (
+        "delivers messages",
+        "message-bearer",
+        "message-carrier",
+        "harbinger to the clans"
+    ) 
+    ASSIST = (
+        "little helper",
+        "assist guard",
+        "alert assistant",
+        "camp's assister"
+    ) 
+    HISTORIAN = (
+        "remembers stories",
+        "bookkeeper",
+        "archivist",
+        "accountant of history"
+    ) 
+    BOOKMAKER = (
+        "loves to tell stories",
+        "journalist",
+        "novelist",
+        "author of many stories"
+    ) 
+    PATIENT = (
+        "waits their turn",
+        "serene",
+        "even-tempered",
+        "equanimous"
+    ) 
+    DETECTIVE = (
+        "curious about mysteries",
+        "elementary case-solver",
+        "great sleuth",
+        "masterful detective"
+    ) 
+    HERBALIST = (
+        "curious about remedies",
+        "herbal inventor",
+        "poison maker",
+        "creator of remedies"
+    )
+    CHEF = (
+        "seasons their food",
+        "cooks prey",
+        "gourmet prey maker",
+        "masterful chef"
+    )
+    PRODIGY = (
+        "unusually gifted",
+        "knows alot of facts",
+        "smart role model",
+        "seen as an omen"
+    )
+    DISGUISE = (
+        "accessory hoarder",
+        "creator of appearances",
+        "skillful disguiser", 
+        "shapeshifter"
+    )
+    PYRO = (
+        "loves warmth",
+        "messes with embers",
+        "spark master", 
+        "fire starter"
+    )
+    HYDRO = (
+        "water lover",
+        "great firefighter",
+        "excellent extinguisher",
+        "masterful extinguisher"
+    )
+    WEATHER = (
+        "looks at the sky",
+        "cloud watcher",
+        "rain sense", 
+        "weather predictor"
+    )
+    GIFTGIVER = (
+        "loves to gift",
+        "nice giftgiver",
+        "excellent giftgiver", 
+        "always gives gifts"
+    )
+    VIBES = (
+        "senses vibes",
+        "knows who to trust",
+        "mood reader", 
+        "vibe detector"
+    )
+    STARGAZER = (
+        "gazes at the stars",
+        "night vision",
+        "star-filled eyes", 
+        "celestial insight"
+    )
+    IMMUNE = (
+        "rarely sick",
+        "better immune system",
+        "strong immune system", 
+        "constant germ immunity"
+    )
+    HIDER = (
+        "hide-and-seek winner",
+        "blends into surroundings",
+        "natural colors", 
+        "invisible hider"
+    )
+    MUSICVIBES = (
+        "charming voice",
+        "nice singing",
+        "beautiful singing", 
+        "lovely singing"
+    )
+    AURAVIBES = (
+        "nice aura",
+        "friendly aura",
+        "calming aura", 
+        "pleasant aura"
+    )
+    ANIMALTAKER = (
+        "friendly with animals",
+        "loves to care for animals",
+        "wildlife friend", 
+        "deep animal-lover"
+    )
+    VET = (
+        "cares for injured creatures",
+        "helps animals",
+        "animal soother", 
+        "woodland healer"
+    )
+    ANIMALMAGNET = (
+        "small critters follow them",
+        "attracts animals",
+        "animals gather around them", 
+        "animal magnet"
+    )
     
     @staticmethod
     def get_random(exclude: list = ()):

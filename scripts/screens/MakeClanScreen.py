@@ -325,9 +325,6 @@ class MakeClanScreen(Screens):
 
     def handle_choose_leader_event(self, event):
         if event.ui_element in [
-            self.elements["roll1"],
-            self.elements["roll2"],
-            self.elements["roll3"],
             self.elements["dice"],
         ]:
             self.elements["select_cat"].hide()
@@ -335,12 +332,6 @@ class MakeClanScreen(Screens):
             self.selected_cat = None  # Your selected cat now no longer exists. Sad. They go away.
             self.refresh_cat_images_and_info()  # Refresh all the images.
             self.rolls_left -= 1
-            if game.config["clan_creation"]["rerolls"] == 3:
-                event.ui_element.disable()
-            else:
-                self.elements["reroll_count"].set_text(str(self.rolls_left))
-                if self.rolls_left == 0:
-                    event.ui_element.disable()
 
         elif event.ui_element in [self.elements["cat" + str(u)] for u in range(0, 12)]:
             self.selected_cat = event.ui_element.return_cat_object()
@@ -1253,26 +1244,7 @@ class MakeClanScreen(Screens):
         # Roll_buttons
         x_pos = 310
         y_pos = 470
-        self.elements["roll1"] = UIImageButton(
-            scale(pygame.Rect((x_pos, y_pos), (68, 68))),
-            "",
-            object_id="#random_dice_button",
-            manager=MANAGER,
-        )
-        y_pos += 80
-        self.elements["roll2"] = UIImageButton(
-            scale(pygame.Rect((x_pos, y_pos), (68, 68))),
-            "",
-            object_id="#random_dice_button",
-            manager=MANAGER,
-        )
-        y_pos += 80
-        self.elements["roll3"] = UIImageButton(
-            scale(pygame.Rect((x_pos, y_pos), (68, 68))),
-            "",
-            object_id="#random_dice_button",
-            manager=MANAGER,
-        )
+
 
         _tmp = 160
         if self.rolls_left == -1:
@@ -1284,30 +1256,6 @@ class MakeClanScreen(Screens):
             manager=MANAGER,
         )
         del _tmp
-        self.elements["reroll_count"] = pygame_gui.elements.UILabel(
-            scale(pygame.Rect((200, 880), (100, 50))),
-            str(self.rolls_left),
-            object_id=get_text_box_theme(""),
-            manager=MANAGER,
-        )
-
-        if game.config["clan_creation"]["rerolls"] == 3:
-            if self.rolls_left <= 2:
-                self.elements["roll1"].disable()
-            if self.rolls_left <= 1:
-                self.elements["roll2"].disable()
-            if self.rolls_left == 0:
-                self.elements["roll3"].disable()
-            self.elements["dice"].hide()
-            self.elements["reroll_count"].hide()
-        else:
-            if self.rolls_left == 0:
-                self.elements["dice"].disable()
-            elif self.rolls_left == -1:
-                self.elements["reroll_count"].hide()
-            self.elements["roll1"].hide()
-            self.elements["roll2"].hide()
-            self.elements["roll3"].hide()
 
         # info for chosen cats:
         if game.settings['dark mode']:
@@ -1367,9 +1315,9 @@ class MakeClanScreen(Screens):
         self.vitiligo=choice(Pelt.vit) if random.randint(1,5) == 1 else None
         self.points=choice(Pelt.point_markings) if random.randint(1,5) == 1 else None
         self.scars=[choice(Pelt.scars1 + Pelt.scars2 + Pelt.scars3)] if random.randint(1,10) == 1 else []
-        self.tint=choice(["pink", "gray", "red", "orange", "black", "yellow", "purple", "blue","dilute","warmdilute","cooldilute"]) if random.randint(1,5) == 1 else None
+        self.tint=choice(["pink", "gray", "red", "black", "orange", "yellow", "purple", "blue", "blush", "willow", "bluegray", "lilac", "sandy", "plum", "midgray", "flint", "cadet", "sage", "coral", "storm", "maroon", "tan", "bronze", "acacia", "rosy", "redwood", "darkpurple", "beige", "cream", "steel", "cobalt", "ebony", "sooty", "sunrise", "lightpink", "peach", "salmon", "buttercup", "bananatwo", "periwinkle", "navy", "dust", "fall", "sunny", "green", "yolk", "bluesky", "gold", "browngray", "grapefruit", "pinkgray", "flower", "lightorange", "rust", "lightpurple", "sunflower", "wood", "bananaone", "None", "dilute", "warmdilute", "cooldilute"]) if random.randint(1,5) == 1 else None
         self.skin=choice(Pelt.skin_sprites)
-        self.white_patches_tint=choice(["offwhite", "cream", "darkcream", "gray", "pink"]) if random.randint(1,5) == 1 else None
+        self.white_patches_tint=choice(["darkcream", "cream", "offwhite", "gray", "pink", "dark", "blue", "orange", "ebb", "almond", "mocha", "honeydew", "vanilla", "malted", "ashgray", "coffee", "cherry", "dawn", "powder", "peach", "violet", "coyote", "obsidian", "caramel", "golden", "black", "darkblue", "lightblue", "slate", "lilac", "darkash", "ash", "brown", "chocolate", "hazel", "camel", "wheat", "fawn", "ivory", "chalk", "ghastly", "lightgold", "gold", "darkgold", "sunshine", "bronze"]) if random.randint(1,5) == 1 else None
         self.reverse= False if random.randint(1,2) == 1 else True
         self.skill = random.choice(self.skills)
         self.sex = random.choice(["male", "female"])
@@ -1390,12 +1338,12 @@ class MakeClanScreen(Screens):
             name=self.pname,
             length=self.length,
             colour=self.colour,
-            white_patches=self.white_patches,
+            white_patches=[self.white_patches] if self.white_patches else [],
             eye_color=self.eye_color,
             eye_colour2=self.eye_colour2,
             tortiebase=self.tortiebase,
             tortiecolour=self.tortiecolour,
-            pattern=self.pattern,
+            pattern=[self.pattern] if [self.pattern] else [],
             tortiepattern=Pelt.sprites_names.get(self.tortiepattern),
             vitiligo=self.vitiligo,
             points=self.points,
@@ -1574,9 +1522,9 @@ class MakeClanScreen(Screens):
                 object_id=get_text_box_theme("#text_box_30_horizleft"), manager=MANAGER
             )
             if self.tint:
-                self.elements['tint'] = pygame_gui.elements.UIDropDownMenu(["pink", "gray", "red", "orange", "black", "yellow", "purple", "blue", "None","dilute","warmdilute","cooldilute"], str(self.tint), scale(pygame.Rect((column4_x, y_pos[2]), (250, 70))), manager=MANAGER)
+                self.elements['tint'] = pygame_gui.elements.UIDropDownMenu(["pink", "gray", "red", "black", "orange", "yellow", "purple", "blue", "blush", "willow", "bluegray", "lilac", "sandy", "plum", "midgray", "flint", "cadet", "sage", "coral", "storm", "maroon", "tan", "bronze", "acacia", "rosy", "redwood", "darkpurple", "beige", "cream", "steel", "cobalt", "ebony", "sooty", "sunrise", "lightpink", "peach", "salmon", "buttercup", "bananatwo", "periwinkle", "navy", "dust", "fall", "sunny", "green", "yolk", "bluesky", "gold", "browngray", "grapefruit", "pinkgray", "flower", "lightorange", "rust", "lightpurple", "sunflower", "wood", "bananaone", "None", "dilute", "warmdilute", "cooldilute"], str(self.tint), scale(pygame.Rect((column4_x, y_pos[2]), (250, 70))), manager=MANAGER)
             else:
-                self.elements['tint'] = pygame_gui.elements.UIDropDownMenu(["pink", "gray", "red", "orange", "black", "yellow", "purple", "blue",  "None","dilute","warmdilute","cooldilute"], "None", scale(pygame.Rect((column4_x, y_pos[2]), (250, 70))), manager=MANAGER)
+                self.elements['tint'] = pygame_gui.elements.UIDropDownMenu(["pink", "gray", "red", "black", "orange", "yellow", "purple", "blue", "blush", "willow", "bluegray", "lilac", "sandy", "plum", "midgray", "flint", "cadet", "sage", "coral", "storm", "maroon", "tan", "bronze", "acacia", "rosy", "redwood", "darkpurple", "beige", "cream", "steel", "cobalt", "ebony", "sooty", "sunrise", "lightpink", "peach", "salmon", "buttercup", "bananatwo", "periwinkle", "navy", "dust", "fall", "sunny", "green", "yolk", "bluesky", "gold", "browngray", "grapefruit", "pinkgray", "flower", "lightorange", "rust", "lightpurple", "sunflower", "wood", "bananaone", "None", "dilute", "warmdilute", "cooldilute"], "None", scale(pygame.Rect((column4_x, y_pos[2]), (250, 70))), manager=MANAGER)
             
             self.elements['pelt length text'] = pygame_gui.elements.UITextBox(
                 'Pelt length',
@@ -1600,9 +1548,9 @@ class MakeClanScreen(Screens):
                 object_id=get_text_box_theme("#text_box_30_horizleft"), manager=MANAGER
             )
             if self.white_patches_tint:
-                self.elements['white_patches_tint'] = pygame_gui.elements.UIDropDownMenu(["None"] + ["offwhite", "cream", "darkcream", "gray", "pink"], str(self.white_patches_tint), scale(pygame.Rect((column4_x, y_pos[6]), (250, 70))), manager=MANAGER)
+                self.elements['white_patches_tint'] = pygame_gui.elements.UIDropDownMenu(["None"] + ["darkcream", "cream", "offwhite", "gray", "pink", "dark", "blue", "orange", "ebb", "almond", "mocha", "honeydew", "vanilla", "malted", "ashgray", "coffee", "cherry", "dawn", "powder", "peach", "violet", "coyote", "obsidian", "caramel", "golden", "black", "darkblue", "lightblue", "slate", "lilac", "darkash", "ash", "brown", "chocolate", "hazel", "camel", "wheat", "fawn", "ivory", "chalk", "ghastly", "lightgold", "gold", "darkgold", "sunshine", "bronze"], str(self.white_patches_tint), scale(pygame.Rect((column4_x, y_pos[6]), (250, 70))), manager=MANAGER)
             else:
-                self.elements['white_patches_tint'] = pygame_gui.elements.UIDropDownMenu(["None"] + ["offwhite", "cream", "darkcream", "gray", "pink"], "None", scale(pygame.Rect((column4_x, y_pos[6]), (250, 70))), manager=MANAGER)
+                self.elements['white_patches_tint'] = pygame_gui.elements.UIDropDownMenu(["None"] + ["darkcream", "cream", "offwhite", "gray", "pink", "dark", "blue", "orange", "ebb", "almond", "mocha", "honeydew", "vanilla", "malted", "ashgray", "coffee", "cherry", "dawn", "powder", "peach", "violet", "coyote", "obsidian", "caramel", "golden", "black", "darkblue", "lightblue", "slate", "lilac", "darkash", "ash", "brown", "chocolate", "hazel", "camel", "wheat", "fawn", "ivory", "chalk", "ghastly", "lightgold", "gold", "darkgold", "sunshine", "bronze"], "None", scale(pygame.Rect((column4_x, y_pos[6]), (250, 70))), manager=MANAGER)
 
             self.elements['eye color text'] = pygame_gui.elements.UITextBox(
                 'Eye color',
@@ -1767,9 +1715,9 @@ class MakeClanScreen(Screens):
                 self.elements['scars'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.scars1 + Pelt.scars2 + Pelt.scars3, "None", scale(pygame.Rect((column3_x, y_pos[4]), (250, 70))), manager=MANAGER)
 
             if self.accessory:
-                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories, str(self.accessory), scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
+                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories + Pelt.bone_accessories + Pelt.butterflies_accessories + Pelt.stuff_accessories + Pelt.bandana_collars + Pelt.bows_accessories + Pelt.dogteeth_collars, str(self.accessory), scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
             else:
-                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories, "None", scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
+                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories + Pelt.bone_accessories + Pelt.butterflies_accessories + Pelt.stuff_accessories + Pelt.bandana_collars + Pelt.bows_accessories + Pelt.dogteeth_collars, "None", scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
 
             if self.permanent_condition:
                 self.elements['permanent conditions'] = pygame_gui.elements.UIDropDownMenu(["None"] + permanent_conditions, str(self.permanent_condition), scale(pygame.Rect((1150, y_pos[4]), (300, 70))), manager=MANAGER)
@@ -2074,12 +2022,12 @@ class MakeClanScreen(Screens):
             name=self.pname,
             length=self.length,
             colour=self.colour,
-            white_patches=self.white_patches,
+            white_patches=[self.white_patches] if self.white_patches else [],
             eye_color=self.eye_color,
             eye_colour2=self.eye_colour2,
             tortiebase=self.tortiebase,
             tortiecolour=self.tortiecolour,
-            pattern=self.pattern,
+            pattern=[self.pattern] if [self.pattern] else [],
             tortiepattern=Pelt.sprites_names.get(self.tortiepattern),
             vitiligo=self.vitiligo,
             points=self.points,

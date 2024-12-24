@@ -9,22 +9,100 @@ from scripts.game_structure.game_essentials import game
 class Pelt:
     sprites_names = {
         "SingleColour": 'single',
+        'SterSingle': 'stersingle',
+        'SillySingle': 'sillysingle',
+        'DanceSingle': 'dancesingle',
+        'MimiSingle': 'mimisingle',
         'TwoColour': 'single',
         'Tabby': 'tabby',
+        'Stertabby': 'stertabby',
+        'Sillytabby': 'sillytabby',
+        'Dancetabby': 'dancetabby',
+        'Mimitabby': 'mimitabby',
         'Marbled': 'marbled',
+        'Stermarbled': 'stermarbled',
+        'Sillymarbled': 'sillymarbled',
+        'Dancemarbled': 'dancemarbled',
+        'Mimimarbled': 'mimimarbled',
         'Rosette': 'rosette',
+        'Sterrosette': 'sterrosette',
+        'Sillyrosette': 'sillyrosette',
+        'Dancerosette': 'dancerosette',
+        'Mimirosette': 'mimirosette',
         'Smoke': 'smoke',
+        'Stersmoke': 'stersmoke',
+        'Sillysmoke': 'sillysmoke',
+        'Dancesmoke': 'dancesmoke',
+        'Mimismoke': 'mimismoke',
         'Ticked': 'ticked',
+        'Sterticked': 'sterticked',
+        'Sillyticked': 'sillyticked',
+        'Danceticked': 'danceticked',
+        'Mimiticked': 'mimiticked',
         'Speckled': 'speckled',
+        'Sterspeckled': 'sterspeckled',
+        'Sillyspeckled': 'sillyspeckled',
+        'Dancespeckled': 'dancespeckled',
+        'Mimispeckled': 'mimispeckled',
         'Bengal': 'bengal',
+        'Sterbengal': 'sterbengal',
+        'Sillybengal': 'sillybengal',
+        'Dancebengal': 'dancebengal',
+        'Mimibengal': 'mimibengal',
         'Mackerel': 'mackerel',
+        'Stermackerel': 'stermackerel',
+        'Sillymackerel': 'sillymackerel',
+        'Dancemackerel': 'dancemackerel',
+        'Mimimackerel': 'mimimackerel',
         'Classic': 'classic',
+        'Sterclassic': 'sterclassic',
+        'Sillyclassic': 'sillyclassic',
+        'Danceclassic': 'danceclassic',
+        'Mimiclassic': 'mimiclassic',
         'Sokoke': 'sokoke',
+        'Stersokoke': 'stersokoke',
+        'Sillysokoke': 'sillysokoke',
+        'Dancesokoke': 'dancesokoke',
+        'Mimisokoke': 'mimisokoke',
         'Agouti': 'agouti',
         'Singlestripe': 'singlestripe',
+        'Sterstripe': 'sterstripe',
+        'Sillystripe': 'sillystripe',
+        'Dancestripe': 'sillystripe',
+        'Mimistripe': 'mimistripe',
         'Masked': 'masked',
+        'Stermasked': 'stermasked',
+        'Sillymasked': 'sillymasked',
+        'Dancemasked': 'dancemasked',
+        'Mimimasked': 'mimimasked',
+        'Brindle': 'brindle',
+        'Wolf': 'wolf',
+        'Wildcat': 'wildcat',
+        'Spots': 'spots',
+        'Smokepoint': 'smokepoint',
+        'Steragouti': 'steragouti',
+        'Sillyagouti': 'sillyagouti',
+        'Danceagouti': 'danceagouti',
+        'Mimiagouti': 'mimiagouti',
+        'Finleappatches': 'finleappatches',
         'Tortie': None,
         'Calico': None,
+        'Maned': 'maned',
+        'Ocelot': 'ocelot',
+        'Lynx': 'lynx',
+        'Dalmatian': 'dalmatian',
+        'Royal': 'royal',
+        'Bobcat': 'bobcat',
+        'Cheetah': 'cheetah',
+        'Abyssinian': 'abyssinian',
+        'Clouded': 'clouded',
+        'Doberman': 'doberman',
+        'GhostTabby': 'ghosttabby',
+        'Merle': 'merle',
+        'Monarch': 'monarch',
+        'Oceloid': 'oceloid',
+        'PinstripeTabby': 'pinstripetabby',
+        'Snowflake': 'snowflake'
     }
 
     # ATTRIBUTES, including non-pelt related
@@ -44,24 +122,84 @@ class Pelt:
         'CHOCOLATE'
     ]
 
-    tortiepatterns = ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE',
-                      'MINIMALFOUR', 'HALF',
-                      'OREO', 'SWOOP', 'MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA', 'PACMAN', 'STREAMSTRIKE', 'ORIOLE',
-                      'CHIMERA', 'DAUB', 'EMBER', 'BLANKET',
-                      'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'SMUDGED', 'DAPPLENIGHT', 'STREAK', 'MASK',
-                      'CHEST', 'ARMTAIL', 'SMOKE', 'GRUMPYFACE',
-                      'BRIE', 'BELOVED', 'BODY', 'SHILOH', 'FRECKLED', 'HEARTBEAT']
+    tortiepatterns = ['ONE', 'TWO', 'THREE', 'FOUR', 'REDTAIL', 'DELILAH', 'MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR', 'HALF',
+                    'OREO', 'SWOOP', 'MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA', 'PACMAN', 'STREAMSTRIKE', 'ORIOLE', 'CHIMERA', 'DAUB', 'EMBER', 'BLANKET',
+                    'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI', 'SMUDGED', 'DAPPLENIGHT', 'STREAK', 'MASK', 'CHEST', 'ARMTAIL', 'SMOKE', 'GRUMPYFACE',
+                    'BRIE', 'BELOVED', 'BODY', 'SHILOH', 'FRECKLED', 'HEARTBEAT', 'MINKFULLWHITE', 'MINKANY', 'MINKTUXEDO', 'MINKLITTLE', 'MINKCOLOURPOINT', 'MINKVAN', 'MINKANYTWO',
+            'MINKMOON', 'MINKPHANTOM', 'MINKPOWDER', 'MINKBLEACHED', 'MINKSAVANNAH', 'MINKFADESPOTS', 'MINKPEBBLESHINE', 'MINKEXTRA', 'MINKONEEAR', 'MINKBROKEN', 'MINKLIGHTTUXEDO', 'MINKBUZZARDFANG', 'MINKRAGDOLL', 
+            'MINKLIGHTSONG', 'MINKVITILIGO', 'MINKBLACKSTAR', 'MINKPIEBALD', 'MINKCURVED', 'MINKPETAL', 'MINKSHIBAINU', 'MINKOWL', 'MINKTIP', 'MINKFANCY', 'MINKFRECKLES', 'MINKRINGTAIL', 'MINKHALFFACE', 'MINKPANTSTWO', 'MINKGOATEE', 'MINKVITILIGOTWO',
+            'MINKPAWS', 'MINKMITAINE', 'MINKBROKENBLAZE', 'MINKSCOURGE', 'MINKDIVA', 'MINKBEARD', 'MINKTAIL', 'MINKBLAZE', 'MINKPRINCE', 'MINKBIB', 'MINKVEE', 'MINKUNDERS', 'MINKHONEY',
+            'MINKFAROFA', 'MINKDAMIEN', 'MINKMISTER', 'MINKBELLY', 'MINKTAILTIP', 'MINKTOES', 'MINKTOPCOVER', 'MINKAPRON', 'MINKCAPSADDLE', 'MINKMASKMANTLE', 'MINKSQUEAKS', 'MINKSTAR', 'MINKTOESTAIL', 'MINKRAVENPAW',
+                'MINKPANTS', 'MINKREVERSEPANTS', 'MINKSKUNK', 'MINKKARPATI', 'MINKHALFWHITE', 'MINKAPPALOOSA', 'MINKDAPPLEPAW', 'MINKHEART', 'MINKLILTWO', 'MINKGLASS', 'MINKMOORISH', 'MINKSEPIAPOINT', 'MINKMINKPOINT', 'MINKSEALPOINT',
+            'MINKMAO', 'MINKLUNA', 'MINKCHESTSPECK', 'MINKWINGS', 'MINKPAINTED', 'MINKHEARTTWO', 'MINKWOODPECKER', 'MINKBOOTS', 'MINKMISS', 'MINKCOW', 'MINKCOWTWO', 'MINKBUB', 'MINKBOWTIE', 'MINKMUSTACHE', 'MINKREVERSEHEART',
+            'MINKSPARROW', 'MINKVEST', 'MINKLOVEBUG', 'MINKTRIXIE', 'MINKSAMMY', 'MINKSPARKLE', 'MINKRIGHTEAR', 'MINKLEFTEAR', 'MINKESTRELLA', 'MINKSHOOTINGSTAR', 'MINKEYESPOT', 'MINKREVERSEEYE',
+            'MINKFADEBELLY', 'MINKFRONT', 'MINKBLOSSOMSTEP', 'MINKPEBBLE', 'MINKTAILTWO', 'MINKBUDDY', 'MINKBACKSPOT', 'MINKEYEBAGS', 'MINKBULLSEYE', 'MINKFINN', 'MINKDIGIT', 'MINKKROPKA', 'MINKFCTWO', 'MINKFCONE', 'MINKMIA', 'MINKSCAR',
+            'MINKBUSTER', 'MINKSMOKEY', 'MINKHAWKBLAZE', 'MINKCAKE', 'MINKROSINA', 'MINKPRINCESS', 'MINKLOCKET', 'MINKBLAZEMASK', 'MINKTEARS', 'MINKDOUGIE', 'CHAOSONE', 'CHAOSTWO', 'CHAOSTHREE', 'CHAOSFOUR', 'ERROR', 'WAVE', 'PONINTTORITE', 'MASKTORITE', 'LITTLESTAR',
+                      'TANBUNNY', 'STRIPES', 'PINITO',  'SKULL', 'SIGHT', 'BRINDLETORITE', 'SNOW', 'ROSETTESTORITE', 'AMBERONE',
+                      'KINTSUGIONE', 'BENGALMASK', 'SHADOW', 'RAIN', 'MGLA', 'MOONLIGHT', 'MOUSE', 'SATURN', 'MARBLETORINE', 'AMBERTWO',
+                      'PATTERN', 'MOSS',
+                      'MONKEY', 'BUMBLEBEE', 'KINTSUGITWO', 'STORM', 'CLASSICTORNIE', 'STRIPEONETORITE', 'MACKERELTORITE',
+                      'AMBERTHREE', 'SHADE', 'GRAFFITI', 'AGOUTITORIE', 'BENGALTORITE', 'TABBYTORITE', 'SOKKOKETORITE',
+                      'SPECKLEDTORITE', 'TICKEDTORIE', 'MORRO',
+                      'AMBERFOUR', 'DOG', 'ONESPOT', 'INK','WOLF','EYEV','GEM','FOX','ORCA','PINTO','FRECKLESTWO','SOLDIER',
+                      'AKITA', 'CHESSBORAD','ANT','CREAMV','BUNNY','MOJO','STAINSONE','STAINST',
+                      'HALFHEART','FRECKLESTHREE','KITTY', 'SUNRISE','HUSKY','STATNTHREE','MASK', 'S','PAW','SWIFTPAW',
+                      'BOOMSTAR','MIST','LEON', 'LADY','LEGS','MEADOW', 'SALT','BAMBI','PRIMITVE','SKUNKSTRIPE','NEPTUNE','KARAPATITWO',
+                      'CHAOS', 'MOSCOW','HALF','CAPETOWN','SUN','BANAN','PANDA','DOVE','PINTOTWO', 'SNOWSHOE','SKY', 'MOONSTONE', 'DRIP',
+                      'CRESCENT', 'ETERNAL', 'WINGTWO', 'STARBORN',  'SPIDERLEGS', 'APPEL', 'RUG', 'LUCKY']
     tortiebases = ['single', 'tabby', 'bengal', 'marbled', 'ticked', 'smoke', 'rosette', 'speckled', 'mackerel',
-                   'classic', 'sokoke', 'agouti', 'singlestripe', 'masked']
+                   'classic', 'sokoke', 'agouti', 'singlestripe', 'masked','maned', 'ocelot', 'lynx', 'royal',
+                   'bobcat', 'cheetah', 'dalmatian',
+                   'wolf', 'brindle', 'spots', 'smokepoint',
+                   'finleappatches', 'wildcat',
+                   'steragouti', 'sillyagouti', 'danceagouti', 'mimiagouti', 
+                   'sterbengal', 'sillybengal', 'dancebengal', 'mimibengal',
+                   'sterclassic', 'sillyclassic', 'danceclassic', 'mimiclassic',
+                   'stermackerel', 'sillymackerel', 'dancemackerel', 'mimimackerel',
+                   'stermarbled', 'sillymarbled', 'dancemarbled', 'mimimarbled',
+                   'stermasked', 'sillymasked', 'dancemasked', 'mimimasked',
+                   'sterrosette', 'sillyrosette', 'dancerosette', 'mimirosette',
+                   'stersingle', 'sillysingle', 'dancesingle', 'mimisingle',
+                   'sterstripe', 'sillystripe', 'dancestripe', 'mimistripe',
+                   'stersmoke', 'sillysmoke', 'dancesmoke', 'mimismoke',
+                   'stersokoke', 'sillysokoke', 'dancesokoke', 'mimisokoke',
+                   'sterspeckled', 'sillyspeckled', 'dancespeckled', 'mimispeckled',
+                   'stertabby', 'sillytabby', 'dancetabby', 'mimitabby',
+                   'sterticked', 'sillyticked', 'danceticked', 'mimiticked', 'abyssinian', 'clouded', 'doberman', 'ghosttabby', 'merle',
+                   'monarch', 'oceloid', 'pinstripetabby', 'snowflake']
 
     pelt_length = ["short", "medium", "long"]
-    eye_colours = ['YELLOW', 'AMBER', 'HAZEL', 'PALEGREEN', 'GREEN', 'BLUE', 'DARKBLUE', 'GREY', 'CYAN', 'EMERALD',
-                   'PALEBLUE',
-                   'PALEYELLOW', 'GOLD', 'HEATHERBLUE', 'COPPER', 'SAGE', 'COBALT', 'SUNLITICE', 'GREENYELLOW',
-                   'BRONZE', 'SILVER']
-    yellow_eyes = ['YELLOW', 'AMBER', 'PALEYELLOW', 'GOLD', 'COPPER', 'GREENYELLOW', 'BRONZE', 'SILVER']
-    blue_eyes = ['BLUE', 'DARKBLUE', 'CYAN', 'PALEBLUE', 'HEATHERBLUE', 'COBALT', 'SUNLITICE', 'GREY']
-    green_eyes = ['PALEGREEN', 'GREEN', 'EMERALD', 'SAGE', 'HAZEL']
+    eye_colours = ['YELLOW', 'AMBER', 'HAZEL', 'PALEGREEN', 'GREEN', 'BLUE', 'DARKBLUE', 'GREY', 'CYAN', 'EMERALD', 'PALEBLUE', 
+        'PALEYELLOW', 'GOLD', 'HEATHERBLUE', 'COPPER', 'SAGE', 'COBALT', 'SUNLITICE', 'GREENYELLOW', 'BRONZE', 'SILVER', 'ROSE',
+        'ALGAE', 'SEAFOAM', 'LIGHT FLAME', 'CLOUDY', 'RED', 'TURQUOISE', 'SWAMP', 'RAINY', 'AQUAMARINE', 'EARTH', 'PUMPKIN', 'LILAC',
+        'PERIWINKLE', 'VIOLET', 'POND', 'DIRT', 'BROWN', 'CEDAR', 'CHRISTMAS', 'COTTON CANDY', 'DARK PINE', 'FALL', 'FOREST FIRE',
+        'GOLD MOON', 'HALLOWEEN', 'LOBELIA', 'MIDNIGHT', 'MOONSTONE', 'OXIDIZED', 'SNOW', 'BERRY BANANA', 'DAWN SKY', 'TWILIGHT SKY',
+        'WORMY', 'BLUE HAZEL', 'THUNDERBOLT', 'VOLCANO', 'SEASHELL', 'PARADOX', 'CURSE', 'BLESSING',
+        'VALENTINE', 'FIREWORK', 'LUCKY', 'LIME', 'PALE BROWN', 'CRIMSON','DARK HAZEL', 'ROSE GOLD', 'DARK ROSE', 'REVERSE SUNLITICE', 'ICY', 'SUNSET',
+                   'DARKBLUE', 'LAVENDER', 'ECLIPSE', 'BLACK',
+                   'MUDDY', 'DARK TURQUOISE', 'BLACKBERRY', 'RUSTY', 'PASTEL', 'AVOCADO', 'PASTEL LAVENDER', 'ALBINO',
+                   'WINTER ROSE', 'BULLET', 'LIGHT YELLOW', 'SUNSHINE', 'GOLD ORE', 'FOSSILIZED AMBER', 'DUSKY',
+            'LICHEN', 'SPRING', 'TREE', 'LEAVES', 'EMERALD ORE', 'HAZELNUT', 'BLUE SKY', 'OCEAN', 'OVERCAST', 'AQUA', 'IRIS', 'ROBIN', 'GREY SILVER', 'SAND', 'MUSTARD', 'BRONZE ORE', 'TIMBER', 'COPPER ORE',
+            'FERN', 'APPLE', 'MOSS', 'THICKET', 'PEACOCK', 'OLIVE','STORMY BLUE', 'DEPTHS', 'STORMY', 'TEAL', 'INDIGO', 'STEEL', 'PEACH', 'DAFFODIL', 'MARIGOLD', 'BRASS', 'DARKAMBER', 'DAWN SKIES','MINT',
+             'CHARTREUSE', 'MEADOW', 'LEAF', 'LIGHT TURQUOISE', 'SAP', 'ALBINISTIC', 'COBALT ORE', 'RAIN', 'CYAN DYE', 'PERIWINKLE PURPLE', 'ICY CRACK', 'PINK', 'MORNING', 'DARK BROWN' , 'BAY', 'NEON GREEN', 'SEA', 'DISCORD']
+    yellow_eyes = ['BULLET', 'GREY SILVER', 'PEACH', 'LIGHT YELLOW', 'SAND', 'DAFFODIL', 'SUNSHINE', 'MUSTARD', 'MARIGOLD', 'GOLD ORE', 'BRONZE ORE', 'BRASS', 'FOSSILIZED AMBER', 'TIMBER', 'DARKAMBER', 'DUSKY', 'COPPER ORE', 'DAWN SKY','YELLOW', 'AMBER', 'PALEYELLOW', 'GOLD', 'COPPER', 'GREENYELLOW', 'BRONZE', 'SILVER', 'ROSE', 'LIGHT FLAME', 'RED',
+                   'PUMPKIN', 'BROWN', 'CEDAR', 'DARK PINE', 'FALL', 'GOLD MOON', 'OXIDIZED', 'BERRY BANANA', 'WORMY', 'THUNDERBOLT',
+                   'VOLCANO', 'SEASHELL', 'PARADOX', 'BLESSING', 'VALENTINE', 'PALE BROWN', 'CRIMSON', 'MORNING',
+                   'BLACK', 'ROSE GOLD', 'DARK ROSE','DARK BROWN', 'MUDDY', 'RUSTY', 'ECLIPSE', 'BAY', 'DISCORD']
+    blue_eyes = ['BLUE SKY', 'STORMY BLUE', 'ALBINISTIC', 'OCEAN', 'DEPTHS', 'COBALT ORE', 'OVERCAST', 'STORMY', 'RAIN', 'AQUA', 'TEAL', 'CYAN DYE', 'IRIS', 'INDIGO', 'PERIWINKLE PURPLE', 'ROBIN', 'STEEL', 'DAWN SKIES','ICY CRACK','BLUE', 'DARKBLUE', 'CYAN', 'PALEBLUE', 'HEATHERBLUE', 'COBALT', 'SUNLITICE', 'GREY', 'SEAFOAM', 'CLOUDY', 'TURQUOISE',
+                 'RAINY', 'LILAC', 'PERIWINKLE', 'BLACKBERRY', 'POND', 'COTTON CANDY', 'HALLOWEEN', 'LOBELIA', 'MIDNIGHT', 'MOONSTONE', 'SNOW',
+                 'DAWN SKY', 'TWILIGHT SKY', 'BLUE HAZEL', 'CURSE', 'FIREWORK', 'REVERSE SUNLITICE', 'ICY', 'VIOLET', 'PASTEL', 'WINTER ROSE', 'PASTEL LAVENDER', 'LAVENDER', 'PINK']
+    green_eyes = ['LICHEN', 'FERN', 'MINT', 'SPRING', 'APPLE', 'CHARTREUSE', 'LEAVES', 'MOSS', 'MEADOW', 'TREE', 'THICKET', 'LEAF', 'EMERALD ORE', 'PEACOCK', 'LIGHT TURQUOISE', 'HAZELNUT', 'OLIVE', 'SAP', 'PALEGREEN', 'GREEN', 'EMERALD', 'SAGE', 'HAZEL', 'ALGAE', 'SWAMP', 'AQUAMARINE', 'EARTH', 'DIRT', 'CHRISTMAS', 'FOREST FIRE',
+                  'LIME', 'LUCKY', 'DARK HAZEL', 'DARK TURQUOISE', 'AVOCADO', 'NEON GREEN', 'SEA']
+    
+    physical_trait_teeth = ['TEETHOVERBITE', 'TEETHUNDERBITE']
+    physical_trait_ear = ['EARSMALL', 'EARBIG', 'FOLDBOTH', 'FOLDONE', 'EARKOALA', 'EARWING', 'EARDROOPY', 'EARLOP', 'EARCURL']
+    physical_trait_headfur = ['HEADSIDEPART', 'HEADCOWLICK', 'HEADAHOGE', 'HEADMOHAWK', 'HEADAFRO', 'HEADBANGS', 'HEADGLACEONHAIR', 'HEADWOOLOO', 'HEADALOLEANVULPIX']
+    physical_trait_cheekfur = ['CHEEKLONG', 'CHEEKFLUFF', 'CHEEKCURL', 'CHEEKSIDEBURNS', 'CHEEKSPIKY']
+    physical_trait_mane = ['MANEAARDWOLF', 'MANELION', 'MANESUN', 'MANETRICERATOPS', 'MANEDUBWOOL', 'MANEFLOWER', 'MANECLOUD', 'MANEPINECONE', 'MANECOBRA', 'MANEHEART']
+    physical_trait_muzzle_type = ['MUZZLESHORT', 'MUZZLEBROAD', 'MUZZLELONG']
+    physical_trait_tail = ['TAILCROOKED', 'TAILLONG', 'TAILFEATHER', 'TAILCURL', 'TAILTUFT', 'TAILSQUIRREL', 'TAILBUNNY', 'TAILSKUNK', 'TAILFLAME', 'TAILLEAF', 'TAILCLOUD']
+    physical_trait_misc = ['EARTUFTS', 'POLYDACTYL', 'SHOULDERWINGS', 'LEGWINGS', 'ARMPITFLOOF', 'LEGWARMERS', 'FURRYMITTENS']
 
     # bite scars by @wood pank on discord
 
@@ -78,60 +216,151 @@ class Pelt:
     scars3 = ["SNAKE", "TOETRAP", "BURNPAWS", "BURNTAIL", "BURNBELLY", "BURNRUMP", "FROSTFACE", "FROSTTAIL",
               "FROSTMITT", "FROSTSOCK", "TOE", "SNAKETWO"]
 
-    # make sure to add plural and singular forms of new accs to acc_display.json so that they will display nicely
-    plant_accessories = ['FERNS', 'BLEEDING HEARTS2', 'BLACK WHEAT', 'LARGE DEATHBERRY', 'BERRIES', 'GOLD FERNS', 'ORANGE POPPY', 'BULB YELLOW', 'NETTLE', 'HERBS', 'CATTAIL', 'LILY OF THE VALLEY', 'SNAPDRAGON', 'ACORN2', 'BULB PINK', 'BULB BLUE', 'DRY LAURELS', 'DAISY', 'HOLLY', 'BULB WHITE', 'GORSE', 'LILYPAD', 'BLUEBELLS', 'BLUE BERRIES', 'MAPLE LEAF', 'VINE', 'LAUREL', 'RASPBERRY', 'BULB ORANGE', 'OAK LEAVES', 'FLOWER MOSS', 'CYAN POPPY', 'WHEAT', 'CHERRY2', 'LAVENDER', 'SHELL PACK', 'PINK POPPY', 'POPPY', 'CLOVER2', 'DRY NETTLES', 'RYE STALK', 'MOSS2', 'MAPLE SEED', 'FORGET ME NOTS', 'PETALS', 'MUSHROOMS', 'CLOVER', 'CATMINT', 'JUNIPER', 'WHITE POPPY', 'HEATHER', 'DRY HERBS', 'PINECONE', 'SMALL DEATHBERRY', 'DRY CATMINT', 'CLOVERS'
-                        ]
     wild_accessories = ['ORANGEBUTTERFLY', 'WHITEPOINSETTIA', 'MUD', 'EGGSHELLS', 'FLOWERCROWN', 'STICKS', 'ASHY PAWS', 'CORALBELLS', 'SMALL LUNA', 'LILY', 'BLUEEGGSHELLS', 'CHERRYPLUMLEAVES', 'BROWNPELT', 'MORPHO BUTTERFLY', 'SPRINGFEATHERS', 'WOODENBIRCHANTLERS', 'DOGWOOD', 'REDCROWN', 'LADYBUG', 'GULL FEATHERS', 'EASTEREGG', 'HONEYCOMB', 'DRIEDORANGE', 'FIRBRANCHES', 'BLACK CICADA', 'GRAYPELT', 'LILIESOFTHEVALLEY', 'MONARCH BUTTERFLY', 'FORSYTHIA', 'WHITEWOOL', 'WOODDRAGON', 'YEWS', 'MUD PAWS', 'SPARROW FEATHERS', 'LARGE COMET', 'SANVITALIAFLOWERS', 'CALLUNA', 'YELLOWCROWN', 'ROSY MOTH WINGS', 'TEETHCOLLAR', 'CREAMWOOL', 'SNAILSHELL', 'JAY FEATHERS', 'MINTLEAF', 'STRAWMANE', 'CHERRYBLOSSOM', 'MISTLETOE', 'ROESKULL', 'BELLFLOWERS', 'WOODENOAKANTLERS', 'EAGLEFEATHER', 'CATKIN', 'CICADA WINGS', 'BROWNMOSSPELT', 'LARGE LUNA', 'LILYPADCROWN', 'BLEEDINGVINES','BLEEDINGHEART', 'TULIPPETALS', 'COTONEASTERWREATH', 'RED FEATHERS', 'EGG', 'BLUE FEATHERS', 'SMALL COMET', 'BLUEBUTTERFLY', 'MOREFERN', 'MOTH WINGS', 'REDPOINSETTIA', 'CLOVERFLOWER', 'SLIVERDUSTPLANT', 'PANSIES', 'GRAYMOSSPELT', 'BLACKWOOL', 'GRAYWOOL', 'FERN', "STARFLOWERS", "HEARTLEAVES", "LAVENDERHEADPIECE", "LAVENDERANKLET", "HOLLY2", "HOLLYVINES", "WINTERSTOAT", "BROWNSTOAT","LAVENDERTAILWRAP", "YELLOWWISTERIA"]
+
     
+
     tail_accessories = ["RED FEATHERS", "BLUE FEATHERS", "JAY FEATHERS", "GULL FEATHERS", "SPARROW FEATHERS", "CLOVER", "DAISY"]
+
     collars = [
+
         "CRIMSON", "BLUE", "YELLOW", "CYAN", "RED", "LIME", "GREEN", "RAINBOW",
+
         "BLACK", "SPIKES", "WHITE", "PINK", "PURPLE", "MULTI", "INDIGO", "CRIMSONBELL", "BLUEBELL",
+
         "YELLOWBELL", "CYANBELL", "REDBELL", "LIMEBELL", "GREENBELL",
+
         "RAINBOWBELL", "BLACKBELL", "SPIKESBELL", "WHITEBELL", "PINKBELL", "PURPLEBELL",
+
         "MULTIBELL", "INDIGOBELL", "CRIMSONBOW", "BLUEBOW", "YELLOWBOW", "CYANBOW", "REDBOW",
+
         "LIMEBOW", "GREENBOW", "RAINBOWBOW", "BLACKBOW", "SPIKESBOW", "WHITEBOW", "PINKBOW",
+
         "PURPLEBOW", "MULTIBOW", "INDIGOBOW", "CRIMSONNYLON", "BLUENYLON", "YELLOWNYLON", "CYANNYLON",
+
         "REDNYLON", "LIMENYLON", "GREENNYLON", "RAINBOWNYLON",
+
         "BLACKNYLON", "SPIKESNYLON", "WHITENYLON", "PINKNYLON", "PURPLENYLON", "MULTINYLON", "INDIGONYLON",
+
         "REDHARNESS", "NAVYHARNESS", "YELLOWHARNESS", "TEALHARNESS", "ORANGEHARNESS", "GREENHARNESS","MOSSHARNESS", "RAINBOWHARNESS", "BLACKHARNESS", "BEEHARNESS", "CREAMHARNESS","PINKHARNESS", "MAGENTAHARNESS", "PEACHHARNESS", "VIOLETHARNESS"
+
     ]
 
+
+
     # ohdan's accessories
+
     flower_accessories = ["DAISIES", "DIANTHUS", "BLEEDING HEARTS", "FRANGIPANI", "BLUE GLORY",
+
                           "CATNIP FLOWER", "BLANKET FLOWER", "ALLIUM", "LACELEAF", "PURPLE GLORY",
+
                           "YELLOW PRIMROSE", "HESPERIS", "MARIGOLD", "WISTERIA", "PINKFLOWERCROWN", "YELLOWFLOWERCROWN", "BLUEFLOWERCROWN", "PURPLEFLOWERCROWN", "ORCHID", "SPRINGFLOWERS", "RADIO", "SWANFEATHER", "DRACULAPARROTFEATHER", 'JAYFEATHER', "SPRINGFLOWERCORSAGE"]
     
+    plant_accessories = ['FERNS', 'BLEEDING HEARTS2', 'BLACK WHEAT', 'LARGE DEATHBERRY', 'BERRIES', 'GOLD FERNS', 'ORANGE POPPY', 'BULB YELLOW', 'NETTLE', 'HERBS', 'CATTAIL', 'LILY OF THE VALLEY', 'SNAPDRAGON', 'ACORN2', 'BULB PINK', 'BULB BLUE', 'DRY LAURELS', 'DAISY', 'HOLLY', 'BULB WHITE', 'GORSE', 'LILYPAD', 'BLUEBELLS', 'BLUE BERRIES', 'MAPLE LEAF', 'VINE', 'LAUREL', 'RASPBERRY', 'BULB ORANGE', 'OAK LEAVES', 'FLOWER MOSS', 'CYAN POPPY', 'WHEAT', 'CHERRY2', 'LAVENDER', 'SHELL PACK', 'PINK POPPY', 'POPPY', 'CLOVER2', 'DRY NETTLES', 'RYE STALK', 'MOSS2', 'MAPLE SEED', 'FORGET ME NOTS', 'PETALS', 'MUSHROOMS', 'CLOVER', 'CATMINT', 'JUNIPER', 'WHITE POPPY', 'HEATHER', 'DRY HERBS', 'PINECONE', 'SMALL DEATHBERRY', 'DRY CATMINT', 'CLOVERS']
+    
+
     plant2_accessories = ["SINGULARCLOVER", "STICK", "PUMPKIN", "MOSS", "IVY", "ACORN", "MOSS PELT", "REEDS", "BAMBOO"]
+
+
 
     snake_accessories = ["GRASS SNAKE", "BLUE RACER", "WESTERN COACHWHIP", "KINGSNAKE"]
 
+
+
     smallAnimal_accessories = ["GRAY SQUIRREL", "RED SQUIRREL", "CRAB", "WHITE RABBIT", "BLACK RABBIT",
+
                            "BROWN RABBIT", "INDIAN GIANT SQUIRREL", "FAWN RABBIT",
+
                            "BROWN AND WHITE RABBIT", "BLACK AND WHITE RABBIT", "WHITE AND FAWN RABBIT",
+
                            "BLACK VITILIGO RABBIT", "BROWN VITILIGO RABBIT", "FAWN VITILIGO RABBIT",
+
                            "BLACKBIRD", "ROBIN", "JAY", "THRUSH", "CARDINAL", "MAGPIE", "CUBAN TROGON",
+
                            "TAN RABBIT", "TAN AND WHITE RABBIT", "TAN VITILIGO RABBIT",
+
                            "RAT", "WHITE MOUSE", "BLACK MOUSE", "GRAY MOUSE", "BROWN MOUSE",
+
                            "GRAY RABBIT", "GRAY AND WHITE RABBIT", "GRAY VITILIGO RABBIT"]
+
     
+
     deadInsect_accessories = ["LUNAR MOTH", "ROSY MAPLE MOTH", "MONARCH", "DAPPLED MONARCH",
+
                               "POLYPHEMUS MOTH", "MINT MOTH"]
+
     
+
     aliveInsect_accessories = ["BROWN SNAIL", "RED SNAIL", "WORM", "BLUE SNAIL", "ZEBRA ISOPOD", "DUCKY ISOPOD", "DAIRY COW ISOPOD",
+
                                "BEETLEJUICE ISOPOD", "BEE", "RED LADYBUG", "ORANGE LADYBUG", "YELLOW LADYBUG"]
+
     
+
     fruit_accessories = ["RASPBERRY2", "BLACKBERRY", "GOLDEN RASPBERRY", "CHERRY", "YEW"]
+
+
 
     crafted_accessories = ["WILLOWBARK BAG", "CLAY DAISY POT", "CLAY AMANITA POT", "CLAY BROWNCAP POT", "BIRD SKULL", "LEAF BOW", "RAINCOAT", "POPTABS", "FAZBEAR", "WHITEBEAR", "PANDA", "BEAR", "BROWNBEAR", "TIDE", "CELESTIALCHIMES", "LUNARCHIMES", "STARCHIMES", "SILVERLUNARCHIMES", "FIDDLEHEADS", "LANTERNS", "HEARTCHARMS", "BATHARNESS", "TOAST","TOASTBERRY", "TOASTGRAPE", "TOASTNUTELLA", "TOASTPB"]
 
+
+
     tail2_accessories = ["SEAWEED", "DAISY CORSAGE", "SPRINGFLOWERCORSAGE"]
 
+    bandana_collars = ["CRIMSONBANDANA", "BLUEBANDANA", "YELLOWBANDANA", "CYANBANDANA", "REDBANDANA",
 
-    tabbies = ["Tabby", "Ticked", "Mackerel", "Classic", "Sokoke", "Agouti"]
-    spotted = ["Speckled", "Rosette"]
-    plain = ["SingleColour", "TwoColour", "Smoke", "Singlestripe"]
-    exotic = ["Bengal", "Marbled", "Masked"]
+    "LIMEBANDANA" ,"GREENBANDANA", "RAINBOWBANDANA", "BLACKBANDANA", "SPIKESBANDANA", "WHITEBANDANA","PINKBANDANA", "PURPLEBANDANA", "MULTIBANDANA", "INDIGOBANDANA"]
+
+    harness_accessories = ["CRIMSONH", "BLUEH", "YELLOWH", "CYANH", "REDH", "LIMEH", "GREENH", "RAINBOWH", "BLACKH", "SPIKESH", "WHITEH", "PINKH",
+
+                           "PURPLEH", "MULTIH", "INDIGOH"]
+
+    bows_accessories = ["CRIMSONBOWS", "BLUEBOWS", "YELLOWBOWS", "CYANBOWS", "REDBOWS", "LIMEBOWS","GREENBOWS", "RAINBOWBOWS", "BLACKBOWS", "SPIKESBOWS", "WHITEBOWS",
+
+                        "PINKBOWS", "PURPLEBOWS", "MULTIBOWS", "INDIGOBOWS"]
+
+    dogteeth_collars = ["CRIMSONTEETHCOLLAR", "BLUETEETHCOLLAR", "YELLOWTEETHCOLLAR", "CYANTEETHCOLLAR", "REDTEETHCOLLAR",
+
+                        "LIMETEETHCOLLAR","GREENTEETHCOLLAR", "RAINBOWTEETHCOLLAR", "BLACKTEETHCOLLAR", "SPIKESTEETHCOLLAR", "WHITETEETHCOLLAR",
+
+                        "PINKTEETHCOLLAR", "PURPLETEETHCOLLAR", "MULTITEETHCOLLAR", "INDIGOTEETHCOLLAR"]
+    
+    bone_accessories = ["SNAKE", "BAT WINGS", "CANIDAE SKULL", "DEER ANTLERS", "RAM HORN", "GOAT HORN", "OX SKULL",
+
+                        "RAT SKULL", "TEETH COLLAR", "ROE SKULL",
+
+                        "BIRD SKULL1", "RIBS", "FISH BONES"]
+
+    butterflies_accessories = ["PEACOCK BUTTERFLY", "DEATH HEAD HAWKMOTH", "GARDEN TIGER MOTH", "ATLAS MOTH",
+
+                        "CECOROPIA MOTH", "WHITE ERMINE MOTH", "IO MOTH", "COMET MOTH",
+
+                        "JADE HAWKMOTH", "HUMMINGBIRD HAWKMOTH", "OWL BUTTERFLY", "GLASSWING BUTTERFLY",
+
+                        "QUEEN ALEXANDRA BIRDWING BUTTERFLY", "GREEN DRAGONTAIL BUTTERFLY",
+
+                        "MENELAUS BLUE MORPHO BUTTERFLY", "DEAD LEAF BUTTERFLY"]
+
+    stuff_accessories = ["OLD SILVER WATCH", "OLD GOLD WATCH", "GOLDEN KEY", "SILVER KEY",
+
+                         "DVD", "OLD PENCIL", "OLD BRUSH", "BANANA PEEL", "BROKEN VHS TAPE",
+
+                         "OLD NEWSPAPER", "SEA GLASS", "BAUBLES", "MUD AND DIRT"]
+                    
+
+    tabbies = ["Tabby", "Ticked", "Mackerel", "Stermackerel", "Sillymackerel", "Dancemackerel", "Mimimackerel", 
+               "Classic", "Sterclassic", "Sillyclassic", "Danceclassic", "Mimiclassic",
+               "Sokoke", "Stersokoke", "Sillysokoke", "Dancesokoke", "Mimisokoke",
+               "Agouti", "Steragouti", "Sillyagouti", "Danceagouti", "Mimiagouti", "Royal", "Brindle", "GhostTabby", "PinstripeTabby"]
+    spotted = ["Speckled", "Sterspeckled", "Sillyspeckled", "Dancespeckled", "Mimispeckled", 
+               "Rosette", "Sterrosette", "Sillyrosette", "Dancerosette", "Mimirosette", 
+               "Lynx", "Bobcat", "Spots", "Merle"]
+    plain = ["SingleColour", "SterSingle", "SillySingle", "DanceSingle", "MimiSingle",
+             "TwoColour", "Smoke", "Stersmoke", "Sillysmoke", "Dancesmoke", "Mimismoke",
+             "Singlestripe", "Sterstripe", "Dancestripe", "Sillystripe", "Mimistripe", "Smokepoint", "Doberman"]
+    exotic = ["Bengal", "Sterbengal", "Sillybengal", "Dancebengal", "Mimibengal", 
+              "Marbled", "Stermarbled", "Sillymarbled", "Dancemarbled", "Mimimarbled",
+              "Masked", "Stermasked", "Sillymasked", "Dancemasked", "Mimimasked", "Maned", "Ocelot", "Cheetah", "Wildcat", "Wolf", "Finleappatches", "Dalmatian", "Abyssinian", "Clouded", "Snowflake", "Oceloid", "Monarch"]
     torties = ["Tortie", "Calico"]
     pelt_categories = [tabbies, spotted, plain, exotic, torties]
 
@@ -147,29 +376,45 @@ class Pelt:
     brown_colours = ['LIGHTBROWN', 'LILAC', 'BROWN', 'GOLDEN-BROWN', 'DARKBROWN', 'CHOCOLATE']
     colour_categories = [ginger_colours, black_colours, white_colours, brown_colours]
     eye_sprites = [
-        'YELLOW', 'AMBER', 'HAZEL', 'PALEGREEN', 'GREEN', 'BLUE', 'DARKBLUE', 'BLUEYELLOW', 'BLUEGREEN',
-        'GREY', 'CYAN', 'EMERALD', 'PALEBLUE', 'PALEYELLOW', 'GOLD', 'HEATHERBLUE', 'COPPER', 'SAGE', 'COBALT',
-        'SUNLITICE', 'GREENYELLOW', 'BRONZE', 'SILVER'
+        'YELLOW', 'AMBER', 'HAZEL', 'PALEGREEN', 'GREEN', 'BLUE', 'DARKBLUE', 'GREY', 'CYAN', 'EMERALD', 'PALEBLUE', 
+        'PALEYELLOW', 'GOLD', 'HEATHERBLUE', 'COPPER', 'SAGE', 'COBALT', 'SUNLITICE', 'GREENYELLOW', 'BRONZE', 'SILVER', 'ROSE',
+        'ALGAE', 'SEAFOAM', 'LIGHT FLAME', 'CLOUDY', 'RED', 'TURQUOISE', 'SWAMP', 'RAINY', 'AQUAMARINE', 'EARTH', 'PUMPKIN', 'LILAC',
+        'PERIWINKLE', 'VIOLET', 'POND', 'DIRT', 'BROWN', 'CEDAR', 'CHRISTMAS', 'COTTON CANDY', 'DARK PINE', 'FALL', 'FOREST FIRE',
+        'GOLD MOON', 'HALLOWEEN', 'LOBELIA', 'MIDNIGHT', 'MOONSTONE', 'OXIDIZED', 'SNOW', 'BERRY BANANA', 'DAWN SKY', 'TWILIGHT SKY',
+        'WORMY', 'BLUE HAZEL', 'THUNDERBOLT', 'VOLCANO', 'SEASHELL', 'PARADOX', 'CURSE', 'BLESSING',
+        'VALENTINE', 'FIREWORK', 'LUCKY', 'LIME', 'PALE BROWN', 'CRIMSON','DARK HAZEL', 'ROSE GOLD', 'REVERSE SUNLITICE', 'ICY',
+        'SUNSET', 'DARKBLUE', 'LAVENDER', 'ECLIPSE', 'BLACK', 'MUDDY', 'DARK ROSE','DARK TURQUOISE', 'BLACKBERRY', 'RUSTY', 'PASTEL', 'AVOCADO',
+        'PASTEL LAVENDER', 'BULLET', 'LIGHT YELLOW', 'SUNSHINE', 'GOLD ORE', 'FOSSILIZED AMBER', 'DUSKY',
+            'LICHEN', 'SPRING', 'TREE', 'LEAVES', 'EMERALD ORE', 'HAZELNUT', 'BLUE SKY', 'OCEAN', 'OVERCAST', 'AQUA', 'IRIS', 'ROBIN', 'GREY SILVER', 'SAND', 'MUSTARD', 'BRONZE ORE', 'TIMBER', 'COPPER ORE',
+            'FERN', 'APPLE', 'MOSS', 'THICKET', 'PEACOCK', 'OLIVE','STORMY BLUE', 'DEPTHS', 'STORMY', 'TEAL', 'INDIGO', 'STEEL', 'PEACH', 'DAFFODIL', 'MARIGOLD', 'BRASS', 'DARKAMBER', 'DAWN SKIES','MINT',
+             'CHARTREUSE', 'MEADOW', 'LEAF', 'LIGHT TURQUOISE', 'SAP', 'ALBINISTIC', 'COBALT ORE', 'RAIN', 'CYAN DYE', 'PERIWINKLE PURPLE', 'ICY CRACK', 'ALBINO', 'WINTER ROSE', 'PINK', 'MORNING', 'DARK BROWN',' BAY', 'NEON GREEN', 'SEA', 'DISCORD'
     ]
     little_white = ['LITTLE', 'LIGHTTUXEDO', 'BUZZARDFANG', 'TIP', 'BLAZE', 'BIB', 'VEE', 'PAWS',
-                    'BELLY', 'TAILTIP', 'TOES', 'BROKENBLAZE', 'LILTWO', 'SCOURGE', 'TOESTAIL', 'RAVENPAW', 'HONEY',
-                    'LUNA',
-                    'EXTRA', 'MUSTACHE', 'REVERSEHEART', 'SPARKLE', 'RIGHTEAR', 'LEFTEAR', 'ESTRELLA', 'REVERSEEYE',
-                    'BACKSPOT',
-                    'EYEBAGS', 'LOCKET', 'BLAZEMASK', 'TEARS']
+                    'BELLY', 'TAILTIP', 'TOES', 'BROKENBLAZE', 'LILTWO', 'SCOURGE', 'TOESTAIL', 'RAVENPAW', 'HONEY', 'LUNA',
+                    'EXTRA', 'MUSTACHE', 'REVERSEHEART', 'SPARKLE', 'RIGHTEAR', 'LEFTEAR', 'ESTRELLA', 'REVERSEEYE', 'BACKSPOT',
+                    'EYEBAGS', 'LOCKET', 'BLAZEMASK', 'TEARS', 'MINKMINIMALONE', 'MINKMINIMALTWO', 'MINKMINIMALTHREE',
+                    'MINKMINIMALFOUR', 'MINKMASK', 'MINKCHEST', 'MINKSIDEMASK', 'MINKEMBER', 'MINKORIOLE', 'MINKONE', 'MINKDAPPLENIGHT', 'MINKSAFI', 'SOLDIER', 'AKITA', 'FRECKLESTHREE','KITTY',
+                    'MASK', 'PAW', 'BOOMSTAR', 'LEGS', 'DOVE', 'CRESCENT', 'SPIDERLEGS', 'APPEL']
     mid_white = ['TUXEDO', 'FANCY', 'UNDERS', 'DAMIEN', 'SKUNK', 'MITAINE', 'SQUEAKS', 'STAR', 'WINGS',
-                 'DIVA', 'SAVANNAH', 'FADESPOTS', 'BEARD', 'DAPPLEPAW', 'TOPCOVER', 'WOODPECKER', 'MISS', 'BOWTIE',
-                 'VEST',
-                 'FADEBELLY', 'DIGIT', 'FCTWO', 'FCONE', 'MIA', 'ROSINA', 'PRINCESS', 'DOUGIE']
+                'DIVA', 'SAVANNAH', 'FADESPOTS', 'BEARD', 'DAPPLEPAW', 'TOPCOVER', 'WOODPECKER', 'MISS', 'BOWTIE', 'VEST',
+                'FADEBELLY', 'DIGIT', 'FCTWO', 'FCONE', 'MIA', 'ROSINA', 'PRINCESS', 'DOUGIE', 'MINKROSETAIL', 'MINKTWO',
+                'MINKFOUR', 'MINKREDTAIL', 'MINKSTREAK', 'MINKARMTAIL', 'MINKSTREAMSTRIKE', 'MINKDAUB', 'MINKBRIE', 'MINKROBIN',
+                'MINKBLANKET', 'MINKBELOVED', 'MINKHEARTBEAT', 'MINKCHIMERA', 'MINKEYEDOT', 'MINKSHILOH', 'INK', 'GEM', 'FOX','ORCA', 'MOJO', 'HALFHEART', 'LEON', 'MEADOW', 'BAMBI', 'SKUNKSTRIPE', 'BANAN',
+                 'MOONSTONE', 'WINGTWO', 'STARBORN', 'RUG']
     high_white = ['ANY', 'ANYTWO', 'BROKEN', 'FRECKLES', 'RINGTAIL', 'HALFFACE', 'PANTSTWO',
-                  'GOATEE', 'PRINCE', 'FAROFA', 'MISTER', 'PANTS', 'REVERSEPANTS', 'HALFWHITE', 'APPALOOSA', 'PIEBALD',
-                  'CURVED', 'GLASS', 'MASKMANTLE', 'MAO', 'PAINTED', 'SHIBAINU', 'OWL', 'BUB', 'SPARROW', 'TRIXIE',
-                  'SAMMY', 'FRONT', 'BLOSSOMSTEP', 'BULLSEYE', 'FINN', 'SCAR', 'BUSTER', 'HAWKBLAZE', 'CAKE']
+                'GOATEE', 'PRINCE', 'FAROFA', 'MISTER', 'PANTS', 'REVERSEPANTS', 'HALFWHITE', 'APPALOOSA', 'PIEBALD',
+                'CURVED', 'GLASS', 'MASKMANTLE', 'MAO', 'PAINTED', 'SHIBAINU', 'OWL', 'BUB', 'SPARROW', 'TRIXIE',
+                'SAMMY', 'FRONT', 'BLOSSOMSTEP', 'BULLSEYE', 'FINN', 'SCAR', 'BUSTER', 'HAWKBLAZE', 'CAKE', 'CHITAL',
+                'MINKTHREE', 'MINKOREO', 'WOLF', 'PINTO', 'CHESSBORAD', 'SUNRISE','HUSKY', 'S', 'STATNTHREE', 'MIST', 'LADY', 'HALF', 'SUN',
+                  'PINTOTWO', 'SKY', 'MINKGRUMPYFACE', 'MINKPACMAN', 'MINKPAIGE', 'MINKMOTTLED', 'MINKDELILAH']
     mostly_white = ['VAN', 'ONEEAR', 'LIGHTSONG', 'TAIL', 'HEART', 'MOORISH', 'APRON', 'CAPSADDLE',
-                    'CHESTSPECK', 'BLACKSTAR', 'PETAL', 'HEARTTWO', 'PEBBLESHINE', 'BOOTS', 'COW', 'COWTWO', 'LOVEBUG',
-                    'SHOOTINGSTAR', 'EYESPOT', 'PEBBLE', 'TAILTWO', 'BUDDY', 'KROPKA']
-    point_markings = ['COLOURPOINT', 'RAGDOLL', 'SEPIAPOINT', 'MINKPOINT', 'SEALPOINT']
-    vit = ['VITILIGO', 'VITILIGOTWO', 'MOON', 'PHANTOM', 'KARPATI', 'POWDER', 'BLEACHED', 'SMOKEY']
+                    'CHESTSPECK', 'BLACKSTAR', 'PETAL', 'HEARTTWO','PEBBLESHINE', 'BOOTS', 'COW', 'COWTWO', 'LOVEBUG',
+                    'SHOOTINGSTAR', 'BUNNY', 'STAINSONE',
+                    'STAINST', 'SWIFTPAW', 'DRIP',  'PRIMITVE', 'KARAPATITWO','CHAOS',
+                    'MOSCOW', 'PANDA', 'LUCKY', 'EYESPOT', 'PEBBLE', 'TAILTWO', 'BUDDY', 'KROPKA', 'MINKHALF', 'MINKBANDANA','MINKSWOOP']
+    point_markings = ['COLOURPOINT', 'ANT', 'CAPETOWN',
+                      'SNOWSHOE', 'ETERNAL', 'RAGDOLL', 'SEPIAPOINT', 'MINKPOINT', 'SEALPOINT', 'MINKSMOKE', 'MINKBODY']
+    vit = ['VITILIGO', 'VITILIGOTWO', 'MOON', 'PHANTOM', 'KARPATI', 'POWDER', 'BLEACHED', 'SMOKEY', 'MINKBRINDLE', 'MINKFRECKLED', 'MINKSMUDGED','JACKAL', 'EYEV', 'FRECKLESTWO', 'CREAMV', 'SALT', 'NEPTUNE']
     white_sprites = [
         little_white, mid_white, high_white, mostly_white, point_markings, vit, 'FULLWHITE']
 
@@ -187,10 +432,18 @@ class Pelt:
                  eye_colour2: str = None,
                  tortiebase: str = None,
                  tortiecolour: str = None,
-                 pattern: str = None,
+                 pattern:list=None,
                  tortiepattern: str = None,
                  vitiligo: str = None,
-                 points: str = None,
+                 points:str=None,
+                 physical_trait_1:str=None,
+                 physical_trait_2:str=None,
+                 physical_trait_3:str=None,
+                 physical_trait_4:str=None,
+                 physical_trait_hidden:str=None,
+                 physical_trait_hidden_2:str=None,
+                 physical_trait_hidden_3:str=None,
+                 physical_trait_hidden_4:str=None,
                  accessory: str = None,
                  paralyzed: bool = False,
                  opacity: int = 100,
@@ -204,6 +457,9 @@ class Pelt:
                  senior_sprite: int = None,
                  para_adult_sprite: int = None,
                  reverse: bool = False,
+                 fur_texture:str=None,
+                 build:str=None,
+                 height:str=None,
                  accessories:list=None,
                  inventory:list=[]
                  ) -> None:
@@ -219,53 +475,49 @@ class Pelt:
         self.vitiligo = vitiligo
         self.length = length
         self.points = points
-        self.accessory = accessory
+        self.paralyzed = paralyzed
         self.accessories = accessories if accessories is not None else []
         self.inventory = inventory
-        self.paralyzed = paralyzed
         self.opacity = opacity
         self.scars = scars if isinstance(scars, list) else []
         self.tint = tint
+        self.physical_trait_1 = physical_trait_1
+        self.physical_trait_2 = physical_trait_2
+        self.physical_trait_3 = physical_trait_3
+        self.physical_trait_4 = physical_trait_4
+        self.physical_trait_hidden = physical_trait_hidden
+        self.physical_trait_hidden_2 = physical_trait_hidden_2
+        self.physical_trait_hidden_3 = physical_trait_hidden_3
+        self.physical_trait_hidden_4 = physical_trait_hidden_4
         self.white_patches_tint = white_patches_tint
-        self.cat_sprites =  {
-            "kitten": kitten_sprite if kitten_sprite is not None else random.randint(0, 2),
-            "adolescent": adol_sprite if adol_sprite is not None else random.randint(3,5),
-            "young adult": adult_sprite if adult_sprite is not None else 0,
-            "adult": adult_sprite if adult_sprite is not None else 0,
-            "senior adult": adult_sprite if adult_sprite is not None else 0,
-            "senior": senior_sprite if senior_sprite is not None else random.randint(12,14),
-            "para_adult": para_adult_sprite if para_adult_sprite is not None else 0,
-        }
-        if self.cat_sprites['young adult'] == 0 and self.length == 'long':
-            adult_sprite = random.randint(9, 11)
-            self.cat_sprites['young adult'] = adult_sprite
-            self.cat_sprites['adult'] = adult_sprite
-            self.cat_sprites['senior adult'] = adult_sprite
-            self.cat_sprites['para_adult'] = 16
-        elif self.cat_sprites['young adult'] == 0:
-            adult_sprite = random.randint(6, 8)
-            self.cat_sprites['young adult'] = adult_sprite
-            self.cat_sprites['adult'] = adult_sprite
-            self.cat_sprites['senior adult'] = adult_sprite
-            self.cat_sprites['para_adult'] = 15
+        self.cat_sprites = {"kitten": kitten_sprite if kitten_sprite is not None else 0,
+                            "adolescent": adol_sprite if adol_sprite is not None else 0,
+                            "young adult": adult_sprite if adult_sprite is not None else 0,
+                            "adult": adult_sprite if adult_sprite is not None else 0,
+                            "senior adult": adult_sprite if adult_sprite is not None else 0,
+                            "senior": senior_sprite if senior_sprite is not None else 0,
+                            "para_adult": para_adult_sprite if para_adult_sprite is not None else 0,
+                            'newborn': 20,
+                            'para_young': 17,
+                            "sick_adult": 18,
+                            "sick_young": 19}
 
-        self.cat_sprites['newborn'] = 20
-        self.cat_sprites['para_young'] = 17
-        self.cat_sprites["sick_adult"] = 18
-        self.cat_sprites["sick_young"] = 19
-        
         self.reverse = reverse
         self.skin = skin
+        self.accessory = accessory 
+        self.fur_texture = fur_texture if fur_texture is not None else choice(["soft", "curly", "rough", "silky", "sleek", "wavy", "sparse", "tangled", "fuzzy", "spiky", "poofy"])
+        self.build = build if build is not None else choice(["stocky", "slender", "lithe", "wiry", "muscular", "lanky", "delicate", "plump"])
+        self.height = height if height is not None else choice(["petite", "short", "average", "average", "tall", "towering"])
 
         if inventory is None:
             self.inventory = []
         else:
             self.inventory = inventory
-
     @staticmethod
     def generate_new_pelt(gender: str, parents: tuple = (), age: str = "adult"):
         new_pelt = Pelt()
-
+        
+        
         pelt_white = new_pelt.init_pattern_color(parents, gender)
         new_pelt.init_white_patches(pelt_white, parents)
         new_pelt.init_sprite()
@@ -274,7 +526,7 @@ class Pelt:
         new_pelt.init_eyes(parents)
         new_pelt.init_pattern()
         new_pelt.init_tint()
-
+        new_pelt.init_physical_traits(parents)
         return new_pelt
 
     def check_and_convert(self, convert_dict):
@@ -307,17 +559,17 @@ class Pelt:
             if self.tortiepattern == "solid":
                 self.tortiepattern = "single"
 
-        if self.white_patches in convert_dict["old_creamy_patches"]:
-            self.white_patches = convert_dict["old_creamy_patches"][self.white_patches]
-            self.white_patches_tint = "darkcream"
-        elif self.white_patches in ['SEPIAPOINT', 'MINKPOINT', 'SEALPOINT']:
-            self.white_patches_tint = "none"
-
         # Eye Color Convert Stuff
         if self.eye_colour == "BLUE2":
             self.eye_colour = "COBALT"
         if self.eye_colour2 == "BLUE2":
             self.eye_colour2 = "COBALT"
+        if self.eye_colour2 == "VIOLET2":
+            self.eye_colour2 == "BLACKBERRY"
+        if self.eye_colour2 == "ROSE2":
+            self.eye_colour2 == "DARK ROSE"
+        if self.eye_colour2 == "TURQUOISE2":
+            self.eye_colour2 == "DARK TURQUOISE"
 
         if self.eye_colour in ["BLUEYELLOW", "BLUEGREEN"]:
             if self.eye_colour == "BLUEYELLOW":
@@ -325,6 +577,9 @@ class Pelt:
             elif self.eye_colour == "BLUEGREEN":
                 self.eye_colour2 = "GREEN"
             self.eye_colour = "BLUE"
+        
+        if self.colour == "Lynx2":
+            self.colour == "Dalmatian"
 
         if self.length == 'long':
             if self.cat_sprites['adult'] not in [9, 10, 11]:
@@ -346,17 +601,6 @@ class Pelt:
                 self.cat_sprites['senior'] = 13
             elif self.cat_sprites['senior'] == 5:
                 self.cat_sprites['senior'] = 14
-        
-        if self.pattern in convert_dict["old_tortie_patches"]:
-            old_pattern = self.pattern
-            self.pattern = convert_dict["old_tortie_patches"][old_pattern][1]
-
-            # If the pattern is old, there is also a chance the base color is stored in
-            # tortiecolour. That may be different from the pelt color ("main" for torties)
-            # generated before the "ginger-on-ginger" update. If it was generated after that update,
-            # tortiecolour and pelt_colour will be the same. Therefore, let's also re-set the pelt color
-            self.colour = self.tortiecolour
-            self.tortiecolour = convert_dict["old_tortie_patches"][old_pattern][0]
             
         if self.pattern == "MINIMAL1":
             self.pattern = "MINIMALONE"
@@ -387,15 +631,12 @@ class Pelt:
             num = 1
 
         if not random.randint(0, num):
-            if self.eye_colour in Pelt.yellow_eyes:
-                eye_choice = choice([Pelt.blue_eyes, Pelt.green_eyes])
-                self.eye_colour2 = choice(eye_choice)
-            elif self.eye_colour in Pelt.blue_eyes:
-                eye_choice = choice([Pelt.yellow_eyes, Pelt.green_eyes])
-                self.eye_colour2 = choice(eye_choice)
-            elif self.eye_colour in Pelt.green_eyes:
-                eye_choice = choice([Pelt.yellow_eyes, Pelt.blue_eyes])
-                self.eye_colour2 = choice(eye_choice)
+            colour_wheel = [Pelt.yellow_eyes, Pelt.blue_eyes, Pelt.green_eyes]
+            for colour in colour_wheel[:]:
+                if self.eye_colour in colour:
+                    colour_wheel.remove(colour) # removes the selected list from the options
+                    self.eye_colour2 = choice(choice(colour_wheel)) # choose from the remaining two lists
+                    break
 
     def pattern_color_inheritance(self, parents: tuple = (), gender="female"):
         # setting parent pelt categories
@@ -501,7 +742,7 @@ class Pelt:
         if torbie:
             # If it is tortie, the chosen pelt above becomes the base pelt.
             chosen_tortie_base = chosen_pelt
-            if chosen_tortie_base in ["TwoColour", "SingleColour"]:
+            if chosen_tortie_base in ["TwoColour", "SingleColour", "SterSingle", "SillySingle", "DanceSingle", "MimiSingle"]:
                 chosen_tortie_base = "Single"
             chosen_tortie_base = chosen_tortie_base.lower()
             chosen_pelt = random.choice(Pelt.torties)
@@ -682,7 +923,7 @@ class Pelt:
             'sick_young': 19,
             'sick_adult': 18
         }
-        self.reverse = choice([True, False])
+        self.reverse = bool(random.getrandbits(1))
         # skin chances
         self.skin = choice(Pelt.skin_sprites)
 
@@ -729,16 +970,23 @@ class Pelt:
         if acc_display_choice == 1:
             self.accessory = choice([
                 choice(Pelt.plant_accessories),
+                choice(Pelt.plant2_accessories),
                 choice(Pelt.wild_accessories),
                 choice(Pelt.flower_accessories),
-                choice(Pelt.plant2_accessories),
                 choice(Pelt.snake_accessories),
                 choice(Pelt.smallAnimal_accessories),
                 choice(Pelt.deadInsect_accessories),
                 choice(Pelt.aliveInsect_accessories),
                 choice(Pelt.fruit_accessories),
                 choice(Pelt.crafted_accessories),
-                choice(Pelt.tail2_accessories)
+                choice(Pelt.tail2_accessories),
+                choice(Pelt.bone_accessories),
+                choice(Pelt.butterflies_accessories),
+                choice(Pelt.stuff_accessories),
+                choice(Pelt.bandana_collars),
+                choice(Pelt.harness_accessories),
+                choice(Pelt.bows_accessories),
+                choice(Pelt.dogteeth_collars)
             ])
         else:
             self.accessory = None
@@ -748,7 +996,19 @@ class Pelt:
             if not self.tortiebase:
                 self.tortiebase = choice(Pelt.tortiebases)
             if not self.pattern:
-                self.pattern = choice(Pelt.tortiepatterns)
+                chosen_pattern = set()
+                chosen_pattern.add(choice(Pelt.tortiepatterns))
+
+                num = game.config["cat_generation"]["base_extra_tortie"]
+
+                for x in range(game.config["cat_generation"]["max_tortie_amount"] - 1):
+                    if not random.randint(0, num):
+
+                        chosen_pattern.add(choice(Pelt.tortiepatterns))
+                        num += 3
+
+
+                self.pattern = list(chosen_pattern)
 
             wildcard_chance = game.config["cat_generation"]["wildcard_tortie"]
             if self.colour:
@@ -769,9 +1029,14 @@ class Pelt:
 
                 else:
                     # Normal generation
-                    if self.tortiebase in ["singlestripe", "smoke", "single"]:
-                        self.tortiepattern = choice(['tabby', 'mackerel', 'classic', 'single', 'smoke', 'agouti',
-                                                     'ticked'])
+                    if self.tortiebase in ["singlestripe", "sterstripe", "sillystripe", "dancestripe", "mimistripe", 
+                                           "smoke","stersmoke", "sillysmoke", "dancesmoke", "mimismoke", "single", "smokepoint"]:
+                        self.tortiepattern = choice(['tabby', 'stertabby', 'sillytabby', 'dancetabby', 'mimitabby',
+                                                     'mackerel', 'stermackerel', 'sillymackerel', 'dancemackerel', 'mimimackerel',  
+                                                     'classic', 'sterclassic', 'sillyclassic', 'danceclassic', 'mimiclassic', 'single', 'smoke',
+                                                     'stersmoke', 'sillysmoke', 'dancesmoke', 'mimismoke','agouti', 'steragouti', 'sillyagouti', 'danceagouti', 'mimiagouti',
+                                                     'ticked', 'sterticked', 'sillyticked', 'danceticked', 'mimiticked',
+                                                     'brindle', 'spots'])
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
 
@@ -808,7 +1073,7 @@ class Pelt:
         for p in parents:
             if p:
                 if p.pelt.white_patches:
-                    par_whitepatches.add(p.pelt.white_patches)
+                    par_whitepatches.add(choice(p.pelt.white_patches))
                 if p.pelt.points:
                     par_points.append(p.pelt.points)
 
@@ -830,10 +1095,19 @@ class Pelt:
                     if p in Pelt.little_white + Pelt.mid_white:
                         _temp.remove(p)
 
+            chosen_white_patches = set()
             # Only proceed with the direct inheritance if there are white patches that match the pelt.
             if _temp:
-                self.white_patches = choice(list(_temp))
+                chosen_white_patches.add(choice(list(_temp)))
+                for x in range(game.config["cat_generation"]["max_white_amount"] - 1):
+                    if not random.randint(0, game.config["cat_generation"]["base_extra_white"]):
+                        for p in chosen_white_patches:
+                            if p in _temp:
+                                _temp.remove(p)
+                        if _temp:
+                            chosen_white_patches.add(choice(list(_temp)))
 
+                self.white_patches = list(chosen_white_patches)
                 # Direct inheritance also effect the point marking.
                 if par_points and self.name != "Tortie":
                     self.points = choice(par_points)
@@ -895,11 +1169,39 @@ class Pelt:
             if not any(weights):
                 weights = [2, 1, 0, 0, 0]
 
-        chosen_white_patches = choice(
+        chosen_white_patches = set()
+        chosen_white_patches.add(choice(
             random.choices(white_list, weights=weights, k=1)[0]
-        )
+        ))
 
-        self.white_patches = chosen_white_patches
+        num = game.config["cat_generation"]["base_extra_white"]
+        
+        if any(white in Pelt.high_white for white in chosen_white_patches):
+            num -= 2
+        elif any(white in Pelt.little_white for white in chosen_white_patches) or any(white in Pelt.mid_white for white in chosen_white_patches):
+            num -= 5
+
+        for p in parents:
+            if p:
+                if not p.pelt.white_patches:
+                    num += 1
+                elif len(p.pelt.white_patches) >= 2:
+                    num -= 1
+
+        if num < 0:
+            num = 1
+
+        for x in range(game.config["cat_generation"]["max_white_amount"] - 1):
+            if not random.randint(0, num):
+
+                weights = (12, 10, 3, 0, 0)
+                chosen_white_patches.add(choice(
+                    random.choices(white_list, weights=weights, k=1)[0]
+                ))
+                num += 1
+
+
+        self.white_patches = list(chosen_white_patches)
         if self.points and self.white_patches in [Pelt.high_white, Pelt.mostly_white, 'FULLWHITE']:
             self.points = None
 
@@ -920,16 +1222,36 @@ class Pelt:
         else:
             weights = (10, 10, 10, 10, 1)
 
+        chosen_white_patches = set()
         white_list = [Pelt.little_white, Pelt.mid_white, Pelt.high_white, Pelt.mostly_white, ['FULLWHITE']]
-        chosen_white_patches = choice(
+        chosen_white_patches.add(choice(
             random.choices(white_list, weights=weights, k=1)[0]
-        )
+        ))
 
-        self.white_patches = chosen_white_patches
+        num = game.config["cat_generation"]["base_extra_white"]
+        
+        if any(white in Pelt.high_white for white in chosen_white_patches):
+            num -= 2
+        elif any(white in Pelt.little_white for white in chosen_white_patches) or any(white in Pelt.mid_white for white in chosen_white_patches):
+            num -= 5
+
+        if num < 0:
+            num = 1
+
+        for x in range(game.config["cat_generation"]["max_white_amount"] - 1):
+            if not random.randint(0, num):
+
+                weights = (12, 10, 3, 0, 0)
+                chosen_white_patches.add(choice(
+                    random.choices(white_list, weights=weights, k=1)[0]
+                ))
+                num += 1
+
+        self.white_patches = list(chosen_white_patches)
         if self.points and self.white_patches in [Pelt.high_white, Pelt.mostly_white, 'FULLWHITE']:
             self.points = None
 
-    def init_white_patches(self, pelt_white, parents: tuple):
+    def init_white_patches(self, pelt_white, parents:tuple):
         # Vit can roll for anyone, not just cats who rolled to have white in their pelt. 
         par_vit = []
         for p in parents:
@@ -985,6 +1307,151 @@ class Pelt:
                 self.white_patches_tint = "none"
         else:
             self.white_patches_tint = "none"
+        
+    def init_physical_traits(self, parents: tuple=()):
+        
+        trait_categories = [
+            Pelt.physical_trait_teeth,
+            Pelt.physical_trait_ear,
+            Pelt.physical_trait_headfur,
+            Pelt.physical_trait_cheekfur,
+            Pelt.physical_trait_mane,
+            Pelt.physical_trait_muzzle_type,
+            Pelt.physical_trait_tail,
+            Pelt.physical_trait_misc
+        ]
+        
+        trait_pool = [(trait, category) for category in trait_categories for trait in category]
+        
+        par_traits = set()
+        for p in parents:
+                par_traits.add(p.pelt.physical_trait_1)
+                par_traits.add(p.pelt.physical_trait_2)
+                par_traits.add(p.pelt.physical_trait_3)
+                par_traits.add(p.pelt.physical_trait_4)
+                par_traits.add(p.pelt.physical_trait_hidden)
+                par_traits.add(p.pelt.physical_trait_hidden_2)
+                par_traits.add(p.pelt.physical_trait_hidden_3)
+                par_traits.add(p.pelt.physical_trait_hidden_4)
+        
+        # Remove any None values from par_traits
+        par_traits.discard(None)
+        
+        if par_traits:
+            # Check for conflicting traits from the same category
+            for category in trait_categories:
+                clash_traits = par_traits.intersection(category)
+                if len(clash_traits) > 1:
+                    chosen_trait = random.choice(list(clash_traits))
+                    par_traits = par_traits.difference(clash_traits)
+                    par_traits.add(chosen_trait)
+            inherit_trait_chance = int(random.random() * 100)
+            if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                #Roll to inherit first trait, and if so, remove it from the list
+                self.physical_trait_1 = random.choice(list(par_traits))
+                par_traits.remove(self.physical_trait_1)
+                if len(par_traits) > 0:
+                    #If we have a first trait, roll to inherit a second, and if we do, remove it from the list
+                    inherit_trait_chance = int(random.random() * 100)
+                    if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                        self.physical_trait_2 = random.choice(list(par_traits))
+                        par_traits.remove(self.physical_trait_2)
+                        if len(par_traits) > 0:
+                            #If we have a second trait, roll to inherit a third, and if we do, remove it from the list
+                            inherit_trait_chance = int(random.random() * 100)
+                            if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                                self.physical_trait_3 = random.choice(list(par_traits))
+                                par_traits.remove(self.physical_trait_3)
+                                if len(par_traits) > 0:
+                                    #If we have a third trait, roll to inherit a fourth, and if we do, remove it from the list
+                                    inherit_trait_chance = int(random.random() * 100)
+                                    if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                                        self.physical_trait_4 = random.choice(list(par_traits))
+                                        par_traits.remove(self.physical_trait_4)
+            if len(par_traits) > 0:
+                #If there are still leftover traits, roll to inherit as hidden with a +50% chance
+                inherit_trait_chance = int((random.random() * 100) - 50)
+                if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                    self.physical_trait_hidden = random.choice(list(par_traits))
+                    par_traits.remove(self.physical_trait_hidden)
+                    if len(par_traits) > 0:
+                        #If there are still leftover traits, roll to inherit as hidden with a +50% chance
+                        inherit_trait_chance = int((random.random() * 100) - 50)
+                        if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                            self.physical_trait_hidden_2 = random.choice(list(par_traits))
+                            par_traits.remove(self.physical_trait_hidden_2)
+                            if len(par_traits) > 0:
+                                #If there are still leftover traits, roll to inherit as hidden with a +50% chance
+                                inherit_trait_chance = int((random.random() * 100) - 50)
+                                if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                                    self.physical_trait_hidden_3 = random.choice(list(par_traits))
+                                    par_traits.remove(self.physical_trait_hidden_3)
+                                    if len(par_traits) > 0:
+                                        #If there are still leftover traits, roll to inherit as hidden with a +50% chance
+                                        inherit_trait_chance = int((random.random() * 100) - 50)
+                                        if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                                            self.physical_trait_hidden_4 = random.choice(list(par_traits))
+                                            par_traits.remove(self.physical_trait_hidden_4)
+            
+        # Giving cats that inherited nothing a 50% of base chance roll for new traits
+        if not self.physical_trait_1:
+            trait_chance = int(random.random() * 100)
+            if trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
+                if trait_chance <= (0.5 * game.config["cat_generation"]["physical_trait_chance"]):
+                    traitcount = 2
+                    trait_chance = int(random.random() * 100)
+                    if trait_chance <= (0.5 * game.config["cat_generation"]["physical_trait_chance"]):
+                        traitcount = 3
+                        trait_chance = int(random.random() * 100)
+                        if trait_chance <= (0.5 * game.config["cat_generation"]["physical_trait_chance"]):
+                            traitcount = 4
+                else:
+                    traitcount = 1
+            else:
+                traitcount = 0
+                
+            if traitcount > 0:
+                # Select the first trait and its category
+                trait1, category1 = random.choice(trait_pool)
+                self.physical_trait_1 = trait1
+                
+                # Remove traits from the same category as the first trait
+                trait_pool = [(trait, category) for trait, category in trait_pool if category != category1]
+                
+                if traitcount >= 2 and trait_pool:
+                    # Select the second trait from the remaining pool
+                    trait2, category2 = random.choice(trait_pool)
+                    self.physical_trait_2 = trait2
+                    
+                    # Remove traits from the same category as the second trait
+                    trait_pool = [(trait, category) for trait, category in trait_pool if category != category2]
+                    
+                    if traitcount >= 3 and trait_pool:
+                        # Select the third trait from the remaining pool
+                        trait3, category3 = random.choice(trait_pool)
+                        self.physical_trait_3 = trait3
+                        
+                        # Remove traits from the same category as the third trait
+                        trait_pool = [(trait, category) for trait, category in trait_pool if category != category3]
+                        
+                        if traitcount == 4 and trait_pool:
+                            # Select the fourth trait from the remaining pool
+                            trait4, category4 = random.choice(trait_pool)
+                            self.physical_trait_4 = trait4
+                        else:
+                            self.physical_trait_4 = None
+                    else:
+                        self.physical_trait_3 = None
+                        self.physical_trait_4 = None
+                else:
+                    self.physical_trait_2 = None
+                    self.physical_trait_3 = None
+                    self.physical_trait_4 = None
+            else:
+                self.physical_trait_1 = None
+                self.physical_trait_2 = None
+                self.physical_trait_3 = None
+                self.physical_trait_4 = None
 
     @property
     def white(self):
@@ -1041,17 +1508,83 @@ class Pelt:
         pattern_des = {
             "Tabby": "c_n tabby",
             "Speckled": "speckled c_n",
+            "Sterspeckled": "speckled c_n",
+            "Sillyspeckled": "speckled c_n",
+            "Dancespeckled": "speckled c_n",
+            "Mimispeckled": "speckled c_n",
             "Bengal": "unusually dappled c_n",
+            "Sterbengal": "unusually dapple c_n",
+            "Sillybengal": "unusually dapple c_n",
+            "Dancebengal": "unusually dapple c_n",
+            "Mimibengal": "unusually dapple c_n",
             "Marbled": "c_n tabby",
+            "Stermarbled": "c_n tabby",
+            "Sillymarbled": "c_n tabby",
+            "Dancemarbled": "c_n tabby",
+            "Mimimarbled": "c_n tabby",
             "Ticked": "c_n ticked",
             "Smoke": "c_n smoke",
+            "Stersmoke": "c_n smoke",
+            "Sillysmoke": "c_n smoke",
+            "Dancesmoke": "c_n smoke",
+            "Mimismoke": "c_n smoke",
             "Mackerel": "c_n tabby",
+            "Stermackerel": "c_n tabby",
+            "Sillymackerel": "c_n tabby",
+            "Dancemackerel": "c_n tabby",
+            "Mimimackerel": "c_n tabby",
             "Classic": "c_n tabby",
+            "Sterclassic": "c_n tabby",
+            "Sillyclassic": "c_n tabby",
+            "Danceclassic": "c_n tabby",
+            "Mimiclassic": "c_n tabby",
             "Agouti": "c_n tabby",
+            "Steragouti": "c_n tabby",
+            "Sillyagouti": "c_n tabby",
+            "Danceagouti": "c_n tabby",
+            "Mimiagouti": "c_n tabby",
             "Singlestripe": "dorsal-striped c_n",
+            "Sterstripe": "dorsal-striped c_n",
+            "Sillystripe": "dorsal-striped c_n",
+            "Dancestripe": "dorsal-striped c_n",
+            "Mimistripe": "dorsal-striped c_n",
             "Rosette": "unusually spotted c_n",
+            "Sterrosette": "unusually spotted c_n",
+            "Sillyrosette": "unusually spotted c_n",
+            "Dancerosette": "unusually spotted c_n",
+            "Mimirosette": "unusually spotted c_n",
             "Sokoke": "c_n tabby",
-            "Masked": "masked c_n tabby"
+            "Stersokoke": "c_n tabby",
+            "Sillysokoke": "c_n tabby",
+            "Dancesokoke": "c_n tabby",
+            "Mimisokoke": "c_n tabby",
+            "Masked": "masked c_n tabby",
+            "Stermasked": "masked c_n tabby",
+            "Sillymasked": "masked c_n tabby",
+            "Dancemasked": "masked c_n tabby",
+            "Mimimasked": "masked c_n tabby",
+            "Maned": "oddly caped c_n",
+            "Ocelot": "oddly dappled c_n",
+            "Lynx": "flecked c_n",
+            "Dalmatian": "flecked c_n",
+            "Royal": "dappled c_n",
+            "Bobcat": "spotted c_n",
+            "Cheetah": "unusually speckled c_n",
+            "Brindle": "c_n tabby",
+            "Wildcat": "unusually tabby c_n",
+            "Wolf": "resembling a wolf c_n",
+            "Spots": "c_n spot",
+            "Smokepoint": "c_n smoke",
+            "Finleappatches": "c_n ticked",
+            "Abyssinian": "c_n oddly ticked",
+            "Clouded": "oddly swirled c_n",
+            "Doberman": "c_n dog-like",
+            "GhostTabby": "softly-striped c_n",
+            "Merle": "colorfully splashed c_n",
+            "Monarch": "uniquely spotted c_n",
+            "Oceloid": "oddly spotted c_n",
+            "PinstripeTabby": "strangely striped c_n",
+            "Snowflake": "oddly dappled c_n"
         }
 
         # Start with determining the base color name
@@ -1060,7 +1593,7 @@ class Pelt:
             color_name = renamed_colors[color_name]
 
         # Replace "white" with "pale" if the cat is white
-        if cat.pelt.name not in ["SingleColour", "TwoColour", "Tortie", "Calico"] and color_name == "white":
+        if cat.pelt.name not in ["SingleColour", "SterSingle", "TwoColour", "Tortie", "Calico"] and color_name == "white":
             color_name = "pale"
 
         # Time to describe the pattern and any additional colors
@@ -1078,7 +1611,8 @@ class Pelt:
                     color_name = cat.pelt.name.lower()
             else:
                 base = cat.pelt.tortiebase.lower()
-                if base in [tabby.lower() for tabby in Pelt.tabbies] + ['bengal', 'rosette', 'speckled']:
+                if base in [tabby.lower() for tabby in Pelt.tabbies] + ['bengal', 'rosette', 'sterrosette', 'sillyrosette', 'dancerosette', 'mimirosette', 
+                                                                        'speckled', 'sterspeckled', 'sillyspeckled', 'dancespeckled', 'mimispeckled']:
                     base = ' tabby'  # the extra space is intentional
                 else:
                     base = ''
@@ -1139,8 +1673,10 @@ class Pelt:
                 if scar in scar_details and scar_details[scar] not in additional_details:
                     additional_details.append(scar_details[scar])
 
-            if len(additional_details) > 1:
-                color_name = f"{color_name} with {', '.join(additional_details[:-1])} and {additional_details[-1]}"
+            if len(additional_details) > 2:
+                color_name = f"{color_name} with {', '.join(additional_details[:-1])}, and {additional_details[-1]}"
+            elif len(additional_details) == 2:
+                color_name = f"{color_name} with {' and '.join(additional_details)}"
             elif additional_details:
                 color_name = f"{color_name} with {additional_details[0]}"
 

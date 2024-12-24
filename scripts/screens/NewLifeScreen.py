@@ -753,12 +753,12 @@ class NewLifeScreen(Screens):
         self.vitiligo=choice(Pelt.vit) if random.randint(1,5) == 1 else None
         self.points=choice(Pelt.point_markings) if random.randint(1,5) == 1 else None
         self.scars=[choice(Pelt.scars1 + Pelt.scars2 + Pelt.scars3)] if random.randint(1,10) == 1 else []
-        self.tint=choice(["pink", "gray", "red", "orange", "black", "yellow", "purple", "blue","dilute","warmdilute","cooldilute"]) if random.randint(1,5) == 1 else None
+        self.tint=choice(["pink", "gray", "red", "black", "orange", "yellow", "purple", "blue", "blush", "willow", "bluegray", "lilac", "sandy", "plum", "midgray", "flint", "cadet", "sage", "coral", "storm", "maroon", "tan", "bronze", "acacia", "rosy", "redwood", "darkpurple", "beige", "cream", "steel", "cobalt", "ebony", "sooty", "sunrise", "lightpink", "peach", "salmon", "buttercup", "bananatwo", "periwinkle", "navy", "dust", "fall", "sunny", "green", "yolk", "bluesky", "gold", "browngray", "grapefruit", "pinkgray", "flower", "lightorange", "rust", "lightpurple", "sunflower", "wood", "bananaone", "None", "dilute", "warmdilute", "cooldilute"]) if random.randint(1,5) == 1 else None
         self.skin=choice(Pelt.skin_sprites)
-        self.white_patches_tint=choice(["offwhite", "cream", "darkcream", "gray", "pink"]) if random.randint(1,5) == 1 else None
+        self.white_patches_tint=choice(["darkcream", "cream", "offwhite", "gray", "pink", "dark", "blue", "orange", "ebb", "almond", "mocha", "honeydew", "vanilla", "malted", "ashgray", "coffee", "cherry", "dawn", "powder", "peach", "violet", "coyote", "obsidian", "caramel", "golden", "black", "darkblue", "lightblue", "slate", "lilac", "darkash", "ash", "brown", "chocolate", "hazel", "camel", "wheat", "fawn", "ivory", "chalk", "ghastly", "lightgold", "gold", "darkgold", "sunshine", "bronze"]) if random.randint(1,5) == 1 else None
         self.reverse= False if random.randint(1,2) == 1 else True
         self.skill = random.choice(self.skills)
-        self.sex = random.choice(["male", "female"])
+        self.sex = random.choice(["male", "female", "intersex"])
         self.personality = choice(['troublesome', 'lonesome', 'impulsive', 'bullying', 'attention-seeker', 'charming', 'daring', 'noisy', 'nervous', 'quiet', 'insecure', 'daydreamer', 'sweet', 'polite', 'know-it-all', 'bossy', 'disciplined', 'patient', 'manipulative', 'secretive', 'rebellious', 'grumpy', 'passionate', 'honest', 'leader-like', 'smug'])
         self.accessory = choice(Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories) if random.randint(1,5) == 1 else None
         self.permanent_condition = choice(permanent_conditions) if random.randint(1,30) == 1 else None
@@ -776,12 +776,12 @@ class NewLifeScreen(Screens):
             name=self.pname,
             length=self.length,
             colour=self.colour,
-            white_patches=self.white_patches,
+            white_patches=[self.white_patches] if self.white_patches else [],
             eye_color=self.eye_color,
             eye_colour2=self.eye_colour2,
             tortiebase=self.tortiebase,
             tortiecolour=self.tortiecolour,
-            pattern=self.pattern,
+            pattern=[self.pattern] if [self.pattern] else [],
             tortiepattern=Pelt.sprites_names.get(self.tortiepattern),
             vitiligo=self.vitiligo,
             points=self.points,
@@ -960,9 +960,9 @@ class NewLifeScreen(Screens):
                 object_id=get_text_box_theme("#text_box_30_horizleft"), manager=MANAGER
             )
             if self.tint:
-                self.elements['tint'] = pygame_gui.elements.UIDropDownMenu(["pink", "gray", "red", "orange", "black", "yellow", "purple", "blue", "None","dilute","warmdilute","cooldilute"], str(self.tint), scale(pygame.Rect((column4_x, y_pos[2]), (250, 70))), manager=MANAGER)
+                self.elements['tint'] = pygame_gui.elements.UIDropDownMenu(["pink", "gray", "red", "black", "orange", "yellow", "purple", "blue", "blush", "willow", "bluegray", "lilac", "sandy", "plum", "midgray", "flint", "cadet", "sage", "coral", "storm", "maroon", "tan", "bronze", "acacia", "rosy", "redwood", "darkpurple", "beige", "cream", "steel", "cobalt", "ebony", "sooty", "sunrise", "lightpink", "peach", "salmon", "buttercup", "bananatwo", "periwinkle", "navy", "dust", "fall", "sunny", "green", "yolk", "bluesky", "gold", "browngray", "grapefruit", "pinkgray", "flower", "lightorange", "rust", "lightpurple", "sunflower", "wood", "bananaone", "None", "dilute", "warmdilute", "cooldilute"], str(self.tint), scale(pygame.Rect((column4_x, y_pos[2]), (250, 70))), manager=MANAGER)
             else:
-                self.elements['tint'] = pygame_gui.elements.UIDropDownMenu(["pink", "gray", "red", "orange", "black", "yellow", "purple", "blue",  "None","dilute","warmdilute","cooldilute"], "None", scale(pygame.Rect((column4_x, y_pos[2]), (250, 70))), manager=MANAGER)
+                self.elements['tint'] = pygame_gui.elements.UIDropDownMenu(["pink", "gray", "red", "black", "orange", "yellow", "purple", "blue", "blush", "willow", "bluegray", "lilac", "sandy", "plum", "midgray", "flint", "cadet", "sage", "coral", "storm", "maroon", "tan", "bronze", "acacia", "rosy", "redwood", "darkpurple", "beige", "cream", "steel", "cobalt", "ebony", "sooty", "sunrise", "lightpink", "peach", "salmon", "buttercup", "bananatwo", "periwinkle", "navy", "dust", "fall", "sunny", "green", "yolk", "bluesky", "gold", "browngray", "grapefruit", "pinkgray", "flower", "lightorange", "rust", "lightpurple", "sunflower", "wood", "bananaone", "None", "dilute", "warmdilute", "cooldilute"], "None", scale(pygame.Rect((column4_x, y_pos[2]), (250, 70))), manager=MANAGER)
             
             self.elements['pelt length text'] = pygame_gui.elements.UITextBox(
                 'Pelt length',
@@ -986,9 +986,9 @@ class NewLifeScreen(Screens):
                 object_id=get_text_box_theme("#text_box_30_horizleft"), manager=MANAGER
             )
             if self.white_patches_tint:
-                self.elements['white_patches_tint'] = pygame_gui.elements.UIDropDownMenu(["None"] + ["offwhite", "cream", "darkcream", "gray", "pink"], str(self.white_patches_tint), scale(pygame.Rect((column4_x, y_pos[6]), (250, 70))), manager=MANAGER)
+                self.elements['white_patches_tint'] = pygame_gui.elements.UIDropDownMenu(["None"] + ["darkcream", "cream", "offwhite", "gray", "pink", "dark", "blue", "orange", "ebb", "almond", "mocha", "honeydew", "vanilla", "malted", "ashgray", "coffee", "cherry", "dawn", "powder", "peach", "violet", "coyote", "obsidian", "caramel", "golden", "black", "darkblue", "lightblue", "slate", "lilac", "darkash", "ash", "brown", "chocolate", "hazel", "camel", "wheat", "fawn", "ivory", "chalk", "ghastly", "lightgold", "gold", "darkgold", "sunshine", "bronze"], str(self.white_patches_tint), scale(pygame.Rect((column4_x, y_pos[6]), (250, 70))), manager=MANAGER)
             else:
-                self.elements['white_patches_tint'] = pygame_gui.elements.UIDropDownMenu(["None"] + ["offwhite", "cream", "darkcream", "gray", "pink"], "None", scale(pygame.Rect((column4_x, y_pos[6]), (250, 70))), manager=MANAGER)
+                self.elements['white_patches_tint'] = pygame_gui.elements.UIDropDownMenu(["None"] + ["darkcream", "cream", "offwhite", "gray", "pink", "dark", "blue", "orange", "ebb", "almond", "mocha", "honeydew", "vanilla", "malted", "ashgray", "coffee", "cherry", "dawn", "powder", "peach", "violet", "coyote", "obsidian", "caramel", "golden", "black", "darkblue", "lightblue", "slate", "lilac", "darkash", "ash", "brown", "chocolate", "hazel", "camel", "wheat", "fawn", "ivory", "chalk", "ghastly", "lightgold", "gold", "darkgold", "sunshine", "bronze"], "None", scale(pygame.Rect((column4_x, y_pos[6]), (250, 70))), manager=MANAGER)
 
             self.elements['eye color text'] = pygame_gui.elements.UITextBox(
                 'Eye color',
@@ -1153,9 +1153,9 @@ class NewLifeScreen(Screens):
                 self.elements['scars'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.scars1 + Pelt.scars2 + Pelt.scars3, "None", scale(pygame.Rect((column3_x, y_pos[4]), (250, 70))), manager=MANAGER)
 
             if self.accessory:
-                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories, str(self.accessory), scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
+                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories + Pelt.bone_accessories + Pelt.butterflies_accessories + Pelt.stuff_accessories + Pelt.bandana_collars + Pelt.bows_accessories + Pelt.dogteeth_collars, str(self.accessory), scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
             else:
-                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories, "None", scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
+                self.elements['accessory'] = pygame_gui.elements.UIDropDownMenu(["None"] + Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories + Pelt.bone_accessories + Pelt.butterflies_accessories + Pelt.stuff_accessories + Pelt.bandana_collars + Pelt.bows_accessories + Pelt.dogteeth_collars, "None", scale(pygame.Rect((1150, y_pos[2]), (300, 70))), manager=MANAGER)
 
             if self.permanent_condition:
                 self.elements['permanent conditions'] = pygame_gui.elements.UIDropDownMenu(["None"] + permanent_conditions, str(self.permanent_condition), scale(pygame.Rect((1150, y_pos[4]), (300, 70))), manager=MANAGER)
@@ -1460,12 +1460,12 @@ class NewLifeScreen(Screens):
             name=self.pname,
             length=self.length,
             colour=self.colour,
-            white_patches=self.white_patches,
+            white_patches=[self.white_patches] if self.white_patches else [],
             eye_color=self.eye_color,
             eye_colour2=self.eye_colour2,
             tortiebase=self.tortiebase,
             tortiecolour=self.tortiecolour,
-            pattern=self.pattern,
+            pattern=[self.pattern] if [self.pattern] else [],
             tortiepattern=Pelt.sprites_names.get(self.tortiepattern),
             vitiligo=self.vitiligo,
             points=self.points,
@@ -1499,10 +1499,10 @@ class NewLifeScreen(Screens):
         self.custom_cat.sprite = generate_sprite(self.custom_cat)
         self.elements['sprite'].kill()
         self.elements["sprite"] = UISpriteButton(scale(pygame.Rect
-                                        ((250,280), (350, 350))),
-                                self.custom_cat.sprite,
-                                self.custom_cat.ID,
-                                starting_height=0, manager=MANAGER)
+                                         ((250,280), (350, 350))),
+                                   self.custom_cat.sprite,
+                                   self.custom_cat.ID,
+                                   starting_height=0, manager=MANAGER)
         
     def open_clan_saved_screen(self):
         self.clear_all_page()
@@ -1570,3 +1570,4 @@ class NewLifeScreen(Screens):
             game.clan.unknown_cats.remove(ID)
         if ID in game.clan.darkforest_cats:
             game.clan.darkforest_cats.remove(ID)
+

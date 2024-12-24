@@ -95,6 +95,7 @@ class Clan:
         layouts = ujson.loads(read_file.read())
 
     age = 0
+    weeks = 0
     current_season = "Newleaf"
     all_clans = []
 
@@ -134,6 +135,7 @@ class Clan:
         )  # Must do this after the medicine cat is added to the list.
         self.herbs = {}
         self.age = 0
+        self.weeks = 0
         self.current_season = "Newleaf"
         self.starting_season = starting_season
         self.instructor = None
@@ -237,6 +239,7 @@ class Clan:
                             )
         self.instructor.dead = True
         self.instructor.dead_for = randint(20, 200)
+        self.instructor.dead_weeks = randint(0,3)
         if self.clan_age == "new":
             self.instructor.backstory = choice(BACKSTORIES["backstory_categories"]["new_sc_guide_backstories"])
         else:
@@ -251,6 +254,7 @@ class Clan:
         self.demon.df = True
         self.demon.dead = True
         self.demon.dead_for = randint(20, 200)
+        self.demon.dead_weeks = randint(0,3)
         if self.clan_age == "new":
             self.demon.backstory = choice(BACKSTORIES["backstory_categories"]["new_df_guide_backstories"])
         else:
@@ -291,6 +295,8 @@ class Clan:
             elif Cat.all_cats.get(cat_id).status == 'medicine cat apprentice':
                 Cat.all_cats.get(cat_id).status_change('medicine cat apprentice')
             Cat.all_cats.get(cat_id).thoughts()
+
+            Cat.all_cats.get(cat_id).weeks = randint(0,3)
 
         game.save_cats()
         number_other_clans = randint(3, 5)
@@ -458,6 +464,7 @@ class Clan:
                 )
             sc_cats[0].history.beginning = None
             sc_cats[0].dead_for = randint(20, 200)
+            sc_cats[0].dead_weeks = randint(0,3)
 
     def populate_ur(self):
         for i in range(randint(0,5)):
@@ -485,6 +492,7 @@ class Clan:
                 )
             ur_cats[0].history.beginning = None
             ur_cats[0].dead_for = randint(20,100)
+            ur_cats[0].dead_weeks = randint(0,3)
 
     def populate_df(self):
         for i in range(randint(0,5)):
@@ -507,6 +515,7 @@ class Clan:
                 )
             df_cats[0].history.beginning = None
             df_cats[0].dead_for = randint(20, 200)
+            df_cats[0].dead_weeks = randint(0,3)
 
     def generate_outsiders(self):
         for i in range(randint(0,5)):
@@ -809,6 +818,7 @@ class Clan:
         clan_data = {
             "clanname": self.name,
             "clanage": self.age,
+            "week": self.weeks,
             "biome": self.biome,
             "camp_bg": self.camp_bg,
             "clan_symbol": self.chosen_symbol,
@@ -1207,6 +1217,13 @@ class Clan:
 
         game.switches["error_message"] = "Error loading ---clan.json. Check clan age"
         game.clan.age = clan_data["clanage"]
+        if hasattr(self, 'week'):
+            game.clan.weeks = clan_data["week"]
+        else:
+            clan_data["week"] = 0
+        game.clan.starting_season = clan_data[
+            "starting_season"] if "starting_season" in clan_data else 'Newleaf'
+        get_current_season()
         game.switches["error_message"] = "Error loading ---clan.json. Check season"
         game.clan.starting_season = (
             clan_data["starting_season"]
@@ -1423,8 +1440,10 @@ class Clan:
                     else:
                         cat_sprite = str(cat.pelt.cat_sprites[age])
 
-                possible_accs = ["WILD", "PLANT", "COLLAR", "FLOWER", "PLANT2", "SNAKE", "SMALLANIMAL", "DEADINSECT", "ALIVEINSECT", "FRUIT", "CRAFTED", "TAIL2"]
+                possible_accs = ["TAIL", "WILD", "PLANT", "COLLAR", "FLOWER", "PLANT2", "SNAKE", "SMALLANIMAL", "DEADINSECT", "ALIVEINSECT", "FRUIT", "CRAFTED", "TAIL2", "BONE", "BUTTERFLIES", "STUFF", "BANDANAS", "HARNESSES", "BOWS", "TEETHCOLLARS"]
                 acc_list = []
+                if "TAIL" in possible_accs:
+                    acc_list.extend(Pelt.tail_accessories)
                 if "WILD" in possible_accs:
                     acc_list.extend(Pelt.wild_accessories)
                 if "PLANT" in possible_accs:
@@ -1449,6 +1468,20 @@ class Clan:
                     acc_list.extend(Pelt.crafted_accessories)
                 if "TAIL2" in possible_accs:
                     acc_list.extend(Pelt.tail2_accessories)
+                if "BONE" in possible_accs:
+                    acc_list.extend(Pelt.bone_accessories)
+                if "BUTTERFLIES" in possible_accs:
+                    acc_list.extend(Pelt.butterflies_accessories)
+                if "STUFF" in possible_accs:
+                    acc_list.extend(Pelt.stuff_accessories)
+                if "BANDANAS" in possible_accs:
+                    acc_list.extend(Pelt.bandana_collars)
+                if "HARNESSES" in possible_accs:
+                    acc_list.extend(Pelt.harness_accessories)
+                if "BOWS" in possible_accs:
+                    acc_list.extend(Pelt.bows_accessories)
+                if "TEETHCOLLARS" in possible_accs:
+                    acc_list.extend(Pelt.dogteeth_collars)
                 if "NOTAIL" in c.pelt.scars or "HALFTAIL" in c.pelt.scars:
                     for acc in Pelt.tail_accessories + Pelt.tail2_accessories:
                         if acc in acc_list:

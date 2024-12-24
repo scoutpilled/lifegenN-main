@@ -107,7 +107,7 @@ class Cat:
         "leader",
     ]
 
-    gender_tags = {"female": "F", "male": "M"}
+    gender_tags = {"female": "F", "male": "M", "intersex": "I"}
 
     # EX levels and ranges.
     # Ranges are inclusive to both bounds
@@ -168,6 +168,7 @@ class Cat:
         specsuffix_hidden=False,
         ID=None,
         moons=None,
+        weeks: int=0,
         example=False,
         faded=False,
         skill_dict=None,
@@ -200,7 +201,7 @@ class Cat:
         if (
             faded
         ):  # This must be at the top. It's a smaller list of things to init, which is only for faded cats
-            self.init_faded(ID, status, prefix, suffix, moons, **kwargs)
+            self.init_faded(ID, status, prefix, suffix, moons, weeks, **kwargs)
             return
 
         self.generate_events = GenerateEvents()
@@ -215,6 +216,7 @@ class Cat:
         self.status = status
         self.backstory = backstory
         self.age = None
+        self.weeks = weeks
         self.skills = CatSkills(skill_dict=skill_dict)
         self.personality = Personality(
             trait="troublesome", lawful=0, aggress=0, stable=0, social=0
@@ -238,6 +240,7 @@ class Cat:
         self.outside = False
         self.driven_out = False
         self.dead_for = 0  # moons
+        self.dead_weeks = 0
         self.shunned = 0 # moons
         self.thought = ''
         self.genderalign = None
@@ -399,7 +402,7 @@ class Cat:
         if self.ID not in ["0", None]:
             Cat.insert_cat(self)
 
-    def init_faded(self, ID, status, prefix, suffix, moons, **kwargs):
+    def init_faded(self, ID, status, prefix, suffix, moons, weeks, **kwargs):
         """Perform faded-specific initialisation
 
         :param ID: Cat ID
@@ -420,7 +423,9 @@ class Cat:
         self.status = status
         self.pronouns = []  # Needs to be set as a list
         self.moons = moons
+        self.weeks = weeks
         self.dead_for = 0
+        self.dead_weeks = 0 # weeks per moon, max 3 then it returns to 0
         self.dead = True
         self.outside = False
         self.exiled = False
@@ -1834,6 +1839,48 @@ class Cat:
         if self.status in ['apprentice', 'mediator apprentice', 'medicine cat apprentice', "queen's apprentice"]:
             self.update_mentor()
 
+    def one_week(self):
+        """Handles a week skip for an alive cat. """
+        
+        old_age = self.age
+
+        if self.moons == -1:
+            self.moons += 1
+            self.weeks = 0
+        else:
+            self.weeks += 1
+
+        if self.weeks == 4 or self.moons == -1:
+            self.weeks = 0
+            self.moons += 1
+
+        if self.moons == 1 and self.status == "newborn":
+            self.status = 'kitten'
+        elif self.moons == 0 and self.status == "kitten":
+            self.status = 'newborn'
+        self.in_camp = 1
+        
+        if self.exiled or self.outside:
+            # this is handled in events.py
+            self.personality.set_kit(self.is_baby())
+            self.thoughts()
+            return
+
+        if self.dead:
+            self.thoughts()
+            return
+        
+        if old_age != self.age:
+            # Things to do if the age changes
+            self.personality.facet_wobble(facet_max=2)
+        
+        # Set personality to correct type
+        self.personality.set_kit(self.is_baby())
+        # Upon age-change
+
+        if self.status in ['apprentice', 'mediator apprentice', 'medicine cat apprentice', "queen's apprentice"]:
+            self.update_mentor()
+
     def thoughts(self):
         """Generates a thought for the cat, which displays on their profile."""
         all_cats = self.all_cats
@@ -2392,7 +2439,7 @@ class Cat:
                 "BLEEDINGHEART", "MOREFERN", "GRAYMOSSPELT", "FERN"
                 ]:
                 if acc in self.pelt.accessories:
-                    self.pelt.inventory.remove(acc)
+                    self.pelt.inventory.remove(acc) # pylint: disable=E1101
                 if acc in self.pelt.inventory:
                     self.pelt.inventory.remove(acc)
         if "NOPAW" in self.pelt.scars:
@@ -3631,6 +3678,7 @@ class Cat:
         )
         cat_ob.faded = True
         cat_ob.dead_for = cat_info["dead_for"] if "dead_for" in cat_info else 1
+        cat_ob.dead_weeks = cat_info["dead_weeks"] if "dead_weeks" in cat_info else 0
 
         return cat_ob
 
@@ -3798,7 +3846,9 @@ class Cat:
                 "name_suffix": self.name.suffix,
                 "status": self.status,
                 "moons": self.moons,
+                "weeks": self.weeks,
                 "dead_for": self.dead_for,
+                "dead_weeks": self.dead_weeks,
                 "parent1": self.parent1,
                 "parent2": self.parent2,
                 "adoptive_parents": self.adoptive_parents,
@@ -3818,6 +3868,7 @@ class Cat:
                 "status": self.status,
                 "backstory": self.backstory if self.backstory else None,
                 "moons": self.moons,
+                "weeks": self.weeks,
                 "trait": self.personality.trait,
                 "facets": self.personality.get_facet_string(),
                 "parent1": self.parent1,
@@ -3863,10 +3914,19 @@ class Cat:
                 "tint": self.pelt.tint,
                 'accessories': self.pelt.accessories if self.pelt.accessories else [],
                 "skill_dict": self.skills.get_skill_dict(),
+                "physical_trait_1": self.pelt.physical_trait_1,
+                "physical_trait_2": self.pelt.physical_trait_2,
+                "physical_trait_3": self.pelt.physical_trait_3,
+                "physical_trait_4": self.pelt.physical_trait_4,
+                "physical_trait_hidden": self.pelt.physical_trait_hidden,
+                "physical_trait_hidden_2": self.pelt.physical_trait_hidden_2,
+                "physical_trait_hidden_3": self.pelt.physical_trait_hidden_3,
+                "physical_trait_hidden_4": self.pelt.physical_trait_hidden_4,
                 "scars": self.pelt.scars if self.pelt.scars else [],
                 "accessory": self.pelt.accessory,
                 "experience": self.experience,
                 "dead_moons": self.dead_for,
+                "dead_weeks": self.dead_weeks,
                 "shunned": self.shunned,
                 "current_apprentice": [appr for appr in self.apprentice],
                 "former_apprentices": [appr for appr in self.former_apprentices],

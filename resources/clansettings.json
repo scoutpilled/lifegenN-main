@@ -60,15 +60,21 @@
             "Displays Clan age and current Clan season on several pages.",
             false
         ],
+
         "freshkill": [
             "Enable auto freshkill",
             "With this setting on, no cat will ever go hungry and hunting patrols will not be needed",
             true
-        ],
-        
+        ],   
         "all accessories": [
             "Enable all accessories",
             "All cats will have all accessories available in their inventory",
+            false
+        ],
+
+        "weekskip": [
+            "Skip by weeks",
+            "Skip by weeks instead of moons",
             false
         ]
     },

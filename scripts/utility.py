@@ -1675,17 +1675,27 @@ def change_relationship_values(
 def get_cluster(trait):
         # Mapping traits to their respective clusters
         trait_to_clusters = {
-            "assertive": ["bloodthirsty", "fierce", "bold", "daring", "confident", "arrogant", "competitive", "smug", "impulsive", "noisy"],
-            "brooding": ["bloodthirsty", "cold", "gloomy", "strict", "vengeful", "grumpy", "bullying", "secretive", "aloof", "stoic", "reserved"],
-            "cool": ["charismatic", "cunning", "arrogant", "charming", "manipulative", "leader-like", "passionate", "witty", "flexible", "mellow", "flamboyant"],
-            "upstanding": ["righteous", "ambitious", "strict", "competitive", "responsible", "bossy", "know-it-all", "leader-like", "smug", "loyal", "justified", "methodical"],
-            "introspective": ["lonesome", "righteous", "calm", "wise", "thoughtful", "quiet", "daydreamer", "flexible", "mellow"],
-            "neurotic": ["nervous", "insecure", "lonesome", "quiet", "secretive", "careful", "meek", "cowardly", "emotional"],
-            "silly": ["troublesome", "childish", "playful", "strange", "noisy", "attention-seeker", "rebellious", "bouncy", "energetic", "spontaneous"],
-            "stable": ["loyal", "responsible", "wise", "faithful", "polite", "disciplined", "patient", "passionate", "witty", "trusting"],
-            "sweet": ["compassionate", "faithful", "loving", "oblivious", "sincere", "sweet", "polite", "daydreamer", "trusting", "humble", "emotional"],
-            "unabashed": ["childish", "confident", "bold", "shameless", "strange", "oblivious", "flamboyant", "impulsive", "noisy", "honest", "spontaneous"],
-            "unlawful": ["adventurous", "sneaky", "rebellious", "manipulative", "obsessive", "aloof", "stoic", "cunning", "troublesome"]
+            "assertive": ["bloodthirsty", "fierce", "bold", "daring", "confident", "arrogant", "competitive", "smug", "impulsive", "noisy", "forceful", "intense", "passionate", "protective", "sassy", "leaderly", "hefty", "principled", "greedy", "judgemental", "antagonistic", "scary", "strong", "loud", "argumentative", "opionated", "power-hungry", "entitled", "nosy", "spoiled", "whiny", "spicy", "picky", "fearless"],
+
+            "brooding": ["bloodthirsty", "cold", "gloomy", "strict", "vengeful", "grumpy", "bullying", "secretive", "aloof", "stoic", "reserved", "angry", "cryptic", "passive-aggressive", "pessimistic", "sarcastic", "destructive", "grim", "thoughtless", "spiteful", "disgusted", "desolate", "antagonistic", "mysterious", "moody", "malciious", "frustrated", "fox-hearted", "macabre", "private", "argumentative", "cruel", "resentful", "regretful", "ruined", "scheming", "suspicious", "vague", "venomous", "envious", "solemn", "distrusting", "salty", "morbid"],
+
+            "cool": ["charismatic", "cunning", "arrogant", "charming", "manipulative", "leader-like", "passionate", "witty", "flexible", "mellow", "flamboyant", "easy-going", "elegant", "casual", "chummy", "hypnotic", "gracious", "humorous", "polished", "sarcastic", "tidy", "persuasive", "snobbish", "superficial", "cool", "flirty", "lazy", "fancy", "artificial", "uncaring", "entitled", "sly"],
+
+            "upstanding": ["righteous", "ambitious", "strict", "competitive", "responsible", "bossy", "know-it-all", "leader-like", "smug", "loyal", "justified", "methodical", "dedicated", "fair", "moralistic", "generous", "heroic", "gallant", "hardworking", "high-minded", "incorruptible", "leaderly", "organized", "scholarly", "reliable", "punctual", "polite", "perfectionist", "fancy", "self-reliant", "teacherly", "goody-no-claws", "mature", "obedient"],
+
+            "introspective": ["lonesome", "righteous", "calm", "wise", "thoughtful", "quiet", "daydreamer", "flexible", "mellow", "escapist", "hypnotic", "idealistic", "complex", "logical", "farsighted", "incisive", "optimistic", "romantic", "scholarly", "nerdy", "philosophical", "overthinker", "tranquil", "fatalistic", "confused", "sleepy", "mysterious", "creative", "teacherly", "enigmatic", "private", "questioning", "calculating", "overimaginative", "vague", "dreary", "solemn", "wishful", "indecisive", "distrusting", "nosy", "mature", "shy", "self-conscious", "impressionable", "curious", "bright"],
+
+            "neurotic": ["nervous", "insecure", "lonesome", "quiet", "secretive", "careful", "meek", "cowardly", "emotional", "alert", "cryptic", "dramatic", "escapist", "pessimistic", "self-pitying", "sensitive", "overthinker", "dependent", "weak-willed", "fearful", "delicate", "vulnerable", "perfectionist", "moody", "anxious", "misguided", "unpredictable", "unreliable", "reactive", "regretful", "indecisive", "apologetic", "whiny", "shy", "skittish", "self-conscious", "crybaby", "clingy"],
+
+            "silly": ["troublesome", "childish", "playful", "strange", "noisy", "attention-seeker", "rebellious", "bouncy", "energetic", "spontaneous", "absent-minded", "distracted", "dynamic", "fun loving", "hearty", "humorous", "sassy", "warm", "aimless", "goofy", "forgetful", "cheeky", "hyper", "clumsy", "talkative", "silly", "chaotic", "cheerful", "enthusiastic", "whimsical", "youthful", "loud", "airy", "crude", "quirky", "CHAOS CHAOS", "sillay", "bubbly", "high-spirited", "colorful", "zoomy", "bright"],
+
+            "stable": ["loyal", "responsible", "wise", "faithful", "polite", "disciplined", "patient", "passionate", "witty", "trusting", "dedicated", "old-fashioned", "neutral", "logical", "hardworking", "peaceful", "polished", "incisive", "serious", "incorruptible", "tidy", "organized", "patient", "principled", "boring", "charmless", "dry", "reliable", "punctual", "monotone", "tranquil", "fatalistic", "dull", "self-reliant", "sentimental", "stable", "strong", "civil", "tolerant", "unfoolable", "ordinary", "predictable", "calculating", "ritualistic", "small-thinking", "unimaginative", "obedient"],
+
+            "sweet": ["compassionate", "faithful", "loving", "oblivious", "sincere", "sweet", "polite", "daydreamer", "trusting", "humble", "emotional", "appreciative", "forgiving", "folksy", "maternal", "soft", "unaggressive", "gentle", "generous", "gracious", "idealistic", "innocent", "benevolent", "optimistic", "peaceful", "sensitive", "warm", "patient", "romantic", "supportive", "cooperative", "delicate", "polite", "sappy", "sentient", "whimsical", "sentimental", "sympathetic", "apologetic", "bubbly"],
+
+            "unabashed": ["childish", "confident", "bold", "shameless", "strange", "oblivious", "flamboyant", "impulsive", "noisy", "honest", "spontaneous", "carefree", "easy-going", "casual", "folksy", "unreligious", "hearty", "innocent", "open", "free-thinking", "passionate", "genuine", "relaxed", "aimless", "remorseless", "talkative", "hypcorite", "flirty", "annoying", "lazy", "faithless", "bizarre", "blunt", "messy", "obnoxious", "opionated", "quirky", "selfish", "sloppy", "transparent", "uncaring", "abrupt", "nasty", "fearless", "slug", "earnest"],
+
+            "unlawful": ["adventurous", "sneaky", "rebellious", "manipulative", "obsessive", "aloof", "stoic", "cunning", "troublesome", "carefree", "chummy", "unreligious", "free-thinking", "relaxed", "destructive", "greedy", "unreliable", "unpredictable", "amoral", "wrongful", "chaotic", "hypocrite", "faithless", "malicious", "fox-hearted", "questioning", "crude", "deceitful", "cruel", "devious", "power-hungry", "sadistic", "scheming", "suspicious", "thievish", "CHAOS CHAOS", "sly", "defiant", "wild", "rowdy", "threat to society"]
         }
         clusters = [key for key, values in trait_to_clusters.items() if trait in values]
 
@@ -2587,14 +2597,13 @@ def generate_sprite(
             else:
                 tortie_pattern = cat.pelt.tortiepattern
 
-            patches = sprites.sprites[
-                tortie_pattern + cat.pelt.tortiecolour + cat_sprite
-                ].copy()
-            patches.blit(
-                sprites.sprites["tortiemask" + cat.pelt.pattern + cat_sprite],
-                (0, 0),
-                special_flags=pygame.BLEND_RGBA_MULT,
-            )
+            for pattern in cat.pelt.pattern:
+                patches = sprites.sprites[
+                    tortie_pattern + cat.pelt.tortiecolour + cat_sprite].copy()
+                patches.blit(sprites.sprites["tortiemask" + pattern + cat_sprite], (0, 0),
+                             special_flags=pygame.BLEND_RGBA_MULT)
+                # Add patches onto cat.
+                new_sprite.blit(patches, (0, 0))
 
             # Add patches onto cat.
             new_sprite.blit(patches, (0, 0))
@@ -2615,38 +2624,26 @@ def generate_sprite(
             tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
             new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
 
-        # draw white patches
-        if cat.pelt.white_patches is not None:
-            white_patches = sprites.sprites[
-                "white" + cat.pelt.white_patches + cat_sprite
-                ].copy()
-
-            # Apply tint to white patches.
-            if (
-                    cat.pelt.white_patches_tint != "none"
-                    and cat.pelt.white_patches_tint
-                    in sprites.white_patches_tints["tint_colours"]
-            ):
-                tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
-                tint.fill(
-                    tuple(
-                        sprites.white_patches_tints["tint_colours"][
-                            cat.pelt.white_patches_tint
-                        ]
-                    )
-                )
-                white_patches.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
-
-            new_sprite.blit(white_patches, (0, 0))
+       # draw white patches
+        if cat.pelt.white_patches:
+            for white in cat.pelt.white_patches:
+                if cat.pelt.white_patches_tint != "none" and cat.pelt.white_patches_tint in sprites.white_patches_tints["tint_colours"]:
+                    white_patch = sprites.sprites['white' + white + cat_sprite].copy()
+                    tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+                    tint.fill(tuple(sprites.white_patches_tints["tint_colours"][cat.pelt.white_patches_tint]))
+                    white_patch.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+                    new_sprite.blit(white_patch, (0, 0))
+                else:
+                    new_sprite.blit(sprites.sprites['white' + white + cat_sprite], (0, 0))
 
         # draw vit & points
 
         if cat.pelt.points:
             points = sprites.sprites["white" + cat.pelt.points + cat_sprite].copy()
             if (
-                    cat.pelt.white_patches_tint != "none"
-                    and cat.pelt.white_patches_tint
-                    in sprites.white_patches_tints["tint_colours"]
+                cat.pelt.white_patches_tint != "none"
+                and cat.pelt.white_patches_tint
+                in sprites.white_patches_tints["tint_colours"]
             ):
                 tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
                 tint.fill(
@@ -2849,6 +2846,20 @@ def generate_sprite(
                         new_sprite.blit(sprites.sprites['acc_crafted' + i + cat_sprite], (0, 0))
                     elif i in cat.pelt.tail2_accessories:
                         new_sprite.blit(sprites.sprites['acc_tail2' + i + cat_sprite], (0, 0))
+                    elif i in cat.pelt.bone_accessories:
+                        new_sprite.blit(sprites.sprites['acc_bones' + i + cat_sprite], (0, 0))
+                    elif i in cat.pelt.butterflies_accessories:
+                        new_sprite.blit(sprites.sprites['acc_butterflymoth' + i + cat_sprite], (0, 0))
+                    elif i in cat.pelt.stuff_accessories:
+                        new_sprite.blit(sprites.sprites['acc_twolegstuff' + i + cat_sprite], (0, 0))
+                    elif i in cat.pelt.bandana_collars:
+                        new_sprite.blit(sprites.sprites['bandanas' + i + cat_sprite], (0, 0))
+                    elif i in cat.pelt.harness_accessories:
+                        new_sprite.blit(sprites.sprites['harnesses' + i + cat_sprite], (0, 0))
+                    elif i in cat.pelt.bows_accessories:
+                        new_sprite.blit(sprites.sprites['bows' + i + cat_sprite], (0, 0))
+                    elif i in cat.pelt.dogteeth_collars:
+                        new_sprite.blit(sprites.sprites['teethcollars' + i + cat_sprite], (0, 0))
                 except:
                     continue
 

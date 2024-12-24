@@ -430,5 +430,84 @@
                     }
                 }
             ]
+    },
+    {
+        "patrol_id": "bch_train_greenleaf_dryhot_appsiblings1",
+        "biome": ["beach"],
+        "season": ["greenleaf"],
+        "types": ["training"],
+        "tags": [],
+        "patrol_art": "fst_hunt_heat_apps",
+        "min_cats": 2,
+        "max_cats": 2,
+        "min_max_status": {
+           "apprentice": [2, 2],
+	   "normal adult": [-1, -1]
+            },
+        "weight": 100,
+        "chance_of_success": 60,
+        "relationship_constraint": ["siblings", "platonic_10"],
+        "intro_text": "Though originally thrilled at the idea of training alone with just {PRONOUN/app1/poss} sibling, app1's excitement soon wilts under the sweltering heat. Spotting a nearby rock pool, app1 suggests they have a break and cool-down in the water.",
+        "decline_text": "app2 shakes {PRONOUN/app2/poss} head, stating that they came here to train, not relax. In the end, the heat wins, and both apprentices return to camp with nothing but exhaustion to show for their efforts.",
+        "success_outcomes": [
+                {
+                    "text": "app2 readily agrees to the idea, and the siblings leap into the rock pool, sighing as the blissfully cool water laps against their pelts. Four waterfights later, the pair are engergised and ready to give training another go!",
+                    "exp": 20,
+                    "weight": 10,
+                    "art": "gen_train_soggykitty_happy_app",
+                    "relationships": [
+                        {
+                            "cats_to": ["patrol"],
+                            "cats_from": ["patrol"],
+                            "values": ["platonic", "comfort"],
+                            "amount": 10
+                        },
+                        {
+                            "cats_to": ["patrol"],
+                            "cats_from": ["patrol"],
+                            "values": ["dislike"],
+                            "amount": -5
+                        }
+                    ]
+                },
+                {
+                    "text": "app2's agreement comes in the form of toppling {PRONOUN/app2/poss} sibling into the water. Gasping in exaggerated-outrage, app1 retaliates by splashing a wave of water towards app2! The siblings not only conduct the most epic waterfight in Clan history, but nicely cool themselves down on the unreasonably hot day.",
+                    "exp": 20,
+                    "weight": 10,
+                    "art": "gen_train_soggykitty_happy_app",
+                    "relationships": [
+                        {
+                            "cats_to": ["patrol"],
+                            "cats_from": ["patrol"],
+                            "values": ["platonic", "comfort"],
+                            "amount": 10
+                        },
+                        {
+                            "cats_to": ["patrol"],
+                            "cats_from": ["patrol"],
+                            "values": ["dislike"],
+                            "amount": -5
+                        }
+                    ]
+                }
+            ],
+            "fail_outcomes": [
+                {
+                    "text": "In the end, the pair decide against cooling down in the rock pool - training is more important. Or so they thought, until both apprentices return to camp dizzy and thirsty.",
+                    "exp": 0,
+                    "weight": 20,
+                    "injury": [
+                        {
+                            "cats": ["patrol"],
+                            "injuries": ["dehydrated"],
+                            "scars": []
+                        }
+                    ],
+                    "history_text": {
+                        "reg_death": "m_c got dehydrated training under the hot greenleaf sun, and it eventually sapped {PRONOUN/m_c/subject} life from {PRONOUN/m_c/object}.",
+                        "lead_death": "got dehydrated training under the hot greenleaf sun, and it eventually sapped {PRONOUN/m_c/subject} life from {PRONOUN/m_c/object}"
+                    }
+                }
+            ]
     }
 ]

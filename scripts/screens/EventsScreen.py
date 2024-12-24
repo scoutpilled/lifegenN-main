@@ -121,7 +121,9 @@ class EventsScreen(Screens):
         elif event.type == pygame_gui.UI_BUTTON_PRESSED:  # everything else on button press to prevent blinking
             element = event.ui_element
             if element == self.timeskip_button:
-                if game.clan.your_cat.dead_for >= 2 and not game.switches['continue_after_death']:
+                if game.clan.clan_settings["weekskip"]:
+                    self.events_thread = self.loading_screen_start_work(events_class.one_week)
+                elif game.clan.your_cat.dead_for >= 2 and not game.switches['continue_after_death']:
                     DeathScreen('events screen')
                     return
                 elif (game.clan.your_cat.moons == 5
@@ -129,7 +131,13 @@ class EventsScreen(Screens):
                         and not game.clan.your_cat.dead
                         and game.clan.your_cat.status == "kitten"
                         ):
-                    PickPath('events screen')
+                    if game.clan.clan_settings["weekskip"]:
+                        if game.clan.your_cat.weeks == 3:
+                            PickPath('events screen')
+                        else:
+                            self.events_thread = self.loading_screen_start_work(events_class.one_week)
+                    else:
+                        PickPath('events screen')
                 else:
                     self.events_thread = self.loading_screen_start_work(
                         events_class.one_moon
@@ -364,7 +372,7 @@ class EventsScreen(Screens):
         )
         self.clan_info["age"] = pygame_gui.elements.UITextBox(
             "",
-            scale(pygame.Rect((600, 280), (400, 80))),
+            scale(pygame.Rect((550, 280), (500, 80))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             starting_height=1,
             container=self.event_screen_container,
@@ -775,6 +783,7 @@ class EventsScreen(Screens):
         Kills and recreates the event display, updates the clan info, sets the event display scroll position if it was
         previously saved
         """
+            
         if not game.clan.your_cat:
             print(
                 "Are you playing a normal ClanGen save? Switch to a LifeGen save or create a new cat!")
@@ -784,13 +793,21 @@ class EventsScreen(Screens):
         # UPDATE CLAN INFO
         # self.clan_info["season"].set_text(f"Current season: {game.clan.current_season}")
         self.clan_info["heading"].set_text(str(game.clan.your_cat.name))
-        self.clan_info["season"].set_text(f'Season: {game.clan.current_season} - Clan Age: {game.clan.age}')
+        self.clan_info["season"].set_text(f'Season: {game.clan.current_season} - Clan Age: {game.clan.age} moons')
         if game.clan.your_cat.moons == -1:
             self.clan_info["age"].set_text('Your age: Unborn')
+        elif game.clan.your_cat.moons < 1 and game.clan.your_cat.moons != -1:
+            self.clan_info["age"].set_text(f'Your age: {game.clan.your_cat.weeks} weeks')
         elif game.clan.your_cat.moons != 1:
-            self.clan_info["age"].set_text(f'Your age: {game.clan.your_cat.moons} moons')
+            if game.clan.your_cat.weeks != 1:
+                self.clan_info["age"].set_text(f'Your age: {game.clan.your_cat.moons} moons, {game.clan.your_cat.weeks} weeks')
+            else:
+                self.clan_info["age"].set_text(f'Your age: {game.clan.your_cat.moons} moons, {game.clan.your_cat.weeks} week')
         elif game.clan.your_cat.moons == 1:
-            self.clan_info["age"].set_text(f'Your age: {game.clan.your_cat.moons} moon')
+            if game.clan.your_cat.weeks != 1:
+                self.clan_info["age"].set_text(f'Your age: {game.clan.your_cat.moons} moon, {game.clan.your_cat.weeks} weeks')
+            else:
+                self.clan_info["age"].set_text(f'Your age: {game.clan.your_cat.moons} moon, {game.clan.your_cat.weeks} week')
 
         self.make_event_scrolling_container()
 
@@ -807,7 +824,7 @@ class EventsScreen(Screens):
         self.involved_cat_buttons = {}
 
         # Stop if Clan is new, so that events from previously loaded Clan don't show up
-        if game.clan.age == 0:
+        if game.clan.age == 0 and game.clan.weeks == 0:
             return
         
         y_pos = 0
