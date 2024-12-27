@@ -7,6 +7,24 @@ from scripts.cat.skills import SkillPath
 from scripts.game_structure.game_essentials import game
 from scripts.utility import get_alive_clan_queens
 
+class Territory:
+    """Handle everything related to the territory of the clan."""
+
+    def __init__(self, territory=None) -> None:
+        """
+        Initialize the class.
+
+            Parameters
+            ----------
+            territory : dict
+                the dictionary of the loaded pile from files
+        """
+        
+        if territory:
+            self.territory = territory
+        else:
+            self.territory = game.prey_config["territory_start_amount"]
+
 
 class Nutrition:
     """All the information about nutrition from one cat."""

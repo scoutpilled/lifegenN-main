@@ -554,7 +554,7 @@ class TalkScreen(Screens):
             'teacher', 'hunter', 'fighter', 'runner', 'climber', 'swimmer', 'speaker',
             'mediator1', 'clever', 'insightful', 'sense', 'kitsitter', 'story', 'lore',
             'camp', 'healer', 'star', 'omen', 'dream', 'clairvoyant', 'prophet',
-            'ghost', 'explorer', 'tracker', 'artistan', 'guardian', 'tunneler', 'navigator',
+            'ghost', 'explorer', 'tracker', 'artisan', 'guardian', 'tunneler', 'navigator',
             'song', 'grace', 'clean', 'innovator', 'comforter', 'matchmaker', 'thinker',
             'cooperative', 'scholar', 'time', 'treasure', 'fisher', 'language', 'sleeper', 'dark'
         ]

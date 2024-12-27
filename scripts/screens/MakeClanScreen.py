@@ -176,10 +176,14 @@ class MakeClanScreen(Screens):
         self.elder_pose = 0
         self.faith = "flexible"
         game.choose_cats = {}
-        self.skills = []
+        self.skills = ["Random"]
         for skillpath in SkillPath:
+            count = 0
             for skill in skillpath.value:
-                self.skills.append(skill)
+                count += 1
+                if count == 1:
+                    self.skills.append(skill)
+
         # Buttons that appear on every screen.
         self.menu_warning = pygame_gui.elements.UITextBox(
             '',
@@ -1321,7 +1325,7 @@ class MakeClanScreen(Screens):
         self.reverse= False if random.randint(1,2) == 1 else True
         self.skill = random.choice(self.skills)
         self.sex = random.choice(["male", "female"])
-        self.personality = choice(['troublesome', 'lonesome', 'impulsive', 'bullying', 'attention-seeker', 'charming', 'daring', 'noisy', 'nervous', 'quiet', 'insecure', 'daydreamer', 'sweet', 'polite', 'know-it-all', 'bossy', 'disciplined', 'patient', 'manipulative', 'secretive', 'rebellious', 'grumpy', 'passionate', 'honest', 'leader-like', 'smug'])
+        self.personality = choice(['troublesome', 'lonesome', 'impulsive', 'bullying', 'attention-seeker', 'charming', 'daring', 'noisy', 'nervous', 'quiet', 'insecure', 'daydreamer', 'sweet', 'polite', 'know-it-all', 'bossy', 'disciplined', 'patient', 'manipulative', 'secretive', 'rebellious', 'grumpy', 'passionate', 'honest', 'leader-like', 'smug', 'dreary', 'abrumpt', 'solemn', 'wishful', 'indecisive', 'entitled', 'distrusting', 'charming', 'goody-no-claws', 'CHAOS CHAOS', 'nosy', 'moody', 'nasty', 'sillay', 'spoiled', 'sly', 'mature', 'apologetic', 'salty', 'whiny', 'spicy', 'bubbly', 'picky', 'cheeky', 'shy', 'fearless', 'skittish', 'self-conscious', 'impressionable', 'high-spirited', 'crybaby', 'tiny', 'morbid', 'obedient', 'zoomy', 'colorful', 'clingy', 'curious', 'slug', 'defiant', 'wild', 'bright', 'earnest', 'rowdy', 'sloppy', 'complex', 'emotional', 'threat to society', 'protective'])
         self.accessory = choice(Pelt.plant_accessories + Pelt.wild_accessories + Pelt.collars + Pelt.flower_accessories + Pelt.plant2_accessories + Pelt.snake_accessories + Pelt.smallAnimal_accessories + Pelt.deadInsect_accessories + Pelt.aliveInsect_accessories + Pelt.fruit_accessories + Pelt.crafted_accessories + Pelt.tail2_accessories) if random.randint(1,5) == 1 else None
         self.permanent_condition = choice(permanent_conditions) if random.randint(1,30) == 1 else None
         self.faith = random.choice(["flexible", "starclan", "dark forest", "neutral"])
@@ -1726,7 +1730,7 @@ class MakeClanScreen(Screens):
 
             self.elements['sex'] = pygame_gui.elements.UIDropDownMenu(['male', 'female'], str(self.sex), scale(pygame.Rect((column3_x, y_pos[6]), (250, 70))), manager=MANAGER)
 
-            self.elements['personality'] = pygame_gui.elements.UIDropDownMenu(['troublesome', 'lonesome', 'impulsive', 'bullying', 'attention-seeker', 'charming', 'daring', 'noisy', 'nervous', 'quiet', 'insecure', 'daydreamer', 'sweet', 'polite', 'know-it-all', 'bossy', 'disciplined', 'patient', 'manipulative', 'secretive', 'rebellious', 'grumpy', 'passionate', 'honest', 'leader-like', 'smug'], str(self.personality), scale(pygame.Rect((1150, y_pos[6]), (300, 70))), manager=MANAGER)
+            self.elements['personality'] = pygame_gui.elements.UIDropDownMenu(['troublesome', 'lonesome', 'impulsive', 'bullying', 'attention-seeker', 'charming', 'daring', 'noisy', 'nervous', 'quiet', 'insecure', 'daydreamer', 'sweet', 'polite', 'know-it-all', 'bossy', 'disciplined', 'patient', 'manipulative', 'secretive', 'rebellious', 'grumpy', 'passionate', 'honest', 'leader-like', 'smug', 'dreary', 'abrumpt', 'solemn', 'wishful', 'indecisive', 'entitled', 'distrusting', 'charming', 'goody-no-claws', 'CHAOS CHAOS', 'nosy', 'moody', 'nasty', 'sillay', 'spoiled', 'sly', 'mature', 'apologetic', 'salty', 'whiny', 'spicy', 'bubbly', 'picky', 'cheeky', 'shy', 'fearless', 'skittish', 'self-conscious', 'impressionable', 'high-spirited', 'crybaby', 'tiny', 'morbid', 'obedient', 'zoomy', 'colorful', 'clingy', 'curious', 'slug', 'defiant', 'wild', 'bright', 'earnest', 'rowdy', 'sloppy', 'complex', 'emotional', 'threat to society', 'protective'], str(self.personality), scale(pygame.Rect((1150, y_pos[6]), (300, 70))), manager=MANAGER)
 
             if self.reverse:
                 self.elements['reverse'] = pygame_gui.elements.UIDropDownMenu(["Yes", "No"], "Yes", scale(pygame.Rect((column3_x, y_pos[8]), (250, 70))), manager=MANAGER)

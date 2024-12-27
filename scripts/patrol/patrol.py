@@ -132,16 +132,25 @@ class Patrol:
         
         return self.process_text(self.patrol_event.intro_text, None)
 
-    def proceed_patrol(self, path: str = "proceed") -> Tuple[str]:
+    def proceed_patrol(self, patrol_type, path: str = "proceed") -> Tuple[str]:
         """Proceed the patrol to the next step.
         path can be: "proceed", "antag", or "decline" """
 
         if path == "decline":
+            results = None
             if self.patrol_event:
                 print(
                     f"PATROL ID: {self.patrol_event.patrol_id} | SUCCESS: N/A (did not proceed)"
                 )
-                return self.process_text(self.patrol_event.decline_text, None), "", None
+                
+                if patrol_type == 'border':
+                    decrease = int(len(self.patrol_cats) / 2)
+                    game.clan.territory -= decrease
+                    results = f"The Clan has lost {decrease}% of its territory to a lack of upkeep."
+                if results:
+                    return self.process_text(self.patrol_event.decline_text, None), results, None
+                else:
+                    return self.process_text(self.patrol_event.decline_text, None), "", None
             else:
                 return "Error - no event chosen", "", None
 

@@ -330,6 +330,42 @@ class Events:
                 event_string = f"{game.clan.name}Clan doesn't have enough prey for next week!"
                 game.cur_events_list.insert(0, Single_Event(event_string))
                 game.freshkill_event_list.append(event_string)
+        
+        #check for territory being larger than can be upkept by the clan's working warriors, shrinking it if necessary
+        #also decrease territory in relation to outsiders within the clan's borders
+        if game.clan.game_mode in ["expanded", "cruel season"]: 
+            event_string = None
+            healthy_warrior = list(
+            filter(
+                lambda c: c.status in ["warrior", "leader", "deputy"]
+                and not c.dead
+                and not c.outside
+                and not c.exiled
+                and not c.not_working(),
+                Cat.all_cats.values(),
+            )
+            )
+            territory_min = len(healthy_warrior)
+            territory_max = 100 + territory_min
+            if game.clan.territory > territory_max:
+                some = int(territory_min / 2)
+                game.clan.territory -= some
+                event_string = f"{game.clan.name}Clan has lost {some}% of its territory to a lack of upkeep"
+            
+            outsiders = list( filter( lambda c: (c.status == "kittypet" or c.status == "loner" or c.status == "rogue" or c.status == "former Clancat" or c.exiled) and not c.dead and not c.driven_out
+                and not c.not_working(),
+                Cat.all_cats.values(),))
+            if len(outsiders) > 2:
+                some = int(len(outsiders) / 3)
+                game.clan.territory -= some
+                if event_string:
+                    event_string += ", and {some}% to outsiders"
+                else:
+                    event_string = f"{game.clan.name}Clan has lost {some}% of its territory to outsiders"
+
+            if event_string:
+                event_string += "."
+                game.cur_events_list.insert(0, Single_Event(event_string))
 
         self.herb_gather()
         self.handle_focus()
@@ -1978,6 +2014,7 @@ class Events:
 
             additional_kits = None
             # SUCCESS/FAIL
+            # SUCCESS/FAIL
             if info_dict["success"]:
                 if info_dict["interaction_type"] == "hunt":
                     History.add_death(
@@ -1989,11 +2026,15 @@ class Events:
                         ),
                     )
                     outsider_cat.die()
+                    game.clan.territory += 2
+                    event_text += " (+2% territory)"
 
                 elif info_dict["interaction_type"] == "drive":
                     outsider_cat.status = "exiled"
                     outsider_cat.exiled = True
                     outsider_cat.driven_out = True
+                    game.clan.territory += 2
+                    event_text += " (+2% territory)"
 
                 elif info_dict["interaction_type"] in ["invite", "search"]:
                     # ADD TO CLAN AND CHECK FOR KITS
@@ -2197,8 +2238,8 @@ class Events:
             if cat.status == "apprentice":
                 lower_value = game.prey_config["auto_apprentice_prey"][0]
                 upper_value = game.prey_config["auto_apprentice_prey"][1]
-
-            prey_amount += random.randint(lower_value, upper_value)
+        modifier = game.clan.territory / 100
+        prey_amount += int(prey_amount * modifier)
         game.freshkill_event_list.append(
             f"The clan managed to catch {prey_amount} pieces of prey in this moon."
         )
@@ -2323,6 +2364,29 @@ class Events:
                 focus_text = "Despite the additional focus of the Clan, no prey could be gathered."
             game.freshkill_event_list.append(focus_text)
 
+        elif game.clan.clan_settings.get("secure borders"): # robin addition
+            if game.clan.territory < 100:
+                healthy_warriors = list(
+                filter(
+                    lambda c: c.status in ["warrior", "leader", "deputy"]
+                    and not c.dead
+                    and not c.outside
+                    and not c.exiled
+                    and not c.not_working(),
+                    Cat.all_cats.values(),
+                    )
+                )
+                warrior_amount = len(healthy_warriors)
+                gain = int(warrior_amount / 4)
+                if gain < 1:
+                    focus_text = "Despite the additional focus of the Clan, due to too few warriors, no lost territory could be secured."
+                else:
+                    game.clan.territory += gain
+                    focus_text = f"With the additional focus of the Clan, {gain}% of lost territory was secured again."
+            else:
+                focus_text = f"Since the Clan's territory is fully secured, the leader thinks it may benefit from a change in focus."
+            game.freshkill_event_list.append(focus_text)
+
         elif game.clan.clan_settings.get("herb gathering"):
             herbs_found = []
 
@@ -2433,6 +2497,12 @@ class Events:
                     f"With the additional focus of the Clan, {warrior_amount} prey piece was caught."
                 )
 
+            # handle territory (robin addition)
+            game.clan.territory += int(len(game.clan.clans_in_focus) * 5)
+            game.freshkill_event_list.append(
+                    f"With the additional focus of the Clan, its territory has been expanded by {len(game.clan.clans_in_focus)}%."
+                )
+            
             # handle herbs
             herbs_found = []
             healthy_meds = list(
@@ -3111,6 +3181,55 @@ class Events:
                     war_events.remove(event)
 
         event = random.choice(war_events)
+
+        if choice == "rel_down" or choice == "neutral": #territory adjustments from war
+            able_fighters = list(
+                                filter(
+                                lambda c: c.status in ["warrior", "apprentice", "leader", "deputy"]
+                                and not c.dead
+                                and not c.outside
+                                and not c.exiled
+                                and not c.not_working()
+                                and "fighting" not in str(c.skills.skill_string(short=True)),
+                                Cat.all_cats.values(),
+                            )
+                        )
+            fighter_bonus = list(
+                                filter(
+                                lambda c: c.status in ["warrior", "apprentice", "leader", "deputy"]
+                                and not c.dead
+                                and not c.outside
+                                and not c.exiled
+                                and not c.not_working()
+                                and "fighting" in str(c.skills.skill_string(short=True)),
+                                Cat.all_cats.values(),
+                            )
+                        )
+            strength = int(len(able_fighters) / 2 + len(fighter_bonus))
+            enemystrength = randint(1,20)
+            enemystrength2 = randint(1,20)
+            enemystrength = min(enemystrength,enemystrength2)
+            if enemy_clan.temperament == "bloodthirsty":
+                enemystrength += 5
+            if enemy_clan.temperament in ["wary", "cunning"]:
+                enemystrength += 3
+            if enemy_clan.temperament in ["mellow", "amiable", "gracious"]:
+                enemystrength -= 2
+            enemystrength -= game.clan.war["duration"]
+            
+            if enemystrength > strength:
+                some = enemystrength - strength
+                game.clan.territory -= some
+                event += f" o_c_n has taken {some}% of c_n's territory."
+            elif enemystrength == strength:
+                event += f" o_c_n and c_n are evenly matched, neither able to take territory from the other."
+            else:
+                some = strength - enemystrength
+                if some < len(fighter_bonus):
+                    some = len(fighter_bonus)
+                game.clan.territory += some
+                event += f" c_n has taken {some}% of o_c_n's territory."
+
         event = ongoing_event_text_adjust(
             Cat, event, other_clan_name=f"{enemy_clan.name}Clan", clan=game.clan
         )

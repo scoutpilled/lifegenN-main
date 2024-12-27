@@ -5220,6 +5220,23 @@
                 }
             }
         },
+        "#secure_focus_button": {
+            "prototype": "#image_button",
+            "images": {
+                "normal_image": {
+                    "path": "resources/images/buttons/secure_focus.png"
+                },
+                "hovered_image": {
+                    "path": "resources/images/buttons/secure_focus_hover.png"
+                },
+                "selected_image": {
+                    "path": "resources/images/buttons/secure_focus.png"
+                },
+                "disabled_image": {
+                    "path": "resources/images/buttons/secure_focus_unavailable.png"
+                }
+            }
+        },
         "#hunting_focus_button": {
             "prototype": "#image_button",
             "images": {

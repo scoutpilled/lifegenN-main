@@ -242,7 +242,7 @@
         ],
         "raid other clans": [
             "Raiding Other Clans",
-            "Your warriors begin crossing borders for resources. Prey and herbs will greatly increase each moonskip, but injuries and illnesses will increase and the relationship with other Clans decrease. You will be able to choose which Clans you target.",
+            "Your warriors begin crossing borders for resources. Territory, prey and herbs will greatly increase each moonskip, but injuries and illnesses will increase and the relationship with other Clans decrease. You will be able to choose which Clans you target.",
             false,
             "raid_focus",
             "#raid_focus_button"
@@ -253,6 +253,13 @@
             false,
             "hoard_focus",
             "#hoard_focus_button"
+        ],
+        "secure borders":[
+            "Securing Borders",
+            "The Clan will focus on regaining lost territory. For every 3 working warriors (including deputy and leader), the Clan will gain 1% territory on each moonskip, to a maximum of 100%.",
+            false,
+            "secure_focus",
+            "#secure_focus_button"
         ]
     },
     "..": "these are special. they do not have a display name or a tooltip",

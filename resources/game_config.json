@@ -455,7 +455,7 @@
 	"affair_relationship_change_ub": 30,
 	"murder_chance":-1,
 	"accomplice_chance":-1,
-	"debug_ensure_dialogue": "",
+	"debug_ensure_dialogue": "honest_apprentice1",
 
 	"shunned_cat": {
 		"exile_chance": {

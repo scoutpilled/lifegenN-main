@@ -633,6 +633,11 @@ class PatrolScreen(Screens):
                 pygame.Rect((600, 215), (400, 100))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"), manager=MANAGER
         )
+        territory = game.clan.territory
+        self.elements['territory'] = pygame_gui.elements.UITextBox(
+            f"territory: <b>{territory}%</b>", scale(pygame.Rect((600, 1330), (400, 800))),
+            object_id=get_text_box_theme("#text_box_30_horizcenter"), manager=MANAGER
+        )
 
         if self.elements['current_prey']:
             self.elements['info'].kill()

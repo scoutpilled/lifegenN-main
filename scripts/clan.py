@@ -27,7 +27,7 @@ from scripts.cat.names import names
 from scripts.cat.sprites import sprites
 from sys import exit  # pylint: disable=redefined-builtin
 from scripts.cat.names import Name
-from scripts.clan_resources.freshkill import FreshkillPile, Nutrition
+from scripts.clan_resources.freshkill import FreshkillPile, Nutrition, Territory
 from scripts.events_module.generate_events import OngoingEvent
 from scripts.game_structure.game_essentials import game
 from scripts.housekeeping.datadir import get_save_dir
@@ -106,6 +106,7 @@ class Clan:
                 medicine_cat=None,
                 biome='Forest',
                 camp_bg=None,
+                territory=100,
                 symbol=None,
                 game_mode='classic',
                 starting_members=[],
@@ -201,6 +202,8 @@ class Clan:
         }
         self.last_focus_change = None
         self.clans_in_focus = []
+
+        self.territory = territory 
 
         self.faded_ids = (
             []
@@ -821,6 +824,7 @@ class Clan:
             "week": self.weeks,
             "biome": self.biome,
             "camp_bg": self.camp_bg,
+            "territory": self.territory, 
             "clan_symbol": self.chosen_symbol,
             "gamemode": self.game_mode,
             "last_focus_change": self.last_focus_change,

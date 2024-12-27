@@ -50,7 +50,7 @@
                 "text": "You glance into the hollow, but your attention is captured by the spiderwebs themselves. They sway in the wind, some thin and some more like clumps of fur, some with dried leaves and petals caught in their strands. They're kind of creepy, but also strangely beautiful. You continue your patrol, considering ways you could decorate the camp with spiderwebs when you get back!",
                 "exp": 10,
                 "weight": 20,
-                "stat_skill": ["ARTISTAN,1","CAMP,1"],
+                "stat_skill": ["ARTISAN,1","CAMP,1"],
                 "can_have_stat": ["p_l"]
             },
             {

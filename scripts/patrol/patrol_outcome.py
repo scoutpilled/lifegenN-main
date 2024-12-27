@@ -221,7 +221,7 @@ class PatrolOutcome:
 
         return outcome_list
 
-    def execute_outcome(self, patrol: "Patrol") -> tuple:
+    def execute_outcome(self, patrol_type, patrol: "Patrol") -> tuple:
         """
         Excutes the outcome. Returns a tuple with the final outcome text, the results text, and any outcome art
         format: (Outcome text, results text, outcome art (might be None))
@@ -264,6 +264,7 @@ class PatrolOutcome:
         results.append(unpack_rel_block(Cat, self.relationship_effects, patrol, stat_cat=self.stat_cat))
         results.append(self._handle_rep_changes(patrol))
         results.append(self._handle_other_clan_relations(patrol))
+        results.append(self._handle_territory(patrol_type,patrol))
         results.append(self._handle_prey(patrol))
         results.append(self._handle_herbs(patrol))
         results.append(self._handle_exp(patrol))
@@ -431,6 +432,30 @@ class PatrolOutcome:
     # ---------------------------------------------------------------------------- #
     #                                   HANDLERS                                   #
     # ---------------------------------------------------------------------------- #
+
+    def _handle_territory(self,patrol_type,patrol:"Patrol") -> str:
+        if patrol_type not in "border":
+            return ""
+        else:
+            if self.success:
+                if self.antagonize:
+                    increase = int(len(patrol.patrol_cats) / 2)
+                    game.clan.territory += increase
+                    output = f"The Clan has expanded its territory by {increase}%."
+                elif game.clan.territory < 100:
+                    increase = int(len(patrol.patrol_cats) / 2)
+                    game.clan.territory += increase
+                    output = f"The Clan has gained {increase}% of its territory back."
+                else:
+                    output = f"The Clan's territory is fully secured."
+            else:
+                if self.antagonize:
+                    game.clan.territory -= 1
+                    output = f"The Clan has lost 1% of its territory."
+                else:
+                    output = ""
+
+        return output
 
     def _handle_exp(self, patrol: "Patrol") -> str:
         """Handle giving exp"""
@@ -925,6 +950,11 @@ class PatrolOutcome:
                 amount_gotten = 4
             else:
                 amount_gotten = choices([1, 2, 3], [2, 3, 1], k=1)[0]
+            
+            multiplier = game.clan.territory / 100  #robin addition
+            amount_gotten = int(amount_gotten * multiplier) #robin addition
+            if amount_gotten < 1:  #robin addition
+                amount_gotten = 1  #robin addition
 
             amount_gotten = int(amount_gotten * patrol_size_modifier)
             amount_gotten = max(1, amount_gotten)
@@ -1016,6 +1046,9 @@ class PatrolOutcome:
             total_amount = int(
                 total_amount * (HUNTER_BONUS[str(highest_hunter_tier)] / 20 + 1)
             )
+
+        modifier = game.clan.territory / 100
+        total_amount = int(total_amount * modifier)
 
         results = ""
         if total_amount > 0:

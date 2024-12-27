@@ -284,8 +284,21 @@ class WarriorDenScreen(Screens):
             else:
                 next_change = f"0 moons"
 
+        healthy_warrior = list(
+            filter(
+                lambda c: c.status in ["warrior", "leader", "deputy"]
+                and not c.dead
+                and not c.outside
+                and not c.exiled
+                and not c.not_working(),
+                Cat.all_cats.values(),
+            )
+        )
+        territory_min = len(healthy_warrior)
+        territory_max = 100 + territory_min
+
         self.focus_information["current_focus"] = pygame_gui.elements.UITextBox(
-            f"<b>Current Focus:</b> {name}{desc}<br><b>Focus Last Changed:</b> {last_change_text}<br>(next change in {next_change})",
+            f"<b>Current Focus:</b> {name}{desc}<br><b>Focus Last Changed:</b> {last_change_text}<br>(next change in {next_change})<br><br><b>Territory Size:</b> {game.clan.territory}% (range: {territory_min}-{territory_max}%)",
             scale(pygame.Rect((100, 145), (710, 80))),
             wrap_to_height=True,
             object_id=get_text_box_theme("#text_box_30_horizcenter_vertcenter_spacing_95"),

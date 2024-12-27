@@ -20170,13 +20170,13 @@
             "[You point out a few patches that could use grooming and t_c quickly gets to work.]"
         ]
     ],
-    "neurotic_skillartistan_SQ1~1": [
+    "neurotic_skillartisan_SQ1~1": [
         [
             "they_neurotic",
             "no_kit",
             "min_platonic_30",
             "newleaf",
-            "they_artistan"
+            "they_artisan"
         ],
         [
             "[t_c has been sitting in front of the apprentices' den for a while now, seemingly inspecting the opening. {PRONOUN/t_c/subject/CAP} {VERB/t_c/jump/jumps} a bit when you come up beside {PRONOUN/t_c/object}.]",
@@ -20186,12 +20186,12 @@
             "I'll think about it."
         ]
     ],
-    "neurotic_skillartistan_SQ1~2": [
+    "neurotic_skillartisan_SQ1~2": [
         [
             "they_neurotic",
             "no_kit",
             "min_platonic_30",
-            "they_artistan",
+            "they_artisan",
             "connected"
         ],
         [
@@ -20200,12 +20200,12 @@
             "And if it's okay, could I ask for your thoughts on some color combinations?"
         ]
     ],
-    "neurotic_skillartistan_SQ1~3": [
+    "neurotic_skillartisan_SQ1~3": [
         [
             "they_neurotic",
             "no_kit",
             "min_platonic_30",
-            "they_artistan",
+            "they_artisan",
             "connected"
         ],
         [
@@ -20214,12 +20214,12 @@
             "I should make sure none of these are poisonous, in case any kits get into them."
         ]
     ],
-    "neurotic_skillartistan_SQ1~4": [
+    "neurotic_skillartisan_SQ1~4": [
         [
             "they_neurotic",
             "no_kit",
             "min_platonic_30",
-            "they_artistan",
+            "they_artisan",
             "connected"
         ],
         [
@@ -22660,7 +22660,7 @@
         [
             "any",
             "they_assertive",
-            "they_artistan"
+            "they_artisan"
         ],
         [
             "[t_c is fiddling with something. Walking around, you see {PRONOUN/t_c/subject} {VERB/t_c/have/has} made something particularly interesting.]",
@@ -23899,11 +23899,11 @@
             "You certainly have a lot of guts, coming to speak to me so soon."
         ]
     ],
-    "dfskill_artistan_SQ2~1": [
+    "dfskill_artisan_SQ2~1": [
         [
             "no_kit",
             "they_df",
-            "they_artistan",
+            "they_artisan",
             "newleaf",
             "they_deaf",
             "you_deaf",
@@ -23917,12 +23917,12 @@
             "[t_c narrows {PRONOUN/t_c/poss} eyes, turns, and walks away. {PRONOUN/t_c/poss/CAP} form fades before {PRONOUN/t_c/subject} {VERB/t_c/reach/reaches} the edge of camp.]"
         ]
     ],
-"dfskill_artistan_SQ2~2~a": [
+"dfskill_artisan_SQ2~2~a": [
      [
 "no_kit",
 "they_df",
-"you_artistan",
-"they_artistan",
+"you_artisan",
+"they_artisan",
 "newleaf",
 "greenleaf",
 "they_deaf",
@@ -23937,11 +23937,11 @@
 "[You let {PRONOUN/t_c/object} be. {PRONOUN/t_c/subject/CAP} {VERB/t_c/sit/sits} by the warriors' den until the sun begins to set.]"
      ]
     ],
-"dfskill_artistan_SQ2~2~b": [
+"dfskill_artisan_SQ2~2~b": [
      [
 "no_kit",
 "they_df",
-"they_artistan",
+"they_artisan",
 "newleaf",
 "greenleaf",
 "they_deaf",
@@ -24696,13 +24696,13 @@
 "*sigh* Realistically, though, I know I'd probably worry about that stuff anyways."
      ]
     ],
-    "neurotic_skillartistan_SQ2": [
+    "neurotic_skillartisan_SQ2": [
      [
 "they_neurotic",
 "no_kit",
 "min_platonic_30",
 "min_trust_15",
-"they_artistan"
+"they_artisan"
      ],
      [
 "y_c, I really, really need your advice.",

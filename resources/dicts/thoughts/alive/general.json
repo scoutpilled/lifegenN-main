@@ -2374,7 +2374,7 @@
         ]
     },
     {
-        "id": "ARTISTAN",
+        "id": "ARTISAN",
         "thoughts": [
             "Is collecting shells to decorate the camp",
             "Is weaving feathers into the den walls",
@@ -2400,7 +2400,7 @@
             "senior"
         ],
         "main_skill_constraint": [
-            "ARTISTAN,1"
+            "ARTISAN,1"
         ],
         "random_living_status": [
             "living"
