@@ -154,7 +154,7 @@ class Patrol:
             else:
                 return "Error - no event chosen", "", None
 
-        return self.determine_outcome(antagonize=(path == "antag"))
+        return self.determine_outcome(patrol_type,antagonize=(path == "antag"))
 
     def add_patrol_cats(self, patrol_cats: List[Cat], clan: Clan) -> None:
         """Add the list of cats to the patrol class and handles to set all needed values.
@@ -790,7 +790,7 @@ class Patrol:
 
         return all_patrol_events
 
-    def determine_outcome(self, antagonize=False):
+    def determine_outcome(self, patrol_type, antagonize=False):
 
         if self.patrol_event is None:
             return
@@ -843,7 +843,7 @@ class Patrol:
         print(f"PATROL ID: {self.patrol_event.patrol_id} | SUCCESS: {success}")
         
         # Run the chosen outcome
-        return final_event.execute_outcome(self)
+        return final_event.execute_outcome(patrol_type,self)
 
     def calculate_success( 
         self, success_outcome: PatrolOutcome, fail_outcome: PatrolOutcome
