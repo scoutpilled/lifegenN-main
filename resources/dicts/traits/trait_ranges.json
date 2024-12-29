@@ -1014,12 +1014,6 @@
             "aggression": [6, 18],
             "stability": [1, 11]
         },
-        "maternal": {
-            "lawfulness": [0, 10],
-            "sociability": [0, 19],
-            "aggression": [6, 10],
-            "stability": [10, 16]
-        },
         "old-fashioned": {
             "lawfulness": [0, 10],
             "sociability": [0, 1],
@@ -1049,12 +1043,6 @@
             "sociability": [0, 16],
             "aggression": [0, 1],
             "stability": [10, 16]
-        },
-        "fun loving": {
-            "lawfulness": [0, 8],
-            "sociability": [10, 16],
-            "aggression": [0, 12],
-            "stability": [0, 8]
         },
         "gentle": {
             "lawfulness": [6, 12],

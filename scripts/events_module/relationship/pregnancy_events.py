@@ -55,8 +55,16 @@ class Pregnancy_Events:
     @staticmethod
     def handle_pregnancy_age(clan):
         """Increase the moon for each pregnancy in the pregnancy dictionary"""
-        for pregnancy_key in clan.pregnancy_data.keys():
-            clan.pregnancy_data[pregnancy_key]["moons"] += 1
+        if game.clan.clan_settings["weekskip"]:
+            for pregnancy_key in clan.pregnancy_data.keys():
+                clan.pregnancy_data[pregnancy_key]["weeks"] += 1
+
+                if clan.pregnancy_data[pregnancy_key]["weeks"] == 4:
+                    clan.pregnancy_data[pregnancy_key]["weeks"] = 0
+                    clan.pregnancy_data[pregnancy_key]["moons"] += 1
+        else:
+            for pregnancy_key in clan.pregnancy_data.keys():
+                clan.pregnancy_data[pregnancy_key]["moons"] += 1
 
     @staticmethod
     def handle_having_kits(cat, clan):
@@ -241,6 +249,7 @@ class Pregnancy_Events:
             clan.pregnancy_data[cat.ID] = {
                 "second_parent": str(other_cat.ID) if other_cat else None,
                 "moons": 0,
+                "weeks": 0,
                 "amount": 0,
             }
 
@@ -282,6 +291,7 @@ class Pregnancy_Events:
             clan.pregnancy_data[pregnant_cat.ID] = {
                 "second_parent": str(second_parent.ID) if second_parent else None,
                 "moons": 0,
+                "weeks": 0,
                 "amount": 0,
             }
 
