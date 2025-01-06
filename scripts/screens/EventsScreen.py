@@ -157,7 +157,6 @@ class EventsScreen(Screens):
                 # ensure we can't run the same timeskip multiple times
                 if self.events_thread is not None and self.events_thread.is_alive():
                     return
-                self.timeskip_button.disable()
                 if game.clan.your_cat.dead_for >= 2 and not game.switches['continue_after_death']:
                     DeathScreen('events screen')
                     return
@@ -369,7 +368,7 @@ class EventsScreen(Screens):
         )
 
         self.clan_info["symbol"] = pygame_gui.elements.UIImage(
-            ui_scale(pygame.Rect((167, 105), (100, 100))),
+            ui_scale(pygame.Rect((137, 105), (100, 100))),
             pygame.transform.scale(
                 clan_symbol_sprite(game.clan), ui_scale_dimensions((100, 100))
             ),
@@ -381,7 +380,7 @@ class EventsScreen(Screens):
 
         self.clan_info["heading"] = pygame_gui.elements.UITextBox(
             "",
-            ui_scale(pygame.Rect((272, 102), (250, -1))),
+            ui_scale(pygame.Rect((272, 112), (250, -1))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             starting_height=1,
             container=self.event_screen_container,
@@ -390,7 +389,7 @@ class EventsScreen(Screens):
 
         self.clan_info["season"] = pygame_gui.elements.UITextBox(
             "",
-            ui_scale(pygame.Rect((272, 162), (250, -1))),
+            ui_scale(pygame.Rect((252, 172), (290, -1))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             starting_height=1,
             container=self.event_screen_container,
@@ -398,7 +397,7 @@ class EventsScreen(Screens):
         )
         self.clan_info["age"] = pygame_gui.elements.UITextBox(
             "",
-            ui_scale(pygame.Rect((272, 182), (250, -1))),
+            ui_scale(pygame.Rect((252, 142), (290, -1))),
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             starting_height=1,
             container=self.event_screen_container,

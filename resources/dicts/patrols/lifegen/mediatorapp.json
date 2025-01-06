@@ -26,7 +26,7 @@
                 "weight": 20
             },
             {
-                "text": "You approach the apprentices, asking why they're fighting. Both talk over each other trying explain their own side of the story, resulting in more yelling. You roll your eyes and raise your voice to tell them they're acting like kittens. That embarrassed the apprentices enough to halt the argument.",
+                "text": "You approach the apprentices, asking why they're fighting. Both talk over each other to try to explain their own side of the story, resulting in more yelling. You roll your eyes and raise your voice to tell them they're acting like kittens. That embarrassed the apprentices enough to halt the argument.",
                 "exp": 10,
                 "weight": 20
             }
@@ -43,7 +43,7 @@
                 "weight": 20
             },
             {
-                "text": "You approach the two apprentices with the intention of mediating the situation, but both apprentices hiss you away, saying you have no right to get in between 'warrior matters'. Intimidated, you jump away amd watch helplessly as the apprentices eventually calm down from the argument on their own.",
+                "text": "You approach the two apprentices with the intention of mediating the situation, but both apprentices hiss you away, saying you have no right to get in between 'warrior matters'. Intimidated, you jump away and watch helplessly as the apprentices eventually calm down from the argument on their own.",
                 "exp": 0,
                 "weight": 20,
                 "stat_trait": [
@@ -107,7 +107,7 @@
                 "weight": 20
             },
             {
-                "text": "You attempt to intervene in the argument, but as you approach, the warriors quiet down reluctantly. They apologize for the ruckus they caused and agree to disagree in peace. That was... too easy.",
+                "text": "You attempt to intervene in the argument, but as you approach, the warriors quiet down reluctantly. They apologize for the ruckus they caused and agree to disagree in peace. That was... Too easy.",
                 "exp": 5,
                 "weight": 20
             },

@@ -1341,7 +1341,7 @@
             "training"
         ],
         "tags": [],
-        "patrol_art": "train_general_intro",
+        "patrol_art": "wtlnd_train_moosemyth_storylocked1",
         "min_cats": 2,
         "max_cats": 6,
         "min_max_status": {
@@ -1791,7 +1791,7 @@
             "LORE,1",
             "STORY,1"
         ],
-        "intro_text": "Alright, listen up, p_l orders. It's not a <i>fun</i> tale, but apprentices need to learn about the bog. And, er... the bodies...",
+        "intro_text": "Alright, listen up, p_l orders. It's not a <i>fun</i> tale, but apprentices need to learn about the bog. And, er... The bodies...",
         "decline_text": "On second thought, app1 looks a bit nervous. p_l will wait to explain this until another, happier, day.",
         "success_outcomes": [
             {

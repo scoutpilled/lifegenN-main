@@ -11,7 +11,7 @@ from scripts.game_structure.ui_elements import (
     UISpriteButton,
     UISurfaceImageButton,
 )
-from scripts.patrol.patrol import Patrol
+from scripts.events_module.patrol.patrol import Patrol
 from scripts.utility import (
     get_text_box_theme,
     ui_scale,
@@ -172,7 +172,10 @@ class PatrolScreen(Screens):
             self.update_cat_images_buttons()
             self.update_button()
         elif event.ui_element == self.elements["random"]:
-            self.selected_cat = choice(self.able_cats)
+            if self.able_cats:
+                self.selected_cat = choice(self.able_cats)
+            else:
+                print('WARNING: attempted to select random cat for patrol from empty list of able cats')
             self.update_selected_cat()
             self.update_button()
         # Check is a cat is clicked
@@ -208,7 +211,10 @@ class PatrolScreen(Screens):
                         able_no_med = self.able_cats
                     self.selected_cat = choice(able_no_med)
                 else:
-                    self.selected_cat = choice(self.able_cats)
+                    if self.able_cats:
+                        self.selected_cat = choice(self.able_cats)
+                    else:
+                        print('WARNING: attempted to select random cat for patrol from empty list of able cats')
                 self.update_selected_cat()
                 self.current_patrol.append(self.selected_cat)
             self.update_cat_images_buttons()
@@ -343,6 +349,11 @@ class PatrolScreen(Screens):
             inp = "antagonize"
 
         if inp:
+            if (
+                self.proceed_patrol_thread is not None
+                and self.proceed_patrol_thread.is_alive()
+            ):
+                return
             self.proceed_patrol_thread = self.loading_screen_start_work(
                 self.run_patrol_proceed, "proceed", (inp,)
             )
@@ -787,12 +798,20 @@ class PatrolScreen(Screens):
         else:
             self.elements['df_icon'].disable()
 
-        self.elements["date_icon"] = UISurfaceImageButton(
+        # self.elements["date_icon"] = UISurfaceImageButton(
+        #     ui_scale(pygame.Rect((403, 560), (34, 34))),
+        #     Icon.STARCLAN,
+        #     get_button_dict(ButtonStyles.ICON, (34, 34)),
+        #     object_id="@buttonstyles_icon",
+        #     manager=MANAGER,
+        # )
+
+        # # idk how to add my own icons so this one gets to be an image button
+        self.elements["date_icon"] = UIImageButton(
             ui_scale(pygame.Rect((403, 560), (34, 34))),
-            Icon.STARCLAN,
-            get_button_dict(ButtonStyles.ICON, (34, 34)),
-            object_id="@buttonstyles_icon",
-            manager=MANAGER,
+            "",
+            object_id="#date_button",
+            manager=MANAGER
         )
 
         if (
@@ -841,7 +860,7 @@ class PatrolScreen(Screens):
         self.update_button()
 
     def run_patrol_start(self):
-        """Runs patrol start. To be run in a seperate thread."""
+        """Runs patrol start. To be run in a separate thread."""
         try:
             self.display_text = self.patrol_obj.setup_patrol(
                 self.current_patrol, self.patrol_type
@@ -978,7 +997,7 @@ class PatrolScreen(Screens):
             self.elements["antagonize"].hide()
 
     def run_patrol_proceed(self, user_input):
-        """Proceeds the patrol - to be run in the seperate thread."""
+        """Proceeds the patrol - to be run in the separate thread."""
         if user_input in ["nopro", "notproceed"]:
             (
                 self.display_text,

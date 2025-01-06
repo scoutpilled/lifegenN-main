@@ -338,7 +338,7 @@
                 "weight": 15
             },
             {
-                "text": "You leap after the figure, but you trip and slam into the ground. You look back to see what you tripped over, and see a familiar log... but you recognize it from a completely different part of the territory. How did you get here? Did the fog disorient you so much you've been wandering the complete wrong direction? Unnerved, and with the shadowy figure now long gone, you and r_w_neurotic quickly make your way back to camp.",
+                "text": "You leap after the figure, but you trip and slam into the ground. You look back to see what you tripped over, and see a familiar log... But you recognize it from a completely different part of the territory. How did you get here? Did the fog disorient you so much you've been wandering the complete wrong direction? Unnerved, and with the shadowy figure now long gone, you and r_w_neurotic quickly make your way back to camp.",
                 "exp": 0,
                 "weight": 15
             },
@@ -585,7 +585,7 @@
                 "weight": 20
             },
             {
-                "text": "You approach the cam entrance, ready to investigate, but you head the noise again, louder, and you suddenly have no interest in getting any close to it. You race back to your nest, cover your ears with moss, and hope you can go to sleep and forget about it.",
+                "text": "You approach the cam entrance, ready to investigate, but you hear the noise again, louder, and you suddenly have no interest in getting any close to it. You race back to your nest, cover your ears with moss, and hope you can go to sleep and forget about it.",
                 "exp": 0,
                 "weight": 20
             }
