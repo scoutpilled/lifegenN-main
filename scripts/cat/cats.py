@@ -107,7 +107,7 @@ class Cat:
         "leader",
     ]
 
-    gender_tags = {"female": "F", "male": "M"}
+    gender_tags = {"female": "F", "male": "M", "intersex": "I"}
 
     # EX levels and ranges.
     # Ranges are inclusive to both bounds
@@ -3912,6 +3912,9 @@ class Cat:
                 "tortie_pattern": self.pelt.tortiepattern,
                 "skin": self.pelt.skin,
                 "tint": self.pelt.tint,
+                "height": self.pelt.height,
+                "build": self.pelt.build,
+                "fur_texture": self.pelt.fur_texture,
                 'accessories': self.pelt.accessories if self.pelt.accessories else [],
                 "skill_dict": self.skills.get_skill_dict(),
                 "physical_trait_1": self.pelt.physical_trait_1,

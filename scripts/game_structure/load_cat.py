@@ -53,10 +53,6 @@ def json_load():
     for i, cat in enumerate(cat_data):
         try:
             
-            if "weeks" not in cat:
-                # If "weeks" key doesn't exist, provide a default value
-                cat["weeks"] = randint(0,3)
-            
             if "shunned" not in cat:
                 cat["shunned"] = False
             if "revealed" in cat:
@@ -89,7 +85,6 @@ def json_load():
                 parent1=cat["parent1"],
                 parent2=cat["parent2"],
                 moons=cat["moons"],
-                weeks=cat["weeks"],
                 eye_colour=cat["eye_colour"],
                 loading_cat=True,
             )
@@ -151,6 +146,9 @@ def json_load():
                 pattern=cat["pattern"],
                 skin=cat["skin"],
                 tint=cat["tint"] if "tint" in cat else "none",
+                height=cat["height"],
+                build=cat["build"],
+                fur_texture=cat["fur_texture"],
                 physical_trait_1=cat["physical_trait_1"] if "physical_trait_1" in cat else None,
                 physical_trait_2=cat["physical_trait_2"] if "physical_trait_2" in cat else None,
                 physical_trait_3=cat["physical_trait_3"] if "physical_trait_3" in cat else None,
@@ -194,7 +192,6 @@ def json_load():
                 cat["birth_cooldown"] if "birth_cooldown" in cat else 0
             )
             new_cat.moons = cat["moons"]
-            new_cat.weeks = cat["weeks"]
 
             if "facets" in cat:
                 facets = [int(i) for i in cat["facets"].split(",")]

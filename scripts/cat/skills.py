@@ -108,12 +108,6 @@ class SkillPath(Enum):
         "herb organizer",
         "caretaker of the greens"
     ) 
-    UNKNOWN = (
-        "intrigued about the Unknown Residence",
-        "Unknown Residence accord",
-        "deep Unknown Residence bond",
-        "unshakable Unknown Residence link"
-    ) 
     WAKEFUL = (
         "never settles down",
         "light sleeper",
@@ -1345,7 +1339,6 @@ class SkillPath(Enum):
                 SkillPath.STAR,
                 SkillPath.HEALER,
                 SkillPath.DARK,
-                SkillPath.UNKNOWN,
                 SkillPath.PRODIGY,
                 SkillPath.AURA,
                 SkillPath.COMPULSION,
@@ -1436,7 +1429,6 @@ class Skill:
         SkillPath.GHOST: "ghosts",
         SkillPath.DARK: "dark forest",
         SkillPath.GARDENER: "gardener",
-        SkillPath.UNKNOWN: "unknown residence",
         SkillPath.WAKEFUL: "awake",
         SkillPath.DELIVERER: "delivery",
         SkillPath.DECORATOR: "decorator",
@@ -1793,7 +1785,6 @@ class CatSkills:
         SkillPath.GHOST: SkillTypeFlag.SUPERNATURAL,
         SkillPath.DARK: SkillTypeFlag.SUPERNATURAL,
         SkillPath.GARDENER: SkillTypeFlag.SMART,
-        SkillPath.UNKNOWN: SkillTypeFlag.SUPERNATURAL,
         SkillPath.WAKEFUL: SkillTypeFlag.STRONG | SkillTypeFlag.OBSERVANT,
         SkillPath.DELIVERER: SkillTypeFlag.SMART | SkillTypeFlag.SOCIAL,
         SkillPath.DECORATOR: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
@@ -2368,9 +2359,6 @@ class CatSkills:
             "grows herbs": (SkillPath.GARDENER, 1),
             "herb organizer": (SkillPath.GARDENER, 2),
             "caretaker of the greens": (SkillPath.GARDENER, 3),
-            "Unknown Residence accord": (SkillPath.UNKNOWN, 1),
-            "deep Unknown Residence bond": (SkillPath.UNKNOWN, 2),
-            "unshakable Unknown Residence link": (SkillPath.UNKNOWN, 3),
             "light sleeper": (SkillPath.WAKEFUL, 1),
             "alert": (SkillPath.WAKEFUL, 2),
             "vigilant": (SkillPath.WAKEFUL, 3),

@@ -132,8 +132,8 @@ class Sprites:
             'sokokecolours', 'agouticolours', 'singlestripecolours', 'maskedcolours',
             'manedcolours', 'ocelotcolours', 'lynxcolours', 'abyssiniancolours', 'cloudedcolours', 'dobermancolours', 'ghosttabbycolours', 'merlecolours', 'monarchcolours', 'oceloidcolours', 'pinstripetabbycolours', 'snowflakecolours', 'royalcolours', 'bobcatcolours', 'cheetahcolours',
             'shadersnewwhite', 'lightingnew',
-            'whitepatches', 'minkswhite', 'exoticwhitepatches','tortiepatchesmasks', 'minkstorties',
-            'fademask', 'fadestarclan', 'fadedarkforest','bandanas', 
+            'whitepatches', 'minkswhite', 'voithexpatches', 'exoticwhitepatches','tortiepatchesmasks', 'minkstorties',
+            'fademask', 'fadestarclan', 'fadedarkforest','bandanas', 'stainvoithex',
             'symbols', 'eragonatorite', 'eragonawp', 'eragonaeyes', 'eragonaeyes2',
             'brindlecolours', 'wildcatcolours', 'wolfcolours', 'spotscolours', 'smokepointcolours',
             'dalmatiancolours', 'finleappatchescolours', 'eragonatorite2', 'harnesses', 'bows', 'teethcollars', 'bonesacc', 'butterflymothacc', 'twolegstuff', 'steragouticolours', 'sillyagouticolours', 'danceagouticolours', 'mimiagouticolours', 
@@ -355,6 +355,17 @@ class Sprites:
             for col, wp in enumerate(wps):
                 self.make_group('eragonawp', (col, row), f'white{wp}')
 
+        voithex_patches = [
+            ['BODYSTRIPE', 'BLACKBODYSTRIPE', 'BROWNBODYSTRIPE', 'GINGERBODYSTRIPE', 'TIGERBODYSTRIPE', 'BLACKTIGERBODYSTRIPE', 'BROWNTIGERBODYSTRIPE',
+             'GINGERTIGERBODYSTRIPE', 'SPRAYEDBODYSTRIPE', 'BLACKSPRAYEDBODYSTRIPE', 'BROWNSPRAYEDBODYSTRIPE', 'GINGERSPRAYEDBODYSTRIPE'],
+            ['REVERSEBODYSPRITE', 'BLACKREVERSEBODYSPRITE', 'BROWNREVERSEBODYSPRITE', 'GINGERREVERSEBODYSPRITE', 'REVERSETIGERBODYSPRITE',
+             'BLACKREVERSETIGERBODYSPRITE', 'BROWNREVERSETIGERBODYSPRITE', 'GINGERREVERSETIGERBODYSPRITE', 'REVERSELEOPARDBODYSPRITE',
+             'BLACKREVERSELEOPARDBODYSPRITE', 'BROWNREVERSELEOPARDBODYSPRITE', 'GINGERREVERSELEOPARDBODYSPRITE']
+        ]
+        for row, vopatches in enumerate(voithex_patches):
+            for col, vopatch in enumerate(vopatches):
+                self.make_group('voithexpatches', (col, row), f'white{vopatch}')
+
         # Define colors and categories
         color_categories = [
             ['WHITE', 'PALEGREY', 'SILVER', 'GREY', 'DARKGREY', 'GHOST', 'BLACK'],
@@ -367,7 +378,7 @@ class Sprites:
             'smokecolours', 'tickedcolours', 'speckledcolours', 'bengalcolours',
             'mackerelcolours', 'classiccolours', 'sokokecolours', 'agouticolours',
             'singlestripecolours', 'maskedcolours', 'manedcolours', 'ocelotcolours',
-            'lynxcolours', 'royalcolours', 'abyssiniancolours', 'cloudedcolours',
+            'lynxcolours', 'royalcolours', 'abyssiniancolours', 'cloudedcolours', 'stainvoithex',
             'dobermancolours', 'ghosttabbycolours', 'merlecolours', 'monarchcolours',
             'oceloidcolours', 'pinstripetabbycolours', 'snowflakecolours','bobcatcolours',
             'cheetahcolours', 'brindlecolours', 'wildcatcolours',
