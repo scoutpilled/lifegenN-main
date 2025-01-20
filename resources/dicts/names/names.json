@@ -106,6 +106,8 @@
 	"Winner","Wish","Wit","Word","Worker","Wrath","Wring","Wrong","Yawn","Yell","Yowl","Zap","Zen","Zero",
 	
 	"Groove", "Rove", "Trove",
+	"Myotis", "Cotton", "Cottontail", "Jackrabbit", "Ground", "Marten", "Weasel", "Ferret", "Ermine", "Badger",
+	"Coyote", "Collar", "Boa", "Whip", "Whipsnake",
 	
 
 
@@ -239,6 +241,9 @@
 	"Rustle","Scramble","Shoot","Shroom","Shroud","Shrub","Sky","Sori","Sorus","Sparse","Sprig","Squirrel","Story","Swamp","Sylva",
 	"Temperate","Tempt","Thorn","Thunder","Timber","Tropic","Trunk","Tunnel","Uproar","Valley","Vast","Vine","Weald","Weasel",
 	"Wild","Wood","Wooded","Wooden","Woodland",
+	"Deer","Piñon", "Grasshopper", "Woodrat", "Raccoon", "Ringtail", "Ring", "Elk", "Velvet", "Antler", "Moose", "Bell", "Chip",
+	"Chipmunk", "Siskiyou", "Fisher", "Skunk", "Otter", "Mink", "Bear", "Coyote", "Wolf", "Porcupine", "Skink", "Newt",
+	"Alligator", "Boa", "Rubber", "Racer", "Gopher", "Garter",
 	
 	"Acorn","Almond", "Antler", "Aspen", "Badger", "Bark", "Bat", "Beech", "Birch", "Boar", "Branch", "Branch", "Buck", "Canopy",
     "Cedar", "Civet", "Deer", "Doe", "Elk", "Fern", "Fern", "Fir", "Forest", "Frond", "Grouse", "Grove", "Honey", "Log", "Lynx", "Magnolia",
@@ -1103,7 +1108,10 @@
   "animal_prefixes": [
     "Worm", "Wren", "Horse", "Eel", "Sloth", "Widow", "Firebug", "Termite", "Chicken", "Leech", "Crab", "Swallow",
 	"Fowl", "Snipe", "Seal", "Oyster", "Urchin", "Mollusk", "Sponge", "Stingray", "Larva", "Tern", "Pheonix", "Tick",
-	"Zebra", "Giraffe",
+	"Zebra", "Giraffe","Cottontail", "Jackrabbit", "Marten", "Weasel", "Ferret", "Ermine", "Badger",
+	"Coyote", "Boa", "Whipsnake","Deer","Piñon", "Grasshopper", "Woodrat", "Raccoon", "Ringtail", "Ring", "Elk", "Moose",
+	"Chipmunk", "Siskiyou", "Fisher", "Skunk", "Otter", "Mink", "Bear", "Coyote", "Wolf", "Porcupine", "Skink", "Newt",
+	"Alligator", "Boa", "Gopher", "Garter",
 	
 	"Addax", "Adder", "Albatross", "Alligator", "Alpaca", "Ant", "Antelope", "Aphid", "Avocet", "Axolotl", "Badger",
     "Barracuda", "Bass", "Bat", "Bear", "Beaver", "Bee", "Beetle", "Beluga", "Bird", "Bison", "Bittern",

@@ -24,7 +24,7 @@ use_proxy = False  # Set this to True if you want to use a proxy for the update 
 class UpdateChannel(StrEnum):
     STABLE = "lifegen-stable"
     STABLE_TEST = ""
-    DEVELOPMENT = "lifegen-development"
+    DEVELOPMENT = "neonpink-lifegen"
     DEVELOPMENT_TEST = ""
 
 
@@ -131,7 +131,7 @@ def self_update(
         update_channel: UpdateChannel = UpdateChannel.DEVELOPMENT_TEST,
         progress_bar: UIUpdateProgressBar = None,
         announce_restart_callback: callable = None):
-    print("Updating Lifegen...")
+    print("Updating Lifegen. As this is NeonPink Lifegen, this will cause problems.")
 
     platform_name = determine_platform_name()
 

@@ -1140,7 +1140,7 @@
         "biome": [],
         "tags": [],
         "texts": [
-            "You watch in disbelief as v_c walks into your den for what must be the fourth time this day. Gritting your teeth, you listen as {PRONOUN/v_c/subject} {VERB/v_c/tell/tells} you all about how {PRONOUN/v_c/subject} ate a strange piece of prey and now {PRONOUN/v_c/poss} stomach hurts. You have no problem with treating your Clanmates-- really, you don't --but the way v_c strolls into your den and demands to be treated when nothing's really the matter irks you. Smiling as brightly as you can, you push {PRONOUN/v_c/object} a pile of herbs to eat--with a little something <i>extra</i> in it. {PRONOUN/v_c/subject/CAP} {VERB/v_c/accept/accepts} your 'remedy' gratefully and {VERB/v_c/pick/picks} it up, your ears flicking satisfactorily as {PRONOUN/v_c/subject} {VERB/v_c/go/goes}."
+            "You watch in disbelief as v_c walks into your den for what must be the fourth time this day. Gritting your teeth, you listen as {PRONOUN/v_c/subject} {VERB/v_c/tell/tells} you all about how {PRONOUN/v_c/subject} ate a strange piece of prey and now {PRONOUN/v_c/poss} stomach hurts. You have no problem with treating your Clanmates-- really, you don't --but the way v_c strolls into your den and demands to be treated when nothing's really the matter irks you. Smiling as brightly as you can, you push {PRONOUN/v_c/object} a pile of herbs to eat-- with a little something <i>extra</i> in it. {PRONOUN/v_c/subject/CAP} {VERB/v_c/accept/accepts} your 'remedy' gratefully and {VERB/v_c/pick/picks} it up, your ears flicking satisfactorily as {PRONOUN/v_c/subject} {VERB/v_c/go/goes}."
         ]
     },
     "murder_event63": {
@@ -1282,6 +1282,26 @@
             "Elders are respected... right? Just how much could you get away with? The answer is a lot. You're still reeling from shock at v_c's vigil, but the feeling of {PRONOUN/v_c/poss} blood on your paws is still so fresh. Thankfully, others think your reaction is normal for any death. A thought haunts your old brain; you're shocked by what you've done, but not.. disgusted. Perhaps seniorhood isn't too late to realize a hidden bloodlust."
         ]
     },
+    "murder_event_neonoldevents16": {
+        "your_status": [
+            "kitten"
+        ],
+        "victim_status": [
+            "kitten"
+        ],
+        "relationship": [],
+        "strategy": [
+            "accident",
+            "border",
+            "territory"
+        ],
+        "biome": [],
+        "tags": [],
+        "texts": [
+            "You and v_c decide to sneak out of camp and play near a river. You both have loads of fun playing tag, but things quickly take a sour turn when your friend slips at the edge, and you watch as {PRONOUN/v_c/subject}{VERB/v_c/'re'/'s} carried away by the current."
+        ]
+    },
+
     "murder_event71": {
         "your_status": [
             "kitten"

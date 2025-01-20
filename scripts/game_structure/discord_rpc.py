@@ -124,7 +124,7 @@ class _DiscordRPC(threading.Thread):
                     small_image="discord",
                     small_text=f"Managing {cats_amount} cats",
                     start=self._start_time,
-                    buttons=[{"label": "Join The Server", "url": "https://discord.gg/lifegen"}],
+                    buttons=[{"label": "Join the Thread", "url": "https://discord.com/channels/1125069186985640063/1304696353426903080"}],
                 )
             except BaseException:  # pylint: disable=broad-except
                 print("Discord rpc had issue updating, disabling...")
