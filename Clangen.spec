@@ -56,12 +56,12 @@ coll = COLLECT(
     strip=False,
     upx=False,
     upx_exclude=[],
-    name='Lifegen',
+    name='NeonPinkLifegen',
 )
 app = BUNDLE(
     coll,
-    name='Lifegen.app',
+    name='NeonPinkLifegen.app',
     icon='resources/images/icon.png',
     bundle_identifier='com.sablesteel.clangen',
-    version='0.7.5' # imo we should give dev builds .5
+    version='0.0.03'
 )

@@ -2150,25 +2150,25 @@ class MakeClanScreen(Screens):
 
         # Biome buttons
         self.elements["forest_biome"] = UIImageButton(
-            scale(pygame.Rect((392, 200), (200, 92))),
+            scale(pygame.Rect((350, 250), (96, 84))),
             "",
             object_id="#forest_biome_button",
             manager=MANAGER,
         )
         self.elements["mountain_biome"] = UIImageButton(
-            scale(pygame.Rect((608, 200), (212, 92))),
+            scale(pygame.Rect((460, 270), (100, 60))),
             "",
             object_id="#mountain_biome_button",
             manager=MANAGER,
         )
         self.elements["plains_biome"] = UIImageButton(
-            scale(pygame.Rect((848, 200), (176, 92))),
+            scale(pygame.Rect((570, 255), (94, 72))),
             "",
             object_id="#plains_biome_button",
             manager=MANAGER,
         )
         self.elements["beach_biome"] = UIImageButton(
-            scale(pygame.Rect((1040, 200), (164, 92))),
+            scale(pygame.Rect((680, 260), (84, 68))),
             "",
             object_id="#beach_biome_button",
             manager=MANAGER,
