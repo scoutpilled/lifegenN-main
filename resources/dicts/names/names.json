@@ -107,7 +107,7 @@
 	
 	"Groove", "Rove", "Trove",
 	"Myotis", "Cotton", "Cottontail", "Jackrabbit", "Ground", "Marten", "Weasel", "Ferret", "Ermine", "Badger",
-	"Coyote", "Collar", "Boa", "Whip", "Whipsnake",
+	"Coyote", "Collar", "Boa", "Whip", "Whipsnake", "Skirt",
 	
 
 
@@ -231,115 +231,122 @@
   
     "biome_prefixes": {
     "Forest": [
-    "Acacia","Alder","Arctic","Arid","Ash","Bark","Basin","Blunt","Boreal","Brave","Broad","Bug","Bush","Clover","Commune",
-	"Community","Conceal","Concealed","Coniferous","Cover","Deciduous","Dehurian","Dim","Drift","Duff","Dull","Eco","Emerge",
-	"Emergent","Ever","Evergreen","Fairy","Fallen","Fawn","Fiber","Fiddle","Fiddlehead","Firth","Fog","Foggy","Fox","Frith",
-	"Fur","Green","Grotto","Hard","Harmony","Hemlock","Hidden","Hide","Highland","Hill","Holt","Horn","Howl","Hunt","Hunter",
-	"Hunting","Ienga","Insect","Jungle","Larch","Leaf","Leech","Lichen","Lightning","Litter","Lowland","Lumber","Magellanic",
-	"Meat","Mirage","Mist","Mix","Mixed","Mixing","Moist","Monocot","Montane","Moonlit","Mountain","Murk","Murky","Mushroom",
-	"Mycelia","Mycelium","Mystery","Mystify","Needle","Open","Owl","Peat","Peek","Pinecone","Pond","Pulp","Rabbit","Rain","Red",
-	"Rustle","Scramble","Shoot","Shroom","Shroud","Shrub","Sky","Sori","Sorus","Sparse","Sprig","Squirrel","Story","Swamp","Sylva",
-	"Temperate","Tempt","Thorn","Thunder","Timber","Tropic","Trunk","Tunnel","Uproar","Valley","Vast","Vine","Weald","Weasel",
-	"Wild","Wood","Wooded","Wooden","Woodland",
-	"Deer","Piñon", "Grasshopper", "Woodrat", "Raccoon", "Ringtail", "Ring", "Elk", "Velvet", "Antler", "Moose", "Bell", "Chip",
-	"Chipmunk", "Siskiyou", "Fisher", "Skunk", "Otter", "Mink", "Bear", "Coyote", "Wolf", "Porcupine", "Skink", "Newt",
-	"Alligator", "Boa", "Rubber", "Racer", "Gopher", "Garter",
-	
-	"Acorn","Almond", "Antler", "Aspen", "Badger", "Bark", "Bat", "Beech", "Birch", "Boar", "Branch", "Branch", "Buck", "Canopy",
-    "Cedar", "Civet", "Deer", "Doe", "Elk", "Fern", "Fern", "Fir", "Forest", "Frond", "Grouse", "Grove", "Honey", "Log", "Lynx", "Magnolia",
-    "Maple", "Moose", "Moss", "Moss", "Mushroom", "Oak", "Pine", "Robin", "Robin", "Sap", "Skunk", "Sparrow", "Sprig",
-    "Spruce", "Squirrel", "Squirrel", "Stag", "Stick", "Stump", "Tarantula", "Thicket", "Twig", "Twig", "Wood", "Wolf", "Coati"
+		"Acacia","Alder","Arctic","Arid","Ash","Bark","Basin","Blunt","Boreal","Brave","Broad","Bug","Bush","Clover","Commune",
+		"Community","Conceal","Concealed","Coniferous","Cover","Deciduous","Dehurian","Dim","Drift","Duff","Dull","Eco","Emerge",
+		"Emergent","Ever","Evergreen","Fairy","Fallen","Fawn","Fiber","Fiddle","Fiddlehead","Firth","Fog","Foggy","Fox","Frith",
+		"Fur","Green","Grotto","Hard","Harmony","Hemlock","Hidden","Hide","Highland","Hill","Holt","Horn","Howl","Hunt","Hunter",
+		"Hunting","Ienga","Insect","Jungle","Larch","Leaf","Leech","Lichen","Lightning","Litter","Lowland","Lumber","Magellanic",
+		"Meat","Mirage","Mist","Mix","Mixed","Mixing","Moist","Monocot","Montane","Moonlit","Mountain","Murk","Murky","Mushroom",
+		"Mycelia","Mycelium","Mystery","Mystify","Needle","Open","Owl","Peat","Peek","Pinecone","Pond","Pulp","Rabbit","Rain","Red",
+		"Rustle","Scramble","Shoot","Shroom","Shroud","Shrub","Sky","Sori","Sorus","Sparse","Sprig","Squirrel","Story","Swamp","Sylva",
+		"Temperate","Tempt","Thorn","Thunder","Timber","Tropic","Trunk","Tunnel","Uproar","Valley","Vast","Vine","Weald","Weasel",
+		"Wild","Wood","Wooded","Wooden","Woodland",
+		"Deer","Piñon", "Grasshopper", "Woodrat", "Raccoon", "Ringtail", "Ring", "Elk", "Velvet", "Antler", "Moose", "Bell", "Chip",
+		"Chipmunk", "Siskiyou", "Fisher", "Skunk", "Otter", "Mink", "Bear", "Coyote", "Wolf", "Porcupine", "Skink", "Newt",
+		"Alligator", "Boa", "Rubber", "Racer", "Gopher", "Garter",
+		
+		"Acorn","Almond", "Antler", "Aspen", "Badger", "Bark", "Bat", "Beech", "Birch", "Boar", "Branch", "Branch", "Buck", "Canopy",
+		"Cedar", "Civet", "Deer", "Doe", "Elk", "Fern", "Fern", "Fir", "Forest", "Frond", "Grouse", "Grove", "Honey", "Log", "Lynx", "Magnolia",
+		"Maple", "Moose", "Moss", "Moss", "Mushroom", "Oak", "Pine", "Robin", "Robin", "Sap", "Skunk", "Sparrow", "Sprig",
+		"Spruce", "Squirrel", "Squirrel", "Stag", "Stick", "Stump", "Tarantula", "Thicket", "Twig", "Twig", "Wood", "Wolf", "Coati"
     ],
     "Beach": [
-    "Eel", "Fish", "Dune", "Abyss", "Open", "Dock", "Wax", "Gloss", "Verbena", "Oat", "Shallow", "Deep", "Seaweed", "Swim", "Swimming",
-	"Paddle", "Paddling", "Leech", "Drown", "Drowning", "Pour", "Sink", "Crab", "Crabby", "Dive", "Hurricane", "Clean",
-	"Strait", "Channel", "Littoral", "Mangrove", "Kelp", "Shelf", "Neritic", "Surf", "Surface", "Hydro", "Thermal", "Marine",
-	"Demersal", "Seep", "Seeps", "Seeping", "Vent", "Basin", "Arch", "Archipelago", "Aqua", "Pass", "Canal", "Passage", "Isthmus",
-	"Buoy", "Estuary", "Isle", "Inlet", "Loch", "Nautical", "Salty", "Tsunami", "Gulf", "Seal", "Oyster", "Urchin", "Mollusk",
-	"Sponge", "Stingray", "Spray", "Storm", "Drizzle", "Lumin", "Pelagic", "Fare", "Faring", "Naval", "High", "Low", "Rise", "Lower",
-	"Seiche", "Sail", "Saline", "Pier", "Trench", "Drench", "Drenched", "Bluff", "Resort", "Archipelago", "Submerge", "Submerged",
-	"Spiral", "Stormy", "Shingle", "Trough", "Bar", "Berm", "Debris", "Wrack", "Swash", "Break", "Breaker", "Crest", "Drift",
-	"Quartz", "Wild", "Erode", "Erosion", "Mud", "Clay", "Crest", "Flow", "Ebb", "Runoff", "Inflow", "Frigid", "Corduroy", "Foliage",
-	"Plover", "Tern", "Podley", "Gull", "Grove",
-	
-	"Albatross", "Algae", "Anchovy", "Anemone", "Avocet", "Bass", "Barnacle", "Barracuda", "Beluga", "Brine", "Clam", "Coast",
-    "Coconut", "Cod", "Conch", "Coral", "Cove", "Crab", "Current", "Delta", "Dolphin", "Dolphin", "Drip", "Drop", "Fin", "Flounder",
-    "Foam", "Gannet", "Gull", "Hermit", "Jellyfish", "Lagoon", "Lake", "Marlin", "Nacre", "Ocean", "Octopus", "Palm", "Pearl", "Pearl",
-    "Pearly", "Pelican", "Pool", "Pool", "Ripple", "Reef", "Ripple", "Sago", "Salmon", "Salt", "Sand", "Sandy", "Sardine",  "Scale", "Sea",
-    "Shark", "Shell", "Shimmer", "Shimmer", "Shore", "Slug", "Snail", "Splash", "Squid", "Tide", "Tidal", "Torrent", "Wave", "Wave", "Whale", "Coati"
+		"Eel", "Fish", "Dune", "Abyss", "Open", "Dock", "Wax", "Gloss", "Verbena", "Oat", "Shallow", "Deep", "Seaweed", "Swim", "Swimming",
+		"Paddle", "Paddling", "Leech", "Drown", "Drowning", "Pour", "Sink", "Crab", "Crabby", "Dive", "Hurricane", "Clean",
+		"Strait", "Channel", "Littoral", "Mangrove", "Kelp", "Shelf", "Neritic", "Surf", "Surface", "Hydro", "Thermal", "Marine",
+		"Demersal", "Seep", "Seeps", "Seeping", "Vent", "Basin", "Arch", "Archipelago", "Aqua", "Pass", "Canal", "Passage", "Isthmus",
+		"Buoy", "Estuary", "Isle", "Inlet", "Loch", "Nautical", "Salty", "Tsunami", "Gulf", "Seal", "Oyster", "Urchin", "Mollusk",
+		"Sponge", "Stingray", "Spray", "Storm", "Drizzle", "Lumin", "Pelagic", "Fare", "Faring", "Naval", "High", "Low", "Rise", "Lower",
+		"Seiche", "Sail", "Saline", "Pier", "Trench", "Drench", "Drenched", "Bluff", "Resort", "Archipelago", "Submerge", "Submerged",
+		"Spiral", "Stormy", "Shingle", "Trough", "Bar", "Berm", "Debris", "Wrack", "Swash", "Break", "Breaker", "Crest", "Drift",
+		"Quartz", "Wild", "Erode", "Erosion", "Mud", "Clay", "Crest", "Flow", "Ebb", "Runoff", "Inflow", "Frigid", "Corduroy", "Foliage",
+		"Plover", "Tern", "Podley", "Gull", "Grove",
+		
+		"Albatross", "Algae", "Anchovy", "Anemone", "Avocet", "Bass", "Barnacle", "Barracuda", "Beluga", "Brine", "Clam", "Coast",
+		"Coconut", "Cod", "Conch", "Coral", "Cove", "Crab", "Current", "Delta", "Dolphin", "Dolphin", "Drip", "Drop", "Fin", "Flounder",
+		"Foam", "Gannet", "Gull", "Hermit", "Jellyfish", "Lagoon", "Lake", "Marlin", "Nacre", "Ocean", "Octopus", "Palm", "Pearl", "Pearl",
+		"Pearly", "Pelican", "Pool", "Pool", "Ripple", "Reef", "Ripple", "Sago", "Salmon", "Salt", "Sand", "Sandy", "Sardine",  "Scale", "Sea",
+		"Shark", "Shell", "Shimmer", "Shimmer", "Shore", "Slug", "Snail", "Splash", "Squid", "Tide", "Tidal", "Torrent", "Wave", "Whale", "Coati"
     ],
     "Plains": [
-	"Flower", "Plain", "Natural", "Rabbit", "Corn", "Quick", "Shine", "Parsley", "Flee", "Fleet", "Fleeting", "Flower", "Clover",
-	"Tornado", "Gale", "Zephyr", "Wind", "Soak", "Nuzzle", "Bury", "Buried", "Plains", "Grassy", "Hill", "Range", "Mistral", "Outlook",
-	"Crop", "Serene", "Lively", "Glorious", "Travel", "Tree", "Pass", "Open", "Thorn", "Thorny", "Thorned", "Jungle", "Tunnel",
-	"Goo", "Fall", "Fallen", "Temple", "Chamber", "Dirt", "Gate", "Fence", "Wood", "Barrow", "Highland", "Fresh", "Toe", "Step",
-	"Hole", "Pot", "Valley", "Plateu", "Upland", "Lowland", "Coast", "Land", "Earth", "Gap", "Pass", "Polar", "Steppe", "Incise",
-	"Incision", "Flood", "Abyssal", "Planitia", "Till", "Outwash", "Lava", "Erosional", "Scructural", "Pene", "Bush", "Bushland",
-	"Sandur", "Sandar", "Glacier", "Cliff", "Line", "Equal", "Still", "Taro", "Plain", "Stone", "Dart", "Speed", "Tear", "Torn",
-	"Billow", "Zephyr", "Gale", "Zebra", "Giraffe",
-	
-    "Anise", "Barley", "Barley", "Bison", "Breeze", "Breeze", "Burrow", "Butterfly", "Cow", "Dandelion", "Elk", "Ewe", "Field",
-    "Flutter", "Gopher", "Grass", "Grass", "Grouse", "Hare", "Heather", "Heather", "Horse", "Lamb", "Meadow", "Oat", "Plover",
-    "Poppy", "Pollen", "Prairie", "Pronghorn", "Roan", "Rustle", "Rye", "Sedge", "Sheep", "Swish", "Tunnel", "Tarantula",
-    "Wheat", "Willow", "Wool", "Woolly", "Coati"
+		"Flower", "Plain", "Natural", "Rabbit", "Corn", "Quick", "Shine", "Parsley", "Flee", "Fleet", "Fleeting", "Flower", "Clover",
+		"Tornado", "Gale", "Zephyr", "Wind", "Soak", "Nuzzle", "Bury", "Buried", "Plains", "Grassy", "Hill", "Range", "Mistral", "Outlook",
+		"Crop", "Serene", "Lively", "Glorious", "Travel", "Tree", "Pass", "Open", "Thorn", "Thorny", "Thorned", "Jungle", "Tunnel",
+		"Goo", "Fall", "Fallen", "Temple", "Chamber", "Dirt", "Gate", "Fence", "Wood", "Barrow", "Highland", "Fresh", "Toe", "Step",
+		"Hole", "Pot", "Valley", "Plateu", "Upland", "Lowland", "Coast", "Land", "Earth", "Gap", "Pass", "Polar", "Steppe", "Incise",
+		"Incision", "Flood", "Abyssal", "Planitia", "Till", "Outwash", "Lava", "Erosional", "Scructural", "Pene", "Bush", "Bushland",
+		"Sandur", "Sandar", "Glacier", "Cliff", "Line", "Equal", "Still", "Taro", "Plain", "Stone", "Dart", "Speed", "Tear", "Torn",
+		"Billow", "Zephyr", "Gale", "Zebra", "Giraffe",
+		
+		"Anise", "Barley", "Barley", "Bison", "Breeze", "Breeze", "Burrow", "Butterfly", "Cow", "Dandelion", "Elk", "Ewe", "Field",
+		"Flutter", "Gopher", "Grass", "Grass", "Grouse", "Hare", "Heather", "Heather", "Horse", "Lamb", "Meadow", "Oat", "Plover",
+		"Poppy", "Pollen", "Prairie", "Pronghorn", "Roan", "Rustle", "Rye", "Sedge", "Sheep", "Swish", "Tunnel", "Tarantula",
+		"Wheat", "Willow", "Wool", "Woolly", "Coati"
     ],
     "Mountainous": [
-    "Frigid", "Abyss", "Lost", "Fall", "Stumble", "Tumble", "Mine", "Gem", "High", "Deep", "Altitude", "Dizzy", "Sure", "Owl", "Horn", "Fall",
-	"Erupt", "Eruption", "Lava", "Magma", "Diamond", "Geo", "Geode", "Canyon", "Lapis", "Meteor", "Meteorite", "Comet", "Far", "Wyvern",
-	"Bristle", "Mount", "Crag", "Craggy", "Afar", "Rift", "Crystal", "Crater", "Land", "Landslide", "Slide", "Maze", "Outlook",
-	"Void", "Tunnel", "Gorge", "Coal", "Charcoal", "Slope", "Barrow", "Highland", "Step", "Crag", "Craggy", "Cliffside",
-	"Trail", "Valley", "Pass", "Roll", "Rolling", "Range", "Hill", "Point", "Sharp", "Edge", "Apex", "Wind", "Quarry", "Ruin",
-	"Bold", "Shrine", "Altar", "Alter", "Jewel", "Fossil", "Glyph", "Thirst", "Ragged", "Hazy", "Haze", "Daybreak", "Nightfall",
-	"Core", "Blaze", "Blazing", "Asphalt", "Leeward", "Montane", "Runoff", "Erode", "Pass", "Field", "Trench", "Thin", "Fog",
-	"Foggy", "Winged", "Wing", "Isolation", "Isolate", "Wind", "Whip", "Drought", "Scree", "Talus", "Concave", "Convex", "Shelter",
-	"Shelf", "Sap", "Support", "Give", "Falling", "Fallen", "Rise", "Risen", "Tundra", "Continue", "Persist", "Persisting", "Eternal",
-	"Deathless", "Fault", "Puma", "Cougar", "Lion", "Mountain", "Goat", "Hoof", "Claw", "Rough", "Jagged", "Rock", "Rise", "Winged",
-	"Feather", "Cold", "Breath", "Cave", "Cliff", "Side",
-	
-	"Alpaca", "Alpine", "Avalanche", "Basalt", "Blizzard", "Boulder", "Caribou", "Cavern", "Cave", "Chamois", "Chasm", "Cliff", "Crag",
-    "Eagle", "Eagle", "Echo", "Echo", "Flint", "Goat", "Granite", "Gravel", "High", "Lichen", "Mountain", "Peak", "Pebble", "Pinnacle",
-	"Rock", "Rocky", "Ram", "Salt", "Shale", "Shard", "Spire", "Stone", "Steppe", "Summit", "Volcano", "Yucca", "Whistle", "Whisper",
-	"Mica"
+		"Frigid", "Abyss", "Lost", "Fall", "Stumble", "Tumble", "Mine", "Gem", "High", "Deep", "Altitude", "Dizzy", "Sure", "Owl", "Horn", "Fall",
+		"Erupt", "Eruption", "Lava", "Magma", "Diamond", "Geo", "Geode", "Canyon", "Lapis", "Meteor", "Meteorite", "Comet", "Far", "Wyvern",
+		"Bristle", "Mount", "Crag", "Craggy", "Afar", "Rift", "Crystal", "Crater", "Land", "Landslide", "Slide", "Maze", "Outlook",
+		"Void", "Tunnel", "Gorge", "Coal", "Charcoal", "Slope", "Barrow", "Highland", "Step", "Crag", "Craggy", "Cliffside",
+		"Trail", "Valley", "Pass", "Roll", "Rolling", "Range", "Hill", "Point", "Sharp", "Edge", "Apex", "Wind", "Quarry", "Ruin",
+		"Bold", "Shrine", "Altar", "Alter", "Jewel", "Fossil", "Glyph", "Thirst", "Ragged", "Hazy", "Haze", "Daybreak", "Nightfall",
+		"Core", "Blaze", "Blazing", "Asphalt", "Leeward", "Montane", "Runoff", "Erode", "Pass", "Field", "Trench", "Thin", "Fog",
+		"Foggy", "Winged", "Wing", "Isolation", "Isolate", "Wind", "Whip", "Drought", "Scree", "Talus", "Concave", "Convex", "Shelter",
+		"Shelf", "Sap", "Support", "Give", "Falling", "Fallen", "Rise", "Risen", "Tundra", "Continue", "Persist", "Persisting", "Eternal",
+		"Deathless", "Fault", "Puma", "Cougar", "Lion", "Mountain", "Goat", "Hoof", "Claw", "Rough", "Jagged", "Rock", "Rise", "Winged",
+		"Feather", "Cold", "Breath", "Cave", "Cliff", "Side",
+		
+		"Alpaca", "Alpine", "Avalanche", "Basalt", "Blizzard", "Boulder", "Caribou", "Cavern", "Cave", "Chamois", "Chasm", "Cliff", "Crag",
+		"Eagle", "Eagle", "Echo", "Echo", "Flint", "Goat", "Granite", "Gravel", "High", "Lichen", "Mountain", "Peak", "Pebble", "Pinnacle",
+		"Rock", "Rocky", "Ram", "Salt", "Shale", "Shard", "Spire", "Stone", "Steppe", "Summit", "Volcano", "Yucca", "Whistle", "Whisper",
+		"Mica"
     ],
     "Wetlands": [
-	"Firebug", "Glow", "Fish", "Calm", "Rot", "Deep", "Shallow", "Leech", "Drown", "Drowning", "Pour", "Slip", "Cover", "Dive",
-	"Soak", "Shiver", "Relic", "Craft", "Flux", "Oblivion", "Drench", "Drenched", "Bluff", "Sealed", "Hydro", "Saturate", "Soil", "Aqua",
-	"Terre", "Terrestrial", "Water", "Hydric", "Coast", "Tidal", "Flood", "Pothole", "Basin", "Wood", "Wooden", "Shrub", "Glow",
-	"Berry", "Arid", "Wet", "Dry", "Muddy", "Damp", "Moist", "Vernal", "Pool", "River", "Rain", "Margin", "Strand",
-	"Alkali", "Salt", "Soil", "Vegetation", "Veggie", "Vegetable", "Log", "Drift", "Habit", "Brackish", "Fresh", "Grove",
-	"Mangal", "Tide", "Tidal", "Delta", "Pure", "Storm", "Fen", "Flow", "Flowing", "Static", "Marine", "Flooded", "Alkaline",
-	"Carr", "Forest", "Pocosin", "Sink", "Rot", "Rotting", "Mat", "Float", "Seep", "Terrace", "Seeping", "Rice", "Lake", "Pond",
-	"Meadow", "Margin", "Fragment", "Sediment", "Dam", "Erode", "Elm", "Maple", "Shift", "Shifting", "Nitro", "Acid", "Lotus",
-	"Beaver", "Turtle", "Snake", "Snap", "Snapping", "Fowl", "Rabbit", "Vole", "Bat", "Panther", "Moose", "Midge", "Crab", "Mollusk",
-	"Shrimp", "Egg", "Hover", "Larva", "Coral", "Hyacinth", "Fish", "Drought", "Maggot", "Palm", "Fog", "Corpse",
-	"Dambo", "Graze", "Sclerophyll", "Swim", "Sinking", "Croc", "Crocodile", "Alligator", "Clear", "Shadow", "Shade", "Shaded",
-	"Dark", "Damp", "Drip", "Dripping", "Deep", "Rise",
-	
-    "Willow", "Marsh", "Bog", "Lotus", "Reed", "Frog", "Toad", "Stork", "Civet", "Crane", "Duck", "Heron", "Ibis", "Mangrove",
-    "Swamp", "Murk", "Algae", "Mud", "Mire", "Splash", "Mosquito", "Mallard", "Goose", "Peat", "Bog", "Skink", "Tamarack",
-    "Spruce", "Beaver", "Wade", "Cypress", "Magnolia", "Skunk", "Mosquito", "Lily", "Bayou", "Clay", "Grebe", "Egret",
-    "Creek", "Skip", "Bullrush", "Beetle", "Bug", "Vine", "Creeper", "Buffalo", "Rush", "Swam", "Cygnet", "Gosling",
-    "Cormorant", "Stork", "Moorhen", "Spoonbill", "Kingfisher", "Plover", "Alligator", "Crocodile", "Newt",
-    "Axolotl", "Salamander", "Gar", "Coati"
+		"Firebug", "Glow", "Fish", "Calm", "Rot", "Deep", "Shallow", "Leech", "Drown", "Drowning", "Pour", "Slip", "Cover", "Dive",
+		"Soak", "Shiver", "Relic", "Craft", "Flux", "Oblivion", "Drench", "Drenched", "Bluff", "Sealed", "Hydro", "Saturate", "Soil", "Aqua",
+		"Terre", "Terrestrial", "Water", "Hydric", "Coast", "Tidal", "Flood", "Pothole", "Basin", "Wood", "Wooden", "Shrub", "Glow",
+		"Berry", "Arid", "Wet", "Dry", "Muddy", "Damp", "Moist", "Vernal", "Pool", "River", "Rain", "Margin", "Strand",
+		"Alkali", "Salt", "Soil", "Vegetation", "Veggie", "Vegetable", "Log", "Drift", "Habit", "Brackish", "Fresh", "Grove",
+		"Mangal", "Tide", "Tidal", "Delta", "Pure", "Storm", "Fen", "Flow", "Flowing", "Static", "Marine", "Flooded", "Alkaline",
+		"Carr", "Forest", "Pocosin", "Sink", "Rot", "Rotting", "Mat", "Float", "Seep", "Terrace", "Seeping", "Rice", "Lake", "Pond",
+		"Meadow", "Margin", "Fragment", "Sediment", "Dam", "Erode", "Elm", "Maple", "Shift", "Shifting", "Nitro", "Acid", "Lotus",
+		"Beaver", "Turtle", "Snake", "Snap", "Snapping", "Fowl", "Rabbit", "Vole", "Bat", "Panther", "Moose", "Midge", "Crab", "Mollusk",
+		"Shrimp", "Egg", "Hover", "Larva", "Coral", "Hyacinth", "Fish", "Drought", "Maggot", "Palm", "Fog", "Corpse",
+		"Dambo", "Graze", "Sclerophyll", "Swim", "Sinking", "Croc", "Crocodile", "Alligator", "Clear", "Shadow", "Shade", "Shaded",
+		"Dark", "Damp", "Drip", "Dripping", "Deep", "Rise", "Firefly", "Gator",
+		
+		"Willow", "Marsh", "Bog", "Lotus", "Reed", "Frog", "Toad", "Stork", "Civet", "Crane", "Duck", "Heron", "Ibis", "Mangrove",
+		"Swamp", "Murk", "Algae", "Mud", "Mire", "Splash", "Mosquito", "Mallard", "Goose", "Peat", "Bog", "Skink", "Tamarack",
+		"Spruce", "Beaver", "Wade", "Cypress", "Magnolia", "Skunk", "Mosquito", "Lily", "Bayou", "Clay", "Grebe", "Egret",
+		"Creek", "Skip", "Bullrush", "Beetle", "Bug", "Vine", "Creeper", "Buffalo", "Rush", "Swam", "Cygnet", "Gosling",
+		"Cormorant", "Stork", "Moorhen", "Spoonbill", "Kingfisher", "Plover", "Alligator", "Crocodile", "Newt",
+		"Axolotl", "Salamander", "Gar", "Coati"
     ],
     "Desert": [
-	"Oasis", "Water", "Sharp", "Wet", "Sun", "Wild", "Tumble", "Serpent", "Rabbit", "Drown", "Drowning", "Rain", "Patient", "Sand", "Sandy",
-	"Pour", "Shimmer", "Heat", "Slither", "Slip", "Stone", "Wait", "Waiting", "Torrent", "Flood", "Sear", "Searing", "Quicksand",
-	"Hill", "Resolve", "Badland", "Wither", "Withered", "Playa", "Polar", "Cold", "Freeze", "Frigid", "Heat", "Puff",
-	"Rock", "Plateu", "Pan", "Aquifer", "Nomad", "Travel", "Distance", "Graze", "Sol", "Solar", "Moon", "Abandon", "Abandoned",
-	"Steppe", "Basin", "Flash", "Wash", "Wadis", "Arroyo", "Valley", "River", "Clay", "Color", "Colour", "Crust", "Silt", "Monsoon",
-	"Montane", "Catabatic", "Katabatic", "Stream", "Pool", "Whip", "Dew", "Mist", "Crystal", "Cave", "Hole", "Granite", "Limestone",
-	"Grain", "Gravel", "Ripple", "Barchan", "Mound", "Ridge", "Cascade", "Erg", "Seif", "Selenite", "Limestone",  "Gypsum", "Pave",
-	"Pavement", "Pebble", "Cobble", "Tile", "Tessel", "Mosaic", "Varnish", "Playa", "Ravine", "Pinnacle", "Devil", 
-	"Saguaro", "Taproot", "Spine", "Prong", "Lichen", "Weasel", "Burrow", "Ambush", "Viper", "Brine", "Uranium", "Sodium",
-	"Pumice", "Trek", "Rover", "Alluvial", "Scroll", "Meander", "Sprawl", "Shine", "Shimmer", "Fox", "Heat", "Warm", "Hot", "Water",
-	"Cold", "Freeze", "Wind",
-	
-    "Cactus", "Dune", "Coyote", "Vulture", "Condor", "Canyon", "Prickle", "Pear", "Agave", "Jackal", "Dry", "Drought",
-    "Rattle", "Desert", "Brittle", "Mesa", "Barren", "Oasis", "Dust", "Arid", "Buzzard", "Fly", "Scrub", "Gully", "Wax",
-    "Yucca", "Salt", "Dingo", "Mirage", "Cobra", "Cheetah", "Caracal", "Scorpion", "Lion", "Antelope", "Gazelle", "Oryx", "Camel", "Meerkat",
-	"Skull", "Rye", "Jackrabbit", "Needle", "Aloe", "Acacia", "Viper", "Snake", "Poison", "Venom", "Tiapan", "Fang", "Blister", "Blaze",
-	"Burn", "Scorch", "Smolder", "Jerboa", "Fennec", "Mamba", "Coati", "Addax"
+		"Oasis", "Water", "Sharp", "Wet", "Sun", "Wild", "Tumble", "Serpent", "Rabbit", "Drown", "Drowning", "Rain", "Patient", "Sand", "Sandy",
+		"Pour", "Shimmer", "Heat", "Slither", "Slip", "Stone", "Wait", "Waiting", "Torrent", "Flood", "Sear", "Searing", "Quicksand",
+		"Hill", "Resolve", "Badland", "Wither", "Withered", "Playa", "Polar", "Cold", "Freeze", "Frigid", "Heat", "Puff",
+		"Rock", "Plateu", "Pan", "Aquifer", "Nomad", "Travel", "Distance", "Graze", "Sol", "Solar", "Moon", "Abandon", "Abandoned",
+		"Steppe", "Basin", "Flash", "Wash", "Wadis", "Arroyo", "Valley", "River", "Clay", "Color", "Colour", "Crust", "Silt", "Monsoon",
+		"Montane", "Catabatic", "Katabatic", "Stream", "Pool", "Whip", "Dew", "Mist", "Crystal", "Cave", "Hole", "Granite", "Limestone",
+		"Grain", "Gravel", "Ripple", "Barchan", "Mound", "Ridge", "Cascade", "Erg", "Seif", "Selenite", "Limestone",  "Gypsum", "Pave",
+		"Pavement", "Pebble", "Cobble", "Tile", "Tessel", "Mosaic", "Varnish", "Playa", "Ravine", "Pinnacle", "Devil", 
+		"Saguaro", "Taproot", "Spine", "Prong", "Lichen", "Weasel", "Burrow", "Ambush", "Viper", "Brine", "Uranium", "Sodium",
+		"Pumice", "Trek", "Rover", "Alluvial", "Scroll", "Meander", "Sprawl", "Shine", "Shimmer", "Fox", "Heat", "Warm", "Hot", "Water",
+		"Cold", "Freeze", "Wind", "Polar",
+		
+		"Cactus", "Dune", "Coyote", "Vulture", "Condor", "Canyon", "Prickle", "Pear", "Agave", "Jackal", "Dry", "Drought",
+		"Rattle", "Desert", "Brittle", "Mesa", "Barren", "Oasis", "Dust", "Arid", "Buzzard", "Fly", "Scrub", "Gully", "Wax",
+		"Yucca", "Salt", "Dingo", "Mirage", "Cobra", "Cheetah", "Caracal", "Scorpion", "Lion", "Antelope", "Gazelle", "Oryx", "Camel", "Meerkat",
+		"Skull", "Rye", "Jackrabbit", "Needle", "Aloe", "Acacia", "Viper", "Snake", "Poison", "Venom", "Tiapan", "Fang", "Blister", "Blaze",
+		"Burn", "Scorch", "Smolder", "Jerboa", "Fennec", "Mamba", "Coati", "Addax"
+    ],
+    "Rainworld": [
+		"Out", "Skirt", "Torrent", "Rain", "Monk", "Survive", "Spear", "Rubar", "Rubble", "Damp", "Soak", "Soaked", "Saint",
+		"Riv", "Rivulet", "Gill", "Gilled", "Hunt", "Hunter", "Hunted", "Art", "Artifice", "Artificed", "Lizard", "Master",
+		"Explosive", "Electric", "Scav", "Scavenger", "Jet", "Jetfish", "Bubble", "Bubbleweed", "Hazer", "Shaded", "Citadel",
+		"Construct", "Void", "Worm", "Voidworm", "Gild", "Gilded", "Blue", "Bluefruit", "Bubblefruit", "Fruit", "Bat", "Fly",
+		"Batfly", "Rust", "Squidcada", "Neuron", "Wire", "Pipe", "Shortcut", "Gourmand", "Sub"
     ]
   },
   
@@ -403,14 +410,17 @@
     "Desert": [
       "cactus", "hiss", "drop", "rain", "bow", "aurora", "chip", "chipper", "foul", "crust", "scald", "burn", "incinerate", "inferno",
 	  "reflect", "finale", "steam", "prick", "sear", "time", "rest", "oblivion", "land", "wither", "withering", "arid", "ivory",
-	  "abandon", "desert", "dust", "polar", "chill", "snow", "rain", "flood", "drought", "wind", "steppe", "silt", "salt", "ice", "dry",
+	  "abandon", "desert", "dust", "chill", "snow", "rain", "flood", "drought", "wind", "steppe", "silt", "salt", "ice", "dry",
 	  "coast", "coasts", "blizzard", "peninsula", "monsoon", "mountain", "sheet", "gravel", "erg", "creep", "slide", "slip", "sink", "hill",
 	  "crest", "basin", "selenite", "devil", "current", "electric", "jolt", "zap", "zip", "horn", "taproot", "succulent", "tube",
 	  "tuber", "branch", "wildfire", "scrub", "spine", "spiny", "thorn", "lizard", "pumice", "uranium", "sodium", "trek",
 	  
 	  "prickle", "dune", "sand", "canyon", "rattle", "wind", "dust", "sun", "fly", "cactus", "spine", "scorpion", "snake", "needle", "fang",
 	  "tooth", "bite", "aloe"
-    ]
+    ],
+	"Rainworld": [
+		"survivor", "artificer", "eater", "rain", "hunter", "master", "spear", "hazer", "haze", "gourmand", "terrain"
+	]
   },
   
   
@@ -696,10 +706,18 @@
       "Luck", "Lucky", "Onyx", "Widow", "Bird", "Corvid", "Dark", "Pitch", "Pit", "Abyss", "Cycle", "Repeat", "Forgive",
 	  "Tar",
 	  
-	  "Black", "Shade", "Shaded", "Crow", "Raven", "Ebony", "Dark", "Grackle", "Night", "Shadow", "Scorch",
+	  "Black", "Shade", "Shaded", "Crow", "Raven", "Ebony", "Grackle", "Night", "Shadow", "Scorch",
       "Midnight", "Pepper", "Pitch", "Bat", "Burnt", "Coal", "Ink", "Inky", "Char", "Charred", "Mulberry", "Night", "Evening",
       "Dark", "Murk", "Ghost"
-    ]
+    ],
+	"VOID": [
+		"Luck", "Lucky", "Onyx", "Widow", "Bird", "Corvid", "Dark", "Pitch", "Pit", "Abyss", "Cycle", "Repeat", "Forgive",
+		"Tar", "Void", "Black", "Shade", "Shaded", "Crow", "Raven", "Ebony", "Dark", "Grackle", "Night", "Shadow",
+		"Midnight", "Pitch", "Bat", "Burnt", "Ink", "Inky", "Night", "Evening", "Murk", "Ghost", "Oil"
+	],
+	"PEACH": [
+		"Peach", "Pink", "Rat", "Yellow", "Orange", "Red", "Vibrant", "Sun", "Light", "Beam"
+	]
   },
   
 
@@ -1147,7 +1165,8 @@
 	"roundbottom","roundchest","roundrump","rumpcrack","seedlick","slambottom","slamcrack","slamhole","slampit","slamrump",
 	"slamseed","smallrump","smashbottom","smashcheek","smashcrack","smashhole","smashknot","smashprick","smashrump","smashtop",
 	"softnut","swallowknot","swallowseed","tinyrump","veiwrump","watchingrump","wetbottom","wetduty","wethole","wetnoise","wetpit",
-	"wetrump","wetslam","wettop","whitenut","whiterelease","woodmorning","yellowdrink","yellowsplash","yellowtrail",
+	"wetrump","wetslam","wettop","whitenut","whiterelease","woodmorning","yellowdrink","yellowsplash","yellowtrail", "masterbait",
+	"masterbate",
 	
 
 	"THE OFFENSIVE INAPPROPRIATE NAMES GO HERE",
@@ -1177,7 +1196,8 @@
 	"aeroair","barchanerg","blackcough","crowfood","cryosnow","dirtmud","dirtplace","dogdogwood","driftwoodwood","earthflat",
 	"fiordfjord","fjordfiord","flatearth","flowebb","foxheart","greencough","islandisle","isleisland","loftloft","mousebrain",
 	"muddirt","mudwet","planitiafield","planitiaplain","redcough","roottaproot","roundearth","seiferg","silvercough","silverpelt",
-	"sylvaforest","taprootroot","thunderpath","wetdirt","wetmud","whitecough","yellowcough",
+	"sylvaforest","taprootroot","thunderpath","wetdirt","wetmud","whitecough","yellowcough", "artificeartificer",
+	"artificedartificer",
 	
 	
 	

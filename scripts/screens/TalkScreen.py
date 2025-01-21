@@ -179,7 +179,7 @@ class TalkScreen(Screens):
             camp_nr = 'camp1'
             game.clan.camp_bg = camp_nr
 
-        available_biome = ['Forest', 'Mountainous', 'Plains', 'Beach']
+        available_biome = ['Forest', 'Mountainous', 'Plains', 'Beach', 'Rainworld', 'Desert', 'Wetlands']
         biome = game.clan.biome
         if biome not in available_biome:
             biome = available_biome[0]
@@ -944,7 +944,7 @@ class TalkScreen(Screens):
                 if season.lower() not in tags:
                     continue
             # Biome tags
-            if any(i in ['beach', 'forest', 'plains', 'mountainous', 'wetlands', 'desert'] for i in tags):
+            if any(i in ['beach', 'forest', 'plains', 'mountainous', 'wetlands', 'desert', 'rainworld'] for i in tags):
                 if game.clan.biome.lower() not in tags:
                     continue
 

@@ -1086,7 +1086,7 @@ class MurderScreen(Screens):
             chance += 10
 
         if accomplice and accompliced:
-            chance -= 4
+            chance -= 5
 
         if cat_to_murder.moons > 12:
             chance += 2
@@ -1158,10 +1158,18 @@ class MurderScreen(Screens):
         if cat_to_murder.experience > you.experience:
             chance += 16
 
-        victim_skills_lvl1 = ["watchful", "lives in groups", "interested in oddities", "fascinated by prophecies"]
-        victim_skills_lvl2 = ["good guard", "good sport", "omen seeker", "prophecy seeker"]
-        victim_skills_lvl3 = ["great guard", "team player", "omen sense", "prophecy interpreter"]
-        victim_skills_lvl4 = ["guardian", "insider", "omen sight", "prophet"]
+        victim_skills_lvl1 = ["watchful", "lives in groups", "interested in oddities", "fascinated by prophecies",
+                              "plays with freshkill", "oddly quiet"
+                              ]
+        victim_skills_lvl2 = ["good guard", "good sport", "omen seeker", "prophecy seeker",
+                              "morbid fascination", "feather-light paws"
+                              ]
+        victim_skills_lvl3 = ["great guard", "team player", "omen sense", "prophecy interpreter",
+                              "blood lover", "masterful stepper"
+                              ]
+        victim_skills_lvl4 = ["guardian", "insider", "omen sight", "prophet",
+                              "fascinated by gore", "unseen when sneaking"
+                              ]
 
         if any(skill in victim_skills_lvl1 for skill in their_skills):
             chance -= 5
@@ -1713,12 +1721,15 @@ class MurderScreen(Screens):
                     txt = choice(self.mu_txt["murder_discovered general"])
             txt = txt.replace('v_c', str(cat_to_murder.name))
             game.cur_events_list.insert(2, Single_Event(txt))
+
             if not you.dead:
                 you.shunned = 1
             you.faith -= 0.5
+
         elif punishment_chance == 2:
             if game.clan.your_cat.dead:
                 txt = f"After your and v_c's deaths, {accomplice.name} is blamed for both of them."
+
             else:
                 txt = f"{accomplice.name} is blamed for the murder of v_c. However, you were not caught."
             txt = txt.replace('v_c', str(cat_to_murder.name))
@@ -1726,6 +1737,7 @@ class MurderScreen(Screens):
             if not accomplice.dead:
                 accomplice.shunned = 1
             accomplice.faith -= 0.5
+
         else:
             txt = f"The unsettling truth of v_c's death is discovered, with you and {accomplice.name} responsible. The Clan decides both of your punishments."
             txt = txt.replace('v_c', str(cat_to_murder.name))
@@ -2084,7 +2096,7 @@ class MurderScreen(Screens):
         if not cat_healthy:
             chance += 10
         if you.experience > cat_to_murder.experience:
-            chance += 90
+            chance += 20
         if accomplice and accompliced:
             chance += 15
             if accomplice.personality.trait == "bloodthirsty":
@@ -2177,17 +2189,30 @@ class MurderScreen(Screens):
         # METHOD CHANCES
         # ATTACK
         if self.method == "attack":
-            # raises chances
+
+            # raises chances ----------------------------------------------------------------------------
+
             if you.joined_df:
                 chance += 15
 
-            if ("steps lightly" or "mossball hunter" or "avid play-fighter") in your_skills:
+            if ("steps lightly" or "mossball hunter" or "avid play-fighter" or
+                "plays with freshkill"
+                ) in your_skills:
                 chance += 3
-            if ("graceful" or "good hunter" or "good fighter") in your_skills:
+
+            if ("graceful" or "good hunter" or "good fighter" or
+                "morbid fascination"
+                ) in your_skills:
                 chance += 7
-            if ("elegant" or "great hunter" or "formidable fighter") in your_skills:
+
+            if ("elegant" or "great hunter" or "formidable fighter" or
+                "blood lover"
+                ) in your_skills:
                 chance += 11
-            if ("radiates elegance" or "renowned hunter" or "unusually strong fighter") in your_skills:
+
+            if ("radiates elegance" or "renowned hunter" or "unusually strong fighter" or
+                "fascinated by gore"
+                ) in your_skills:
                 chance += 15
 
             if you.status == "warrior":
@@ -2201,20 +2226,32 @@ class MurderScreen(Screens):
             if you.personality.trait == "bloodthirsty":
                 chance += 10
 
-            # lowers chances
+            # lowers chances ----------------------------------------------------------------------------
 
             if cat_to_murder.status == "warrior":
                 chance -= 10
-            if you.status in ["mediator", "mediator apprentice", "queen", "queen's apprentice", "medicine cat", "medicine cat apprentice", "kitten"]:
+            if you.status in ["mediator", "mediator apprentice", "queen", "queen's apprentice", "medicine cat",
+                              "medicine cat apprentice", "kitten"]:
                 chance -= 10
             
-            if "avid play-fighter" in their_skills:
+            if ("avid play-fighter" or
+                "plays with freshkill"
+                ) in their_skills:
                 chance -= 3
-            if "good fighter" in their_skills:
+
+            if ("good fighter" or
+                "plays with freshkill"
+                ) in their_skills:
                 chance -= 7
-            if "formidable fighter" in their_skills:
+
+            if ("formidable fighter" or
+                "plays with freshkill"
+                ) in their_skills:
                 chance -= 11
-            if "unusually strong fighter" in their_skills:
+
+            if ("unusually strong fighter" or
+                "plays with freshkill"
+                ) in their_skills:
                 chance -= 15
 
             if self.location == "camp":
@@ -2222,19 +2259,44 @@ class MurderScreen(Screens):
             if cat_to_murder.personality.trait == "bloodthirsty":
                 chance -= 10
 
+
+
         if self.method == "poison":
-            # raises chances
-            if you.status in ["medicine cat", "medicine cat apprentice"]:
+
+            # raises chances ----------------------------------------------------------------------------
+            if you.status == "medicine cat apprentice":
+                if you.moons < 19:
+                    chance += (you.moons - 6) * 2
+                    #   starting at moon 6 (starting apprenticeship), chances should go up.
+                    #   7 +2, 8 +4, 9 +6, 10 +8, 11 +10, 12 +12, 13 +14, 14 +16, 15 +18, 16 +20, 17 +22, 18 +24
+                else :
+                    chance += 25
+                    #   to prevent the above from being exploited
+            if you.status == "medicine cat":
                 chance += 25
+            
             if cat_to_murder.is_ill() or cat_to_murder.is_injured():
                 chance += 15
 
+            if ("always learning" or "tidy" or "interested in herbs") in your_skills:
+                chance += 3
+
+            if ("well-versed" or "fur-care enthusiast" or "good healer") in your_skills:
+                chance += 7
+
+            if ("incredibly knowledgeable" or "meticulous cleaner" or "great healer") in your_skills:
+                chance += 11
+
+            if ("polymath" or "master of aesthetics" or "fantastic healer") in your_skills:
+                chance += 15
+            
+
             if self.location == "camp":
-                chance += 10
+                chance += 20
             if self.location == "territory":
                 chance += 15
 
-            # lowers chances
+            # lowers chances ----------------------------------------------------------------------------
             if cat_to_murder.status in ["medicine cat", "medicine cat apprentice"]:
                 chance -= 15
             if not cat_to_murder.is_ill() and not cat_to_murder.is_injured():
@@ -2245,15 +2307,23 @@ class MurderScreen(Screens):
             if self.location == "border":
                 chance -= 10
 
+
+
         if self.method == "accident":
-            # raises chances
+            # raises chances ----------------------------------------------------------------------------
             if accomplice and accompliced:
                 chance += 10
 
-            acc_skills_lvl_1 = ["curious wanderer", "good with directions", "constantly climbing"]
-            acc_skills_lvl_2 = ["knowledgeable explorer", "good navigator", "good climber"]
-            acc_skills_lvl_3 = ["brave pathfinder", "great navigator", "great climber"]
-            acc_skills_lvl_4 = ["master of territories", "pathfinder", "impressive climber"]
+
+            acc_skills_lvl_1 = ["curious wanderer", "good with directions", "constantly climbing"
+                                ]
+            acc_skills_lvl_2 = ["knowledgeable explorer", "good navigator", "good climber"
+                                ]
+            acc_skills_lvl_3 = ["brave pathfinder", "great navigator", "great climber"
+                                ]
+            acc_skills_lvl_4 = ["master of territories", "pathfinder", "impressive climber"
+                                ]
+            # ????????? why does this section do this. fix it.
 
             if any(skill in acc_skills_lvl_1 for skill in your_skills):
                 chance += 5
@@ -2278,7 +2348,7 @@ class MurderScreen(Screens):
             if self.location == "territory":
                 chance += 15
 
-            # lowers chances
+            # lowers chances ----------------------------------------------------------------------------
             if any(skill in acc_skills_lvl_1 for skill in their_skills):
                 chance -= 5
             if any(skill in acc_skills_lvl_2 for skill in their_skills):
@@ -2297,7 +2367,7 @@ class MurderScreen(Screens):
                 chance -= 15
 
         if self.method == "predator":
-            # raises chances
+            # raises chances ----------------------------------------------------------------------------
             chance += 20
             if accomplice and accompliced:
                 chance += 10
@@ -2324,7 +2394,7 @@ class MurderScreen(Screens):
             if "listener of all voices" in your_skills:
                 chance += 20
 
-            # lowers chances
+            # lowers chances ----------------------------------------------------------------------------
             if cat_to_murder.moons >= 12:
                 chance -= 10
             if cat_to_murder.status in ["warrior", "deputy", "leader"]:

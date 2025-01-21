@@ -160,7 +160,7 @@ class MoonplaceScreen(Screens):
             camp_nr = 'camp1'
             game.clan.camp_bg = camp_nr
 
-        available_biome = ['Forest', 'Mountainous', 'Plains', 'Beach']
+        available_biome = ['Forest', 'Mountainous', 'Plains', 'Beach', 'Rainworld', 'Desert', 'Wetlands']
         biome = game.clan.biome
         if biome not in available_biome:
             biome = available_biome[0]
@@ -436,7 +436,8 @@ class MoonplaceScreen(Screens):
                         "Beach": "Mooncove",
                         "Mountainous": "Moonfalls",
                         "Forest": "Moonhollow",
-                        "Plains": "Moongrove"
+                        "Plains": "Moongrove",
+                        "Rainworld": "Voidpool"
                     }
                 moonplace = moonplace_dict.get(game.clan.biome, "Moonplace")
                 text = text.replace("moonplace", moonplace)

@@ -1,20 +1,30 @@
 <strong>v0.0.03: </strong>
 - Added proper changelog
+- Updated credits list
 - New icon
 - New menu art
-- Revised icons camp location choices in preparation for more biomes
+- Revised icons for camp location choices
 - Some more past-lifegen murder dialogue added back
-- Changed save directory
+- Changed save directory (it is now located at Lifegen/neonpinkLifegen!)
+- Added more skills, (most of) which have actual use
+- Turned murder chances down, as there was a way to nearly guarantee success
+- Added more murder chance tweaks, such as medicine cat apprentices having a more varied poison success chance and more skill tweaks
+- Righteous cats will now ALWAYS tell the clan if they find an abusive cat has murdered someone
+- Lifegen cats should now visually transfer well to NP (no more lack of eyes)
+- Added more biomes: Rain World, desert, wetlands. The two latter ones use WHAT ALREADY EXISTS in the code and DO NOT rely on the dev version of Lifegen.
+- Even more names, would you believe it
+- More biomes
 
 <strong>v0.0.02: </strong>
 - Peach pelt completed
 - Pelt pattern templates completed
 - Some more past-lifegen murder dialogue added back
 - Changed window name and version watermark at the bottom of the screen
+- More names
 
 <strong>v0.0.01: </strong>
 - More murder dialogue. Increased murder likelihood.
-- More names, and fixes
+- More names and name fixes
 - Fixed missing eyes causing the game to crash
 - NP accessories now show up
 - Mutism added and appears on the initial creation screen

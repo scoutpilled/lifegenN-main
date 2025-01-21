@@ -222,7 +222,7 @@ class HandleShortEvents:
                 comfortable=-30,
                 jealousy=0,
                 trust=-30,
-                toxicity=0,
+                toxicity=50,
             )
 
         # kill cats
@@ -244,7 +244,7 @@ class HandleShortEvents:
             else:
                 other_cat = self.random_cat
                 if "LIFEGEN_no_shun" not in self.chosen_event.tags:
-                    if not int(random.random() * 2):
+                    if not int(random.random() * 2) or (other_cat.personality == "righteous" and self.main_cat.history.abuser):
                         shunned = True
                         self.additional_event_text = f"{other_cat.name} has told the Clan about {self.main_cat.name}'s crime."
                     else:
@@ -256,7 +256,8 @@ class HandleShortEvents:
                 cat_class=Cat,
                 victim=self.victim_cat,
                 murder_index=self.murder_index,
-                shunned=shunned)
+                shunned=shunned
+                )
 
         # change outsider rep
         if self.chosen_event.outsider:

@@ -631,11 +631,9 @@ class Relationship:
         """Add the value to the toxicity type and influence other value types as well."""
         self.toxicity += value
         if value > 0:
-            self.platonic_like -= buff
             self.comfortable -= buff
             self.trust -= buff
         if value < 0:
-            self.platonic_like += buff
             self.comfortable += buff
             self.trust += buff
 

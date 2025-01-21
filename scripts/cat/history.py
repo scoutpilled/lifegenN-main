@@ -291,12 +291,6 @@ class History:
                 SkillPath.CLAIRVOYANT: [ "predicting the future" ],
                 SkillPath.PROPHET: [ "understanding prophecies" ],
                 SkillPath.GHOST: [ "connecting to the afterlife" ],
-
-                SkillPath.NPDARKGHOST: [ "connecting to the afterlife" ],
-                SkillPath.NPDARKSTAR: [ "connecting to the afterlife" ],
-                SkillPath.NPSTARGHOST: [ "connecting to the afterlife" ],
-                SkillPath.NPDEADSPEAKER: [ "understanding the dead" ],
-
                 SkillPath.EXPLORER: ["exploring unknown areas"],
                 SkillPath.TRACKER: ["tracking down scents"],
                 SkillPath.ARTISTAN: ["decorating dens"],
@@ -316,7 +310,18 @@ class History:
                 SkillPath.TREASURE: ["finding gifts"],
                 SkillPath.FISHER: ["fishing"],
                 SkillPath.LANGUAGE: ["using their words"],
-                SkillPath.SLEEPER: ["self-care"]
+                SkillPath.SLEEPER: ["self-care"],
+
+                
+
+                SkillPath.NPDARKGHOST: [ "connecting to the afterlife" ],
+                SkillPath.NPDARKSTAR: [ "connecting to the afterlife" ],
+                SkillPath.NPSTARGHOST: [ "connecting to the afterlife" ],
+                SkillPath.NPDEADSPEAKER: [ "understanding the dead" ],
+                SkillPath.NPMORBID: [ "curiousity" ],
+                SkillPath.NPSNEAK: [ "remaining hidden" ],
+                SkillPath.NPSLEUTH: [ "spotting inconsistencies" ],
+                SkillPath.NPEMOTIONS: [ "feeling emotions without being overtaken by them" ]
             }
         
         for _ment in cat.history.mentor_influence["skill"]:

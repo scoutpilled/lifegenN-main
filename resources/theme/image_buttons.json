@@ -3999,16 +3999,16 @@
         "prototype": "#image_button",
         "images": {
             "normal_image": {
-                "path": "resources/images/buttons/forest.png"
+                "path": "resources/images/buttons/biome-forest.png"
             },
             "hovered_image": {
-                "path": "resources/images/buttons/forest_hover.png"
+                "path": "resources/images/buttons/biome-forest_hover.png"
             },
             "selected_image": {
-                "path": "resources/images/buttons/forest_hover.png"
+                "path": "resources/images/buttons/biome-forest_hover.png"
             },
             "disabled_image": {
-                "path": "resources/images/buttons/forest_unavailable.png"
+                "path": "resources/images/buttons/biome-forest_unavailable.png"
             }
         }
     },
@@ -4016,16 +4016,16 @@
         "prototype": "#image_button",
         "images": {
             "normal_image": {
-                "path": "resources/images/buttons/mountain.png"
+                "path": "resources/images/buttons/biome-mountain.png"
             },
             "hovered_image": {
-                "path": "resources/images/buttons/mountain_hover.png"
+                "path": "resources/images/buttons/biome-mountain_hover.png"
             },
             "selected_image": {
-                "path": "resources/images/buttons/mountain_hover.png"
+                "path": "resources/images/buttons/biome-mountain_hover.png"
             },
             "disabled_image": {
-                "path": "resources/images/buttons/mountain_unavailable.png"
+                "path": "resources/images/buttons/biome-mountain_unavailable.png"
             }
         }
     },
@@ -4033,16 +4033,16 @@
         "prototype": "#image_button",
         "images": {
             "normal_image": {
-                "path": "resources/images/buttons/plains.png"
+                "path": "resources/images/buttons/biome-plains.png"
             },
             "hovered_image": {
-                "path": "resources/images/buttons/plains_hover.png"
+                "path": "resources/images/buttons/biome-plains_hover.png"
             },
             "selected_image": {
-                "path": "resources/images/buttons/plains_hover.png"
+                "path": "resources/images/buttons/biome-plains_hover.png"
             },
             "disabled_image": {
-                "path": "resources/images/buttons/plains_unavailable.png"
+                "path": "resources/images/buttons/biome-plains_unavailable.png"
             }
         }
     },
@@ -4101,16 +4101,16 @@
         "prototype": "#image_button",
         "images": {
             "normal_image": {
-                "path": "resources/images/buttons/beach.png"
+                "path": "resources/images/buttons/biome-beach.png"
             },
             "hovered_image": {
-                "path": "resources/images/buttons/beach_hover.png"
+                "path": "resources/images/buttons/biome-beach_hover.png"
             },
             "selected_image": {
-                "path": "resources/images/buttons/beach_hover.png"
+                "path": "resources/images/buttons/biome-beach_hover.png"
             },
             "disabled_image": {
-                "path": "resources/images/buttons/beach_unavailable.png"
+                "path": "resources/images/buttons/biome-beach_unavailable.png"
             }
         }
     },
@@ -4420,7 +4420,7 @@
             }
         }
     },
-    "#desert_tab": {
+    "#abandonedtwolegdesert_tab": {
         "prototype": "#image_button",
         "images": {
             "normal_image": {
@@ -4468,23 +4468,6 @@
             },
             "disabled_image": {
                 "path": "resources/images/buttons/birch_camp_unavailable.png"
-            }
-        }
-    },
-    "#npouter_camp_tab": {
-        "prototype": "#image_button",
-        "images": {
-            "normal_image": {
-                "path": "resources/images/buttons/npouter_camp.png"
-            },
-            "hovered_image": {
-                "path": "resources/images/buttons/npouter_camp_hover.png"
-            },
-            "selected_image": {
-                "path": "resources/images/buttons/npouter_camp_hover.png"
-            },
-            "disabled_image": {
-                "path": "resources/images/buttons/npouter_camp_unavailable.png"
             }
         }
     },
@@ -5693,6 +5676,101 @@
                 },
                 "disabled_image": {
                     "path": "resources/images/buttons/filters_tab_hover.png"
+                }
+            }
+        },
+
+
+
+
+
+
+
+
+
+        
+        "#rainworld_biome_button": {
+            "prototype": "#image_button",
+            "images": {
+                "normal_image": {
+                    "path": "resources/images/buttons/biome-rainworld.png"
+                },
+                "hovered_image": {
+                    "path": "resources/images/buttons/biome-rainworld_hover.png"
+                },
+                "selected_image": {
+                    "path": "resources/images/buttons/biome-rainworld_unavailable.png"
+                },
+                "disabled_image": {
+                    "path": "resources/images/buttons/biome-rainworld_unavailable.png"
+                }
+            }
+        },
+        "#npouter_camp_tab": {
+            "prototype": "#image_button",
+            "images": {
+                "normal_image": {
+                    "path": "resources/images/buttons/npouter_camp.png"
+                },
+                "hovered_image": {
+                    "path": "resources/images/buttons/npouter_camp_hover.png"
+                },
+                "selected_image": {
+                    "path": "resources/images/buttons/npouter_camp_hover.png"
+                },
+                "disabled_image": {
+                    "path": "resources/images/buttons/npouter_camp_unavailable.png"
+                }
+            }
+        },
+        "#desert_biome_button": {
+            "prototype": "#image_button",
+            "images": {
+                "normal_image": {
+                    "path": "resources/images/buttons/biome-desert.png"
+                },
+                "hovered_image": {
+                    "path": "resources/images/buttons/biome-desert_hover.png"
+                },
+                "selected_image": {
+                    "path": "resources/images/buttons/biome-desert_unavailable.png"
+                },
+                "disabled_image": {
+                    "path": "resources/images/buttons/biome-desert_unavailable.png"
+                }
+            }
+        },
+        "#wetlands_biome_button": {
+            "prototype": "#image_button",
+            "images": {
+                "normal_image": {
+                    "path": "resources/images/buttons/biome-wetlands.png"
+                },
+                "hovered_image": {
+                    "path": "resources/images/buttons/biome-wetlands_hover.png"
+                },
+                "selected_image": {
+                    "path": "resources/images/buttons/biome-wetlands_unavailable.png"
+                },
+                "disabled_image": {
+                    "path": "resources/images/buttons/biome-wetlands_unavailable.png"
+                }
+            }
+        },
+        "#npstarclan_button": {
+            "prototype": "#image_button",
+            "images": {
+                "normal_image": {
+                    "path": "resources/images/buttons/np-starclanpatrol.png"
+                },
+                "hovered_image": {
+                    "path": "resources/images/buttons/np-starclanpatrol_hover.png"
+                },
+                "selected_image": {
+                    "path": "resources/images/buttons/np-starclanpatrol_hover.png"
+                },
+                "disabled_image": {
+                    "path": "resources/images/buttons/np-starclanpatrol_unavailable.png"
                 }
             }
         }

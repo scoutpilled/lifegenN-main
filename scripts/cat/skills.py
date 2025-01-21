@@ -5,7 +5,8 @@ from typing import Union
 class SkillPath(Enum):
     TEACHER = (
         "quick to help", 
-        "good teacher", "great teacher", 
+        "good teacher",
+        "great teacher", 
         "excellent teacher"
     )
     HUNTER = (
@@ -51,7 +52,11 @@ class SkillPath(Enum):
         "skilled mediator",
     )
     CLEVER = (
-        "quick witted", "clever", "very clever", "incredibly clever")
+        "quick witted",
+        "clever",
+        "very clever",
+        "incredibly clever"
+    )
     INSIGHTFUL = (
         "careful listener",
         "helpful insight",
@@ -59,7 +64,11 @@ class SkillPath(Enum):
         "trusted advisor",
     )
     SENSE = (
-        "oddly observant", "natural intuition", "keen eye", "unnatural senses")
+        "oddly observant",
+        "natural intuition",
+        "keen eye",
+        "unnatural senses"
+    )
     KIT = (
         "active imagination",
         "good kitsitter",
@@ -78,8 +87,18 @@ class SkillPath(Enum):
         "lore keeper",
         "lore master",
     )
-    CAMP = ("picky nest builder", "steady paws", "den builder", "camp keeper")
-    HEALER = ("interested in herbs", "good healer", "great healer", "fantastic healer")
+    CAMP = (
+        "picky nest builder",
+        "steady paws",
+        "den builder",
+        "camp keeper"
+    )
+    HEALER = (
+        "interested in herbs",
+        "good healer",
+        "great healer",
+        "fantastic healer"
+    )
     STAR = (
         "curious about StarClan",
         "connection to StarClan",
@@ -92,8 +111,18 @@ class SkillPath(Enum):
         "deep Dark Forest bond",
         "unshakable Dark Forest link",
     )
-    OMEN = ("interested in oddities", "omen seeker", "omen sense", "omen sight")
-    DREAM = ("restless sleeper", "strange dreamer", "dream walker", "dream shaper")
+    OMEN = (
+        "interested in oddities",
+        "omen seeker",
+        "omen sense",
+        "omen sight"
+    )
+    DREAM = (
+        "restless sleeper",
+        "strange dreamer",
+        "dream walker",
+        "dream shaper"
+    )
     CLAIRVOYANT = (
         "oddly insightful",
         "somewhat clairvoyant",
@@ -111,33 +140,6 @@ class SkillPath(Enum):
         "ghost sense",
         "ghost sight",
         "ghost speaker"
-    )
-
-    # NEONPINK SKILLS
-
-    NPDARKGHOST = (
-        "collector of bones",
-        "strange senses",
-        "Dark Forest sight",
-        "Dark Forest dreamer"
-    )
-    NPSTARGHOST = (
-        "mourns dead prey",
-        "listens to stars",
-        "guides ghosts",
-        "speaks to Starclan and ghosts"
-    )
-    NPDARKSTAR = (
-        "avid afterlife storyteller",
-        "connected to the afterlife",
-        "afterlife speaker",
-        "prophet of stars and shadows"
-    )
-    NPDEADSPEAKER = (
-        "doesn't fit in",
-        "haunted",
-        "dreams of the dead",
-        "communes with the dead"
     )
     
     # LIFEGEN SKILLS --
@@ -262,6 +264,57 @@ class SkillPath(Enum):
         "dormouse", 
         "leader of SnoozeClan"
     ) 
+
+    # NEONPINK SKILLS ----------------------------------------
+
+    NPDARKGHOST = (
+        "collector of bones",
+        "strange senses",
+        "Dark Forest sight",
+        "Dark Forest dreamer"
+    )
+    NPSTARGHOST = (
+        "mourns dead prey",
+        "listens to stars",
+        "guides ghosts",
+        "speaks to Starclan and ghosts"
+    )
+    NPDARKSTAR = (
+        "avid afterlife storyteller",
+        "connected to the afterlife",
+        "afterlife speaker",
+        "prophet of stars and shadows"
+    )
+    NPDEADSPEAKER = (
+        "doesn't fit in",
+        "haunted",
+        "dreams of the dead",
+        "communes with the dead"
+    )
+    NPMORBID = (
+        "plays with freshkill",
+        "morbid fascination",
+        "blood lover",
+        "fascinated by gore"
+    )
+    NPSLEUTH = (
+        "questions everything",
+        "suspicion seeker",
+        "clue finder",
+        "master sleuth"
+    )
+    NPSNEAK = (
+        "oddly quiet",
+        "feather-light paws",
+        "masterful stepper",
+        "unseen when sneaking"
+    )
+    NPEMOTIONS = (
+        "feels big feelings",
+        "heavy hearted",
+        "strong emotions",
+        "powerful emotions"
+    )
     
     @staticmethod
     def get_random(exclude: list = ()):
@@ -278,10 +331,13 @@ class SkillPath(Enum):
                 SkillPath.STAR,
                 SkillPath.HEALER,
                 SkillPath.DARK,
+
                 SkillPath.NPDARKGHOST,
                 SkillPath.NPDARKSTAR,
                 SkillPath.NPSTARGHOST,
                 SkillPath.NPDEADSPEAKER,
+                SkillPath.NPMORBID,
+                SkillPath.NPSNEAK
             ]
             if i not in exclude
         ]
@@ -342,12 +398,6 @@ class Skill:
         SkillPath.CLAIRVOYANT: "predicting",
         SkillPath.PROPHET: "prophesying",
         SkillPath.GHOST: "ghosts",
-
-        SkillPath.NPDARKGHOST: "dark ghosts",
-        SkillPath.NPDARKSTAR: "afterlife",
-        SkillPath.NPSTARGHOST: "star ghosts",
-        SkillPath.NPDEADSPEAKER: "dead speech",
-
         SkillPath.DARK: "dark forest",
         SkillPath.EXPLORER: "exploring",
         SkillPath.TRACKER: "tracking",
@@ -368,7 +418,18 @@ class Skill:
         SkillPath.TREASURE: "finding",
         SkillPath.FISHER: "fishing",
         SkillPath.LANGUAGE: "language",
-        SkillPath.SLEEPER: "sleeping"
+        SkillPath.SLEEPER: "sleeping",
+
+        
+
+        SkillPath.NPDARKGHOST: "dark ghosts",
+        SkillPath.NPDARKSTAR: "afterlife",
+        SkillPath.NPSTARGHOST: "starry ghosts",
+        SkillPath.NPDEADSPEAKER: "dead speech",
+        SkillPath.NPMORBID: "morbidity",
+        SkillPath.NPSLEUTH: "sleuthing",
+        SkillPath.NPSNEAK: "sneaking",
+        SkillPath.NPEMOTIONS: "emotions"
     }
 
     def __init__(self, path: SkillPath, points: int = 0, interest_only: bool = False):
@@ -508,14 +569,9 @@ class CatSkills:
     # Mentor Inflence groups.
     # pylint: disable=unsupported-binary-operation
     influence_flags = {
-        SkillPath.TEACHER: SkillTypeFlag.STRONG
-        | SkillTypeFlag.AGILE
-        | SkillTypeFlag.SMART
-        | SkillTypeFlag.OBSERVANT
-        | SkillTypeFlag.SOCIAL,
-        SkillPath.HUNTER: SkillTypeFlag.STRONG
-        | SkillTypeFlag.AGILE
-        | SkillTypeFlag.OBSERVANT,
+        SkillPath.TEACHER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE | SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT |
+            SkillTypeFlag.SOCIAL,
+        SkillPath.HUNTER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE | SkillTypeFlag.OBSERVANT,
         SkillPath.FIGHTER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE,
         SkillPath.RUNNER: SkillTypeFlag.AGILE,
         SkillPath.CLIMBER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE,
@@ -529,9 +585,7 @@ class CatSkills:
         SkillPath.STORY: SkillTypeFlag.SMART | SkillTypeFlag.SOCIAL,
         SkillPath.LORE: SkillTypeFlag.SMART | SkillTypeFlag.SOCIAL,
         SkillPath.CAMP: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SOCIAL,
-        SkillPath.HEALER: SkillTypeFlag.SMART
-        | SkillTypeFlag.OBSERVANT
-        | SkillTypeFlag.SOCIAL,
+        SkillPath.HEALER: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT | SkillTypeFlag.SOCIAL,
         SkillPath.STAR: SkillTypeFlag.SUPERNATURAL,
         SkillPath.OMEN: SkillTypeFlag.SUPERNATURAL | SkillTypeFlag.OBSERVANT,
         SkillPath.DREAM: SkillTypeFlag.SUPERNATURAL,
@@ -539,10 +593,6 @@ class CatSkills:
         SkillPath.PROPHET: SkillTypeFlag.SUPERNATURAL,
         SkillPath.GHOST: SkillTypeFlag.SUPERNATURAL,
         SkillPath.DARK: SkillTypeFlag.SUPERNATURAL,
-        SkillPath.NPSTARGHOST: SkillTypeFlag.SUPERNATURAL,
-        SkillPath.NPDARKSTAR: SkillTypeFlag.SUPERNATURAL,
-        SkillPath.NPDARKGHOST: SkillTypeFlag.SUPERNATURAL,
-        SkillPath.NPDEADSPEAKER: SkillTypeFlag.SUPERNATURAL,
         SkillPath.EXPLORER: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
         SkillPath.TRACKER: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
         SkillPath.ARTISTAN: SkillTypeFlag.SMART,
@@ -562,7 +612,16 @@ class CatSkills:
         SkillPath.TREASURE: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
         SkillPath.FISHER: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE | SkillTypeFlag.OBSERVANT,
         SkillPath.LANGUAGE: SkillTypeFlag.SOCIAL,
-        SkillPath.SLEEPER: SkillTypeFlag.STRONG
+        SkillPath.SLEEPER: SkillTypeFlag.STRONG,
+
+        SkillPath.NPSTARGHOST: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.NPDARKSTAR: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.NPDARKGHOST: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.NPDEADSPEAKER: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.NPMORBID: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SMART,
+        SkillPath.NPSLEUTH: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SMART,
+        SkillPath.NPSNEAK: SkillTypeFlag.AGILE | SkillTypeFlag.OBSERVANT | SkillTypeFlag.SMART,
+        SkillPath.NPEMOTIONS: SkillTypeFlag.SOCIAL
     }
 
     # pylint: enable=unsupported-binary-operation

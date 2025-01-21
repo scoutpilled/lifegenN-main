@@ -205,7 +205,6 @@ class NewLifeScreen(Screens):
             self.selected_cat = None
             self.delete_example_cats()
             self.change_screen("events screen")
-            
 
     def refresh_text_and_buttons(self):
         """Refreshes the button states and text boxes"""
@@ -334,21 +333,60 @@ class NewLifeScreen(Screens):
                 self.elements["mountain_biome"].enable()
                 self.elements["plains_biome"].enable()
                 self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
             elif self.biome_selected == "Mountainous":
                 self.elements["forest_biome"].enable()
                 self.elements["mountain_biome"].disable()
                 self.elements["plains_biome"].enable()
                 self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
             elif self.biome_selected == "Plains":
                 self.elements["forest_biome"].enable()
                 self.elements["mountain_biome"].enable()
                 self.elements["plains_biome"].disable()
                 self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
             elif self.biome_selected == "Beach":
                 self.elements["forest_biome"].enable()
                 self.elements["mountain_biome"].enable()
                 self.elements["plains_biome"].enable()
                 self.elements["beach_biome"].disable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
+
+
+                # NEONPINK BIOMES
+            elif self.biome_selected == "Rainworld":
+                self.elements["forest_biome"].enable()
+                self.elements["mountain_biome"].enable()
+                self.elements["plains_biome"].enable()
+                self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].disable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
+            elif self.biome_selected == "Desert":
+                self.elements["forest_biome"].enable()
+                self.elements["mountain_biome"].enable()
+                self.elements["plains_biome"].enable()
+                self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].disable()
+                self.elements["wetlands_biome"].enable()
+            elif self.biome_selected == "Wetlands":
+                self.elements["forest_biome"].enable()
+                self.elements["mountain_biome"].enable()
+                self.elements["plains_biome"].enable()
+                self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].disable()
 
             if self.selected_season == "Newleaf":
                 self.tabs["newleaf_tab"].disable()

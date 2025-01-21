@@ -1467,6 +1467,9 @@ class Cat:
                         colour2 == "love") and not colour2 == "ringed" and not colour2 == "wildcard":
                     colour2 = "kit-blue"
         
+        if colour2 == None:
+            colour2 == colour
+
         if not colour == colour2 and not colour2 == None:
             colour = colour + ", " + colour2
         return colour
@@ -3254,6 +3257,7 @@ class Cat:
                 jealousy = 0
                 trust = 0
                 toxicity = 0
+                
                 if game.settings["random relation"]:
                     if game.clan:
                         if the_cat == game.clan.instructor or the_cat == game.clan.demon:

@@ -3675,14 +3675,17 @@ class ProfileScreen(Screens):
         if game.settings["dark mode"]:
             light_dark = "dark"
 
-        available_biome = ["Forest", "Mountainous", "Plains", "Beach"]
+        available_biome = ["Forest", "Mountainous", "Plains", "Beach", "Rainworld", "Desert", "Wetlands"]
         biome = game.clan.biome
+        
+        # gives the desert the "plains" platform
+        if biome == "Desert":
+            biome = available_biome[3]
 
         if biome not in available_biome:
             biome = available_biome[0]
         if the_cat.age == "newborn" or the_cat.not_working():
             biome = "nest"
-
         biome = biome.lower()
 
         platformsheet = pygame.image.load(

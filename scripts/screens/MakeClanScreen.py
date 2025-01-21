@@ -472,6 +472,18 @@ class MakeClanScreen(Screens):
             self.biome_selected = "Beach"
             self.selected_camp_tab = 1
             self.refresh_text_and_buttons()
+        elif event.ui_element == self.elements["rainworld_biome"]:
+            self.biome_selected = "Rainworld"
+            self.selected_camp_tab = 1
+            self.refresh_text_and_buttons()
+        elif event.ui_element == self.elements["desert_biome"]:
+            self.biome_selected = "Desert"
+            self.selected_camp_tab = 1
+            self.refresh_text_and_buttons()
+        elif event.ui_element == self.elements["wetlands_biome"]:
+            self.biome_selected = "Wetlands"
+            self.selected_camp_tab = 1
+            self.refresh_text_and_buttons()
         elif event.ui_element == self.tabs["tab1"]:
             self.selected_camp_tab = 1
             self.refresh_selected_camp()
@@ -508,17 +520,23 @@ class MakeClanScreen(Screens):
         elif event.ui_element == self.elements["random_background"]:
             # Select a random biome and background
             old_biome = self.biome_selected
-            possible_biomes = ['Forest', 'Mountainous', 'Plains', 'Beach']
+            possible_biomes = ['Forest', 'Mountainous', 'Plains', 'Beach', 'Rainworld', 'Desert', 'Wetlands']
             # ensuring that the new random camp will not be the same one
             if old_biome is not None:
                 possible_biomes.remove(old_biome)
             self.biome_selected = choice(possible_biomes)
             if self.biome_selected == 'Forest':
-                self.selected_camp_tab = randrange(1, 8)
+                self.selected_camp_tab = randrange(1, 6)
             elif self.biome_selected == "Mountainous":
                 self.selected_camp_tab = randrange(1, 7)
             elif self.biome_selected == "Plains":
-                self.selected_camp_tab = randrange(1, 6)
+                self.selected_camp_tab = randrange(1, 5)
+            elif self.biome_selected == "Rainworld":
+                self.selected_camp_tab = randrange(1, 2)
+            elif self.biome_selected == "Desert":
+                self.selected_camp_tab = randrange(1, 2)
+            elif self.biome_selected == "Wetlands":
+                self.selected_camp_tab = randrange(1, 2)
             else:
                 self.selected_camp_tab = randrange(1, 5)
             self.refresh_selected_camp()
@@ -536,6 +554,10 @@ class MakeClanScreen(Screens):
                 self.biome_selected = "Plains"
             elif self.biome_selected == "Plains":
                 self.biome_selected = "Beach"
+            elif self.biome_selected == "Beach":
+                self.biome_selected = "Desert"
+            elif self.biome_selected == "Desert":
+                self.biome_selected = "Wetlands"
             self.selected_camp_tab = 1
             self.refresh_text_and_buttons()
         elif event.key == pygame.K_LEFT:
@@ -547,6 +569,10 @@ class MakeClanScreen(Screens):
                 self.biome_selected = "Mountainous"
             elif self.biome_selected == "Mountainous":
                 self.biome_selected = "Forest"
+            elif self.biome_selected == "Forest":
+                self.biome_selected = "Wetlands"
+            elif self.biome_selected == "Wetlands":
+                self.biome_selected = "Desert"
             self.selected_camp_tab = 1
             self.refresh_text_and_buttons()
         elif event.key == pygame.K_UP and self.biome_selected is not None:
@@ -774,21 +800,57 @@ class MakeClanScreen(Screens):
                 self.elements["mountain_biome"].enable()
                 self.elements["plains_biome"].enable()
                 self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
             elif self.biome_selected == "Mountainous":
                 self.elements["forest_biome"].enable()
                 self.elements["mountain_biome"].disable()
                 self.elements["plains_biome"].enable()
                 self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
             elif self.biome_selected == "Plains":
                 self.elements["forest_biome"].enable()
                 self.elements["mountain_biome"].enable()
                 self.elements["plains_biome"].disable()
                 self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
             elif self.biome_selected == "Beach":
                 self.elements["forest_biome"].enable()
                 self.elements["mountain_biome"].enable()
                 self.elements["plains_biome"].enable()
                 self.elements["beach_biome"].disable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
+            elif self.biome_selected == "Rainworld":
+                self.elements["forest_biome"].enable()
+                self.elements["mountain_biome"].enable()
+                self.elements["plains_biome"].enable()
+                self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].disable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].enable()
+            elif self.biome_selected == "Desert":
+                self.elements["forest_biome"].enable()
+                self.elements["mountain_biome"].enable()
+                self.elements["plains_biome"].enable()
+                self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].disable()
+                self.elements["wetlands_biome"].enable()
+            elif self.biome_selected == "Wetlands":
+                self.elements["forest_biome"].enable()
+                self.elements["mountain_biome"].enable()
+                self.elements["plains_biome"].enable()
+                self.elements["beach_biome"].enable()
+                self.elements["rainworld_biome"].enable()
+                self.elements["desert_biome"].enable()
+                self.elements["wetlands_biome"].disable()
 
             if self.selected_season == "Newleaf":
                 self.tabs["newleaf_tab"].disable()
@@ -849,13 +911,9 @@ class MakeClanScreen(Screens):
                                               , manager=MANAGER)
             self.tabs["tab3"] = UIImageButton(scale(pygame.Rect((190, 500), (308, 60))), "", object_id="#grotto_tab"
                                               , manager=MANAGER)
-            self.tabs["tab4"] = UIImageButton(scale(pygame.Rect((170, 570), (308, 60))), "", object_id="#lakeside_tab"
+            self.tabs["tab4"] = UIImageButton(scale(pygame.Rect((170, 570), (308, 60))), "", object_id="#pine_tab"
                                               , manager=MANAGER)
-            self.tabs["tab5"] = UIImageButton(scale(pygame.Rect((170, 640), (308, 60))), "", object_id="#pine_tab"
-                                              , manager=MANAGER)
-            self.tabs["tab6"] = UIImageButton(scale(pygame.Rect((170, 710), (308, 60))), "", object_id="#birch_camp_tab"
-                                              , manager=MANAGER)
-            self.tabs["tab7"] = UIImageButton(scale(pygame.Rect((85, 780), (308, 60))), "", object_id="#npouter_camp_tab"
+            self.tabs["tab5"] = UIImageButton(scale(pygame.Rect((170, 640), (308, 60))), "", object_id="#birch_camp_tab"
                                               , manager=MANAGER)
         elif self.biome_selected == 'Mountainous':
             self.tabs["tab1"] = UIImageButton(scale(pygame.Rect((222, 360), (308, 60))), "", object_id="#cliff_tab"
@@ -883,9 +941,7 @@ class MakeClanScreen(Screens):
                                               , manager=MANAGER)
             self.tabs["tab4"] = UIImageButton(scale(pygame.Rect((128, 570), (308, 60))), "", object_id="#taiga_camp_tab"
                                               , manager=MANAGER)
-            self.tabs["tab5"] = UIImageButton(scale(pygame.Rect((118, 640), (308, 60))), "", object_id="#desert_tab"
-                                              , manager=MANAGER)
-            self.tabs["tab6"] = UIImageButton(scale(pygame.Rect((118, 710), (308, 60))), "", object_id="#city_tab"
+            self.tabs["tab5"] = UIImageButton(scale(pygame.Rect((118, 640), (308, 60))), "", object_id="#city_tab"
                                               , manager=MANAGER)
         elif self.biome_selected == 'Beach':
             self.tabs["tab1"] = UIImageButton(scale(pygame.Rect((152, 360), (308, 60))), "", object_id="#tidepool_tab"
@@ -896,6 +952,15 @@ class MakeClanScreen(Screens):
                                                 , manager=MANAGER)
             self.tabs["tab4"] = UIImageButton(scale(pygame.Rect((78, 570), (308, 60))), "", object_id="#tropical_island_tab"
                                                 , manager=MANAGER)
+        elif self.biome_selected == 'Rainworld':
+            self.tabs["tab1"] = UIImageButton(scale(pygame.Rect((78, 360), (308, 60))), "", object_id="#npouter_camp_tab"
+                                              , manager=MANAGER)
+        elif self.biome_selected == 'Desert':
+            self.tabs["tab1"] = UIImageButton(scale(pygame.Rect((128, 360), (308, 60))), "", object_id="#abandonedtwolegdesert_tab"
+                                              , manager=MANAGER)
+        elif self.biome_selected == 'Wetlands':
+            self.tabs["tab1"] = UIImageButton(scale(pygame.Rect((128, 360), (308, 60))), "", object_id="#lakeside_tab"
+                                              , manager=MANAGER)
 
         if self.selected_camp_tab == 1:
             self.tabs["tab1"].disable()
@@ -2192,6 +2257,25 @@ class MakeClanScreen(Screens):
             scale(pygame.Rect((680, 260), (84, 68))),
             "",
             object_id="#beach_biome_button",
+            manager=MANAGER,
+        )
+        # NEON PINK EXCLUSIVE BIOMES
+        self.elements["rainworld_biome"] = UIImageButton(
+            scale(pygame.Rect((1400, 247), (86, 86))),
+            "",
+            object_id="#rainworld_biome_button",
+            manager=MANAGER,
+        )
+        self.elements["desert_biome"] = UIImageButton(
+            scale(pygame.Rect((790, 255), (94, 72))),
+            "",
+            object_id="#desert_biome_button",
+            manager=MANAGER,
+        )
+        self.elements["wetlands_biome"] = UIImageButton(
+            scale(pygame.Rect((900, 260), (76, 68))),
+            "",
+            object_id="#wetlands_biome_button",
             manager=MANAGER,
         )
 

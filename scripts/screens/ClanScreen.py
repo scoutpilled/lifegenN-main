@@ -260,7 +260,7 @@ class ClanScreen(Screens):
             camp_nr = 'camp1'
             game.clan.camp_bg = camp_nr
 
-        available_biome = ['Forest', 'Mountainous', 'Plains', 'Beach']
+        available_biome = ['Forest', 'Mountainous', 'Plains', 'Beach', 'Rainworld', 'Desert', 'Wetlands']
         biome = game.clan.biome
         if biome not in available_biome:
             biome = available_biome[0]

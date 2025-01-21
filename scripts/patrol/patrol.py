@@ -128,7 +128,7 @@ class Patrol:
             elif game.switches["patrol_category"] == 'date':
                 game.switches['patrolled'].append('4')
             else:
-                game.switches['patrolled'].append('3')
+                game.switches['patrolled'].append('3') # for starclan / df patrols
         
         return self.process_text(self.patrol_event.intro_text, None)
 
@@ -236,7 +236,7 @@ class Patrol:
         else:
             self.other_clan = None
 
-        if "patrol_category" in game.switches and game.switches["patrol_category"] in ["df", "date", "lifegen"]:
+        if "patrol_category" in game.switches and game.switches["patrol_category"] in ["df", "date", "lifegen", "npstarclan"]:
             self.patrol_leader = game.clan.your_cat
             # youre always da leader here
             
@@ -250,6 +250,10 @@ class Patrol:
         elif "patrol_category" in game.switches and len(patrol_cats) > 1 and game.switches["patrol_category"] == 'df':
             possible_random_cats = [i for i in patrol_cats if i.ID != game.clan.your_cat.ID]
             self.random_cat = choice(possible_random_cats)
+        elif "patrol_category" in game.switches and len(patrol_cats) > 1 and game.switches["patrol_category"] == 'npstarclan':
+            possible_random_cats = [i for i in patrol_cats if i.ID != game.clan.your_cat.ID]
+            self.random_cat = choice(possible_random_cats)
+            # you can go to starclan with somebody! yay
         else:
             if len(patrol_cats) > 1:
                 self.random_cat = choice([i for i in patrol_cats if i != self.patrol_leader])
@@ -403,6 +407,8 @@ class Patrol:
                     possible_patrols.extend(self.generate_patrol_events(self.warrior_lifegen))
         elif game.switches["patrol_category"] == 'date':
             possible_patrols.extend(self.generate_patrol_events(self.date_lifegen))
+        elif game.switches["patrol_category"] == 'npstarclan':
+            possible_patrols.extend(self.generate_patrol_events(self.npstarclan))
         else:
             possible_patrols.extend(self.generate_patrol_events(self.df_lifegen))
 
@@ -641,7 +647,7 @@ class Patrol:
                     elif 'herb_gathering' not in patrol.types and patrol_type == 'med':
                         continue
 
-            if game.switches["patrol_category"] in ['lifegen', 'df', 'date']:
+            if game.switches["patrol_category"] in ['lifegen', 'df', 'date', 'npstarclan']:
                 if game.switches["patrol_category"] == "df":
                     if len(self.patrol_cats) > 1:
                         other_cat = self.patrol_cats[1]
@@ -1071,6 +1077,10 @@ class Patrol:
             self.date_lifegen = None
             with open(f"{resource_dir}/lifegen/date.json", 'r', encoding='ascii') as read_file:
                 self.date_lifegen = ujson.loads(read_file.read())
+        elif game.switches["patrol_category"] == 'npstarclan':
+            self.npstarclan = None
+            with open(f"{resource_dir}/neonpink/starclan.json", 'r', encoding='ascii') as read_file:
+                self.npstarclan = ujson.loads(read_file.read())
 
     def balance_hunting(self, possible_patrols: list):
         """Filter the incoming hunting patrol list to balance the different kinds of hunting patrols.
@@ -1265,7 +1275,7 @@ class Patrol:
             replace_dict["s_c"] = (str(stat_cat.name), choice(stat_cat.pronouns))
 
         # adjusting text for lifegen abbrevs + adding to replace dict
-        if game.switches["patrol_category"] in ['lifegen', 'df', 'date']:
+        if game.switches["patrol_category"] in ['lifegen', 'df', 'date', 'npstarclan']:
             text = adjust_txt(Cat, text, self.patrol_leader, self.patrol_cat_dict, r_c_allowed=False, o_c_allowed=False)
             if text == "":
                 # This shouldn't ever happen naturally, as the abbrevs in the patrol are all tested during filtering

@@ -2808,8 +2808,6 @@ class Events:
                         "faithful",
                     ]:
                         chance = int(chance / 1.3)
-                    if cat.is_disabled():
-                        chance = int(chance / 2)
 
                     chance += (cat.intelligence * -1)
 
@@ -2859,8 +2857,6 @@ class Events:
                             "thoughtful",
                         ]:
                             chance = int(chance / 1.5)
-                        if cat.is_disabled():
-                            chance = int(chance / 2)
 
                         chance += (cat.empathy * -1)
                         if chance <= 0:
