@@ -2029,23 +2029,23 @@ class MakeClanScreen(Screens):
                 
                 if event.ui_element == self.elements['scars']:
                     if event.text == "None":
-                        if ("NOTAIL" or "NOPAW") not in self.custom_cat.pelt.scars:
-                            self.scars = []
-                        elif "NOTAIL" in self.custom_cat.pelt.scars:
+                        if "NOTAIL" in self.custom_cat.pelt.scars:
                             self.scars = []
                             self.scars.append('NOTAIL')
                         elif "NOPAW" in self.custom_cat.pelt.scars:
                             self.scars = []
                             self.scars.append('NOPAW')
+                        else:
+                            self.scars = []
                     else:
-                        if ("NOTAIL" or "NOPAW") not in self.custom_cat.pelt.scars:
-                            self.scars = []
-                        elif "NOTAIL" in self.custom_cat.pelt.scars:
+                        if "NOTAIL" in self.custom_cat.pelt.scars:
                             self.scars = []
                             self.scars.append('NOTAIL')
                         elif "NOPAW" in self.custom_cat.pelt.scars:
                             self.scars = []
                             self.scars.append('NOPAW')
+                        else:
+                            self.scars = []
                         self.scars.append(event.text)
                     self.update_sprite()
                 elif event.ui_element == self.elements['skin']:

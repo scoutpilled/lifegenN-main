@@ -11,123 +11,42 @@
             "npstarclan"
         ],
         "tags": [
-            "border",
-            "new_cat"
+            "border"
         ],
-        "patrol_art": "df_default",
+        "patrol_art": "df_starcat",
         "min_cats": 1,
         "max_cats": 1,
         "min_max_status": {},
         "weight": 20,
-        "intro_text": "You wake up in a forest. Shadowy trees hang overhead, and you feel eyes on you despite not seeing anyone around.",
+        "intro_text": "You're a bit too curious for your own good, aren't you?",
         "decline_text": "With a shake of your head, you manage to wake yourself up, sitting up in your nest with a gasp.",
         "chance_of_success": 45,
         "success_outcomes": [
             {
-                "text": "You swerve around, just as a cat lunges from the shadows and aims their claws at your pelt. Ducking at just the right moment, you manage to avoid their swipe.",
-                "exp": 20,
+                "text": "There's nothing for you here... yet!",
+                "exp": 0,
                 "weight": 20
-            },
-            {
-                "text": "A shadow shoots out of the trees, right towards you. But you're quick-- you spin around, ducking underneath your assailant and jumping up to pin them to the ground. Claws on your attackers throat, you snarl, but the attacker just blinks up at you, amused. {PRONOUN/n_c:0/subject} {VERB/n_c:0/compliment/compliments} you on your skills, {VERB/n_c:0/introduce/introduces} {PRONOUN/n_c:0/self}, and {VERB/n_c:0/remark/remarks} that the two of you should train together sometime.",
-                "exp": 30,
-                "weight": 5,
-                "new_cat": [
-                    ["meeting", "residence:sc", "clan_status", "status:warrior"]
-                ],
-                "stat_trait": [
-                    "ambitious",
-                    "bloodthirsty",
-                    "bold",
-                    "confident",
-                    "daring",
-                    "fierce",
-                    "vengeful",
-                    "flexible",
-                    "careful"
-                ],
-                "stat_skill": ["FIGHTER,1", "GUARDIAN,1", "INSIGHTFUL,1", "SENSE,1"],
-                "can_have_stat": ["p_l"]
-            },
-            {
-                "text": "You swerve around, just as a cat lunges from the shadows and aims their claws at your pelt. You react faster than the attacker can, ducking the blow, before retailiating with a rake to their belly. You watch as they tumble to the ground from the attack. It seems you've learned a thing or two here.",
-                "exp": 30,
-                "weight": 20,
-                "stat_trait": [
-                    "ambitious",
-                    "bloodthirsty",
-                    "bold",
-                    "confident",
-                    "daring",
-                    "fierce",
-                    "vengeful",
-                    "flexible",
-                    "careful"
-                ],
-                "stat_skill": ["FIGHTER,1", "GUARDIAN,1", "INSIGHTFUL,1", "SENSE,1"],
-                "can_have_stat": ["p_l"]
             }
         ],
         "fail_outcomes": [
             {
-                "text": "You swerve around, just as a cat lunges from the shadows. You don't react quickly enough and they pin you down, hissing that you have a lot more training to do.",
-                "exp": 0,
-                "weight": 20,
-                "injury": [ 
-                    {
-                        "cats": ["y_c"],
-                        "injuries": ["battle_injury"],
-                        "scars": ["ONE"]
-                    }
-                ],
-                "history_text": {
-                    "scar": "m_c was scarred by a Dark Forest warrior.",
-                    "reg_death": "m_c was killed by a Dark Forest warrior.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a Dark Forest warrior"
-                }
-            },
             {
-                "text": "You swerve around, just as a cat lunges from the shadows. You don't react quickly enough and they pin you down, hissing that you have a lot more training to do.",
+                "text": "There's nothing for you here... yet!",
                 "exp": 0,
-                "weight": 20,
-                "injury": [
-                    {
-                        "cats": ["y_c"], 
-                        "injuries": ["minor_injury"],
-                        "scars": []
-                    }
-                ]
+                "weight": 20
             }
         ],
         "antag_fail_outcomes": [
             {
-                "text": "You're not going to let someone sneak up on you. Stalking under the shadowy trees, you look for the source. You never see your attacker coming as they drop from the branches above and hiss that you need more training.",
-                "exp": 0,
-                "weight": 20,
-                
-                "injury": [
-                    {
-                        "cats": ["y_c"],
-                        "injuries": ["battle_injury"],
-                        "scars": ["ONE"]
-                    }
-                ],
-                "history_text": {
-                    "scar": "m_c was scarred by a Dark Forest warrior.",
-                    "reg_death": "m_c was killed by a Dark Forest warrior.",
-                    "lead_death": "{VERB/m_c/were/was} killed by a Dark Forest warrior"
-                }
-            },
-            {
-                "text":"You're not going to let someone sneak up on you. Stalking under the shadowy trees, you look for the source. Your search leads to nothing however.",
+                "text":"Your search leads to nothing... But that will change in the future!",
                 "exp": 0,
                 "weight": 20
             }
         ],
         "antag_success_outcomes": [
             {
-                "text": "You're not going to let someone sneak up on you. The source is coming from the trees, so you silently make your way up into the branches. Before long you come across your mentor watching the ground. With a snarl and a swipe, you chase them out of the tree, smirking as they land on the muck of the forest floor. You win this round.",
-                "exp": 40,
+                "text": "Your search leads to nothing... But that will change in the future!",
+                "exp": 0,
                 "weight": 15
             }
         ]

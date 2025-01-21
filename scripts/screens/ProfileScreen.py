@@ -3755,10 +3755,9 @@ class ProfileScreen(Screens):
         cat_dead_condition_sc = (
             self.the_cat.dead and
             not self.the_cat.df and
-            not self.the_cat.outside and
-            (game.clan.your_cat.dead or
-            ((self.your_cat.skills.meets_skill_requirement(SkillPath.STAR) or
-              game.clan.your_cat.skills.meets_skill_requirement(SkillPath.NPSTARGHOST) or
+            not self.the_cat.outside and (
+                game.clan.your_cat.dead or ((game.clan.your_cat.skills.meets_skill_requirement(SkillPath.STAR) or
+                                             game.clan.your_cat.skills.meets_skill_requirement(SkillPath.NPSTARGHOST) or
               game.clan.your_cat.skills.meets_skill_requirement(SkillPath.NPDARKSTAR) or
               game.clan.your_cat.skills.meets_skill_requirement(SkillPath.NPDEADSPEAKER))
             and game.clan.your_cat.moons >=1))
@@ -3793,13 +3792,12 @@ class ProfileScreen(Screens):
         cat_alive_condition_sc = (
             game.clan.your_cat.dead and
             not game.clan.your_cat.df and
-            game.clan.your_cat.ID in game.clan.starclan_cats and
-            (self.the_cat.dead or
-            ((self.the_cat.skills.meets_skill_requirement(SkillPath.STAR) or
+            game.clan.your_cat.ID in game.clan.starclan_cats and (self.the_cat.dead or ((
+                self.the_cat.skills.meets_skill_requirement(SkillPath.STAR) or
               self.the_cat.skills.meets_skill_requirement(SkillPath.NPSTARGHOST) or
               self.the_cat.skills.meets_skill_requirement(SkillPath.NPDARKSTAR) or
               self.the_cat.skills.meets_skill_requirement(SkillPath.NPDEADSPEAKER)) and
-            self.the_cat.moons >= 1))
+              self.the_cat.moons >= 1))
             )
 
         # you DF
