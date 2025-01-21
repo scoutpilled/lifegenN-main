@@ -315,6 +315,30 @@ class SkillPath(Enum):
         "strong emotions",
         "powerful emotions"
     )
+    NPKICK = (
+        "kicks mossballs",
+        "likes to kick",
+        "tough kicker",
+        "professional bunny kicker"
+    )
+    NPPLAY = (
+        "bap-bap-bapper",
+        "plays gently",
+        "delightful play fighter",
+        "playfight pro"
+    )
+    NPBITE = (
+        "chews on anything",
+        "explores with teeth",
+        "nibbles others often",
+        "the politest biter"
+    )
+    NPART = (
+        "doodles in dirt",
+        "aesthetic fan",
+        "makes anything beautiful",
+        "natures artist"
+    )
     
     @staticmethod
     def get_random(exclude: list = ()):
@@ -429,7 +453,11 @@ class Skill:
         SkillPath.NPMORBID: "morbidity",
         SkillPath.NPSLEUTH: "sleuthing",
         SkillPath.NPSNEAK: "sneaking",
-        SkillPath.NPEMOTIONS: "emotions"
+        SkillPath.NPEMOTIONS: "emotions",
+        SkillPath.NPKICK: "kicking",
+        SkillPath.NPPLAY: "playfighting",
+        SkillPath.NPBITE: "biting",
+        SkillPath.NPART: "artwork"
     }
 
     def __init__(self, path: SkillPath, points: int = 0, interest_only: bool = False):
@@ -621,7 +649,11 @@ class CatSkills:
         SkillPath.NPMORBID: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SMART,
         SkillPath.NPSLEUTH: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SMART,
         SkillPath.NPSNEAK: SkillTypeFlag.AGILE | SkillTypeFlag.OBSERVANT | SkillTypeFlag.SMART,
-        SkillPath.NPEMOTIONS: SkillTypeFlag.SOCIAL
+        SkillPath.NPEMOTIONS: SkillTypeFlag.SOCIAL,
+        SkillPath.NPKICK: SkillTypeFlag.STRONG | SkillTypeFlag.AGILE,
+        SkillPath.NPPLAY: SkillTypeFlag.SOCIAL | SkillTypeFlag.STRONG,
+        SkillPath.NPBITE: SkillTypeFlag.STRONG,
+        SkillPath.NPART: SkillTypeFlag.OBSERVANT | SkillTypeFlag.SMART
     }
 
     # pylint: enable=unsupported-binary-operation

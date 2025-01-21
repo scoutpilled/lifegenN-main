@@ -321,7 +321,10 @@ class History:
                 SkillPath.NPMORBID: [ "curiousity" ],
                 SkillPath.NPSNEAK: [ "remaining hidden" ],
                 SkillPath.NPSLEUTH: [ "spotting inconsistencies" ],
-                SkillPath.NPEMOTIONS: [ "feeling emotions without being overtaken by them" ]
+                SkillPath.NPEMOTIONS: [ "feeling emotions without being overtaken by them" ],
+                SkillPath.NPKICK: [ "kicking for more than just play" ],
+                SkillPath.NPBITE: [ "biting for more than just play" ],
+                SkillPath.NPPLAY: [ "being mindful of their own strength" ]
             }
         
         for _ment in cat.history.mentor_influence["skill"]:

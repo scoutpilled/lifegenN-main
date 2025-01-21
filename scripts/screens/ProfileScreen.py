@@ -3680,7 +3680,9 @@ class ProfileScreen(Screens):
         
         # gives the desert the "plains" platform
         if biome == "Desert":
-            biome = available_biome[3]
+            biome = available_biome[2]
+        if biome == "Rainworld" or biome == "Wetlands":
+            biome = available_biome[0]
 
         if biome not in available_biome:
             biome = available_biome[0]

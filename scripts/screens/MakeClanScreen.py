@@ -2029,9 +2029,23 @@ class MakeClanScreen(Screens):
                 
                 if event.ui_element == self.elements['scars']:
                     if event.text == "None":
-                        self.scars = []
+                        if ("NOTAIL" or "NOPAW") not in self.custom_cat.pelt.scars:
+                            self.scars = []
+                        elif "NOTAIL" in self.custom_cat.pelt.scars:
+                            self.scars = []
+                            self.scars.append('NOTAIL')
+                        elif "NOPAW" in self.custom_cat.pelt.scars:
+                            self.scars = []
+                            self.scars.append('NOPAW')
                     else:
-                        self.scars = []
+                        if ("NOTAIL" or "NOPAW") not in self.custom_cat.pelt.scars:
+                            self.scars = []
+                        elif "NOTAIL" in self.custom_cat.pelt.scars:
+                            self.scars = []
+                            self.scars.append('NOTAIL')
+                        elif "NOPAW" in self.custom_cat.pelt.scars:
+                            self.scars = []
+                            self.scars.append('NOPAW')
                         self.scars.append(event.text)
                     self.update_sprite()
                 elif event.ui_element == self.elements['skin']:
@@ -2054,29 +2068,33 @@ class MakeClanScreen(Screens):
                             self.scars.remove("NOTAIL")
                         elif "NOPAW" in self.scars:
                             self.scars.remove("NOPAW")
-                        if self.your_cat.pelt.eye_colour == None:
-                                self.your_cat.pelt.eye_colour = "BLUE"
-                        if self.your_cat.pelt.eye_colour:
-                                self.your_cat.pelt.eye_colour2 = "BLUE"
                         self.update_sprite()
                     else:
                         self.permanent_condition = event.text
+
+                        # PARALYZED
                         if event.text == 'paralyzed':
                             self.paralyzed = True
                             self.update_sprite()
                         else:
                             self.paralyzed = False
+                        
+                        # SCARS
                         if event.text == 'born without a leg' and 'NOPAW' not in self.custom_cat.pelt.scars:
-                            self.scars = []
                             self.scars.append('NOPAW')
                         elif event.text == "born without a tail" and "NOTAIL" not in self.custom_cat.pelt.scars:
-                            self.scars = []
                             self.scars.append('NOTAIL')
                         else:
                             if "NOTAIL" in self.scars:
                                 self.scars.remove("NOTAIL")
                             elif "NOPAW" in self.scars:
                                 self.scars.remove("NOPAW")
+                        
+                        # EYES
+                        #if event.text == 'born without an eye':
+                        #    self.eye_color = 'MISSING'
+                        # starting framework for the future. that is.
+
                         self.update_sprite()
 
                 elif event.ui_element == self.elements['sex']:
