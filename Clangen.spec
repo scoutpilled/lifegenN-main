@@ -56,11 +56,11 @@ coll = COLLECT(
     strip=False,
     upx=False,
     upx_exclude=[],
-    name='NeonPinkLifegen',
+    name='Lifegen',
 )
 app = BUNDLE(
     coll,
-    name='NeonPinkLifegen.app',
+    name='Lifegen.app',
     icon='resources/images/icon.png',
     bundle_identifier='com.sablesteel.clangen',
     version='0.0.03'

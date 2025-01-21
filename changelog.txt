@@ -4,6 +4,7 @@
 - New menu art
 - Revised icons camp location choices in preparation for more biomes
 - Some more past-lifegen murder dialogue added back
+- Changed save directory
 
 <strong>v0.0.02: </strong>
 - Peach pelt completed

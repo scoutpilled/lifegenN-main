@@ -22,9 +22,9 @@ use_proxy = False  # Set this to True if you want to use a proxy for the update 
 
 
 class UpdateChannel(StrEnum):
-    STABLE = "lifegen-stable"
+    STABLE = "neonpink-lifegen"
     STABLE_TEST = ""
-    DEVELOPMENT = "neonpink-lifegen"
+    DEVELOPMENT = ""
     DEVELOPMENT_TEST = ""
 
 

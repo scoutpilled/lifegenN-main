@@ -111,11 +111,11 @@ class StartScreen(Screens):
                 quit(savesettings=False, clearevents=False)
             elif event.ui_element == self.social_buttons["discord_button"]:
                 if platform.system() == "Darwin":
-                    subprocess.Popen(["open", "-u", "https://discord.gg/clangen"])
+                    subprocess.Popen(["open", "-u", "https://discord.gg/qYs6Y6Gtr6"])
                 elif platform.system() == "Windows":
-                    os.system(f"start \"\" {'https://discord.gg/clangen'}")
+                    os.system(f"start \"\" {'https://discord.gg/qYs6Y6Gtr6'}")
                 elif platform.system() == "Linux":
-                    subprocess.Popen(["xdg-open", "https://discord.gg/clangen"])
+                    subprocess.Popen(["xdg-open", "https://discord.gg/qYs6Y6Gtr6"])
             elif event.ui_element == self.social_buttons["tumblr_button"]:
                 if platform.system() == "Darwin":
                     subprocess.Popen(
