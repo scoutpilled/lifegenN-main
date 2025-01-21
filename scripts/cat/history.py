@@ -291,6 +291,12 @@ class History:
                 SkillPath.CLAIRVOYANT: [ "predicting the future" ],
                 SkillPath.PROPHET: [ "understanding prophecies" ],
                 SkillPath.GHOST: [ "connecting to the afterlife" ],
+
+                SkillPath.NPDARKGHOST: [ "connecting to the afterlife" ],
+                SkillPath.NPDARKSTAR: [ "connecting to the afterlife" ],
+                SkillPath.NPSTARGHOST: [ "connecting to the afterlife" ],
+                SkillPath.NPDEADSPEAKER: [ "understanding the dead" ],
+
                 SkillPath.EXPLORER: ["exploring unknown areas"],
                 SkillPath.TRACKER: ["tracking down scents"],
                 SkillPath.ARTISTAN: ["decorating dens"],

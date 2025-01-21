@@ -112,8 +112,35 @@ class SkillPath(Enum):
         "ghost sight",
         "ghost speaker"
     )
+
+    # NEONPINK SKILLS
+
+    NPDARKGHOST = (
+        "collector of bones",
+        "strange senses",
+        "Dark Forest sight",
+        "Dark Forest dreamer"
+    )
+    NPSTARGHOST = (
+        "mourns dead prey",
+        "listens to stars",
+        "guides ghosts",
+        "speaks to Starclan and ghosts"
+    )
+    NPDARKSTAR = (
+        "avid afterlife storyteller",
+        "connected to the afterlife",
+        "afterlife speaker",
+        "prophet of stars and shadows"
+    )
+    NPDEADSPEAKER = (
+        "doesn't fit in",
+        "haunted",
+        "dreams of the dead",
+        "communes with the dead"
+    )
     
-    # NEW SKILLS --
+    # LIFEGEN SKILLS --
     
     EXPLORER = (
         "curious wanderer",
@@ -251,6 +278,10 @@ class SkillPath(Enum):
                 SkillPath.STAR,
                 SkillPath.HEALER,
                 SkillPath.DARK,
+                SkillPath.NPDARKGHOST,
+                SkillPath.NPDARKSTAR,
+                SkillPath.NPSTARGHOST,
+                SkillPath.NPDEADSPEAKER,
             ]
             if i not in exclude
         ]
@@ -311,6 +342,12 @@ class Skill:
         SkillPath.CLAIRVOYANT: "predicting",
         SkillPath.PROPHET: "prophesying",
         SkillPath.GHOST: "ghosts",
+
+        SkillPath.NPDARKGHOST: "dark ghosts",
+        SkillPath.NPDARKSTAR: "afterlife",
+        SkillPath.NPSTARGHOST: "star ghosts",
+        SkillPath.NPDEADSPEAKER: "dead speech",
+
         SkillPath.DARK: "dark forest",
         SkillPath.EXPLORER: "exploring",
         SkillPath.TRACKER: "tracking",
@@ -502,6 +539,10 @@ class CatSkills:
         SkillPath.PROPHET: SkillTypeFlag.SUPERNATURAL,
         SkillPath.GHOST: SkillTypeFlag.SUPERNATURAL,
         SkillPath.DARK: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.NPSTARGHOST: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.NPDARKSTAR: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.NPDARKGHOST: SkillTypeFlag.SUPERNATURAL,
+        SkillPath.NPDEADSPEAKER: SkillTypeFlag.SUPERNATURAL,
         SkillPath.EXPLORER: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
         SkillPath.TRACKER: SkillTypeFlag.SMART | SkillTypeFlag.OBSERVANT,
         SkillPath.ARTISTAN: SkillTypeFlag.SMART,

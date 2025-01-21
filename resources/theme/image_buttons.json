@@ -4471,6 +4471,23 @@
             }
         }
     },
+    "#npouter_camp_tab": {
+        "prototype": "#image_button",
+        "images": {
+            "normal_image": {
+                "path": "resources/images/buttons/npouter_camp.png"
+            },
+            "hovered_image": {
+                "path": "resources/images/buttons/npouter_camp_hover.png"
+            },
+            "selected_image": {
+                "path": "resources/images/buttons/npouter_camp_hover.png"
+            },
+            "disabled_image": {
+                "path": "resources/images/buttons/npouter_camp_unavailable.png"
+            }
+        }
+    },
     "#tropical_island_tab": {
         "prototype": "#image_button",
         "images": {

@@ -741,14 +741,14 @@ class PatrolScreen(Screens):
         self.elements["proceed"] = UIImageButton(scale(pygame.Rect((1100, 866), (344, 60))), "",
                                                  object_id="#proceed_button",
                                                  starting_height=2, manager=MANAGER)
-        self.elements["not_proceed"] = UIImageButton(scale(pygame.Rect((1100, 922), (344, 60))), "",
+        self.elements["not_proceed"] = UIImageButton(scale(pygame.Rect((1100, 975), (344, 60))), "",
                                                      object_id="#not_proceed_button",
                                                      starting_height=2, manager=MANAGER)
 
-        self.elements["antagonize"] = UIImageButton(scale(pygame.Rect((1100, 980), (344, 72))), "",
+        self.elements["antagonize"] = UIImageButton(scale(pygame.Rect((1100, 922), (344, 60))), "",
                                                     object_id="#antagonize_button", manager=MANAGER)
         if not self.patrol_obj.patrol_event.antag_success_outcomes:
-            self.elements["antagonize"].hide()
+            self.elements["antagonize"].disable()
 
     def run_patrol_proceed(self, user_input):
         """Proceeds the patrol - to be run in the seperate thread. """
@@ -792,7 +792,7 @@ class PatrolScreen(Screens):
 
         self.elements["proceed"].disable()
         self.elements["not_proceed"].disable()
-        self.elements["antagonize"].hide()
+        self.elements["antagonize"].disable()
 
     def update_cat_images_buttons(self):
         """Updates all the cat sprite buttons. Also updates the skills tab, if open, and the next and
