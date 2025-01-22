@@ -16,7 +16,7 @@ from scripts.utility import scale, get_text_box_theme
 class ListScreen(Screens):
     current_page = 1
     previous_search_text = ""
-    clan_name = "ErrorClan"
+    clan_name = "NeonPinkClan"
 
     def __init__(self, name=None):
         super().__init__(name)
@@ -132,6 +132,8 @@ class ListScreen(Screens):
                     self.get_your_clan_cats()
                 elif element == self.choose_group_buttons["view_cotc_button"]:
                     self.get_cotc_cats()
+                elif element == self.choose_group_buttons["view_c1_button"]:
+                    self.get_outClan1_cats()
                 elif element == self.choose_group_buttons["view_starclan_button"]:
                     self.get_sc_cats()
                 elif (
@@ -321,7 +323,7 @@ class ListScreen(Screens):
         )
 
         y_pos = 0
-        for object_id in ["#view_your_clan_button", "#view_cotc_button"]:
+        for object_id in ["#view_your_clan_button", "#view_cotc_button", "#view_c1_button"]:
             self.choose_group_buttons[object_id.strip("#")] = UIImageButton(
                 scale(pygame.Rect((0, y_pos), (380, 68))),
                 "",
@@ -724,6 +726,11 @@ class ListScreen(Screens):
             self.ur_bg.hide()
             self.sc_bg.hide()
             self.update_heading_text("Dark Forest")
+        elif self.current_group == "c1":
+            self.df_bg.hide()
+            self.ur_bg.hide()
+            self.sc_bg.hide()
+            self.update_heading_text("Rival Clan")
 
     def get_cat_list(self):
         """
@@ -738,6 +745,8 @@ class ListScreen(Screens):
                 self.get_ur_cats()
             elif game.last_list_forProfile == "cotc":
                 self.get_cotc_cats()
+            elif game.last_list_forProfile == "c1":
+                self.get_outClan1_cats()
             else:
                 self.get_your_clan_cats()
         else:
@@ -761,5 +770,17 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
-            if not the_cat.dead and the_cat.outside and not the_cat.driven_out:
+            if not the_cat.dead and (the_cat.outside and the_cat.outClan is None) and the_cat.moons >= 0 and not the_cat.driven_out:
+                self.full_cat_list.append(the_cat)
+
+    def get_outClan1_cats(self):
+        """
+        grabs rival clan 1
+        """
+        self.current_group = "c1"
+        self.death_status = "living"
+        self.full_cat_list = []
+        for the_cat in Cat.all_cats_list:
+            if not the_cat.dead and (the_cat.outside and the_cat.outClan is not None) and the_cat.moons >= 0 and not \
+            the_cat.driven_out:
                 self.full_cat_list.append(the_cat)

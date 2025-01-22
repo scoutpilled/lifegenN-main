@@ -245,7 +245,8 @@ class Thoughts:
                 return False
         if random_cat and 'random_outside_status' in thought:
             if random_cat and random_cat.outside and random_cat.status not in ["kittypet", "loner", "rogue",
-                                                                               "former Clancat", "exiled"]:
+                                                                               "former Clancat", "exiled",
+                                                                               "rival Clancat"]:
                 outside_status = "lost"
             elif random_cat and random_cat.outside:
                 outside_status = "outside"
@@ -256,7 +257,8 @@ class Thoughts:
                 return False
         else:
             if random_cat and random_cat.outside and random_cat.status not in ["kittypet", "loner", "rogue",
-                                                                               "former Clancat", "exiled"]:
+                                                                               "former Clancat", "exiled",
+                                                                               "rival Clancat"]:
                 outside_status = "lost"
             elif random_cat and random_cat.outside:
                 outside_status = "outside"
@@ -436,7 +438,7 @@ class Thoughts:
                 return chosen_thought
         except Exception:
             traceback.print_exc()
-            chosen_thought = "Prrrp! You shouldn't see this! Report as a bug."
+            chosen_thought = "Neon Pink is SUFFEWING! Report this as a bug!"
 
     def new_death_thought(self, darkforest, isoutside):
         base_path = f"resources/dicts/thoughts/ondeath"

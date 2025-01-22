@@ -3948,7 +3948,7 @@ class Events:
             else:
                 fate = random.randint(1, int(game.config["shunned_cat"]["exile_chance"][cat.age]))
 
-            if fate > 500:
+            if fate > 2:
                 cat.shunned = 0
                 cat.forgiven = 1
                 cat.exiled = False
@@ -4020,7 +4020,7 @@ class Events:
 
                 game.cur_events_list.insert(0, Single_Event(text, "alert", involved_cats))
 
-            elif fate > 2:
+            elif fate == 2 and cat.ID != game.clan.your_cat.ID:
                 cat.outside = True
                 cat.status = "former Clancat"
                 game.clan.add_to_outside(cat)

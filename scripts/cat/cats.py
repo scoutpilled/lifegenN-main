@@ -107,7 +107,7 @@ class Cat:
         "leader",
     ]
 
-    gender_tags = {"female": "F", "male": "M"}
+    gender_tags = {"female": "F", "male": "M", "intersex": "I"}
 
     # EX levels and ranges.
     # Ranges are inclusive to both bounds
@@ -283,25 +283,20 @@ class Cat:
         self.faith = randint(-3, 3)
         self.connected_dialogue = {}
         self.lock_faith = "flexible"
-        
         self.prevent_fading = False  # Prevents a cat from fading.
         self.faded_offspring = []  # Stores of a list of faded offspring, for family page purposes.
-
         self.prevent_fading = False  # Prevents a cat from fading
-
         self.faded_offspring = (
             []
         )  # Stores of a list of faded offspring, for relation tracking purposes
-
         self.faded = faded  # This is only used to flag cats that are faded, but won't be added to the faded list until
         # the next save.
-
         self.favourite = 0
-
         self.specsuffix_hidden = specsuffix_hidden
         self.inheritance = None
-
         self.history = None
+        # NEONPINK EXCLUSIVE
+        self.outClan = None
 
         # setting ID
         if ID is None:
@@ -350,6 +345,9 @@ class Cat:
                 self.age_moons[self.age][0], self.age_moons[self.age][1]
             )
 
+            if status == "rival Clancat":
+                self.outClan=1
+
         # backstory
         if self.backstory is None:
             self.backstory = "clanborn"
@@ -358,7 +356,7 @@ class Cat:
 
         # sex!?!??!?!?!??!?!?!?!??
         if self.gender is None:
-            self.gender = choice(["female", "male"])
+            self.gender = choice(["female", "male", "intersex"])
         self.g_tag = self.gender_tags[self.gender]
 
         """if self.genderalign == "":
@@ -474,8 +472,8 @@ class Cat:
         # trans cat chances
         theythemdefault = game.settings["they them default"]
         self.genderalign = self.gender
-        trans_chance = randint(0, 50)
-        nb_chance = randint(0, 75)
+        trans_chance = randint(0, 45)
+        nb_chance = randint(0, 70)
 
         # GENDER IDENTITY
         if self.age in ["kitten", "newborn"]:
@@ -655,9 +653,10 @@ class Cat:
         ):
             self.grief(body)
 
-        if not self.outside and self.dead_for < 2:
+        if (not self.outside or self.outClan is not None) and self.dead_for < 2:
             Cat.dead_cats.append(self)
-            if self.history and self.history.murder and "is_murderer" in self.history.murder and len(self.history.murder["is_murderer"]) > 2:
+            if self.history and self.history.murder and "is_murderer" in self.history.murder and len(
+                self.history.murder["is_murderer"]) > 2:
                 self.df = True
                 game.clan.add_to_darkforest(self)
 
@@ -704,6 +703,7 @@ class Cat:
         status."""
         self.exiled = True
         self.outside = True
+        self.outClan = None
         self.shunned = 0
         self.faith -= 0.5
         self.status = 'exiled'
@@ -810,7 +810,7 @@ class Cat:
                 acceptchance = randint(1,40)
                 killchance = randint(1,10)
 
-        elif you.status in ["loner", "rogue", "kittypet", "former Clancat"]:
+        elif you.status in ["loner", "rogue", "kittypet", "former Clancat", "rival Clancat"]:
         # can only be former clancat rn but this is just to cover bases 4 the future
             if num_victims == 0:
                 acceptchance = randint(1,3)
@@ -2020,10 +2020,13 @@ class Cat:
             where_kitty = "hell"
         elif self.dead and self.outside:
             where_kitty = "UR"
+        elif self.outside and (self.outClan is not None):
+            where_kitty = "rival"
         elif not self.dead and self.outside:
             where_kitty = "outside"
         # get other cat
         i = 0
+        
         # for cats inside the clan
         if where_kitty == "inside":
             while (
@@ -2046,6 +2049,7 @@ class Cat:
                     other_cat = None
                     break
         # for cats currently outside
+
         # it appears as for now, kittypets and loners can only think about outsider cats
         elif where_kitty == "outside":
             while (
@@ -2054,6 +2058,20 @@ class Cat:
                 or (other_cat not in self.relationships)
             ):
                 # or (self.status in ['kittypet', 'loner'] and not all_cats.get(other_cat).outside):
+                other_cat = choice(list(all_cats.keys()))
+                i += 1
+                if i > 100:
+                    other_cat = None
+                    break
+
+        # for cats from other clans. the name will vary, so its set to else
+        #elif where_kitty == "rival1":
+        else:
+            while (
+                other_cat == self.ID
+                and len(all_cats) > 1
+                or (other_cat not in self.relationships)
+            ):
                 other_cat = choice(list(all_cats.keys()))
                 i += 1
                 if i > 100:
@@ -2743,7 +2761,7 @@ class Cat:
         if (
             (not self.is_ill() and not self.is_injured() and not self.is_disabled())
             or self.dead
-            or self.outside
+            # or self.outside
         ):
             if os.path.exists(condition_file_path):
                 os.remove(condition_file_path)
@@ -2865,7 +2883,8 @@ class Cat:
                 "Everything is terrible!! (new_mentor {new_mentor} is a Cat D:)")
             return
         # Check if cat can have a mentor
-        illegible_for_mentor = self.dead or self.outside or self.exiled or self.shunned > 0 or self.dead_for > 1 or self.status not in ["apprentice",
+        illegible_for_mentor = self.dead or self.outside or self.exiled or self.shunned > 0 or self.dead_for > 1 or \
+        self.status not in ["apprentice",
         "mediator apprentice",
         "medicine cat apprentice",
         "queen's apprentice"]
@@ -4093,7 +4112,8 @@ class Cat:
                 "faith": self.faith if self.faith else 0,
                 "no_faith": self.no_faith if self.no_faith else False,
                 "connected_dialogue": self.connected_dialogue if self.connected_dialogue else {},
-                "lock_faith": self.lock_faith if self.lock_faith else "flexible"
+                "lock_faith": self.lock_faith if self.lock_faith else "flexible",
+                "outClan": self.outClan if self.outClan else None
             }
 
 

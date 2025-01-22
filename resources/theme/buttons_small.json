@@ -5844,5 +5844,22 @@
                 "path": "resources/images/buttons/np-starclanpatrol_unavailable.png"
             }
         }
+    },
+    "#view_c1_button": {
+        "prototype": "#image_button",
+        "images": {
+            "normal_image": {
+                "path": "resources/images/buttons/view_c1.png"
+            },
+            "hovered_image": {
+                "path": "resources/images/buttons/view_c1_hover.png"
+            },
+            "selected_image": {
+                "path": "resources/images/buttons/view_c1_hover.png"
+            },
+            "disabled_image": {
+                "path": "resources/images/buttons/view_c1_unavailable.png"
+            }
+        }
     }
 }

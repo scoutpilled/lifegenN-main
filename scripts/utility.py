@@ -363,6 +363,8 @@ def create_new_cat_block(
         gender = "male"
     elif "female" in attribute_list:
         gender = "female"
+    elif "intersex" in attribute_list:
+        gender = "intersex"
     elif "can_birth" in attribute_list and not game.clan.clan_settings["same sex birth"]:
         gender = "female"
     else:
@@ -426,6 +428,8 @@ def create_new_cat_block(
         cat_type = "loner"
     elif "clancat" in attribute_list:
         cat_type = "former Clancat"
+    elif "rival" in attribute_list:
+        cat_type = "rival Clancat"
 
     # LIFEGEN: for encountered dead cats --
     elif "clan_status" in attribute_list:
@@ -456,7 +460,7 @@ def create_new_cat_block(
     # -------------------------------------
 
     else:
-        cat_type = choice(['kittypet', 'loner', 'former Clancat'])
+        cat_type = choice(['kittypet', 'loner', 'former Clancat', 'rival Clancat'])
 
     # LITTER
     litter = False
@@ -505,11 +509,19 @@ def create_new_cat_block(
         new_name = False
         thought = "Is wondering about those new cats"
 
+
     # IS THE CAT DEAD?
     alive = True
     if "dead" in attribute_list:
         alive = False
         thought = "Explores a new, starry world"
+
+    outClan = None
+    if "rival" in attribute_list and alive == True:
+        outClan = 1
+        new_name = True
+        outside = True
+        thought = "Talks to clanmates about their rivals"
 
     # LIFEGEN: encountered dead cat residences -----------------------
     df = False
@@ -625,7 +637,8 @@ def create_new_cat_block(
                                   df=df,
                                   outside=outside,
                                   parent1=parent1.ID if parent1 else None,
-                                  parent2=parent2.ID if parent2 else None
+                                  parent2=parent2.ID if parent2 else None,
+                                  outClan=outClan if outClan else None
                                   )
 
         # NEXT
@@ -730,7 +743,8 @@ def create_new_cat(
         df:bool=False,
         outside: bool = False,
         parent1: str = None,
-        parent2: str = None
+        parent2: str = None,
+        outClan: int = None
 ) -> list:
     """
     This function creates new cats and then returns a list of those cats
@@ -788,22 +802,25 @@ def create_new_cat(
 
     # setting status
     if not status:
-        if age == 0:
-            status = "newborn"
-        elif age < 6:
-            status = "kitten"
-        elif 6 <= age <= 11:
-            status = "apprentice"
-        elif age >= 12:
-            status = "warrior"
-        elif age >= 120:
-            status = "elder"
-
+        if outClan is None:
+            if age == 0:
+                status = "newborn"
+            elif age < 6:
+                status = "kitten"
+            elif 6 <= age <= 11:
+                status = "apprentice"
+            elif age >= 12:
+                status = "warrior"
+            elif age >= 120:
+                status = "elder"
+        else:
+            status = "rival Clancat"
+    
     # cat creation and naming time
     for index in range(number_of_cats):
         # setting gender
         if not gender:
-            _gender = choice(["female", "male"])
+            _gender = choice(["female", "male", "intersex"])
         else:
             _gender = gender
     
@@ -997,6 +1014,11 @@ def create_new_cat(
         # Note - we always update inheritance after the cats are generated, to
         # allow us to add parents.
         # new_cat.create_inheritance_new_cat()
+
+        if outClan is not None:
+            new_cat.outClan=outClan
+        else:
+            new_cat.outClan=None
 
     return created_cats
 
@@ -5048,7 +5070,7 @@ def adjust_txt(Cat, text, cat, cat_dict, r_c_allowed, o_c_allowed):
             addon_check = abbrev_addons(cat, alive_app, cluster, x, rel, r)
             counter = 0
 
-            while alive_app.ID == you.ID or alive_app.ID == cat.ID or cat.status in ["rogue", "loner", "former Clancat", "kittypet"] or addon_check is False:
+            while alive_app.ID == you.ID or alive_app.ID == cat.ID or cat.status in ["rogue", "loner", "former Clancat", "kittypet", "rival Clancat"] or addon_check is False:
                 alive_app = choice(alive_outside_cats)
                 addon_check = abbrev_addons(cat, alive_app, cluster, x, rel, r)
                 counter += 1

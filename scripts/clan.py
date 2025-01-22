@@ -46,7 +46,7 @@ class Clan:
 
     """
 
-    BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach"]
+    BIOME_TYPES = ["Forest", "Plains", "Mountainous", "Beach", "Rainworld", "Desert", "Wetlands"]
 
     CAT_TYPES = [
         "newborn",
@@ -61,7 +61,8 @@ class Clan:
         "queen",
         "general",
         "exiled",
-        "former Clancat"
+        "former Clancat",
+        "rival Clancat"
     ]
     
 
@@ -324,6 +325,10 @@ class Clan:
             self.populate_sc()
             self.populate_ur()
             self.populate_df()
+            self.populate_rivalclan()
+            self.generate_outsiders()
+            self.generate_outsider_mates()
+            self.generate_outsider_families()
         elif self.clan_age == "new":
             self.generate_outsiders()
             self.generate_outsider_mates()
@@ -521,12 +526,27 @@ class Clan:
         for i in range(randint(0,5)):
             outsider = create_new_cat(
                 Cat,
-                status=random.choice(["loner", "kittypet"]),
+                status=random.choice(["loner", "kittypet",  "rogue"]),
                 age=randint(15, 120),
                 outside=True,
                 thought="Wanders around beyond the Clan's borders"
                 )[0]
             outsider.history.beginning = None
+
+    def populate_rivalclan(self):
+        for i in range(randint(1,3)):
+            random_backstory = choice(["clanborn"])
+            r1_cats = create_new_cat(
+                Cat,
+                status="rival Clancat",
+                age=randint(15, 120),
+                new_name=True,
+                outside=True,
+                backstory=random_backstory,
+                thought="Business as usual",
+                outClan=1
+                )[0]
+            r1_cats.history.beginning = None
 
     def generate_outsider_mates(self):
         """Generates up to three pairs of mates."""

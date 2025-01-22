@@ -98,6 +98,7 @@ class PatrolScreen(Screens):
             self.selected_cat = None
             self.current_patrol.clear()
             self.elements['cat_icon'].disable()
+
             if not game.clan.your_cat.dead and not game.clan.your_cat.outside and (game.clan.your_cat.joined_df or (
                 "deep Dark Forest bond" or "unshakable Dark Forest link" or "prophet" or "Dark Forest dreamer" or
                 "afterlife speaker" or "prophet of stars and shadows" or "haunted" or "dreams of the dead" or
@@ -106,15 +107,13 @@ class PatrolScreen(Screens):
             else:
                 self.elements['df_icon'].disable()
 
-            if not game.clan.your_cat.dead and not game.clan.your_cat.outside and not game.clan.your_cat.joined_df and ((
+            if not game.clan.your_cat.dead and not game.clan.your_cat.outside and (
                 "deep StarClan bond" or "unshakable StarClan link" or "prophet" or "speaks to Starclan and ghosts" or
                 "afterlife speaker" or "prophet of stars and shadows" or "haunted" or "dreams of the dead" or
-                "communes with the dead") in your_skills):
-                #   wow this is long. basically, if you have certain ghost skills, starclan is visitable
+                "communes with the dead") in your_skills and not game.clan.your_cat.joined_df:
                 self.elements['npsc_icon'].enable()
             else:
                 self.elements['npsc_icon'].disable()
-
 
             if not game.clan.your_cat.dead and not game.clan.your_cat.outside and game.clan.your_cat.moons >= 14:
                 self.elements['date_icon'].enable()
@@ -132,10 +131,10 @@ class PatrolScreen(Screens):
             self.current_patrol.clear()
             self.elements['cat_icon'].enable()
             self.elements['df_icon'].disable()
-            if not game.clan.your_cat.dead and not game.clan.your_cat.outside and not game.clan.your_cat.joined_df and ((
+            if not game.clan.your_cat.dead and not game.clan.your_cat.outside and ((
                 "deep StarClan bond" or "unshakable StarClan link" or "prophet" or "speaks to Starclan and ghosts" or
                 "afterlife speaker" or "prophet of stars and shadows" or "haunted" or "dreams of the dead" or
-                "communes with the dead") in your_skills):
+                "communes with the dead") in your_skills) and not game.clan.your_cat.joined_df:
                 #   wow this is long. basically, if you have certain ghost skills, starclan is visitable
                 self.elements['npsc_icon'].enable()
             else:
@@ -150,7 +149,7 @@ class PatrolScreen(Screens):
             self.update_button()
 
         elif 'npsc_icon' in self.elements and event.ui_element == self.elements['npsc_icon']:
-            game.switches["patrol_category"] = "df"
+            game.switches["patrol_category"] = "npsc"
             self.selected_cat = None
             self.current_patrol.clear()
             self.elements['cat_icon'].enable()
@@ -183,10 +182,10 @@ class PatrolScreen(Screens):
                 self.elements['df_icon'].enable()
             else:
                 self.elements['df_icon'].disable()
-            if not game.clan.your_cat.dead and not game.clan.your_cat.outside and not game.clan.your_cat.joined_df and ((
+            if not game.clan.your_cat.dead and not game.clan.your_cat.outside and ((
                 "deep StarClan bond" or "unshakable StarClan link" or "prophet" or "speaks to Starclan and ghosts" or
                 "afterlife speaker" or "prophet of stars and shadows" or "haunted" or "dreams of the dead" or
-                "communes with the dead") in your_skills):
+                "communes with the dead") in your_skills) and not game.clan.your_cat.joined_df:
                 self.elements['npsc_icon'].enable()
             else:
                 self.elements['npsc_icon'].disable()
@@ -208,10 +207,10 @@ class PatrolScreen(Screens):
                 self.elements['df_icon'].enable()
             else:
                 self.elements['df_icon'].disable()
-            if not game.clan.your_cat.dead and not game.clan.your_cat.outside and not game.clan.your_cat.joined_df and ((
+            if not game.clan.your_cat.dead and not game.clan.your_cat.outside and ((
                 "deep StarClan bond" or "unshakable StarClan link" or "prophet" or "speaks to Starclan and ghosts" or
                 "afterlife speaker" or "prophet of stars and shadows" or "haunted" or "dreams of the dead" or
-                "communes with the dead") in your_skills):
+                "communes with the dead") in your_skills) and not game.clan.your_cat.joined_df:
                 self.elements['npsc_icon'].enable()
             else:
                 self.elements['npsc_icon'].disable()
@@ -398,7 +397,7 @@ class PatrolScreen(Screens):
         # default is six
         if game.switches['patrol_category'] == "df":
             self.max_cats = 2
-        if game.switches['patrol_category'] == "npstarclan":
+        if game.switches['patrol_category'] == "npsc":
             self.max_cats = 1
         elif game.switches['patrol_category'] == "date":
             self.max_cats = 3
@@ -475,6 +474,8 @@ class PatrolScreen(Screens):
                 text = "lifegen"
             elif game.switches["patrol_category"] == "df":
                 text = "dark forest"
+            elif game.switches["patrol_category"] == "npsc":
+                text = "starclan"
             elif game.switches["patrol_category"] == "date":
                 text = "date"
             else:
@@ -684,6 +685,7 @@ class PatrolScreen(Screens):
             your_skills.append(game.clan.your_cat.skills.primary.skill)
         if game.clan.your_cat.skills.secondary:
             your_skills.append(game.clan.your_cat.skills.secondary.skill)
+
         if not game.clan.your_cat.dead and not game.clan.your_cat.outside and (game.clan.your_cat.joined_df or (
                 "deep Dark Forest bond" or "unshakable Dark Forest link" or "prophet" or "Dark Forest dreamer" or
                 "afterlife speaker" or "prophet of stars and shadows" or "haunted" or "dreams of the dead" or
@@ -694,10 +696,11 @@ class PatrolScreen(Screens):
 
         self.elements['npsc_icon'] = UIImageButton(scale(pygame.Rect((770, 1120), (68, 68))), "",
                                                 object_id="#npstarclan_button", manager=MANAGER)
-        if not game.clan.your_cat.dead and not game.clan.your_cat.outside and not game.clan.your_cat.joined_df and ((
+        if not game.clan.your_cat.dead and not game.clan.your_cat.outside and (
             "deep StarClan bond" or "unshakable StarClan link" or "prophet" or "speaks to Starclan and ghosts" or
             "afterlife speaker" or "prophet of stars and shadows" or "haunted" or "dreams of the dead" or
-            "communes with the dead") in your_skills):
+            "communes with the dead") in your_skills and game.switches['patrol_category'] != 'npsc' and not (
+                game.clan.your_cat.joined_df):
             self.elements['npsc_icon'].enable()
         else:
             self.elements['npsc_icon'].disable()
@@ -878,7 +881,7 @@ class PatrolScreen(Screens):
 
         self.elements["patrol_results"] = pygame_gui.elements.UITextBox("",
                                                                         scale(pygame.Rect(
-                                                                            (1100, 1000), (344, 300))),
+                                                                            (1100, 1040), (344, 300))),
                                                                         object_id=get_text_box_theme(
                                                                             "#text_box_22_horizcenter_spacing_95"),
                                                                         manager=MANAGER)

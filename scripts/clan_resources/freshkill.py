@@ -137,7 +137,7 @@ class FreshkillPile:
             if "pregnant" in cat.injuries
             and cat.ID not in queen_dict.keys()
             and not cat.outside
-            and cat.status != "exiled"
+            and cat.status not in ["exiled", "loner", "rogue", "kittypet", "former Clancat", "rival Clancat"]
         ]
 
         # all normal status cats calculation
@@ -145,17 +145,18 @@ class FreshkillPile:
             [
                 PREY_REQUIREMENT[cat.status]
                 for cat in living_cats
-                if cat.status not in ["newborn", "kitten", "exiled", "loner", "rogue", "kittypet", "former Clancat"] and not cat.outside
+                if cat.status not in ["newborn", "kitten", "exiled", "loner", "rogue", "kittypet", "former Clancat", "rival Clancat"] and not cat.outside
             ]
         )
-        # increase the number for sick cats
-        if game.clan and game.clan.game_mode == "cruel season":
-            sick_cats = [
+        # increase the number for sick cats. normally only for cruel season. sniles
+        sick_cats = [
                 cat
                 for cat in living_cats
                 if cat.not_working() and "pregnant" not in cat.injuries
+                and cat.status not in ["newborn", "kitten", "exiled", "loner", "rogue", "kittypet", "former Clancat",
+                                       "rival Clancat"] and not cat.outside
             ]
-            needed_prey += len(sick_cats) * CONDITION_INCREASE
+        needed_prey += len(sick_cats) * CONDITION_INCREASE
         # increase the number of prey which are missing for relevant queens and pregnant cats
         needed_prey += (len(relevant_queens) + len(pregnant_cats)) * (
             PREY_REQUIREMENT["queen/pregnant"] - PREY_REQUIREMENT["warrior"]
@@ -233,7 +234,7 @@ class FreshkillPile:
         living_cats = [
             cat
             for cat in Cat.all_cats.values()
-            if not (cat.dead or cat.outside or cat.exiled)
+            if not (cat.dead or cat.outside or cat.exiled or cat.outClan is not None)
         ]
         self._update_needed_food(living_cats)
         return self.needed_prey
@@ -670,8 +671,6 @@ class FreshkillPile:
         if (
             "pregnant" not in cat.injuries
             and cat.not_working()
-            and game.clan
-            and game.clan.game_mode == "cruel season"
         ):
             nutrition.max_score += CONDITION_INCREASE * factor
             nutrition.current_score = nutrition.max_score

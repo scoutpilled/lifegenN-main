@@ -836,7 +836,7 @@ class LeaderDenScreen(Screens):
             self.focus_cat.outside
             and not self.focus_cat.exiled
             and self.focus_cat.status
-            not in ["kittypet", "loner", "rogue", "former Clancat"]
+            not in ["kittypet", "loner", "rogue", "former Clancat", "rival Clancat"]
         ):
             self.focus_button["invite_in"].change_object_id("#outsider_search")
         else:

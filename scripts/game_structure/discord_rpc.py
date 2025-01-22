@@ -14,8 +14,8 @@ from time import time
 from scripts.game_structure.game_essentials import game
 
 status_dict = {
-    "start screen": "At the start screen",
-    "make clan screen": "Making a Clan",
+    "start screen": "At Neon Pink's start screen!",
+    "make clan screen": "Making a Neon Pink Clan",
     "mediation screen": "Mediating a dispute",
     "patrol screen": "On a patrol",
     "profile screen": "Viewing a cat's profile",

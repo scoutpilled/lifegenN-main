@@ -1645,7 +1645,7 @@ class ProfileScreen(Screens):
 
         # STATUS
         if the_cat.outside and not (the_cat.exiled or the_cat.df) and the_cat.status not in ['kittypet', 'loner', 'rogue',
-            'former Clancat'] and not the_cat.dead:
+            'former Clancat', 'rival Clancat'] and not the_cat.dead:
             output += "<font color='#FF0000'>lost</font>"
         elif the_cat.exiled:
             output += "<font color='#FF0000'>exiled</font>"
@@ -1813,6 +1813,7 @@ class ProfileScreen(Screens):
                 "rogue",
                 "former Clancat",
                 "exiled",
+                "rival Clancat"
             ]:
                 nutr = None
                 if the_cat.ID in game.clan.freshkill_pile.nutrition_info:
@@ -2204,7 +2205,7 @@ class ProfileScreen(Screens):
         #First, just list the mentors:
         if self.the_cat.status in ['kitten', 'newborn']:
                 influence_history = 'This cat has not begun training.'
-        elif self.the_cat.status in ['apprentice', 'medicine cat apprentice', 'mediator apprentice', "queen's apprentice"]:
+        elif self.the_cat.status in ['apprentice', 'medicine cat apprentice', 'mediator apprentice', "queen's apprentice", "rival apprentice"]:
             influence_history = 'This cat has not finished training.'
         else:
             valid_formor_mentors = [

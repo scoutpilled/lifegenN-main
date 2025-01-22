@@ -36,7 +36,7 @@ class OutsiderEvents:
                     text = f"Will they reach StarClan, even so far away? {cat.name} isn't sure, " \
                            f"but as they drift away, they hope to see " \
                            f"familiar starry fur on the other side."
-                    death_history = "m_c died while being lost and trying to get back to the Clan."
+                    death_history = "m_c died while lost and trying to get back to the Clan."
 
                 History.add_death(cat, death_text=death_history)
                 cat.die()
@@ -51,6 +51,8 @@ class OutsiderEvents:
         """
         if random.getrandbits(7) == 1 and not cat.dead:
             OutsiderEvents.become_kittypet(cat)
+        elif random.getrandbits(7) == 2 and not cat.dead:
+            OutsiderEvents.become_loner(cat)
 
     @staticmethod
     def become_kittypet(cat: Cat):
