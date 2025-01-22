@@ -649,14 +649,14 @@ class Patrol:
                 if game.switches["patrol_category"] == "df":
                     if len(self.patrol_cats) > 1:
                         other_cat = self.patrol_cats[1]
-                        
-                        if not other_cat.joined_df:
-                            if "fellowtrainee" in patrol.tags:
-                                continue
-                        
-                        else:
-                            if "fellowtrainee" not in patrol.tags:
-                                continue
+                        if game.clan.your_cat.joined_df:
+                            if not other_cat.joined_df:
+                                if "fellowtrainee" in patrol.tags:
+                                    continue
+                            
+                            else:
+                                if "fellowtrainee" not in patrol.tags:
+                                    continue
                 else:
                     if "shunned" in patrol.tags:
                         if game.clan.your_cat.shunned == 0:
@@ -665,6 +665,8 @@ class Patrol:
                     if "shunned" not in patrol.tags and "df" not in patrol.tags:
                         if game.clan.your_cat.shunned > 0:
                             continue
+
+
                 if game.switches["patrol_category"] == "date":
                     if "df" in patrol.tags:
                         if len(self.patrol_cats) > 1:

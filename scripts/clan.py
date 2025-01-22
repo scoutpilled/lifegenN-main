@@ -62,7 +62,12 @@ class Clan:
         "general",
         "exiled",
         "former Clancat",
-        "rival Clancat"
+        # neon pink exclusive below
+        "rival Clancat",
+        "rival newborn", "rival kitten", "rival apprentice",
+        "rival medicine cat apprentice", "rival queen's apprentice",
+        "rival mediator apprentice", "rival medicine cat", "rival mediator",
+        "rival deputy", "rival leader"
     ]
     
 
@@ -190,10 +195,7 @@ class Clan:
         self._reputation = 35
 
         self.starting_members = starting_members
-        if game_mode in ["expanded", "cruel season"]:
-            self.freshkill_pile = FreshkillPile()
-        else:
-            self.freshkill_pile = None
+        self.freshkill_pile = FreshkillPile()
         self.primary_disaster = None
         self.secondary_disaster = None
         self.war = {
@@ -252,7 +254,8 @@ class Clan:
         self.all_clans = []
         
         self.demon = Cat(status=choice(["apprentice", "mediator apprentice", "medicine cat apprentice", "warrior",
-                                            "medicine cat", "leader", "mediator", "queen", "queen's apprentice", "deputy", "elder"]),
+                                            "medicine cat", "leader", "mediator", "queen", "queen's apprentice",
+                                            "deputy", "elder"]),
                             )
         self.demon.df = True
         self.demon.dead = True
@@ -290,6 +293,7 @@ class Clan:
             Cat.all_cats.get(cat_id).init_all_relationships()
             if Cat.all_cats.get(cat_id).backstory is None:
                 Cat.all_cats.get(cat_id).backstory = 'clan_founder'
+
             if Cat.all_cats.get(cat_id).status == 'apprentice':
                 Cat.all_cats.get(cat_id).status_change('apprentice')
             elif Cat.all_cats.get(cat_id).status == "queen's apprentice":
@@ -534,15 +538,64 @@ class Clan:
             outsider.history.beginning = None
 
     def populate_rivalclan(self):
-        for i in range(randint(1,3)):
-            random_backstory = choice(["clanborn"])
+        for i in range(randint(30,50)):
+            randAge = randint(1, 130)
+            uncommonStart = randint(1,30)
+            if randAge > 5 and uncommonStart != 1:
+                random_backstory = choice(["clanborn","clanborn","clanborn","clanborn","clanborn","clanborn",
+                                            "halfclan1","halfclan2","halfclan3","halfclan4","halfclan5",
+                                            "halfclan6","halfclan7","halfclan8","halfclan9","halfclan10",
+                                            "outsider_roots1","outsider_roots2","outsider_roots3","outsider_roots4",
+                                            "outsider_roots5","outsider_roots6","outsider_roots7","outsider_roots8",
+                                            "loner1","loner2","loner3","loner4","loner6","loner7",
+                                            "rogue1","rogue2","rogue3","rogue4","rogue5","rogue6","rogue8",
+                                            "kittypet1","kittypet2","kittypet3","kittypet4","kittypet5","kittypet6","kittypet7",
+                                            "kittypet8","kittypet9",
+                                            "otherclan1","otherclan2","otherclan3","otherclan4","otherclan5","otherclan6",
+                                            "otherclan7","otherclan8","otherclan9","otherclan10","otherclan12",
+                                            "outsider1","outsider2","outsider3","outsider4","outsider5","outsider6",
+
+                                            "tragedy_survivor1","tragedy_survivor2","tragedy_survivor3","tragedy_survivor4",
+                                            "tragedy_survivor5",
+                                            "tragedy_survivor6",
+                                            "guided1","guided2","guided3","guided4","guided5","guided6",
+                                            "refugee1","refugee2","refugee3","refugee4","refugee5","refugee6","refugee7",
+
+                                           "orphaned1","orphaned2","orphaned3","orphaned4","orphaned5","orphaned6","orphaned7",
+                                           "abandoned1","abandoned2","abandoned3","abandoned4"
+                                            ])
+            elif randAge > 24 and uncommonStart == 1:
+                # for older cats and cats at least 2 years old. includes exiled stories
+                # "otherclan11" should not be used since it names the clan
+                random_backstory = choice(["clanborn","clanborn","clanborn","clanborn",
+                                            "retired_leader","ostracized_warrior","medicine_cat",
+                                            "wandering_healer2","wandering_healer1",
+                                            "disgraced1","disgraced2","disgraced3",
+                                            "otherclan13","rogue7",
+                                            ])
+            else: # kitten backstories!
+                random_backstory = choice(["clanborn","clanborn","clanborn","clanborn","clanborn","clanborn","clanborn",
+                                           "clanborn","clanborn","clanborn","clanborn","clanborn","clanborn","clanborn",
+                                           "orphaned1","orphaned2","orphaned3","orphaned4","orphaned5","orphaned6","orphaned7",
+                                           "abandoned1","abandoned2","abandoned3","abandoned4",
+
+                                           "otherclan9",
+                                           ])
+            setstatus="rival Clancat"
+            if randAge == 0:
+                setstatus="rival newborn"
+            elif randAge < 6:
+                setstatus="rival kitten"
+            elif randAge < 12:
+                setstatus="rival apprentice"
+            # im sure theres an easier way to do all this. i dont really care too much tho. not at the moment
             r1_cats = create_new_cat(
                 Cat,
-                status="rival Clancat",
-                age=randint(15, 120),
+                status=setstatus,
+                age=randAge,
+                backstory=random_backstory,
                 new_name=True,
                 outside=True,
-                backstory=random_backstory,
                 thought="Business as usual",
                 outClan=1
                 )[0]
@@ -934,8 +987,7 @@ class Clan:
         self.save_pregnancy(game.clan)
 
         self.save_clan_settings()
-        if game.clan.game_mode in ["expanded", "cruel season"]:
-            self.save_freshkill_pile(game.clan)
+        self.save_freshkill_pile(game.clan)
 
         game.safe_save(f"{get_save_dir()}/{self.name}clan.json", clan_data)
 

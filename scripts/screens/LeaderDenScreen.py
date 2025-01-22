@@ -836,7 +836,7 @@ class LeaderDenScreen(Screens):
             self.focus_cat.outside
             and not self.focus_cat.exiled
             and self.focus_cat.status
-            not in ["kittypet", "loner", "rogue", "former Clancat", "rival Clancat"]
+            not in ["kittypet", "loner", "rogue", "former Clancat"]
         ):
             self.focus_button["invite_in"].change_object_id("#outsider_search")
         else:
@@ -866,15 +866,19 @@ class LeaderDenScreen(Screens):
             self.screen_elements["clan_notice_text"].hide()
 
             self.clan_rep = game.clan.reputation
-            if 1 <= int(self.clan_rep) <= 30:
+            if 1 <= int(self.clan_rep) <= 20:
                 reputation = "hostile"
-            elif 31 <= int(self.clan_rep) <= 70:
+            if 21 <= int(self.clan_rep) <= 40:
+                reputation = "wary"
+            elif 41 <= int(self.clan_rep) <= 60:
                 reputation = "neutral"
+            elif 61 <= int(self.clan_rep) <= 80:
+                reputation = "kind"
             else:
                 reputation = "welcoming"
 
             self.screen_elements["temper_text"].set_text(
-                f"Outsiders view your clan as {reputation}."
+                f"Outsiders say your clan is {reputation}."
             )
 
     def update_outsider_cats(self):
@@ -885,7 +889,7 @@ class LeaderDenScreen(Screens):
         outsiders = [
             i
             for i in Cat.all_cats.values()
-            if i.outside and not i.dead and not i.driven_out
+            if i.outside and not i.dead and not i.driven_out and i.outClan is None
         ]
 
         # separate them into chunks for the pages

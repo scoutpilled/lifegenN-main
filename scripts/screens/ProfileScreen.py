@@ -1644,8 +1644,50 @@ class ProfileScreen(Screens):
         output = ""
 
         # STATUS
-        if the_cat.outside and not (the_cat.exiled or the_cat.df) and the_cat.status not in ['kittypet', 'loner', 'rogue',
-            'former Clancat', 'rival Clancat'] and not the_cat.dead:
+        if the_cat.outside and (the_cat.status in ['rival Clancat',
+            "rival newborn", "rival kitten", "rival apprentice",
+            "rival medicine cat apprentice", "rival queen's apprentice",
+            "rival mediator apprentice", "rival medicine cat", "rival mediator",
+            "rival deputy", "rival leader"]) and not the_cat.dead:
+            # handles all rival status names. makes it look a tad better in the summary, at the very least.
+            
+            renamedRole = ""
+            if the_cat.status == "rival newborn":
+                renamedRole += "newborn"
+            elif the_cat.status == "rival kitten":
+                renamedRole += "kitten"
+            elif the_cat.status == "rival apprentice":
+                renamedRole += "apprentice"
+            elif the_cat.status == "rival mediator apprentice":
+                outrenamedRoleut += "mediator apprentice"
+            elif the_cat.status == "rival medicine cat apprentice":
+                renamedRole += "medicine cat apprentice"
+            elif the_cat.status == "rival queen's apprentice":
+                renamedRole += "queen's apprentice"
+            elif the_cat.status == "rival Clancat":
+                renamedRole += "warrior"
+            elif the_cat.status == "rival medicine cat":
+                renamedRole += "medicine cat"
+            elif the_cat.status == "rival mediator":
+                renamedRole += "mediator"
+            elif the_cat.status == "rival queen":
+                renamedRole += "queen"
+            elif the_cat.status == "rival deputy":
+                renamedRole += "deputy"
+            elif the_cat.status == "rival leader":
+                renamedRole += "leader"
+            else:
+                renamedRole += "error"
+            
+
+            # output is here to make recolouring easier. maybe in the future we can use diff colours for diff clans
+            if game.settings['dark mode']:
+                output += "<font color='#8CFF7F'>" + renamedRole + "</font>"
+            else:
+                output += "<font color='#1D6013'>" + renamedRole + "</font>"
+
+        elif the_cat.outside and not (the_cat.exiled or the_cat.df) and the_cat.status not in ['kittypet', 'loner', 'rogue',
+            'former Clancat'] and not the_cat.dead:
             output += "<font color='#FF0000'>lost</font>"
         elif the_cat.exiled:
             output += "<font color='#FF0000'>exiled</font>"
@@ -1813,7 +1855,12 @@ class ProfileScreen(Screens):
                 "rogue",
                 "former Clancat",
                 "exiled",
-                "rival Clancat"
+                "rival Clancat",
+
+                "rival newborn", "rival kitten", "rival apprentice",
+                "rival medicine cat apprentice", "rival queen's apprentice",
+                "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                "rival deputy", "rival leader"
             ]:
                 nutr = None
                 if the_cat.ID in game.clan.freshkill_pile.nutrition_info:

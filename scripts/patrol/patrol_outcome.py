@@ -269,6 +269,9 @@ class PatrolOutcome:
         results.append(self._handle_exp(patrol))
         results.append(self._handle_mentor_app(patrol))
 
+        # NEONPINK
+        results.append(self._handle_sc_convert(patrol))
+
         # Filter out empty results strings
         results = [x for x in results if x]
 
@@ -590,6 +593,54 @@ class PatrolOutcome:
             
         return " ".join(results)
     
+    def _handle_sc_convert(self, patrol:'Patrol') -> str:
+        """ Handle converting cats out of DF """
+        
+        if not self.convert:
+            return ""
+        
+        def gather_cat_objects(cat_list, patrol: 'Patrol') -> list: 
+            out_set = set()
+            
+            for _cat in cat_list:
+                if _cat == "r_c":
+                    out_set.add(patrol.random_cat)
+                elif _cat == "p_l":
+                    out_set.add(patrol.patrol_leader)
+                elif _cat == "s_c":
+                    out_set.add(self.stat_cat)
+                # lifegen ------------------
+                elif _cat == "y_c":
+                    out_set.add(game.clan.your_cat)
+                elif _cat == "o_c1":
+                    out_set.add(patrol.patrol_cats[2])
+                # --------------------------
+                elif _cat == "app1" and len(patrol.patrol_apprentices) >= 1:
+                    out_set.add(patrol.patrol_apprentices[0])
+                elif _cat == "app2" and len(patrol.patrol_apprentices) >= 2:
+                    out_set.add(patrol.patrol_apprentices[1])
+                elif _cat == "patrol":
+                    out_set.update(patrol.patrol_cats)
+                elif _cat == "multi":
+                    cats_dying = random.randint(1, max(1, len(patrol.patrol_cats) - 1))
+                    out_set.update(random.sample(patrol.patrol_cats, cats_dying))
+                    
+            return list(out_set)
+        
+        cats_to_convert = gather_cat_objects(self.convert, patrol)
+        if not cats_to_convert:
+            print(f"Something was indicated in convert, but no cats were indicated: {self.convert}")
+            return ""
+        
+        
+        results = []
+        for _cat in cats_to_convert:
+            results.append(f"{_cat.name} has left the Dark Forest.")
+            _cat.joined_df = False
+            _cat.faith += 1
+            
+        return " ".join(results)
+
     def _handle_faith_changes(self, patrol:'Patrol') -> str:
         """ Handle changing a cats faith in patrols """
         

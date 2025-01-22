@@ -428,8 +428,30 @@ def create_new_cat_block(
         cat_type = "loner"
     elif "clancat" in attribute_list:
         cat_type = "former Clancat"
+    elif "rivalnew" in attribute_list:
+        cat_type = "rival newborn"
+    elif "rivalkit" in attribute_list:
+        cat_type = "rival kitten"
+    elif "rivalapp" in attribute_list:
+        cat_type = "rival apprentice"
+    elif "rivalmedapp" in attribute_list:
+        cat_type = "rival medicine cat apprentice"
+    elif "rivalqueenapp" in attribute_list:
+        cat_type = "rival queen's apprentice"
+    elif "rivalmediaapp" in attribute_list:
+        cat_type = "rival mediator apprentice"
     elif "rival" in attribute_list:
         cat_type = "rival Clancat"
+    elif "rivalmed" in attribute_list:
+        cat_type = "rival medicine cat"
+    elif "rivalmedia" in attribute_list:
+        cat_type = "rival mediator"
+    elif "rivalqueen" in attribute_list:
+        cat_type = "rival queen"
+    elif "rivaldep" in attribute_list:
+        cat_type = "rival deputy"
+    elif "rivallead" in attribute_list:
+        cat_type = "rival leader"
 
     # LIFEGEN: for encountered dead cats --
     elif "clan_status" in attribute_list:

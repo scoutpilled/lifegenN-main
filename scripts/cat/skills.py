@@ -337,7 +337,7 @@ class SkillPath(Enum):
         "doodles in dirt",
         "aesthetic fan",
         "makes anything beautiful",
-        "natures artist"
+        "nature's artist"
     )
     
     @staticmethod

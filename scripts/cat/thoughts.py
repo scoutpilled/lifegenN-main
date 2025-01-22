@@ -240,25 +240,37 @@ class Thoughts:
                 living_status = "living"
             if living_status and living_status != "living":
                 return False
+        
         if random_cat:
             if random_cat.moons < 0:
                 return False
         if random_cat and 'random_outside_status' in thought:
-            if random_cat and random_cat.outside and random_cat.status not in ["kittypet", "loner", "rogue",
-                                                                               "former Clancat", "exiled",
-                                                                               "rival Clancat"]:
+            if random_cat and random_cat.outside and random_cat.status not in [
+                            "kittypet", "loner", "rogue",
+                            "former Clancat", "exiled",
+                            "rival Clancat",                                             
+                            "rival newborn", "rival kitten", "rival apprentice",
+                            "rival medicine cat apprentice", "rival queen's apprentice",
+                            "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                            "rival deputy", "rival leader"
+                            ]:
                 outside_status = "lost"
             elif random_cat and random_cat.outside:
                 outside_status = "outside"
             else:
                 outside_status = "clancat"
-
             if outside_status not in thought['random_outside_status']:
                 return False
         else:
-            if random_cat and random_cat.outside and random_cat.status not in ["kittypet", "loner", "rogue",
-                                                                               "former Clancat", "exiled",
-                                                                               "rival Clancat"]:
+            if random_cat and random_cat.outside and random_cat.status not in [
+                            "kittypet", "loner", "rogue",
+                            "former Clancat", "exiled",
+                            "rival Clancat",                                             
+                            "rival newborn", "rival kitten", "rival apprentice",
+                            "rival medicine cat apprentice", "rival queen's apprentice",
+                            "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                            "rival deputy", "rival leader"
+                            ]:
                 outside_status = "lost"
             elif random_cat and random_cat.outside:
                 outside_status = "outside"
@@ -338,6 +350,34 @@ class Thoughts:
         base_path = f"resources/dicts/thoughts/"
         status = main_cat.status
 
+        # NEONPINK: turns rival clancats to regular clancats for the sake of thought pools.
+        # this eliminates the need for extra useless jsons.
+        if status == "rival newborn":
+            status = "newborn"
+        elif status == "rival kitten":
+            status = "kitten"
+        elif status == "rival apprentice":
+            status = "apprentice"
+        elif status == "rival mediator apprentice":
+            status = "mediator apprentice"
+        elif status == "rival medicine cat apprentice":
+            status = "medicine cat apprentice"
+        elif status == "rival queen's apprentice":
+            status = "queen's apprentice"
+        elif status == "rival Clancat":
+            status = "warrior"
+        elif status == "rival medicine cat":
+            status = "medicine cat"
+        elif status == "rival mediator":
+            status = "mediator"
+        elif status == "rival queen":
+            status = "queen"
+        elif status == "rival deputy":
+            status = "deputy"
+        elif status == "rival leader":
+            status = "leader"
+        # NEVER add an else here unless you want ALL thoughts to change. cheers
+
         status = status.replace(" ", "_")
         # match status:
         #     case "medicine cat apprentice":
@@ -354,7 +394,7 @@ class Thoughts:
         else:
             life_dir = "dead"
 
-        if not main_cat.dead and main_cat.outside:
+        if not main_cat.dead and main_cat.outside and main_cat.outClan is None:
             spec_dir = "/alive_outside"
         elif main_cat.dead and not main_cat.outside and not main_cat.df:
             spec_dir = "/starclan"
@@ -365,16 +405,19 @@ class Thoughts:
         else:
             spec_dir = ""
 
-        # newborns only pull from their status thoughts. this is done for convenience
         try:
-            if main_cat.age == 'newborn':
+            if main_cat.age == 'newborn': #newborn
+                # newborns only pull from their status thoughts. this is done for convenience
                 with open(f"{base_path}{life_dir}{spec_dir}/newborn.json", 'r') as read_file:
                     thoughts = ujson.loads(read_file.read())
                 loaded_thoughts = thoughts
+
             elif main_cat.shunned > 0 and not main_cat.dead and not main_cat.outside:
+                # if shunned and in the clan
                 with open(f"{base_path}{life_dir}{spec_dir}/shunned.json", 'r') as read_file:
                     loaded_thoughts = ujson.loads(read_file.read())
-            else:
+                    
+            else: # all other general cases
                 with open(f"{base_path}{life_dir}{spec_dir}/{status}.json", 'r') as read_file:
                     thoughts = ujson.loads(read_file.read())
                 with open(f"{base_path}{life_dir}{spec_dir}/general.json", 'r') as read_file:
@@ -398,7 +441,7 @@ class Thoughts:
                 chosen_thought_group = choice(Thoughts.load_thoughts(main_cat, other_cat, game_mode, biome, season, camp))
                 chosen_thought = choice(chosen_thought_group["thoughts"])
         except Exception:
-            chosen_thought = "Prrrp! You shouldn't see this! Report as a bug."
+            chosen_thought = "Meow meow, Neon Pink issue! Please repawrt!"
 
         return chosen_thought
     
@@ -458,4 +501,4 @@ class Thoughts:
             return chosen_thought
         except Exception:
             traceback.print_exc()
-            return "Prrrp! You shouldn't see this! Report as a bug."
+            return "Meow meow, Neon Pink error! Please repawrt!"

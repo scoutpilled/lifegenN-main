@@ -80,7 +80,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "sound": {
       "general": [
@@ -116,7 +119,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "smell": {
       "general": [
@@ -140,7 +146,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "emotional": {
       "general": [
@@ -164,7 +173,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "touch": {
       "general": [
@@ -184,7 +196,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     }
   },
 
@@ -233,7 +248,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "sound": {
       "general": [
@@ -251,7 +269,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "smell": {
       "general": [
@@ -270,7 +291,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "emotional": {
       "general": [
@@ -291,7 +315,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "touch": {
       "general": [
@@ -308,7 +335,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     }
   },
 
@@ -390,7 +420,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "smell": {
       "general": [
@@ -410,7 +443,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "emotional": {
       "general": [
@@ -448,7 +484,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "touch": {
       "general": [
@@ -475,7 +514,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     },
     "taste": {
       "general": [
@@ -494,7 +536,10 @@
       ],
       "mountainous": [
 
-      ]
+      ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
     }
   },
 
@@ -552,6 +597,9 @@
       ["The Dancing Sky"],
       ["The Sun-drown Place"]
 
-    ]
+    ],
+	  "rainworld":[],
+	  "desert":[],
+	  "wetlands":[]
   }
 }

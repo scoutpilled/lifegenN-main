@@ -338,7 +338,13 @@ class ChooseRebornScreen(Screens):
                 if not cat.dead and not cat.outside and not cat.ID == game.clan.your_cat.ID:
                     valid_mentors.append(cat)
             else:
-                if cat.dead and not cat.ID == game.clan.your_cat.ID and not cat.ID == game.clan.instructor.ID and not cat.ID == game.clan.demon.ID and not cat.outside and cat.status not in ["loner", "kittypet", "rogue", "former Clancat", "rival Clancat"]:
+                if cat.dead and not cat.ID == game.clan.your_cat.ID and not cat.ID == game.clan.instructor.ID and not cat.ID == game.clan.demon.ID and not cat.outside and cat.status not in [
+                    "loner", "kittypet", "rogue", "former Clancat", "rival Clancat",
+                    "rival newborn", "rival kitten", "rival apprentice",
+                    "rival medicine cat apprentice", "rival queen's apprentice",
+                    "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                    "rival deputy", "rival leader"
+                    ]:
                     valid_mentors.append(cat)
         
         return valid_mentors

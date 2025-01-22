@@ -331,13 +331,15 @@ class Cat:
                     ):
                         self.age = key_age
         else:
-            if status == 'newborn':
+            if status in ['newborn', 'rival newborn']:
                 self.age = 'newborn'
-            elif status == 'kitten':
+            elif status == ['kitten', 'rival kitten']:
                 self.age = 'kitten'
-            elif status == 'elder':
+            elif status == ['elder', 'rival elder']:
                 self.age = 'senior'
-            elif status in ['apprentice', 'mediator apprentice', 'medicine cat apprentice', "queen's apprentice"]:
+            elif status in ['apprentice', 'mediator apprentice', 'medicine cat apprentice', "queen's apprentice",
+                            'rival apprentice', 'rival mediator apprentice', 'rival medicine cat apprentice',
+                            "rival queen's apprentice"]:
                 self.age = 'adolescent'
             else:
                 self.age = choice(["young adult", "adult", "adult", "senior adult"])
@@ -345,7 +347,11 @@ class Cat:
                 self.age_moons[self.age][0], self.age_moons[self.age][1]
             )
 
-            if status == "rival Clancat":
+            if status in [("rival Clancat",
+                            "rival newborn", "rival kitten", "rival apprentice",
+                            "rival medicine cat apprentice", "rival queen's apprentice",
+                            "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                            "rival deputy", "rival leader")]:
                 self.outClan=1
 
         # backstory
@@ -374,6 +380,7 @@ class Cat:
             biome = game.clan.biome
         else:
             biome = None
+        
         # NAME
         # load_existing_name is needed so existing cats don't get their names changed/fixed for no reason
         if self.pelt is not None:
@@ -810,7 +817,13 @@ class Cat:
                 acceptchance = randint(1,40)
                 killchance = randint(1,10)
 
-        elif you.status in ["loner", "rogue", "kittypet", "former Clancat", "rival Clancat"]:
+        elif you.status in ["loner", "rogue", "kittypet", "former Clancat",
+                            "rival newborn", "rival kitten", "rival apprentice",
+                            "rival medicine cat apprentice", "rival queen's apprentice",
+                            "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                            "rival deputy", "rival leader",
+                            "rival Clancat"
+                            ]:
         # can only be former clancat rn but this is just to cover bases 4 the future
             if num_victims == 0:
                 acceptchance = randint(1,3)
@@ -2672,7 +2685,8 @@ class Cat:
         #There are some special tasks we need to do for apprentice
         # Note that although you can unretire cats, they will be a full warrior/med_cat/mediator
 
-        if self.moons > 6 and self.status in ["apprentice", "medicine cat apprentice", "mediator apprentice", "queen's apprentice"]:
+        if self.moons > 6 and self.status in ["apprentice", "medicine cat apprentice", "mediator apprentice",
+                                              "queen's apprentice"]:
             _ment = Cat.fetch_cat(self.mentor) if self.mentor else None
             self.status_change(
                 "warrior"
@@ -2812,27 +2826,33 @@ class Cat:
     # ---------------------------------------------------------------------------- #
 
     def is_valid_mentor(self, potential_mentor: Cat):
-        # Dead or outside cats can't be mentors
-        if potential_mentor.dead or potential_mentor.outside:
+        # Dead or outside cats can't be mentors (outside can if its outclan and only in that specific outclan)
+        # if dead or (outside AND not the same outclan variable)
+        if potential_mentor.dead or (potential_mentor.outside and self.outClan != potential_mentor.outClan):
             return False
         # Match jobs
         if (
-            self.status == "medicine cat apprentice"
-            and potential_mentor.status != "medicine cat"
+            self.status in ("medicine cat apprentice", "rival medicine cat apprentice")
+            and potential_mentor.status not in ("medicine cat", "rival medicine cat")
         ):
             return False
-        if self.status == "apprentice" and potential_mentor.status not in [
+        if self.status in ("apprentice", "rival apprentice") and potential_mentor.status not in [
             "leader",
             "deputy",
             "warrior",
+            
+            "rival leader",
+            "rival deputy",
+            "rival warrior"
         ]:
             return False
         if (
-            self.status == "mediator apprentice"
-            and potential_mentor.status != "mediator"
+            self.status in ("mediator apprentice", "rival mediator apprentice")
+            and potential_mentor.status not in ("mediator", "rival mediator")
         ):
             return False
-        if self.status == "queen's apprentice" and potential_mentor.status != 'queen':
+        if self.status in ("queen's apprentice", "rival queen's apprentice") and potential_mentor.status not in (
+            'queen', "rival queen"):
             return False
         
         if potential_mentor.moons <= 0:

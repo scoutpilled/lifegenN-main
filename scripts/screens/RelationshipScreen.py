@@ -349,6 +349,8 @@ class RelationshipScreen(Screens):
                     and not check_cat.faded
                     # LG
                     and not check_cat.moons < 0
+                    # neonpink!
+                    and check_cat.outClan == self.the_cat.outClan
                 ):
                     previous_cat = check_cat.ID
 
@@ -362,6 +364,8 @@ class RelationshipScreen(Screens):
                     and not check_cat.faded
                     # LG
                     and not check_cat.moons < 0
+                    # neonpink!
+                    and check_cat.outClan == self.the_cat.outClan
                 ):
                     next_cat = check_cat.ID
 

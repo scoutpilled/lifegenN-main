@@ -781,6 +781,20 @@ class ListScreen(Screens):
         self.death_status = "living"
         self.full_cat_list = []
         for the_cat in Cat.all_cats_list:
-            if not the_cat.dead and (the_cat.outside and the_cat.outClan is not None) and the_cat.moons >= 0 and not \
+            if not the_cat.dead and (the_cat.outside and the_cat.outClan == 1) \
+            and the_cat.moons >= 0 and not \
+            the_cat.driven_out:
+                self.full_cat_list.append(the_cat)
+
+    def get_outClan2_cats(self):
+        """
+        grabs rival clan 2
+        """
+        self.current_group = "c2"
+        self.death_status = "living"
+        self.full_cat_list = []
+        for the_cat in Cat.all_cats_list:
+            if not the_cat.dead and (the_cat.outside and the_cat.outClan == 2) \
+            and the_cat.moons >= 0 and not \
             the_cat.driven_out:
                 self.full_cat_list.append(the_cat)

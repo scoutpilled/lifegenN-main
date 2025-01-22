@@ -16,6 +16,9 @@
 - More biomes
 - Fixed crash when having both a visible condition and scars
 - Fixed a visual bug when having both a visible condition and scars
+- Added very basic framework for rival clan cats
+- Sick cats need more food
+- Cats outside the clan can get sick
 
 <strong>v0.0.02: </strong>
 - Peach pelt completed

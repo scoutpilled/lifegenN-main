@@ -23,7 +23,15 @@
     "medicine cat apprentice": "paw",
     "mediator apprentice": "paw",
 	"queen's apprentice": "paw",
-    "leader": "star"
+    "leader": "star",
+
+    "rival newborn": "kit",
+    "rival kitten": "kit",
+	"rival apprentice": "paw",
+	"rival medicine cat apprentice": "paw",
+    "rival mediator apprentice": "paw",
+    "rival queen's apprentice": "paw",
+    "rival leader": "star"
   },
 
   "normal_prefixes": [

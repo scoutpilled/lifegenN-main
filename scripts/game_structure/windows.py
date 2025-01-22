@@ -2127,7 +2127,11 @@ class DeathScreen(UIWindow):
                 game.clan.your_cat.df = False
                 if not game.clan.your_cat.outside:
                     game.clan.your_cat.outside = False
-                if game.clan.your_cat.status in ["rogue", "kittypet", "former Clancat", "loner", "rival Clancat"]:
+                if game.clan.your_cat.status in ["rogue", "kittypet", "former Clancat", "loner", "rival Clancat",
+                                                 "rival newborn", "rival kitten", "rival apprentice",
+                                                "rival medicine cat apprentice", "rival queen's apprentice",
+                                                "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                                                "rival deputy", "rival leader"]:
                     game.clan.your_cat.status = "exiled"
                     # cant play as an outsider yet gotta cheese it for now
                 game.clan.your_cat.dead_for = 0

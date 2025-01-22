@@ -2772,12 +2772,55 @@
                 "text": "The patrol brings the apprentice back to camp. However, c_n doesn't want to sully relations with o_c_n, and the apprentice is escorted home.",
                 "exp": 0,
                 "weight": 20,
+                "new_cat": [
+                    ["status:apprentice","rival","meeting"]
+                ],
+                "relationships": [
+                    {
+                        "cats_from": ["n_c:0"],
+                        "cats_to": ["patrol"],
+                        "values": ["platonic", "trust", "comfort"],
+                        "amount": -10
+                    },
+                    {
+                        "cats_from": ["n_c:0"],
+                        "cats_to": ["s_c"],
+                        "mutual": false,
+                        "values": ["platonic", "trust"],
+                        "amount": -6
+                    }
+                ],
                 "other_clan_rep": 0
             },
             {
                 "text": "The patrol brings the apprentice, back to camp. However, the Clan is unwelcoming, and the apprentice slips out in the middle of the night, dejected.",
                 "exp": 0,
                 "weight": 5,
+                "new_cat": [
+                    ["loner","status:apprentice","meeting","backstory:otherclan2"]
+                ],
+                "relationships": [
+                    {
+                        "cats_from": ["n_c:0"],
+                        "cats_to": ["patrol"],
+                        "values": ["platonic", "trust", "comfort"],
+                        "amount": 10
+                    },
+                    {
+                        "cats_from": ["n_c:0"],
+                        "cats_to": ["s_c"],
+                        "mutual": true,
+                        "values": ["platonic", "trust"],
+                        "amount": -11
+                    },
+                    {
+                        "cats_from": ["s_c"],
+                        "cats_to": ["n_c:0"],
+                        "mutual": false,
+                        "values": ["toxicity"],
+                        "amount": 21
+                    }
+                ],
                 "other_clan_rep": 0
             },
             {
@@ -2786,6 +2829,31 @@
                 "weight": 5,
                 "stat_skill": ["MEDIATOR,2", "SPEAKER,2"],
                 "can_have_stat": ["any"],
+                "new_cat": [
+                    ["status:apprentice", "meeting", "rival"]
+                ],
+                "relationships": [
+                    {
+                        "cats_from": ["n_c:0"],
+                        "cats_to": ["patrol"],
+                        "values": ["platonic", "trust", "comfort"],
+                        "amount": 10
+                    },
+                    {
+                        "cats_from": ["n_c:0"],
+                        "cats_to": ["s_c"],
+                        "mutual": false,
+                        "values": ["platonic", "trust", "respect"],
+                        "amount": 12
+                    },
+                    {
+                        "cats_from": ["s_c"],
+                        "cats_to": ["n_c:0"],
+                        "mutual": false,
+                        "values": ["platonic"],
+                        "amount": 10
+                    }
+                ],
                 "other_clan_rep": 1
             }
         ],

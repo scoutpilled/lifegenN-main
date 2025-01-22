@@ -22,7 +22,7 @@
         "success_outcomes": [
             {
                 "text": "You sneak out of camp that night. No one catches you and you have a blast, you didn't know the world outside of camp was so large!",
-                "exp": 0,
+                "exp": 5,
                 "weight": 20
             }
         ],
@@ -30,6 +30,20 @@
             {
                 "text": "Just as you are about to step beyond the camp's borders, a warrior on guard duty spots you. You're marched back to the nursery under their stern gaze, earning yourself a harsh lecture.",
                 "exp": 0,
+                "weight": 20
+            }
+        ],
+        "antag_fail_outcomes": [
+            {
+                "text": "You try to go off on your own, confident that you don't need help... you're quickly caught, and the apprentice seems unimpressed.",
+                "exp": 0,
+                "weight": 20
+            }
+        ],
+        "antag_success_outcomes": [
+            {
+                "text": "You don't need an apprentice leading you around! You take initiative to lead the way, sneaking past the warrior on guard and greatly impressing the cat you look up to.",
+                "exp": 10,
                 "weight": 20
             }
         ]

@@ -137,7 +137,11 @@ class FreshkillPile:
             if "pregnant" in cat.injuries
             and cat.ID not in queen_dict.keys()
             and not cat.outside
-            and cat.status not in ["exiled", "loner", "rogue", "kittypet", "former Clancat", "rival Clancat"]
+            and cat.status not in ["exiled", "loner", "rogue", "kittypet", "former Clancat", "rival Clancat",
+                                   "rival newborn", "rival kitten", "rival apprentice",
+                                    "rival medicine cat apprentice", "rival queen's apprentice",
+                                    "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                                    "rival deputy", "rival leader"]
         ]
 
         # all normal status cats calculation
@@ -145,7 +149,13 @@ class FreshkillPile:
             [
                 PREY_REQUIREMENT[cat.status]
                 for cat in living_cats
-                if cat.status not in ["newborn", "kitten", "exiled", "loner", "rogue", "kittypet", "former Clancat", "rival Clancat"] and not cat.outside
+                if cat.status not in ["newborn", "kitten", "exiled", "loner", "rogue", "kittypet", "former Clancat",
+                                        "rival Clancat",
+                                        "rival newborn", "rival kitten", "rival apprentice",
+                                        "rival medicine cat apprentice", "rival queen's apprentice",
+                                        "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                                        "rival deputy", "rival leader"
+                                        ] and not cat.outside
             ]
         )
         # increase the number for sick cats. normally only for cruel season. sniles
@@ -154,7 +164,12 @@ class FreshkillPile:
                 for cat in living_cats
                 if cat.not_working() and "pregnant" not in cat.injuries
                 and cat.status not in ["newborn", "kitten", "exiled", "loner", "rogue", "kittypet", "former Clancat",
-                                       "rival Clancat"] and not cat.outside
+                                       "rival Clancat",
+                                       "rival newborn", "rival kitten", "rival apprentice",
+                                        "rival medicine cat apprentice", "rival queen's apprentice",
+                                        "rival mediator apprentice", "rival medicine cat", "rival mediator",
+                                        "rival deputy", "rival leader"
+                                       ] and not cat.outside
             ]
         needed_prey += len(sick_cats) * CONDITION_INCREASE
         # increase the number of prey which are missing for relevant queens and pregnant cats
