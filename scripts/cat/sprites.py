@@ -132,6 +132,10 @@ class Sprites:
             'sokokecolours', 'agouticolours', 'singlestripecolours', 'maskedcolours',
             'manedcolours', 'ocelotcolours', 'lynxcolours', 'abyssiniancolours', 'cloudedcolours', 'dobermancolours', 'ghosttabbycolours', 'merlecolours', 'monarchcolours', 'oceloidcolours', 'pinstripetabbycolours', 'snowflakecolours', 'royalcolours', 'bobcatcolours', 'cheetahcolours',
             'shadersnewwhite', 'lightingnew',
+            'goldshadedcolours', 'silverclassiccolours', 'silvermackerelcolours',
+            'pinkshading', 'pinkshadingnolineart', 'pinklight',
+            'pinkautismeyes', 'neon pridescarves',
+            'neonlineart', 'neonshading',
             'whitepatches', 'minkswhite', 'voithexpatches', 'exoticwhitepatches','tortiepatchesmasks', 'minkstorties',
             'fademask', 'fadestarclan', 'fadedarkforest','bandanas', 'stainvoithex',
             'symbols', 'eragonatorite', 'eragonawp', 'eragonaeyes', 'eragonaeyes2',
@@ -205,6 +209,11 @@ class Sprites:
         self.make_group('lineart', (0, 0), 'lines')
         self.make_group('shadersnewwhite', (0, 0), 'shaders')
         self.make_group('lightingnew', (0, 0), 'lighting')
+        self.make_group('neonlineart', (0, 0), 'neonlines')
+        self.make_group('pinkshading', (0, 0), 'shaders')
+        self.make_group('neonshading', (0, 0), 'neonshaders')
+        self.make_group('pinkshadingnolineart', (0, 0), 'shadernolineart')
+        self.make_group('pinklight', (0, 0), 'lighting')
 
         self.make_group('lineartdead', (0, 0), 'lineartdead')
         self.make_group('lineartdf', (0, 0), 'lineartdf')
@@ -862,6 +871,11 @@ class Sprites:
         for row, nyloncollars in enumerate(nyloncollars_data):
             for col, nyloncollar in enumerate(nyloncollars):
                 self.make_group('nyloncollars', (col, row), f'collars{nyloncollar}')
+
+        for a, i in enumerate(["PINKAUTISMEYES"]):
+            self.make_group('pinkautismeyes', (a, 0), f'np_autism{i}')
+        for a, i in enumerate(["NEONPINKTRANSSCARF", "NEONPINKDISABLEDSCARF"]):
+            self.make_group('neon pridescarves', (a, 0), f'np_autism{i}')
 
         # ohdan's accessories :3
         for row, plant2_accessories in enumerate(plant2_data):

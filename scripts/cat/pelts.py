@@ -102,7 +102,10 @@ class Pelt:
         'Monarch': 'monarch',
         'Oceloid': 'oceloid',
         'PinstripeTabby': 'pinstripetabby',
-        'Snowflake': 'snowflake'
+        'Snowflake': 'snowflake',
+        'Goldshaded': 'goldshaded',
+        'Silverclassic': 'silverclassic',
+        'Silvermackerel': 'silvermackerel'
     }
 
     # ATTRIBUTES, including non-pelt related
@@ -166,7 +169,7 @@ class Pelt:
                    'sterspeckled', 'sillyspeckled', 'dancespeckled', 'mimispeckled',
                    'stertabby', 'sillytabby', 'dancetabby', 'mimitabby',
                    'sterticked', 'sillyticked', 'danceticked', 'mimiticked', 'abyssinian', 'clouded', 'doberman', 'ghosttabby', 'merle',
-                   'monarch', 'oceloid', 'pinstripetabby', 'snowflake']
+                   'monarch', 'oceloid', 'pinstripetabby', 'snowflake', 'goldshaded', 'silverclassic', 'silvermackerel']
 
     pelt_length = ["short", "medium", "long"]
     eye_colours = ['YELLOW', 'AMBER', 'HAZEL', 'PALEGREEN', 'GREEN', 'BLUE', 'DARKBLUE', 'GREY', 'CYAN', 'EMERALD', 'PALEBLUE', 
@@ -246,7 +249,7 @@ class Pelt:
 
     ]
 
-
+    np_autism = ["PINKAUTISMEYES", "NEONPINKTRANSSCARF", "NEONPINKDISABLEDSCARF"]
 
     # ohdan's accessories
 
@@ -351,13 +354,15 @@ class Pelt:
     tabbies = ["Tabby", "Ticked", "Mackerel", "Stermackerel", "Sillymackerel", "Dancemackerel", "Mimimackerel", 
                "Classic", "Sterclassic", "Sillyclassic", "Danceclassic", "Mimiclassic",
                "Sokoke", "Stersokoke", "Sillysokoke", "Dancesokoke", "Mimisokoke",
-               "Agouti", "Steragouti", "Sillyagouti", "Danceagouti", "Mimiagouti", "Royal", "Brindle", "GhostTabby", "PinstripeTabby"]
+               "Agouti", "Steragouti", "Sillyagouti", "Danceagouti", "Mimiagouti", "Royal", "Brindle", "GhostTabby", "PinstripeTabby",
+               "Silverclassic", "Silvermackerel"]
     spotted = ["Speckled", "Sterspeckled", "Sillyspeckled", "Dancespeckled", "Mimispeckled", 
                "Rosette", "Sterrosette", "Sillyrosette", "Dancerosette", "Mimirosette", 
                "Lynx", "Bobcat", "Spots", "Merle"]
     plain = ["SingleColour", "SterSingle", "SillySingle", "DanceSingle", "MimiSingle",
              "TwoColour", "Smoke", "Stersmoke", "Sillysmoke", "Dancesmoke", "Mimismoke",
-             "Singlestripe", "Sterstripe", "Dancestripe", "Sillystripe", "Mimistripe", "Smokepoint", "Doberman"]
+             "Singlestripe", "Sterstripe", "Dancestripe", "Sillystripe", "Mimistripe", "Smokepoint", "Doberman",
+             "Goldshaded"]
     exotic = ["Bengal", "Sterbengal", "Sillybengal", "Dancebengal", "Mimibengal", 
               "Marbled", "Stermarbled", "Sillymarbled", "Dancemarbled", "Mimimarbled",
               "Masked", "Stermasked", "Sillymasked", "Dancemasked", "Mimimasked", "Maned", "Ocelot", "Cheetah", "Wildcat", "Wolf", "Finleappatches", "Dalmatian", "Abyssinian", "Clouded", "Snowflake", "Oceloid", "Monarch"]
@@ -1036,6 +1041,7 @@ class Pelt:
                                                      'classic', 'sterclassic', 'sillyclassic', 'danceclassic', 'mimiclassic', 'single', 'smoke',
                                                      'stersmoke', 'sillysmoke', 'dancesmoke', 'mimismoke','agouti', 'steragouti', 'sillyagouti', 'danceagouti', 'mimiagouti',
                                                      'ticked', 'sterticked', 'sillyticked', 'danceticked', 'mimiticked',
+                                                     'goldshaded', 'silverclassic', 'silvermackerel',
                                                      'brindle', 'spots'])
                     else:
                         self.tortiepattern = random.choices([self.tortiebase, 'single'], weights=[97, 3], k=1)[0]
@@ -1584,7 +1590,10 @@ class Pelt:
             "Monarch": "uniquely spotted c_n",
             "Oceloid": "oddly spotted c_n",
             "PinstripeTabby": "strangely striped c_n",
-            "Snowflake": "oddly dappled c_n"
+            "Snowflake": "oddly dappled c_n",
+            "Goldshaded": "golden dorsal-striped c_n",
+            "Silverclassic": "c_n silver tabby",
+            "Silvermackerel": "c_n silver tabby"
         }
 
         # Start with determining the base color name
