@@ -282,7 +282,6 @@ class History:
             SkillPath.PROPHET: ["understanding prophecies"],
             SkillPath.GHOST: ["connecting to the afterlife"],
             SkillPath.GARDENER: ["tending to the Clan's garden"],
-            SkillPath.UNKNOWN: ["connecting to the unknown residence"],
             SkillPath.WAKEFUL: ["vigilance"],
             SkillPath.DELIVERER: ["delivering kits"],
             SkillPath.DECORATOR: ["decorating dens"],
