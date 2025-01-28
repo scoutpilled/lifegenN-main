@@ -114,7 +114,10 @@ def set_display_mode(
         if old_scale != screen_scale:
             from scripts.screens.all_screens import AllScreens
             import scripts.screens.screens_core.screens_core
+<<<<<<< HEAD
             import scripts.debug_menu
+=======
+>>>>>>> LifeGen-dev
 
             game.save_settings(currentscreen=source_screen)
             source_screen.exit_screen()
@@ -137,7 +140,11 @@ def set_display_mode(
             AllScreens.rebuild_all_screens()
 
             scripts.screens.screens_core.screens_core.rebuild_core()
+<<<<<<< HEAD
             scripts.debug_menu.debugmode.rebuild_console()
+=======
+            scripts.debug_console.debug_mode.rebuild_console()
+>>>>>>> LifeGen-dev
 
             screen_name = source_screen.name.replace(" ", "_")
             new_screen: "Screens" = getattr(AllScreens, screen_name)

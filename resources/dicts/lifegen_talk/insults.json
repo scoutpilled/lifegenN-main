@@ -15,7 +15,8 @@
     "app_321": [
         [
             "insult",
-            "Any",
+            "they_kitten",
+            "you_any",
             "they_blind",
             "you_blind",
             "they_app"
@@ -53,6 +54,7 @@
     "app_32ga1": [
         [
             "insult",
+            "no_kit",
             "Any",
             "assertive",
             "unabashed",
@@ -257,7 +259,8 @@
             "cool",
             "insult",
             "they_blind",
-            "you_blind"
+            "you_blind",
+            "they_not_kit"
         ],
         [
             "Bold of you to assume that I care."
@@ -311,7 +314,8 @@
             "insult",
             "platonic_like",
             "they_blind",
-            "you_blind"
+            "you_blind",
+            "they_not_kit"
         ],
         [
             "Hey! What gives?"
@@ -337,6 +341,10 @@
             "you_abandoned",
             "hate",
             "they_blind",
+<<<<<<< HEAD
+=======
+            "sc_faith",
+>>>>>>> LifeGen-dev
             "they_not_kit"
         ],
         [
@@ -389,7 +397,6 @@
             "cool",
             "platonic_like",
             "they_blind",
-            "you_blind",
             "they_deaf",
             "you_deaf",
             "they_not_kit"
@@ -637,7 +644,12 @@
             "insult",
             "they_blind",
             "they_hearing",
+<<<<<<< HEAD
             "they_not_kit"
+=======
+            "they_not_kit",
+            "you_blind"
+>>>>>>> LifeGen-dev
         ],
         [
             "Please. I've heard worse from the kits in the nursery."
@@ -650,7 +662,12 @@
             "cool",
             "you_blind",
             "they_blind",
+<<<<<<< HEAD
             "they_not_kit"
+=======
+            "sc_faith",
+            "no_kit"
+>>>>>>> LifeGen-dev
         ],
         [
             "StarClan, I can barely hear you over the sound of your raging insecurity."
@@ -784,13 +801,18 @@
             "...you're just mad I'm funnier than you, aren'tcha?"
         ]
     ],
-    "silly_insult_2": [
+    "insult_02": [
         [
             "any",
             "insult",
+<<<<<<< HEAD
             "silly",
             "they_blind",
             "they_not_kit"
+=======
+            "no_kit",
+            "they_blind"
+>>>>>>> LifeGen-dev
         ],
         [
             "Whatever. Stay mad about it, because I sure won't. I'll forget you even talked to me in like, two seconds."
@@ -799,6 +821,7 @@
     "silly_insult_3": [
         [
             "any",
+            "no_kit",
             "insult",
             "silly",
             "they_blind",
@@ -808,11 +831,11 @@
             "You're just jealous of my inherently whimsical nature."
         ]
     ],
-    "silly_insult_4": [
+    "insult_4": [
         [
             "any",
+            "no_kit",
             "insult",
-            "silly",
             "dislike",
             "they_blind",
             "you_blind",
@@ -822,11 +845,11 @@
             "Oh, like I'd take anything you say seriously."
         ]
     ],
-    "silly_insult_05": [
+    "insult_05": [
         [
             "any",
+            "no_kit",
             "insult",
-            "silly",
             "dislike",
             "they_blind",
             "they_not_kit"
@@ -1026,7 +1049,6 @@
             "insult",
             "any",
             "cool",
-            "silly",
             "they_blind"
         ],
         [
@@ -1424,7 +1446,7 @@
         ],
         [
             "Why would you say that? Did I do something wrong?",
-            "[t_c takes a step back, unable to meet your eyes. After a moment of silence, {PRONOUN/t_c/subject}  {VERB/t_c/turn/turns} and {VERB/t_c/scurry/scurries} away.]"
+            "[t_c takes a step back, unable to meet your eyes. After a moment of silence, {PRONOUN/t_c/subject} {VERB/t_c/turn/turns} and {VERB/t_c/scurry/scurries} away.]"
         ]
     ],
     "hate_insult_shunned_CM1": [
@@ -2055,7 +2077,7 @@
             "they_not_kit"
         ],
         [
-            "That's mean, y_c. You're allowed to be upset, but please dont take it out on me."
+            "That's mean, y_c. You're allowed to be upset, but please don't take it out on me."
         ]
     ],
     "newborn_to_shunned_insult_J1": [
@@ -2137,7 +2159,7 @@
             "they_not_kit"
         ],
         [
-            "Well, you should... leave the shutting up... to you! Stupid!"
+            "Well, you should... leave the shutting up... To you! Stupid!"
         ]
     ],
     "kit_insult_3": [
@@ -2426,7 +2448,7 @@
             "they_medicine_cat_apprentice"
         ],
         [
-            "Hey! Wait... this is the perfect time to use my training!",
+            "Hey! Wait... This is the perfect time to use my training!",
             "What caused you to act this way?",
             "How about you take a deep breath. Inhale, then exhale.",
             "Now lets reflect on your actions... hey! Don't just walk away from me!"
@@ -2566,7 +2588,12 @@
     "app_32da1": [
         [
             "insult",
+<<<<<<< HEAD
             "warrior",
+=======
+            "any",
+            "no_kit",
+>>>>>>> LifeGen-dev
             "you_blind",
             "they_blind",
             "they_not_kit"
@@ -2578,7 +2605,12 @@
     "app_32afa1": [
         [
             "insult",
+<<<<<<< HEAD
             "warrior",
+=======
+            "any",
+            "no_kit",
+>>>>>>> LifeGen-dev
             "you_blind",
             "they_blind",
             "they_not_kit"
@@ -2814,7 +2846,7 @@
             "you_blind"
         ],
         [
-            "I thought we were similar, y_c. Both kind of quiet... both a little too cautious.",
+            "I thought we were similar, y_c. Both kind of quiet... Both a little too cautious.",
             "But I don't ever want to be like you if you say things like that."
         ]
     ],
@@ -3184,7 +3216,7 @@
         [
             "WHAT THE- Who in StarClan's name...",
             "r_q! r_q! Hey, I think someone's been teaching the kits some... less than appropriate words.",
-            "[{PRONOUN/t_c/subject} turns to you in a sharp movement, {PRONOUN/t_c/poss} gaze billowing in anger and {PRONOUN/t_c/poss} hair on end.]",
+            "[{PRONOUN/t_c/subject/CAP} turns to you in a sharp movement, {PRONOUN/t_c/poss} gaze billowing in anger and {PRONOUN/t_c/poss} hair on end.]",
             "Who taught you this? Who was it? Was it t_a? r_w? r_a??? Out with it kit!",
             "[The queen tries to calm down the warrior who scoffs with a roll of {PRONOUN/t_c/poss} eyes.]",
             "NO! No kitten should speak like this, do not excuse {PRONOUN/y_c/poss} actions, this kind of behaviour is disgusting at best and harmful at worst."
@@ -3200,7 +3232,7 @@
         [
             "I-",
             "I get that I make mistakes, but I'm trying y_c... I'm really trying I- *sniff* I'm sorry, I- *sniff*...",
-            "[t_c stands with wobbly legs, {PRONOUN/t_c/poss} eyes welling with tears. {PRONOUN/t_c/subject} brushes {PRONOUN/t_c/poss} paw over {PRONOUN/t_c/poss} eyes quickly and stumble backwards.]",
+            "[t_c stands with wobbly legs, {PRONOUN/t_c/poss} eyes welling with tears. {PRONOUN/t_c/subject/CAP} brushes {PRONOUN/t_c/poss} paw over {PRONOUN/t_c/poss} eyes quickly and stumble backwards.]",
             "I- I need to go!",
             "[You watch as {PRONOUN/t_c/subject} scampers off, tears rolling down {PRONOUN/t_c/poss} cheeks. Other cats watch as t_c runs away, then all eyes turn to face you. You can't help but flinch under the harsh gaze of the warriors or scowls of the queens.]"
         ]
@@ -3237,5 +3269,261 @@
         [
             "Well - Well- you're short too!!"
         ]
+<<<<<<< HEAD
+=======
+    ],
+    "mediator_insult_H1": [
+        [
+            "they_mediator",
+            "they_mediator_apprentice",
+            "you_any",
+            "insult",
+            "neutral",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "Hey... Do we need to talk it out? There's no reason to call me names."
+        ]
+    ],
+    "mediator_insult_H2": [
+        [
+            "they_mediator",
+            "they_mediator_apprentice",
+            "they_deputy",
+            "they_leader",
+            "they_queen",
+            "you_kitten",
+            "you_newborn",
+            "insult",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "You're way too young to have so much hate bottled up in you already.",
+            "Maybe I should speak to y_p..."
+        ]
+    ],
+    "queen_insult_H1": [
+        [
+            "you_kitten",
+            "you_newborn",
+            "they_queen",
+            "they_queen's_apprentice",
+            "they_blind",
+            "you_blind",
+            "insult"
+        ],
+        [
+            "That's it -- to the corner!"
+        ]
+    ],
+    "mediator_insult_H3": [
+        [
+            "they_mediator",
+            "they_mediator_apprentice",
+            "you_any",
+            "insult",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "Let's do some breathing exercises.",
+            "Breath in... and out... Breath in... and out."
+        ]
+    ],
+    "any_insult_H1": [
+        [
+            "insult",
+            "any",
+            "they_blind",
+            "you_blind",
+            "no_kit"
+        ],
+        [
+            "I hope you choke on a bird."
+        ]
+    ],
+    "deputy_to_leader_H1": [
+        [
+            "they_leader",
+            "you_deputy",
+            "dislike",
+            "insult",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "I can demote you at any time, and no cat would know you were demoted for calling me a 'blubbering pipsqueak'.",
+            "Wouldn't that be fun?"
+        ]
+    ],
+    "deputy_to_leader_H2": [
+        [
+            "they_leader",
+            "you_deputy",
+            "dislike",
+            "insult",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "I dare you to say that about t_p again."
+        ]
+    ],
+    "deputy_to_leader_H4": [
+        [
+            "they_leader",
+            "you_deputy",
+            "dislike",
+            "insult",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "I dare you to say that about t_m again."
+        ]
+    ],
+    "deputy_to_leader_H3": [
+        [
+            "they_leader",
+            "you_deputy",
+            "dislike",
+            "insult",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "Why did I have to make you my deputy? Why did I subject myself to this level of unprofessionalism?"
+        ]
+    ],
+    "deputy_to_leader_H5": [
+        [
+            "they_leader",
+            "you_deputy",
+            "dislike",
+            "insult",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "You sound like a kitten having a tantrum."
+        ]
+    ],
+    "app_to_app_H1": [
+        [
+            "they_apprentice",
+            "they_cool",
+            "you_apprentice",
+            "insult"
+        ],
+        [
+            "Hey!! I totally looked cool on patrol today, you take that back!",
+            "... I have a bald spot on my back?",
+            "...",
+            "[t_c skitters off to the nearest reflective surface.]"
+        ]
+    ],
+    "shunned_insults_H1": [
+        [
+            "you_shunned",
+            "they_grieving",
+            "no_kit",
+            "insult",
+            "any",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "Back off! I'm already having a bad day - I don't need you to make it worse."
+        ]
+    ],
+    "shunned_insults_H2": [
+        [
+            "you_shunned",
+            "you_guilty",
+            "no_kit",
+            "insult",
+            "any",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "The guilt must be eating away at your intelligence to make such bold moves."
+        ]
+    ],
+    "shunned_insults_H3": [
+        [
+            "you_shunned",
+            "they_grieving",
+            "no_kit",
+            "insult",
+            "any",
+            "they_deaf",
+            "you_deaf",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "[t_c doesn't bother to acknowledge your presence.]"
+        ]
+    ],
+    "shunned_insults_H5": [
+        [
+            "you_shunned",
+            "no_kit",
+            "insult",
+            "any",
+            "they_deaf",
+            "you_deaf",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "[t_c doesn't bother to acknowledge your presence.]"
+        ]
+    ],
+    "shunned_insults_H4": [
+        [
+            "you_shunned",
+            "dislike",
+            "no_kit",
+            "insult",
+            "any",
+            "they_deaf",
+            "you_deaf",
+            "they_blind",
+            "you_blind"
+        ],
+        [
+            "[t_c doesn't hesitate to swing {PRONOUN/t_c/poss} claws in your direction the moment you get close.]"
+        ]
+    ],
+    "you_newbornsam3": [
+        [
+            "you_newborn",
+            "you_blind",
+            "insult",
+            "they_kitten"
+        ],
+        [
+            "[You scratch t_c with your claws, annoyed. {PRONOUN/t_c/subject/CAP} {VERB/t_c/let/lets} out a loud yelp before running towards r_q.]",
+            "r_q! r_q! y_c scratched me!",
+            "[You <i>almost</i> feel bad.]"
+        ]
+    ],
+    "you_newbornsam2": [
+        [
+            "you_newborn",
+            "you_blind",
+            "only_you_deaf",
+            "insult",
+            "they_adult"
+        ],
+        [
+            "[You attempt to scratch t_c, but you end up barely grazing {PRONOUN/t_c/object} with your claw.]",
+            "[You can feel {PRONOUN/t_c/poss} laughter as {PRONOUN/t_c/subject} {VERB/t_c/pick/picks} you up, returning you to the nursery after your failed antics.]"
+        ]
+>>>>>>> LifeGen-dev
     ]
 }

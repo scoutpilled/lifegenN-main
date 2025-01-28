@@ -149,6 +149,7 @@ class FreshkillPile:
             [
                 PREY_REQUIREMENT[cat.status]
                 for cat in living_cats
+<<<<<<< HEAD
                 if cat.status not in ["newborn", "kitten", "exiled", "loner", "rogue", "kittypet", "former Clancat",
                                         "rival Clancat",
                                         "rival newborn", "rival kitten", "rival apprentice",
@@ -156,6 +157,9 @@ class FreshkillPile:
                                         "rival mediator apprentice", "rival medicine cat", "rival mediator",
                                         "rival deputy", "rival leader"
                                         ] and not cat.outside
+=======
+                if cat.status not in ["newborn", "kitten", "exiled", "loner", "rogue", "kittypet", "former Clancat", ""] and not cat.outside
+>>>>>>> LifeGen-dev
             ]
         )
         # increase the number for sick cats. normally only for cruel season. sniles
