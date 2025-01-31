@@ -823,18 +823,19 @@ class HandleShortEvents:
 
         # adjust entire herb store
         if supply_type == "all_herb":
-            for herb, count in herb_supply.entire_supply.copy():
-                herb_list.append(herb)
-                if adjustment == "reduce_full":
-                    herb_supply.remove_herb(herb, count)
-                elif adjustment == "reduce_half":
-                    herb_supply.remove_herb(herb, count / 2)
-                elif adjustment == "reduce_quarter":
-                    herb_supply.remove_herb(herb, count / 4)
-                elif adjustment == "reduce_eighth":
-                    herb_supply.remove_herb(herb, count / 8)
-                elif "increase" in adjustment:
-                    herb_supply.add_herb(herb, adjustment.split("_")[1])
+            if herb_supply.entire_supply:
+                for herb, count in herb_supply.entire_supply.copy():
+                    herb_list.append(herb)
+                    if adjustment == "reduce_full":
+                        herb_supply.remove_herb(herb, count)
+                    elif adjustment == "reduce_half":
+                        herb_supply.remove_herb(herb, count / 2)
+                    elif adjustment == "reduce_quarter":
+                        herb_supply.remove_herb(herb, count / 4)
+                    elif adjustment == "reduce_eighth":
+                        herb_supply.remove_herb(herb, count / 8)
+                    elif "increase" in adjustment:
+                        herb_supply.add_herb(herb, adjustment.split("_")[1])
 
         # if we weren't adjusted the whole herb store, then adjust an individual
         else:

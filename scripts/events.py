@@ -343,34 +343,35 @@ class Events:
                 interaction_type=info_dict["interaction_type"],
                 success=info_dict["success"],
             )
-            chosen_event = random.choice(events)
+            if events:
+                chosen_event = random.choice(events)
 
-            # get text
-            event_text = chosen_event["event_text"]
+                # get text
+                event_text = chosen_event["event_text"]
 
-            # change relations and append relation text
-            rel_change = chosen_event["rel_change"]
-            other_clan.relations += rel_change
-            if rel_change > 0:
-                event_text += i18n.t("hardcoded.relations_improved")
-            elif rel_change == 0:
-                event_text += i18n.t("hardcoded.relations_neutral")
-            else:
-                event_text += i18n.t("hardcoded.relations_worsened")
+                # change relations and append relation text
+                rel_change = chosen_event["rel_change"]
+                other_clan.relations += rel_change
+                if rel_change > 0:
+                    event_text += i18n.t("hardcoded.relations_improved")
+                elif rel_change == 0:
+                    event_text += i18n.t("hardcoded.relations_neutral")
+                else:
+                    event_text += i18n.t("hardcoded.relations_worsened")
 
-            # adjust text and add to event list
-            event_text = event_text_adjust(
-                Cat,
-                event_text,
-                main_cat=gathering_cat,
-                other_clan=other_clan,
-                clan=game.clan,
-            )
-            game.cur_events_list.insert(
-                4, Single_Event(event_text, "other_clans", [gathering_cat.ID])
-            )
+                # adjust text and add to event list
+                event_text = event_text_adjust(
+                    Cat,
+                    event_text,
+                    main_cat=gathering_cat,
+                    other_clan=other_clan,
+                    clan=game.clan,
+                )
+                game.cur_events_list.insert(
+                    4, Single_Event(event_text, "other_clans", [gathering_cat.ID])
+                )
 
-            game.clan.clan_settings["lead_den_clan_event"] = {}
+                game.clan.clan_settings["lead_den_clan_event"] = {}
 
         if game.clan.clan_settings["lead_den_outsider_event"]:
             info_dict = game.clan.clan_settings["lead_den_outsider_event"]
@@ -384,139 +385,140 @@ class Events:
                 interaction_type=info_dict["interaction_type"],
                 success=info_dict["success"],
             )
-            chosen_event = random.choice(events)
+            if events:
+                chosen_event = random.choice(events)
 
-            # get event text
-            event_text = chosen_event["event_text"]
-            cat_dict = chosen_event["m_c"]
+                # get event text
+                event_text = chosen_event["event_text"]
+                cat_dict = chosen_event["m_c"]
 
-            # ADJUST REP
-            game.clan.reputation += chosen_event["rep_change"]
+                # ADJUST REP
+                game.clan.reputation += chosen_event["rep_change"]
 
-            additional_kits = None
-            # SUCCESS/FAIL
-            if info_dict["success"]:
-                if info_dict["interaction_type"] == "hunt":
-                    History.add_death(
-                        outsider_cat,
-                        death_text=history_text_adjust(
-                            i18n.t("hardcoded.lead_den_killed"),
-                            other_clan_name=None,
-                            clan=game.clan,
-                        ),
+                additional_kits = None
+                # SUCCESS/FAIL
+                if info_dict["success"]:
+                    if info_dict["interaction_type"] == "hunt":
+                        History.add_death(
+                            outsider_cat,
+                            death_text=history_text_adjust(
+                                i18n.t("hardcoded.lead_den_killed"),
+                                other_clan_name=None,
+                                clan=game.clan,
+                            ),
+                        )
+                        outsider_cat.die()
+
+                    elif info_dict["interaction_type"] == "drive":
+                        outsider_cat.status = "exiled"
+                        outsider_cat.exiled = True
+                        outsider_cat.driven_out = True
+
+                    elif info_dict["interaction_type"] in ["invite", "search"]:
+                        # ADD TO CLAN AND CHECK FOR KITS
+                        additional_kits = outsider_cat.add_to_clan()
+
+                        if additional_kits:
+                            event_text += i18n.t("hardcoded.event_lost_kits")
+
+                            for kit_ID in additional_kits:
+                                # add to involved cat list
+                                involved_cats.append(kit_ID)
+                                kit = Cat.fetch_cat(kit_ID)
+
+                        invited_cats = [outsider_cat.ID]
+                        invited_cats.extend(additional_kits)
+
+                        for cat_ID in invited_cats:
+                            invited_cat = Cat.fetch_cat(cat_ID)
+                            if invited_cat.status.lower() in [
+                                "kittypet",
+                                "loner",
+                                "rogue",
+                                "former clancat",
+                                "exiled",
+                            ]:
+                                if (
+                                    "guided" in invited_cat.backstory
+                                    and invited_cat.status != "exiled"
+                                ):
+                                    invited_cat.backstory = "outsider1"
+
+                                if (
+                                    invited_cat.backstory
+                                    in BACKSTORIES["backstory_categories"][
+                                        "healer_backstories"
+                                    ]
+                                ):
+                                    invited_cat.status = "medicine cat"
+
+                                elif invited_cat.age in ["newborn", "kitten"]:
+                                    invited_cat.status = invited_cat.age
+                                    if not invited_cat.name.suffix:
+                                        invited_cat.name = Name(
+                                            invited_cat.name.prefix,
+                                            invited_cat.name.suffix,
+                                            game.clan.biome,
+                                            cat=invited_cat,
+                                        )
+                                        invited_cat.name.give_suffix(
+                                            pelt=None,
+                                            biome=game.clan.biome,
+                                            tortiepattern=None,
+                                        )
+                                        invited_cat.specsuffix_hidden = False
+
+                                elif invited_cat.age == "senior":
+                                    invited_cat.status = "elder"
+                                elif invited_cat.age == "adolescent":
+                                    invited_cat.status = "apprentice"
+                                    invited_cat.update_mentor()
+                                else:
+                                    invited_cat.status = "warrior"
+
+                            invited_cat.create_relationships_new_cat()
+
+                    # this handles ceremonies for cats coming into the clan
+                    if invited_cats:
+                        self.handle_lost_cats_return(invited_cats)
+
+                # give new thought to cats
+                if "new_thought" in cat_dict:
+                    outsider_cat.thought = event_text_adjust(
+                        Cat,
+                        text=cat_dict["new_thought"],
+                        main_cat=outsider_cat,
+                        clan=game.clan,
                     )
-                    outsider_cat.die()
 
-                elif info_dict["interaction_type"] == "drive":
-                    outsider_cat.status = "exiled"
-                    outsider_cat.exiled = True
-                    outsider_cat.driven_out = True
-
-                elif info_dict["interaction_type"] in ["invite", "search"]:
-                    # ADD TO CLAN AND CHECK FOR KITS
-                    additional_kits = outsider_cat.add_to_clan()
-
+                if "kit_thought" in cat_dict:
+                    if additional_kits is None:
+                        additional_kits = outsider_cat.get_children()
                     if additional_kits:
-                        event_text += i18n.t("hardcoded.event_lost_kits")
-
                         for kit_ID in additional_kits:
-                            # add to involved cat list
-                            involved_cats.append(kit_ID)
                             kit = Cat.fetch_cat(kit_ID)
+                            kit.thought = event_text_adjust(
+                                Cat,
+                                text=cat_dict["kit_thought"],
+                                main_cat=kit,
+                                clan=game.clan,
+                            )
 
-                    invited_cats = [outsider_cat.ID]
-                    invited_cats.extend(additional_kits)
+                if "relationships" in cat_dict:
+                    unpack_rel_block(Cat, cat_dict["relationships"], extra_cat=outsider_cat)
 
-                    for cat_ID in invited_cats:
-                        invited_cat = Cat.fetch_cat(cat_ID)
-                        if invited_cat.status.lower() in [
-                            "kittypet",
-                            "loner",
-                            "rogue",
-                            "former clancat",
-                            "exiled",
-                        ]:
-                            if (
-                                "guided" in invited_cat.backstory
-                                and invited_cat.status != "exiled"
-                            ):
-                                invited_cat.backstory = "outsider1"
+                    pass
 
-                            if (
-                                invited_cat.backstory
-                                in BACKSTORIES["backstory_categories"][
-                                    "healer_backstories"
-                                ]
-                            ):
-                                invited_cat.status = "medicine cat"
-
-                            elif invited_cat.age in ["newborn", "kitten"]:
-                                invited_cat.status = invited_cat.age
-                                if not invited_cat.name.suffix:
-                                    invited_cat.name = Name(
-                                        invited_cat.name.prefix,
-                                        invited_cat.name.suffix,
-                                        game.clan.biome,
-                                        cat=invited_cat,
-                                    )
-                                    invited_cat.name.give_suffix(
-                                        pelt=None,
-                                        biome=game.clan.biome,
-                                        tortiepattern=None,
-                                    )
-                                    invited_cat.specsuffix_hidden = False
-
-                            elif invited_cat.age == "senior":
-                                invited_cat.status = "elder"
-                            elif invited_cat.age == "adolescent":
-                                invited_cat.status = "apprentice"
-                                invited_cat.update_mentor()
-                            else:
-                                invited_cat.status = "warrior"
-
-                        invited_cat.create_relationships_new_cat()
-
-                # this handles ceremonies for cats coming into the clan
-                if invited_cats:
-                    self.handle_lost_cats_return(invited_cats)
-
-            # give new thought to cats
-            if "new_thought" in cat_dict:
-                outsider_cat.thought = event_text_adjust(
-                    Cat,
-                    text=cat_dict["new_thought"],
-                    main_cat=outsider_cat,
-                    clan=game.clan,
+                # adjust text and add to event list
+                event_text = event_text_adjust(
+                    Cat, text=event_text, main_cat=outsider_cat, clan=game.clan
                 )
 
-            if "kit_thought" in cat_dict:
-                if additional_kits is None:
-                    additional_kits = outsider_cat.get_children()
-                if additional_kits:
-                    for kit_ID in additional_kits:
-                        kit = Cat.fetch_cat(kit_ID)
-                        kit.thought = event_text_adjust(
-                            Cat,
-                            text=cat_dict["kit_thought"],
-                            main_cat=kit,
-                            clan=game.clan,
-                        )
+                game.cur_events_list.insert(
+                    4, Single_Event(event_text, "misc", involved_cats)
+                )
 
-            if "relationships" in cat_dict:
-                unpack_rel_block(Cat, cat_dict["relationships"], extra_cat=outsider_cat)
-
-                pass
-
-            # adjust text and add to event list
-            event_text = event_text_adjust(
-                Cat, text=event_text, main_cat=outsider_cat, clan=game.clan
-            )
-
-            game.cur_events_list.insert(
-                4, Single_Event(event_text, "misc", involved_cats)
-            )
-
-            game.clan.clan_settings["lead_den_outsider_event"] = {}
+                game.clan.clan_settings["lead_den_outsider_event"] = {}
 
         game.clan.clan_settings["lead_den_interaction"] = False
 
