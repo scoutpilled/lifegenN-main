@@ -196,6 +196,7 @@ from scripts.utility import (
 # from scripts.debug_menu import debugmode
 from scripts.debug_console import debug_mode
 import pygame
+import random
 
 # import all screens for initialization (Note - must be done after pygame_gui manager is created)
 from scripts.screens.all_screens import AllScreens
