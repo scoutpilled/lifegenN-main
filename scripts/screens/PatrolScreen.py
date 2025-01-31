@@ -132,7 +132,10 @@ class PatrolScreen(Screens):
                     ]
                     if len(able_no_med) == 0:
                         able_no_med = self.able_cats
-                    self.selected_cat = choice(able_no_med)
+                    if able_no_med:
+                        self.selected_cat = choice(able_no_med)
+                    else:
+                        logging.warning("No cats available for selection.")
                 else:
                     if self.able_cats:
                         self.selected_cat = choice(self.able_cats)
