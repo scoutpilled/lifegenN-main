@@ -1839,6 +1839,8 @@ def adjust_list_text(list_of_items: List) -> str:
         logger.warning("non-list object was passed to adjust_list_text")
         list_of_items = list(list_of_items)
 
+    list_of_items = [str(item) for item in list_of_items]  # Ensure all items are strings
+
     if len(list_of_items) == 0:
         item1 = ""
         item2 = ""
@@ -2152,11 +2154,7 @@ def event_text_adjust(
         text = text.replace(list_type, str(sign_list))
         if cat_tag:
             text = text.replace("cat_tag", cat_tag)
-   
-  
-    
-    
-    
+
     # main_cat
     if "m_c" in text:
         if main_cat:

@@ -186,6 +186,7 @@ class Game:
     rpc = None
 
     is_close_menu_open = False
+    cats = []
 
     def __init__(self, current_screen="start screen"):
         self.current_screen = current_screen
