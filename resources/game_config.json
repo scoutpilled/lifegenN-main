@@ -155,7 +155,7 @@
 				"trust": 10
 			}
 		},
-		"cat_amount_welcoming": 3
+		"cat_amount_welcoming": 1
 	},
 	"pregnancy": {
 		"birth_cooldown": 6,
@@ -217,7 +217,7 @@
 		]
 	},
 	"accessory_generation": {
-		"base_acc_chance": 150,
+		"base_acc_chance": 60,
 		"med_modifier": -80,
 		"baby_modifier": -20,
 		"elder_modifier": 20,
@@ -244,7 +244,7 @@
 		}
 	},
 	"lost_cat": {
-		"rejoin_chance": 20
+		"rejoin_chance": 5
 	},
 	"cat_ages": {
 		"newborn": [0, 0],
@@ -284,7 +284,7 @@
 		"debug_ensure_event_id": null
 	},
 	"death_related": {
-		"leader_death_chance": 50,
+		"leader_death_chance": 20,
 		"classic_death_chance": 500,
 		"expanded_death_chance": 350,
 		"cruel season_death_chance": 300,
