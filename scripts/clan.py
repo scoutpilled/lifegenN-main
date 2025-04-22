@@ -18,10 +18,9 @@ import ujson
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.game_structure.game_essentials import game
 from scripts.housekeeping.version import get_version_info, SAVE_VERSION_NUMBER
-from scripts.utility import update_sprite, get_current_season, quit, get_free_possible_mates, get_alive_status_cats, create_new_cat  # pylint: disable=redefined-builtin
+from scripts.utility import get_current_season, quit, get_free_possible_mates, get_alive_status_cats, create_new_cat  # pylint: disable=redefined-builtin
 from scripts.cat.cats import Cat, cat_class, BACKSTORIES
 from scripts.cat.pelts import Pelt
-from scripts.cat.cats import Cat, cat_class
 from scripts.cat.history import History
 from scripts.cat.names import names
 from scripts.cat.sprites import sprites
@@ -350,6 +349,7 @@ class Clan:
         num_mates = random.randint(0,3)
 
         for i in range(num_mates):
+            same_age_cats = []
             random_cat = get_adult_mateless_cat()
             if random_cat:
                 same_age_cats = get_free_possible_mates(random_cat)
@@ -531,6 +531,7 @@ class Clan:
         num_mates = random.randint(0,3)
 
         for i in range(num_mates):
+            same_age_cats = []
             random_cat = get_adult_mateless_cat()
             if random_cat:
                 same_age_cats = get_free_possible_mates(random_cat)
@@ -887,7 +888,7 @@ class Clan:
             for other_clan in game.switches["other_med"]:
                 cats = []
                 for c in other_clan:
-                    cats.append(c.prefix + "," + c.suffix + "," + c.status)
+                    cats.append(c.prefix + "," + c.suffix + ",medicine cat")
                 other_med.append(cats)
             clan_data["other_med"] = other_med
 
@@ -1305,6 +1306,9 @@ class Clan:
         # Patrolled cats
         if "patrolled_cats" in clan_data:
             game.patrolled = clan_data["patrolled_cats"]
+        
+        if "dated_cats" in clan_data:
+            game.dated_cats = clan_data["dated_cats"]
 
         game.switches["error_message"] = "Error loading ---clan.json. Check Mediated"
         # Mediated flag
@@ -1463,6 +1467,7 @@ class Clan:
                 return acc_list
 
     def load_clan_settings(self):
+        _load_settings = {}
         if os.path.exists(
             get_save_dir() + f'/{game.switches["clan_list"][0]}/clan_settings.json'
         ):
