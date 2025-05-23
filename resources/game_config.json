@@ -98,27 +98,27 @@
 		"parent_buff": {
 			"kit_to_parent": {
 				"romantic": 0,
-				"platonic": 40,
+				"platonic": 80,
 				"dislike": 0,
-				"admiration": 30,
+				"admiration": 60,
 				"comfortable": 40,
 				"jealousy": 0,
-				"trust": 50
+				"trust": 70
 			},
 			"parent_to_kit": {
 				"romantic": 0,
-				"platonic": 40,
+				"platonic": 80,
 				"dislike": 0,
 				"admiration": 30,
 				"comfortable": 40,
 				"jealousy": 0,
-				"trust": 30
+				"trust": 70
 			}
 		},
 		"sib_buff": {
 			"cat1_to_cat2": {
 				"romantic": 0,
-				"platonic": 40,
+				"platonic": 60,
 				"dislike": 0,
 				"admiration": 10,
 				"comfortable": 40,
@@ -138,7 +138,7 @@
 		"rel_buff":{
 			"new_to_clan_cat": {
 				"romantic": 0,
-				"platonic": 15,
+				"platonic": 30,
 				"dislike": 0,
 				"admiration": 10,
 				"comfortable": 15,
@@ -217,7 +217,7 @@
 		]
 	},
 	"accessory_generation": {
-		"base_acc_chance": 60,
+		"base_acc_chance": 98,
 		"med_modifier": -80,
 		"baby_modifier": -20,
 		"elder_modifier": 20,
@@ -244,7 +244,7 @@
 		}
 	},
 	"lost_cat": {
-		"rejoin_chance": 5
+		"rejoin_chance": 7
 	},
 	"cat_ages": {
 		"newborn": [0, 0],
