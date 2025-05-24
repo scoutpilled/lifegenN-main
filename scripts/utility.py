@@ -2021,7 +2021,6 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
 
     if "o_c_n" in text:
         pos = 0
-        pos = 0
         for x in range(text.count("o_c_n")):
             if "o_c_n" in text:
                 for y in vowels:
