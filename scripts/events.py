@@ -59,6 +59,10 @@ class Events:
     """
 
     all_events = {}
+    game.switches["timeskip"] = False
+    new_cat_invited = False
+    ceremony_accessory = False
+    CEREMONY_TXT = None
     WAR_TXT = None
     ceremony_lang = None
     war_lang = None
