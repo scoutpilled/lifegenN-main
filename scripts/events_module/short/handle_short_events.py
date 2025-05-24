@@ -568,6 +568,11 @@ class HandleShortEvents:
 
         for block in self.chosen_event.history:
             # main_cat's history
+            if "m_c" in block["cats"]:
+                # death history
+                if self.chosen_event.m_c["dies"]:
+                    # find history
+                    if self.main_cat.status == "leader":
                         death_history = history_text_adjust(
                             block.get("lead_death"),
                             self.other_clan_name,

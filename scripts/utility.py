@@ -2011,16 +2011,16 @@ def find_special_list_types(text):
 
 def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
     """
-    we want to handle history text on its own because it needs to preserve the pronoun tags and cat abbreviations.
-    this is so that future pronoun changes or name changes will continue to be reflected in history
+    Adjusts history text with placeholders replaced by actual values.
     """
     if not text:  # Ensure text is not None
         logging.warning("history_text_adjust received None as text.")
-        return ""
+        return "Unknown event occurred."
 
     vowels = ["A", "E", "I", "O", "U"]
 
     if "o_c_n" in text:
+        pos = 0
         pos = 0
         for x in range(text.count("o_c_n")):
             if "o_c_n" in text:
