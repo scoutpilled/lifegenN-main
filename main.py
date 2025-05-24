@@ -291,6 +291,20 @@ def loading_animation(scale: float = 1):
         pygame.display.update()
 
 
+def invite_outsiders():
+    """
+    Handle the logic for inviting outsiders.
+    """
+    if not game.clan:
+        logging.warning("No clan exists to invite outsiders into.")
+        return
+
+    # Example logic for inviting outsiders
+    outsider = random.choice(game.available_outsiders)  # Assuming a list of outsiders exists
+    game.clan.add_member(outsider)  # Assuming a method to add members to the clan
+    logging.info(f"Invited outsider {outsider.name} to the clan.")
+
+
 loading_thread = threading.Thread(target=load_data)
 loading_thread.start()
 
@@ -385,6 +399,8 @@ while 1:
                     ),
                     show_confirm_dialog=False,
                 )
+            elif event.key == pygame.K_i:
+                invite_outsiders()
 
         MANAGER.process_events(event)
 
