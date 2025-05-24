@@ -1887,8 +1887,8 @@ def get_special_snippet_list(
     -prophecy_list - sense_groups = sight, sound, smell, emotional, touch
     -omen_list - sense_groups = sight, sound, smell, emotional, touch
     -clair_list  - sense_groups = sound, smell, emotional, touch, taste
-    -dream_list (this list doesn't have sense_groups)
-    -story_list (this list doesn't have sense_groups)
+    -dream_list (this list doesn't have sense categories)
+    -story_list (this list doesn't have sense categories)
     :param chosen_list: pick which list you want to grab from
     :param amount: the amount of items you want the returned list to contain
     :param sense_groups: list which senses you want the snippets to correspond with:
@@ -2014,6 +2014,10 @@ def history_text_adjust(text, other_clan_name, clan, other_cat_rc=None):
     we want to handle history text on its own because it needs to preserve the pronoun tags and cat abbreviations.
     this is so that future pronoun changes or name changes will continue to be reflected in history
     """
+    if not text:  # Ensure text is not None
+        logging.warning("history_text_adjust received None as text.")
+        return ""
+
     vowels = ["A", "E", "I", "O", "U"]
 
     if "o_c_n" in text:
