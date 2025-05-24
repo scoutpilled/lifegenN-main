@@ -349,17 +349,13 @@ class Clan:
 
     def add_to_clan(self, cat):
         """
-        TODO: DOCS
+        Adds an outsider cat to the clan.
         """
-        if (
-            cat.ID in Cat.all_cats
-            and not cat.outside
-            and not cat.dead
-            and cat.ID in Cat.outside_cats
-        ):
-            # The outside-value must be set to True before the cat can go to cotc
-            Cat.outside_cats.pop(cat.ID)
-            cat.clan = str(game.clan.name)
+        if cat.ID not in self.clan_cats:
+            self.clan_cats.append(cat.ID)
+            cat.outside = False
+            cat.exiled = False
+            logging.info(f"Added {cat.name} to the clan.")
 
     def add_to_outside(self, cat):  # same as add_cat
         """

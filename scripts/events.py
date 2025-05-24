@@ -12,7 +12,7 @@ import traceback
 
 import i18n
 
-from scripts.cat.cats import Cat, cat_class, BACKSTORIES
+from scripts.cat.cats import Cat, cat_class, BACKSTORIES, create_cat
 from scripts.cat.enums import CatAgeEnum
 from scripts.cat.history import History
 from scripts.cat.names import Name
@@ -48,6 +48,10 @@ from scripts.utility import (
 )
 from scripts.game_structure.localization import load_lang_resource
 
+# Initialize available outsiders
+if not hasattr(game, "available_outsiders"):
+    game.available_outsiders = [create_cat(status="warrior") for _ in range(5)]
+
 
 class Events:
     """
@@ -55,10 +59,6 @@ class Events:
     """
 
     all_events = {}
-    game.switches["timeskip"] = False
-    new_cat_invited = False
-    ceremony_accessory = False
-    CEREMONY_TXT = None
     WAR_TXT = None
     ceremony_lang = None
     war_lang = None

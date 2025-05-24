@@ -299,9 +299,12 @@ def invite_outsiders():
         logging.warning("No clan exists to invite outsiders into.")
         return
 
-    # Example logic for inviting outsiders
+    if not hasattr(game, "available_outsiders") or not game.available_outsiders:
+        logging.warning("No available outsiders to invite.")
+        return
+
     outsider = random.choice(game.available_outsiders)  # Assuming a list of outsiders exists
-    game.clan.add_member(outsider)  # Assuming a method to add members to the clan
+    game.clan.add_to_clan(outsider)  # Assuming a method to add members to the clan
     logging.info(f"Invited outsider {outsider.name} to the clan.")
 
 

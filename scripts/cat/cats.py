@@ -348,6 +348,9 @@ class Cat:
         if self.ID not in ["0", None]:
             Cat.insert_cat(self)
 
+    def __repr__(self):
+        return f"Cat(ID={self.ID}, name={self.name.prefix + self.name.suffix}, status={self.status})"
+
     def init_faded(self, ID, status, prefix, suffix, moons, **kwargs):
         """Perform faded-specific initialization
 
@@ -490,9 +493,6 @@ class Cat:
 
         if not skill_dict:
             self.skills = CatSkills.generate_new_catskills(self.status, self.moons)
-
-    def __repr__(self):
-        return "CAT OBJECT:" + self.ID
 
     def __eq__(self, other):
         return False if not isinstance(other, Cat) else self.ID == other.ID
